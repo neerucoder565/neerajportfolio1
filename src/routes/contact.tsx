@@ -42,7 +42,7 @@ function Contact() {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [composeOpen, setComposeOpen] = useState(false);
-  const [from, setFrom] = useState("");
+  const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [subject, setSubject] = useState("");
   const [body, setBody] = useState("");
@@ -51,7 +51,7 @@ function Contact() {
   const [status, setStatus] = useState<{ type: "ok" | "err"; msg: string } | null>(null);
 
   const reset = () => {
-    setFrom(""); setName(""); setSubject(""); setBody(""); setFiles([]); setStatus(null);
+    setEmail(""); setName(""); setSubject(""); setBody(""); setFiles([]); setStatus(null);
   };
 
   const onPickFiles = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -83,7 +83,7 @@ function Contact() {
     window.emailjs
       .send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
         name,
-        email: from,
+        email: email,
         message,
       })
       .then(() => {
@@ -149,8 +149,8 @@ function Contact() {
               <input
                 type="email"
                 required
-                value={from}
-                onChange={(e) => setFrom(e.target.value)}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="your@email.com"
                 className="flex-1 bg-transparent text-sm focus:outline-none"
               />
