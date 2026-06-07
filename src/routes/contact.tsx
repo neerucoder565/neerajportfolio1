@@ -13,7 +13,7 @@ declare global {
   }
 }
 
-const EMAILJS_SERVICE_ID = "service_sprxe28";
+const EMAILJS_SERVICE_ID = "service_5lvd0ww";
 const EMAILJS_TEMPLATE_ID = "template_u1nsr7c";
 const EMAILJS_PUBLIC_KEY = "1F_8QdHWtlV2JcMMY";
 
@@ -29,7 +29,7 @@ export const Route = createFileRoute("/contact")({
   component: Contact,
 });
 
-const OWNER_EMAIL = "neerajmadan2006@gmail.com";
+const OWNER_EMAIL = "neerajmohan0410@gmail.com";
 
 const CHANNELS = [
   { icon: Mail, label: "Email", value: OWNER_EMAIL, href: `mailto:${OWNER_EMAIL}` },
