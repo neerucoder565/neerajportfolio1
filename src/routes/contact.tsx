@@ -15,7 +15,7 @@ declare global {
 
 const EMAILJS_SERVICE_ID = "service_5lvd0ww";
 const EMAILJS_TEMPLATE_ID = "template_u1nsr7c";
-const EMAILJS_PUBLIC_KEY = "1F_8QdHWtlV2JcMMY";
+const EMAILJS_PUBLIC_KEY = "HSgp3_EPQ1K5Gd0WK";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
