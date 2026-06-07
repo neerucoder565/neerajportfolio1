@@ -83,7 +83,7 @@ function Contact() {
     window.emailjs
       .send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
         name,
-        email: from,
+        email: email,
         message,
       })
       .then(() => {
@@ -149,8 +149,8 @@ function Contact() {
               <input
                 type="email"
                 required
-                value={from}
-                onChange={(e) => setFrom(e.target.value)}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="your@email.com"
                 className="flex-1 bg-transparent text-sm focus:outline-none"
               />
