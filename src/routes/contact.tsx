@@ -42,7 +42,7 @@ function Contact() {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [composeOpen, setComposeOpen] = useState(false);
-  const [from, setFrom] = useState("");
+  const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [subject, setSubject] = useState("");
   const [body, setBody] = useState("");
@@ -51,7 +51,7 @@ function Contact() {
   const [status, setStatus] = useState<{ type: "ok" | "err"; msg: string } | null>(null);
 
   const reset = () => {
-    setFrom(""); setName(""); setSubject(""); setBody(""); setFiles([]); setStatus(null);
+    setEmail(""); setName(""); setSubject(""); setBody(""); setFiles([]); setStatus(null);
   };
 
   const onPickFiles = (e: React.ChangeEvent<HTMLInputElement>) => {
