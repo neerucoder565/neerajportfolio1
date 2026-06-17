@@ -9,7 +9,7 @@ import pidImg from "@/assets/project-pid.jpg";
 import r2rImg from "@/assets/project-r2r.jpg";
 import edgeVisionImg from "@/assets/project-edge-vision.png";
 import bootloaderImg from "@/assets/project-bootloader.png.asset.json";
-import { R2R_CODE, PID_CODE, EDGE_VISION_CODE, type CodeFile } from "@/data/project-code";
+import { R2R_CODE, PID_CODE, EDGE_VISION_CODE, BOOTLOADER_CODE, type CodeFile } from "@/data/project-code";
 
 export const Route = createFileRoute("/projects")({
   head: () => ({
@@ -71,6 +71,7 @@ const PROJECTS: Project[] = [
     overview: "Written a bare-metal bootloader from scratch on STM32F407VGT6. Partitioned flash memory manually, implemented vector table relocation and MSP configuration for clean firmware handoff to application.",
     tech: ["STM32", "BARE-METAL", "FLASH MEMORY", "FIRMWARE"],
     outcomes: "Dual firmware images coexisting in flash with stable bootloader-to-application jump via Reset Handler",
+    code: BOOTLOADER_CODE,
   },
   {
     id: "04",
