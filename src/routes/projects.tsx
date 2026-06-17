@@ -65,11 +65,12 @@ const PROJECTS: Project[] = [
   {
     id: "03",
     date: "2025-Q1",
-    title: "Sensor Fusion Prototype",
-    sub: "Embedded Motion Sensing",
-    overview: "Integrated motion sensors and fusion algorithms on breadboard hardware. Explored complementary and Kalman-style filtering for orientation tracking.",
-    tech: ["IMU", "Arduino", "Sensor Fusion", "Signal Processing"],
-    outcomes: "Reliable orientation data from low-cost sensors via fused signal pipeline.",
+    title: "BARE-METAL BOOTLOADER",
+    sub: "Embedded Firmware Architecture",
+    image: bootloaderImg.url,
+    overview: "Written a bare-metal bootloader from scratch on STM32F407VGT6. Partitioned flash memory manually, implemented vector table relocation and MSP configuration for clean firmware handoff to application.",
+    tech: ["STM32", "BARE-METAL", "FLASH MEMORY", "FIRMWARE"],
+    outcomes: "Dual firmware images coexisting in flash with stable bootloader-to-application jump via Reset Handler",
   },
   {
     id: "04",
