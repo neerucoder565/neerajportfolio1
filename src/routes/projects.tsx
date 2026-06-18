@@ -72,6 +72,7 @@ const PROJECTS: Project[] = [
     tech: ["STM32", "BARE-METAL", "FLASH MEMORY", "FIRMWARE"],
     outcomes: "Dual firmware in flash with stable bootloader-to-application jump via Reset Handler",
     code: BOOTLOADER_CODE,
+    repo: "https://github.com/Neeraj0410/BootLoader",
   },
   {
     id: "04",
