@@ -185,8 +185,8 @@ function Projects() {
               {p.image ? (
                 <>
                   <img src={p.image} alt={`${p.title} hardware build`} loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
-                  <div className="absolute inset-0 pointer-events-none" style={{
-                    backgroundImage: "repeating-linear-gradient(0deg, rgba(0,0,0,0.25) 0px, rgba(0,0,0,0.25) 1px, transparent 1px, transparent 3px)"
+                  <div className="absolute inset-0 pointer-events-none opacity-40" style={{
+                    backgroundImage: "repeating-linear-gradient(0deg, rgba(0,0,0,0.15) 0px, rgba(0,0,0,0.15) 1px, transparent 1px, transparent 3px)"
                   }} />
                   <div className="absolute bottom-2 left-2 text-[9px] text-neon tracking-[0.3em] bg-background/70 px-2 py-1 border border-neon/30">// LIVE BUILD</div>
                 </>
