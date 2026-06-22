@@ -1,4 +1,4 @@
 {
   "version": 1,
-  const bootloaderImg = { url: "/Bootloader.png" };
+  const bootloaderImg = { url: "/bootloader.png" };
 }
