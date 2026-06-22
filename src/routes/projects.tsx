@@ -7,9 +7,6 @@ import { useState, useCallback } from "react";
 import { Section } from "@/components/SiteShell";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import pidImg from "@/assets/project-pid.jpg";
-import r2rImg from "@/assets/project-r2r.jpg";
-import edgeVisionImg from "@/assets/project-edge-vision.png";
 
 import { R2R_CODE, PID_CODE, EDGE_VISION_CODE, BOOTLOADER_CODE, type CodeFile } from "@/data/project-code";
 
