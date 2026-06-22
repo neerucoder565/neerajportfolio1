@@ -7,9 +7,6 @@ import { useState, useCallback } from "react";
 import { Section } from "@/components/SiteShell";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import pidImg from "@/assets/project-pid.jpg";
-import r2rImg from "@/assets/project-r2r.jpg";
-import edgeVisionImg from "@/assets/project-edge-vision.png";
 
 import { R2R_CODE, PID_CODE, EDGE_VISION_CODE, BOOTLOADER_CODE, type CodeFile } from "@/data/project-code";
 
@@ -45,7 +42,7 @@ const PROJECTS: Project[] = [
     date: "2025-Q3",
     title: "Edge Vision Detection System",
     sub: "On-Device Vision on Resource-Constrained Hardware",
-    image: edgeVisionImg,
+    image: "/project-edge-vision.png",
     overview: "Real-time object detection and image preprocessing pipeline running on an FPGA-based preprocessing stage with the VEGA RISC-V processor. Designed for efficient feature extraction, noise reduction, and low-latency detection in hardware-constrained environments.",
     tech: ["FPGA", "VEGA RISC-V", "Image Processing", "Object Detection", "Edge AI"],
     outcomes: "Streamlined vision pipeline delivering low-latency detection on resource-constrained hardware.",
@@ -56,7 +53,7 @@ const PROJECTS: Project[] = [
     date: "2025-Q2",
     title: "4-bit R-2R Ladder DAC",
     sub: "Arduino-driven Analog Output",
-    image: r2rImg,
+    image: "/project-r2r.jpg",
     overview: "Built and tested a 4-bit digital-to-analog converter using resistor ladder architecture and Arduino control logic. Verified voltage outputs across all 16 binary combinations.",
     tech: ["Arduino", "R-2R Ladder", "Breadboard", "Multimeter"],
     outcomes: "Stable linear voltage steps; demonstrated DAC fundamentals on bare hardware.",
@@ -81,7 +78,7 @@ const PROJECTS: Project[] = [
     date: "2024-Q4",
     title: "PID Control System",
     sub: "Stability & Overshoot Reduction",
-    image: pidImg,
+    image: "/project-pid.jpg",
     overview: "Studied and implemented proportional, integral and derivative control. Tuned parameters for stability, overshoot reduction and faster system response.",
     tech: ["Control Theory", "Arduino", "Simulation", "Tuning"],
     outcomes: "Hands-on intuition for PID tuning trade-offs across plant dynamics.",
