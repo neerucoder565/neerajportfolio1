@@ -1,4 +1,4 @@
 {
   "version": 1,
-  "url": "/assets/project-bootloader.png"
+  const bootloaderImg = { url: "/Bootloader.png" };
 }
