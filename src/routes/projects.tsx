@@ -8,7 +8,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import pidImg from "@/assets/project-pid.jpg";
 import r2rImg from "@/assets/project-r2r.jpg";
 import edgeVisionImg from "@/assets/project-edge-vision.png";
-const bootloaderImg = { url: "/Bootloader.png" };
+const bootloaderImg = { url: "/bootloader.png" };
 import { R2R_CODE, PID_CODE, EDGE_VISION_CODE, BOOTLOADER_CODE, type CodeFile } from "@/data/project-code";
 
 export const Route = createFileRoute("/projects")({
