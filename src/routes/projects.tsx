@@ -3,7 +3,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { ExternalLink, Code2 } from "lucide-react";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { Section } from "@/components/SiteShell";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
