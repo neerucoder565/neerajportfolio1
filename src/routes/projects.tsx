@@ -66,7 +66,7 @@ const PROJECTS: Project[] = [
     date: "2025-Q1",
     title: "BARE-METAL BOOTLOADER",
     sub: "Embedded Firmware Architecture",
-    image: "/bootloader.png",
+    image: "/bootloader-v2.png",
     overview: "Written a bare-metal bootloader from scratch on STM32F407VGT6. Partitioned flash memory manually, implemented vector table relocation and MSP configuration for clean firmware handoff to application.",
     tech: ["STM32", "BARE-METAL", "FLASH MEMORY", "FIRMWARE"],
     outcomes: "Dual firmware in flash with stable bootloader-to-application jump via Reset Handler",
