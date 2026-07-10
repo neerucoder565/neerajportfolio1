@@ -17,14 +17,14 @@ export const Route = createFileRoute("/experience")({
 const MILESTONES = [
   {
     icon: Briefcase,
-    title: "Internship — Embedded Systems / Hardware",
+    title: "Internship — HL Mando Anand Pvt Ltd",
     status: "Currently pursuing",
     meta: [
-      { label: "Focus", value: "Embedded firmware, hardware design, testing & validation" },
-      { label: "Location", value: "India / Remote" },
-      { label: "Timeline", value: "Open for upcoming internships" },
+      { label: "Company", value: "HL Mando Anand Pvt Ltd" },
+      { label: "Role", value: "Embedded Systems / Hardware Intern" },
+      { label: "Duration", value: "3rd July 2026 — 24th July 2026" },
     ],
-    body: "I am actively seeking an internship where I can contribute to embedded firmware development, circuit design, sensor integration, and hardware debugging. I’m eager to work under experienced engineers, learn real-world product workflows, and apply my hands-on project experience in a professional setting.",
+    body: "Interning at HL Mando Anand Pvt Ltd from 3rd July 2026 to 24th July 2026, working on embedded systems and hardware alongside experienced engineers, and applying my hands-on project experience in a professional automotive engineering environment.",
   },
 ];
 
@@ -66,15 +66,15 @@ function Experience() {
             <div className="space-y-4">
               <div className="flex items-center gap-3">
                 <span className="size-2 rounded-full bg-neon anim-pulse-neon" />
-                <span className="text-sm">Actively seeking internship</span>
+                <span className="text-sm">Interning at HL Mando Anand Pvt Ltd</span>
               </div>
               <div className="flex items-center gap-3">
                 <MapPin size={16} className="text-neon" />
-                <span className="text-sm text-muted-foreground">India / Remote</span>
+                <span className="text-sm text-muted-foreground">HL Mando Anand Pvt Ltd</span>
               </div>
               <div className="flex items-center gap-3">
                 <Calendar size={16} className="text-neon" />
-                <span className="text-sm text-muted-foreground">Available for upcoming internships</span>
+                <span className="text-sm text-muted-foreground">3rd July 2026 — 24th July 2026</span>
               </div>
               <div className="flex items-center gap-3">
                 <Target size={16} className="text-neon" />
