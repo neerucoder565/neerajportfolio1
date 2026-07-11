@@ -131,9 +131,10 @@ function Experience() {
 
                 {/* description */}
                 <p className="mt-7 text-muted-foreground leading-relaxed">
-                  Interning at HL Mando Anand Pvt Ltd, working on manufacturing automation
-                  initiatives alongside experienced engineers, applying my project experience
-                  in a real industrial environment.
+                  Interning at HL Mando Anand Pvt Ltd from 3rd July 2026 to 24th July 2026,
+                  working on embedded systems and hardware alongside experienced engineers,
+                  and applying my hands-on project experience in a professional automotive
+                  engineering environment.
                 </p>
 
                 {/* focus pills */}
