@@ -157,7 +157,7 @@ function Experience() {
           <Panel className="h-fit">
             <div className="text-[10px] text-neon tracking-[0.3em] mb-5">// STATUS</div>
             <div className="divide-y divide-border/60">
-              <StatRow icon={Briefcase} label="Role" value="Engineering Intern" />
+              <StatRow icon={Briefcase} label="Focus" value="Automation" />
               <StatRow icon={MapPin} label="Company" value="HL Mando Anand Pvt Ltd" />
               <StatRow icon={Calendar} label="Window" value="03 Jul → 24 Aug 2026" />
               <StatRow icon={Clock} label="Remaining" value={`${p.remaining} days`} />
