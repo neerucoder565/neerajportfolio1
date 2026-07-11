@@ -88,11 +88,8 @@ function Experience() {
                 </div>
 
                 <h3 className="font-display text-2xl md:text-3xl uppercase leading-tight">
-                  Engineering Intern
-                </h3>
-                <div className="mt-1 text-sm text-muted-foreground tracking-widest">
                   HL Mando Anand Pvt Ltd
-                </div>
+                </h3>
 
                 {/* meta grid */}
                 <div className="mt-6 grid sm:grid-cols-2 gap-3">
@@ -134,9 +131,10 @@ function Experience() {
 
                 {/* description */}
                 <p className="mt-7 text-muted-foreground leading-relaxed">
-                  Interning at HL Mando Anand Pvt Ltd, working on manufacturing automation
-                  initiatives alongside experienced engineers, applying my project experience
-                  in a real industrial environment.
+                  Interning at HL Mando Anand Pvt Ltd from 3rd July 2026 to 24th July 2026,
+                  working on embedded systems and hardware alongside experienced engineers,
+                  and applying my hands-on project experience in a professional automotive
+                  engineering environment.
                 </p>
 
                 {/* focus pills */}
@@ -159,7 +157,7 @@ function Experience() {
           <Panel className="h-fit">
             <div className="text-[10px] text-neon tracking-[0.3em] mb-5">// STATUS</div>
             <div className="divide-y divide-border/60">
-              <StatRow icon={Briefcase} label="Role" value="Engineering Intern" />
+              <StatRow icon={Briefcase} label="Focus" value="Automation" />
               <StatRow icon={MapPin} label="Company" value="HL Mando Anand Pvt Ltd" />
               <StatRow icon={Calendar} label="Window" value="03 Jul → 24 Aug 2026" />
               <StatRow icon={Clock} label="Remaining" value={`${p.remaining} days`} />
