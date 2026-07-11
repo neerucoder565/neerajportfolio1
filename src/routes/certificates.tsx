@@ -1,7 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Panel, Section } from "@/components/SiteShell";
-import { Award, Upload, Trash2, FileText, X } from "lucide-react";
+import { Award, Upload, Trash2, FileText, X, Lock, LogOut } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+
+const OWNER_EMAIL = "neerajmohan0410@gmail.com";
+const OWNER_KEY = "neeraj:owner";
 
 export const Route = createFileRoute("/certificates")({
   head: () => ({
