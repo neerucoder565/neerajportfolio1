@@ -88,11 +88,8 @@ function Experience() {
                 </div>
 
                 <h3 className="font-display text-2xl md:text-3xl uppercase leading-tight">
-                  Engineering Intern
-                </h3>
-                <div className="mt-1 text-sm text-muted-foreground tracking-widest">
                   HL Mando Anand Pvt Ltd
-                </div>
+                </h3>
 
                 {/* meta grid */}
                 <div className="mt-6 grid sm:grid-cols-2 gap-3">
