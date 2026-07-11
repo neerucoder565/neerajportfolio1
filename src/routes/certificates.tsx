@@ -261,13 +261,15 @@ function Certificates() {
                           >
                             Open
                           </a>
-                          <button
-                            onClick={() => remove(c.id)}
-                            className="text-muted-foreground hover:text-red-400 transition-colors"
-                            aria-label="Remove"
-                          >
-                            <Trash2 size={16} />
-                          </button>
+                          {isOwner && (
+                            <button
+                              onClick={() => remove(c.id)}
+                              className="text-muted-foreground hover:text-red-400 transition-colors"
+                              aria-label="Remove"
+                            >
+                              <Trash2 size={16} />
+                            </button>
+                          )}
                         </div>
                       </div>
                     </Panel>
