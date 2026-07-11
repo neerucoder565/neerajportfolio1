@@ -102,38 +102,115 @@ function Certificates() {
       <Section eyebrow="CREDENTIALS" title="Certificates">
         <div className="grid lg:grid-cols-3 gap-8">
           <Panel className="lg:col-span-1 h-fit">
-            <div className="flex items-center gap-3 mb-4">
-              <Award className="text-neon" size={24} strokeWidth={1.5} />
-              <span className="text-xs uppercase tracking-[0.25em] text-neon">Upload</span>
+            <div className="flex items-center justify-between gap-3 mb-4">
+              <div className="flex items-center gap-3">
+                <Award className="text-neon" size={24} strokeWidth={1.5} />
+                <span className="text-xs uppercase tracking-[0.25em] text-neon">
+                  {isOwner ? "Upload" : "Overview"}
+                </span>
+              </div>
+              {isOwner && (
+                <button
+                  onClick={signOut}
+                  className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground hover:text-neon flex items-center gap-1"
+                  title="Sign out of owner mode"
+                >
+                  <LogOut size={12} /> Exit
+                </button>
+              )}
             </div>
-            <p className="text-sm text-muted-foreground mb-5 leading-relaxed">
-              Add certificate images (PNG, JPG) or PDF files. Stored locally in your browser.
-            </p>
-            <label
-              className="corners flex flex-col items-center justify-center gap-2 border border-dashed border-border hover:border-neon transition-colors cursor-pointer p-8 bg-background/40"
-              onDragOver={(e) => e.preventDefault()}
-              onDrop={(e) => {
-                e.preventDefault();
-                handleFiles(e.dataTransfer.files);
-              }}
-            >
-              <Upload size={22} className="text-neon" />
-              <span className="text-sm">Click or drop files</span>
-              <span className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-                PNG · JPG · PDF
-              </span>
-              <input
-                ref={inputRef}
-                type="file"
-                accept="image/*,application/pdf"
-                multiple
-                className="hidden"
-                onChange={(e) => handleFiles(e.target.files)}
-              />
-            </label>
-            <div className="mt-5 text-xs text-muted-foreground">
-              // {certs.length} certificate{certs.length === 1 ? "" : "s"} stored
-            </div>
+
+            {isOwner ? (
+              <>
+                <p className="text-sm text-muted-foreground mb-5 leading-relaxed">
+                  Add certificate images (PNG, JPG) or PDF files. Stored locally in your browser.
+                </p>
+                <label
+                  className="corners flex flex-col items-center justify-center gap-2 border border-dashed border-border hover:border-neon transition-colors cursor-pointer p-8 bg-background/40"
+                  onDragOver={(e) => e.preventDefault()}
+                  onDrop={(e) => {
+                    e.preventDefault();
+                    handleFiles(e.dataTransfer.files);
+                  }}
+                >
+                  <Upload size={22} className="text-neon" />
+                  <span className="text-sm">Click or drop files</span>
+                  <span className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+                    PNG · JPG · PDF
+                  </span>
+                  <input
+                    ref={inputRef}
+                    type="file"
+                    accept="image/*,application/pdf"
+                    multiple
+                    className="hidden"
+                    onChange={(e) => handleFiles(e.target.files)}
+                  />
+                </label>
+              </>
+            ) : (
+              <>
+                <div className="border border-border bg-background/40 p-5 mb-4">
+                  <div className="text-xs uppercase tracking-[0.25em] text-neon mb-2">
+                    // Status
+                  </div>
+                  <div className="text-sm text-foreground">
+                    {certs.length === 0
+                      ? "No certificates uploaded yet."
+                      : `${certs.length} certificate${certs.length === 1 ? "" : "s"} uploaded.`}
+                  </div>
+                </div>
+                {showLogin ? (
+                  <form onSubmit={attemptLogin} className="space-y-3">
+                    <label className="block text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+                      Owner email
+                    </label>
+                    <input
+                      type="email"
+                      value={emailInput}
+                      onChange={(e) => setEmailInput(e.target.value)}
+                      placeholder="you@example.com"
+                      className="w-full bg-background/60 border border-border focus:border-neon outline-none px-3 py-2 text-sm font-mono"
+                      autoFocus
+                    />
+                    {loginError && (
+                      <div className="text-[11px] text-red-400">{loginError}</div>
+                    )}
+                    <div className="flex gap-2">
+                      <button
+                        type="submit"
+                        className="flex-1 border border-neon text-neon hover:bg-neon/10 px-3 py-2 text-xs uppercase tracking-[0.2em] transition-colors"
+                      >
+                        Unlock
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => { setShowLogin(false); setLoginError(""); setEmailInput(""); }}
+                        className="border border-border text-muted-foreground hover:text-foreground px-3 py-2 text-xs uppercase tracking-[0.2em]"
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </form>
+                ) : (
+                  <button
+                    onClick={() => setShowLogin(true)}
+                    className="w-full flex items-center justify-center gap-2 border border-border hover:border-neon hover:text-neon transition-colors px-3 py-2 text-xs uppercase tracking-[0.25em] text-muted-foreground"
+                  >
+                    <Lock size={12} /> Owner access
+                  </button>
+                )}
+                <p className="mt-4 text-[11px] text-muted-foreground leading-relaxed">
+                  Uploads are restricted to the site owner. Visitors can view the certificates listed here.
+                </p>
+              </>
+            )}
+
+            {isOwner && (
+              <div className="mt-5 text-xs text-muted-foreground">
+                // {certs.length} certificate{certs.length === 1 ? "" : "s"} stored
+              </div>
+            )}
           </Panel>
 
           <div className="lg:col-span-2">
