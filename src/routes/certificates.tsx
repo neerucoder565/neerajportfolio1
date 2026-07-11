@@ -32,15 +32,38 @@ function Certificates() {
   const [certs, setCerts] = useState<Cert[]>([]);
   const [hydrated, setHydrated] = useState(false);
   const [preview, setPreview] = useState<Cert | null>(null);
+  const [isOwner, setIsOwner] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
+  const [emailInput, setEmailInput] = useState("");
+  const [loginError, setLoginError] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
       if (raw) setCerts(JSON.parse(raw));
+      if (localStorage.getItem(OWNER_KEY) === "1") setIsOwner(true);
     } catch {}
     setHydrated(true);
   }, []);
+
+  const attemptLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (emailInput.trim().toLowerCase() === OWNER_EMAIL) {
+      localStorage.setItem(OWNER_KEY, "1");
+      setIsOwner(true);
+      setShowLogin(false);
+      setEmailInput("");
+      setLoginError("");
+    } else {
+      setLoginError("Access denied. This area is restricted to the site owner.");
+    }
+  };
+
+  const signOut = () => {
+    localStorage.removeItem(OWNER_KEY);
+    setIsOwner(false);
+  };
 
   useEffect(() => {
     if (!hydrated) return;
