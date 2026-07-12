@@ -53,7 +53,7 @@ function Certificates() {
       setLoading(false);
       return;
     }
-    const rows: Cert[] = (data ?? []).map((r) => {
+    const rows: Cert[] = (data ?? []).map((r: any) => {
       const { data: pub } = supabase.storage.from(BUCKET).getPublicUrl(r.storage_path);
       return { ...r, url: pub.publicUrl };
     });
@@ -62,10 +62,10 @@ function Certificates() {
   };
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data }) => {
+    supabase.auth.getSession().then(({ data }: any) => {
       setEmail(data.session?.user?.email ?? null);
     });
-    const { data: sub } = supabase.auth.onAuthStateChange((_e, session) => {
+    const { data: sub } = supabase.auth.onAuthStateChange((_e: any, session: any) => {
       setEmail(session?.user?.email ?? null);
     });
     load();
