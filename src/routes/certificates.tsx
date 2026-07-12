@@ -2,7 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Panel, Section } from "@/components/SiteShell";
 import { Award, Upload, Trash2, FileText, X, LogOut } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
+import { supabase as supabaseTyped } from "@/integrations/supabase/client";
+// The certificates table lives outside the generated Database types until the
+// schema migration is applied in Supabase; cast the client for these queries.
+const supabase = supabaseTyped as any;
 
 const OWNER_EMAIL = "neerajmohan0410@gmail.com";
 const BUCKET = "certificates";
