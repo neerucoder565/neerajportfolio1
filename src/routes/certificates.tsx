@@ -1,10 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Panel, Section } from "@/components/SiteShell";
-import { Award, Upload, Trash2, FileText, X, Lock, LogOut } from "lucide-react";
+import { Award, Upload, Trash2, FileText, X, LogOut } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
 
 const OWNER_EMAIL = "neerajmohan0410@gmail.com";
-const OWNER_KEY = "neeraj:owner";
+const BUCKET = "certificates";
 
 export const Route = createFileRoute("/certificates")({
   head: () => ({
@@ -20,82 +21,102 @@ export const Route = createFileRoute("/certificates")({
 
 type Cert = {
   id: string;
-  name: string;
-  type: string;
-  dataUrl: string;
-  addedAt: number;
+  title: string;
+  storage_path: string;
+  mime_type: string;
+  created_at: string;
+  url: string;
 };
-
-const STORAGE_KEY = "neeraj:certificates";
 
 function Certificates() {
   const [certs, setCerts] = useState<Cert[]>([]);
-  const [hydrated, setHydrated] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [email, setEmail] = useState<string | null>(null);
   const [preview, setPreview] = useState<Cert | null>(null);
-  const [isOwner, setIsOwner] = useState(false);
-  const [showLogin, setShowLogin] = useState(false);
-  const [emailInput, setEmailInput] = useState("");
-  const [loginError, setLoginError] = useState("");
+  const [uploading, setUploading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
+  const isOwner = email?.toLowerCase() === OWNER_EMAIL;
+
+  const load = async () => {
+    setLoading(true);
+    const { data, error } = await supabase
+      .from("certificates")
+      .select("id,title,storage_path,mime_type,created_at")
+      .order("created_at", { ascending: false });
+    if (error) {
+      setError(error.message);
+      setLoading(false);
+      return;
+    }
+    const rows: Cert[] = (data ?? []).map((r) => {
+      const { data: pub } = supabase.storage.from(BUCKET).getPublicUrl(r.storage_path);
+      return { ...r, url: pub.publicUrl };
+    });
+    setCerts(rows);
+    setLoading(false);
+  };
+
   useEffect(() => {
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (raw) setCerts(JSON.parse(raw));
-      if (localStorage.getItem(OWNER_KEY) === "1") setIsOwner(true);
-    } catch {}
-    setHydrated(true);
+    supabase.auth.getSession().then(({ data }) => {
+      setEmail(data.session?.user?.email ?? null);
+    });
+    const { data: sub } = supabase.auth.onAuthStateChange((_e, session) => {
+      setEmail(session?.user?.email ?? null);
+    });
+    load();
+    return () => sub.subscription.unsubscribe();
   }, []);
 
-  const attemptLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (emailInput.trim().toLowerCase() === OWNER_EMAIL) {
-      localStorage.setItem(OWNER_KEY, "1");
-      setIsOwner(true);
-      setShowLogin(false);
-      setEmailInput("");
-      setLoginError("");
-    } else {
-      setLoginError("Access denied. This area is restricted to the site owner.");
+  const signIn = async () => {
+    await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: { redirectTo: window.location.origin + "/certificates" },
+    });
+  };
+
+  const signOut = async () => {
+    await supabase.auth.signOut();
+  };
+
+  const handleFiles = async (files: FileList | null) => {
+    if (!files || !isOwner) return;
+    setUploading(true);
+    setError(null);
+    try {
+      for (const f of Array.from(files)) {
+        const ext = f.name.includes(".") ? f.name.split(".").pop() : "bin";
+        const path = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
+        const { error: upErr } = await supabase.storage
+          .from(BUCKET)
+          .upload(path, f, { contentType: f.type, upsert: false });
+        if (upErr) throw upErr;
+        const { error: insErr } = await supabase.from("certificates").insert({
+          title: f.name,
+          storage_path: path,
+          mime_type: f.type || "application/octet-stream",
+        });
+        if (insErr) {
+          await supabase.storage.from(BUCKET).remove([path]);
+          throw insErr;
+        }
+      }
+      if (inputRef.current) inputRef.current.value = "";
+      await load();
+    } catch (e: any) {
+      setError(e?.message ?? "Upload failed");
+    } finally {
+      setUploading(false);
     }
   };
 
-  const signOut = () => {
-    localStorage.removeItem(OWNER_KEY);
-    setIsOwner(false);
+  const remove = async (c: Cert) => {
+    if (!isOwner) return;
+    await supabase.storage.from(BUCKET).remove([c.storage_path]);
+    await supabase.from("certificates").delete().eq("id", c.id);
+    await load();
   };
-
-  useEffect(() => {
-    if (!hydrated) return;
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(certs));
-    } catch {}
-  }, [certs, hydrated]);
-
-  const handleFiles = async (files: FileList | null) => {
-    if (!files) return;
-    const readers = Array.from(files).map(
-      (f) =>
-        new Promise<Cert>((resolve, reject) => {
-          const r = new FileReader();
-          r.onload = () =>
-            resolve({
-              id: crypto.randomUUID(),
-              name: f.name,
-              type: f.type,
-              dataUrl: String(r.result),
-              addedAt: Date.now(),
-            });
-          r.onerror = reject;
-          r.readAsDataURL(f);
-        })
-    );
-    const added = await Promise.all(readers);
-    setCerts((c) => [...added, ...c]);
-    if (inputRef.current) inputRef.current.value = "";
-  };
-
-  const remove = (id: string) => setCerts((c) => c.filter((x) => x.id !== id));
 
   return (
     <>
@@ -109,13 +130,12 @@ function Certificates() {
                   {isOwner ? "Upload" : "Overview"}
                 </span>
               </div>
-              {isOwner && (
+              {email && (
                 <button
                   onClick={signOut}
                   className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground hover:text-neon flex items-center gap-1"
-                  title="Sign out of owner mode"
                 >
-                  <LogOut size={12} /> Exit
+                  <LogOut size={12} /> Sign out
                 </button>
               )}
             </div>
@@ -123,10 +143,10 @@ function Certificates() {
             {isOwner ? (
               <>
                 <p className="text-sm text-muted-foreground mb-5 leading-relaxed">
-                  Add certificate images (PNG, JPG) or PDF files. Stored locally in your browser.
+                  Add certificate images (PNG, JPG) or PDF files. Stored in Supabase Storage.
                 </p>
                 <label
-                  className="corners flex flex-col items-center justify-center gap-2 border border-dashed border-border hover:border-neon transition-colors cursor-pointer p-8 bg-background/40"
+                  className={`corners flex flex-col items-center justify-center gap-2 border border-dashed border-border hover:border-neon transition-colors cursor-pointer p-8 bg-background/40 ${uploading ? "opacity-50 pointer-events-none" : ""}`}
                   onDragOver={(e) => e.preventDefault()}
                   onDrop={(e) => {
                     e.preventDefault();
@@ -134,7 +154,7 @@ function Certificates() {
                   }}
                 >
                   <Upload size={22} className="text-neon" />
-                  <span className="text-sm">Click or drop files</span>
+                  <span className="text-sm">{uploading ? "Uploading..." : "Click or drop files"}</span>
                   <span className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
                     PNG · JPG · PDF
                   </span>
@@ -155,75 +175,50 @@ function Certificates() {
                     // Status
                   </div>
                   <div className="text-sm text-foreground">
-                    {certs.length === 0
-                      ? "No certificates uploaded yet."
+                    {loading
+                      ? "Loading..."
+                      : certs.length === 0
+                      ? "No uploads yet."
                       : `${certs.length} certificate${certs.length === 1 ? "" : "s"} uploaded.`}
                   </div>
                 </div>
-                {showLogin ? (
-                  <form onSubmit={attemptLogin} className="space-y-3">
-                    <label className="block text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-                      Owner email
-                    </label>
-                    <input
-                      type="email"
-                      value={emailInput}
-                      onChange={(e) => setEmailInput(e.target.value)}
-                      placeholder="you@example.com"
-                      className="w-full bg-background/60 border border-border focus:border-neon outline-none px-3 py-2 text-sm font-mono"
-                      autoFocus
-                    />
-                    {loginError && (
-                      <div className="text-[11px] text-red-400">{loginError}</div>
-                    )}
-                    <div className="flex gap-2">
-                      <button
-                        type="submit"
-                        className="flex-1 border border-neon text-neon hover:bg-neon/10 px-3 py-2 text-xs uppercase tracking-[0.2em] transition-colors"
-                      >
-                        Unlock
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => { setShowLogin(false); setLoginError(""); setEmailInput(""); }}
-                        className="border border-border text-muted-foreground hover:text-foreground px-3 py-2 text-xs uppercase tracking-[0.2em]"
-                      >
-                        Cancel
-                      </button>
-                    </div>
-                  </form>
+                {email ? (
+                  <div className="text-[11px] text-muted-foreground leading-relaxed">
+                    Signed in as <span className="text-foreground">{email}</span>. Uploads are restricted to the site owner.
+                  </div>
                 ) : (
                   <button
-                    onClick={() => setShowLogin(true)}
-                    className="w-full flex items-center justify-center gap-2 border border-border hover:border-neon hover:text-neon transition-colors px-3 py-2 text-xs uppercase tracking-[0.25em] text-muted-foreground"
+                    onClick={signIn}
+                    className="w-full flex items-center justify-center gap-2 border border-border hover:border-neon hover:text-neon transition-colors px-3 py-2 text-[11px] uppercase tracking-[0.2em] text-muted-foreground"
                   >
-                    <Lock size={12} /> Owner access
+                    <svg width="14" height="14" viewBox="0 0 48 48" aria-hidden><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.4 29.3 35.5 24 35.5c-6.4 0-11.5-5.1-11.5-11.5S17.6 12.5 24 12.5c3 0 5.7 1.1 7.7 2.9l5.7-5.7C33.6 6.3 29.1 4.5 24 4.5 13.2 4.5 4.5 13.2 4.5 24S13.2 43.5 24 43.5 43.5 34.8 43.5 24c0-1.2-.1-2.3-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 16 18.9 12.5 24 12.5c3 0 5.7 1.1 7.7 2.9l5.7-5.7C33.6 6.3 29.1 4.5 24 4.5 16.3 4.5 9.7 8.9 6.3 14.7z"/><path fill="#4CAF50" d="M24 43.5c5 0 9.5-1.7 13-4.7l-6-5.1c-1.8 1.3-4.1 2-7 2-5.3 0-9.7-3.1-11.3-7.5l-6.5 5C9.7 39 16.3 43.5 24 43.5z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.7 2-2 3.7-3.7 5l6 5.1c-.4.4 6.4-4.7 6.4-14.1 0-1.2-.1-2.3-.4-3.5z"/></svg>
+                    Sign in with Google
                   </button>
                 )}
                 <p className="mt-4 text-[11px] text-muted-foreground leading-relaxed">
-                  Uploads are restricted to the site owner. Visitors can view the certificates listed here.
+                  Only the site owner can add or remove certificates. Everyone can view them.
                 </p>
               </>
             )}
 
-            {isOwner && (
-              <div className="mt-5 text-xs text-muted-foreground">
-                // {certs.length} certificate{certs.length === 1 ? "" : "s"} stored
-              </div>
+            {error && (
+              <div className="mt-4 text-[11px] text-red-400 break-words">{error}</div>
             )}
           </Panel>
 
           <div className="lg:col-span-2">
-            {certs.length === 0 ? (
+            {loading ? (
               <Panel>
-                <div className="text-center py-10 text-muted-foreground text-sm">
-                  No certificates yet. Upload your first one from the panel.
-                </div>
+                <div className="text-center py-10 text-muted-foreground text-sm">Loading...</div>
+              </Panel>
+            ) : certs.length === 0 ? (
+              <Panel>
+                <div className="text-center py-10 text-muted-foreground text-sm">No uploads yet.</div>
               </Panel>
             ) : (
               <div className="grid sm:grid-cols-2 gap-5">
                 {certs.map((c) => {
-                  const isImg = c.type.startsWith("image/");
+                  const isImg = c.mime_type.startsWith("image/");
                   return (
                     <Panel key={c.id} className="group">
                       <button
@@ -233,8 +228,8 @@ function Certificates() {
                       >
                         {isImg ? (
                           <img
-                            src={c.dataUrl}
-                            alt={c.name}
+                            src={c.url}
+                            alt={c.title}
                             className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform"
                           />
                         ) : (
@@ -246,24 +241,18 @@ function Certificates() {
                       </button>
                       <div className="flex items-start justify-between gap-3">
                         <div className="min-w-0">
-                          <div className="text-sm truncate" title={c.name}>
-                            {c.name}
-                          </div>
+                          <div className="text-sm truncate" title={c.title}>{c.title}</div>
                           <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mt-1">
-                            {new Date(c.addedAt).toLocaleDateString()}
+                            {new Date(c.created_at).toLocaleDateString()}
                           </div>
                         </div>
                         <div className="flex items-center gap-2 shrink-0">
-                          <a
-                            href={c.dataUrl}
-                            download={c.name}
-                            className="text-xs text-neon hover:underline"
-                          >
+                          <a href={c.url} target="_blank" rel="noreferrer" className="text-xs text-neon hover:underline">
                             Open
                           </a>
                           {isOwner && (
                             <button
-                              onClick={() => remove(c.id)}
+                              onClick={() => remove(c)}
                               className="text-muted-foreground hover:text-red-400 transition-colors"
                               aria-label="Remove"
                             >
@@ -294,8 +283,8 @@ function Certificates() {
             <X size={24} />
           </button>
           <img
-            src={preview.dataUrl}
-            alt={preview.name}
+            src={preview.url}
+            alt={preview.title}
             className="max-w-[90vw] max-h-[85vh] object-contain border border-border"
             onClick={(e) => e.stopPropagation()}
           />
