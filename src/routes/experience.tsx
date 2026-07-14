@@ -159,7 +159,7 @@ function Experience() {
             <div className="divide-y divide-border/60">
               <StatRow icon={Briefcase} label="Focus" value="Automation" />
               <StatRow icon={MapPin} label="Company" value="HL Mando Anand Pvt Ltd" />
-              <StatRow icon={Calendar} label="Window" value="03 Jul → 24 Aug 2026" />
+              <StatRow icon={Calendar} label="Window" value="24 Jun → 24 Jul 2026" />
               <StatRow icon={Clock} label="Remaining" value={`${p.remaining} days`} />
               <StatRow icon={TrendingUp} label="Progress" value={`${p.pct}%`} />
             </div>
