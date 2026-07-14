@@ -14,10 +14,10 @@ export const Route = createFileRoute("/experience")({
   component: Experience,
 });
 
-// Internship: 3rd July 2026 → 24th August 2026 (~1 month window presented)
-const START = new Date("2026-07-03T00:00:00");
-const END = new Date("2026-08-24T00:00:00");
-const TODAY = new Date("2026-07-11T00:00:00"); // aligns with current context date
+// Internship: 24th June 2026 → 24th July 2026 (~1 month window presented)
+const START = new Date("2026-06-24T00:00:00");
+const END = new Date("2026-07-24T00:00:00");
+const TODAY = new Date("2026-07-14T00:00:00"); // aligns with current context date
 
 function progress() {
   const total = END.getTime() - START.getTime();
@@ -93,7 +93,7 @@ function Experience() {
 
                 {/* meta grid */}
                 <div className="mt-6 grid sm:grid-cols-2 gap-3">
-                  <MetaLine icon={Calendar} label="Duration" value="3 Jul 2026 — 24 Aug 2026" />
+                  <MetaLine icon={Calendar} label="Duration" value="24 Jun 2026 — 24 Jul 2026" />
                   <MetaLine icon={Clock} label="Length" value={`${p.totalDays} days · ~1 month`} />
                   <MetaLine icon={MapPin} label="Company" value="HL Mando Anand Pvt Ltd" />
                   <MetaLine icon={Target} label="Focus" value="Manufacturing automation & process improvement" />
@@ -123,18 +123,18 @@ function Experience() {
                     />
                   </div>
                   <div className="mt-2 flex items-center justify-between text-[10px] tracking-widest text-muted-foreground">
-                    <span>03 JUL</span>
+                    <span>24 JUN</span>
                     <span>{p.remaining} days remaining</span>
-                    <span>24 AUG</span>
+                    <span>24 JUL</span>
                   </div>
                 </div>
 
                 {/* description */}
                 <p className="mt-7 text-muted-foreground leading-relaxed">
-                  Interning at HL Mando Anand Pvt Ltd from 3rd July 2026 to 24th July 2026,
-                  working on embedded systems and hardware alongside experienced engineers,
-                  and applying my hands-on project experience in a professional automotive
-                  engineering environment.
+                  Interning at HL Mando Anand Pvt Ltd from 24th June 2026 to 24th July 2026,
+                  learning how large-scale manufacturing operates, supporting automation
+                  workflows, and translating academic engineering knowledge into practical
+                  shop-floor impact.
                 </p>
 
                 {/* focus pills */}
@@ -159,7 +159,7 @@ function Experience() {
             <div className="divide-y divide-border/60">
               <StatRow icon={Briefcase} label="Focus" value="Automation" />
               <StatRow icon={MapPin} label="Company" value="HL Mando Anand Pvt Ltd" />
-              <StatRow icon={Calendar} label="Window" value="03 Jul → 24 Aug 2026" />
+              <StatRow icon={Calendar} label="Window" value="24 Jun → 24 Jul 2026" />
               <StatRow icon={Clock} label="Remaining" value={`${p.remaining} days`} />
               <StatRow icon={TrendingUp} label="Progress" value={`${p.pct}%`} />
             </div>
