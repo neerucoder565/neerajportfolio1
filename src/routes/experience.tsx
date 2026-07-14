@@ -14,10 +14,10 @@ export const Route = createFileRoute("/experience")({
   component: Experience,
 });
 
-// Internship: 3rd July 2026 → 24th August 2026 (~1 month window presented)
-const START = new Date("2026-07-03T00:00:00");
-const END = new Date("2026-08-24T00:00:00");
-const TODAY = new Date("2026-07-11T00:00:00"); // aligns with current context date
+// Internship: 24th June 2026 → 24th July 2026 (~1 month window presented)
+const START = new Date("2026-06-24T00:00:00");
+const END = new Date("2026-07-24T00:00:00");
+const TODAY = new Date("2026-07-14T00:00:00"); // aligns with current context date
 
 function progress() {
   const total = END.getTime() - START.getTime();
