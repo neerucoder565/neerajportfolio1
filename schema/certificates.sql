@@ -7,8 +7,12 @@ CREATE TABLE IF NOT EXISTS public.certificates (
   title TEXT NOT NULL,
   storage_path TEXT NOT NULL UNIQUE,
   mime_type TEXT NOT NULL,
+  note TEXT,
   created_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
+
+-- Add the note column if the table already exists from an earlier run.
+ALTER TABLE public.certificates ADD COLUMN IF NOT EXISTS note TEXT;
 
 GRANT SELECT ON public.certificates TO anon, authenticated;
 GRANT INSERT, UPDATE, DELETE ON public.certificates TO authenticated;
