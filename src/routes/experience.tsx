@@ -93,7 +93,7 @@ function Experience() {
 
                 {/* meta grid */}
                 <div className="mt-6 grid sm:grid-cols-2 gap-3">
-                  <MetaLine icon={Calendar} label="Duration" value="3 Jul 2026 — 24 Aug 2026" />
+                  <MetaLine icon={Calendar} label="Duration" value="24 Jun 2026 — 24 Jul 2026" />
                   <MetaLine icon={Clock} label="Length" value={`${p.totalDays} days · ~1 month`} />
                   <MetaLine icon={MapPin} label="Company" value="HL Mando Anand Pvt Ltd" />
                   <MetaLine icon={Target} label="Focus" value="Manufacturing automation & process improvement" />
