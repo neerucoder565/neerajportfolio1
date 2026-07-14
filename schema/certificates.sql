@@ -30,20 +30,20 @@ DROP POLICY IF EXISTS "Owner can insert certificates" ON public.certificates;
 CREATE POLICY "Owner can insert certificates"
   ON public.certificates FOR INSERT
   TO authenticated
-  WITH CHECK ((auth.jwt() ->> 'email') = 'neerajmohan0410@gmail.com');
+  WITH CHECK ((auth.jwt() ->> 'email') = 'neerajmadan2006@gmail.com');
 
 DROP POLICY IF EXISTS "Owner can update certificates" ON public.certificates;
 CREATE POLICY "Owner can update certificates"
   ON public.certificates FOR UPDATE
   TO authenticated
-  USING ((auth.jwt() ->> 'email') = 'neerajmohan0410@gmail.com')
-  WITH CHECK ((auth.jwt() ->> 'email') = 'neerajmohan0410@gmail.com');
+  USING ((auth.jwt() ->> 'email') = 'neerajmadan2006@gmail.com')
+  WITH CHECK ((auth.jwt() ->> 'email') = 'neerajmadan2006@gmail.com');
 
 DROP POLICY IF EXISTS "Owner can delete certificates" ON public.certificates;
 CREATE POLICY "Owner can delete certificates"
   ON public.certificates FOR DELETE
   TO authenticated
-  USING ((auth.jwt() ->> 'email') = 'neerajmohan0410@gmail.com');
+  USING ((auth.jwt() ->> 'email') = 'neerajmadan2006@gmail.com');
 
 -- 2. Storage bucket (public read)
 INSERT INTO storage.buckets (id, name, public)
@@ -63,7 +63,7 @@ CREATE POLICY "Owner can upload certificate files"
   TO authenticated
   WITH CHECK (
     bucket_id = 'certificates'
-    AND (auth.jwt() ->> 'email') = 'neerajmohan0410@gmail.com'
+    AND (auth.jwt() ->> 'email') = 'neerajmadan2006@gmail.com'
   );
 
 DROP POLICY IF EXISTS "Owner can update certificate files" ON storage.objects;
@@ -72,11 +72,11 @@ CREATE POLICY "Owner can update certificate files"
   TO authenticated
   USING (
     bucket_id = 'certificates'
-    AND (auth.jwt() ->> 'email') = 'neerajmohan0410@gmail.com'
+    AND (auth.jwt() ->> 'email') = 'neerajmadan2006@gmail.com'
   )
   WITH CHECK (
     bucket_id = 'certificates'
-    AND (auth.jwt() ->> 'email') = 'neerajmohan0410@gmail.com'
+    AND (auth.jwt() ->> 'email') = 'neerajmadan2006@gmail.com'
   );
 
 DROP POLICY IF EXISTS "Owner can delete certificate files" ON storage.objects;
@@ -85,5 +85,5 @@ CREATE POLICY "Owner can delete certificate files"
   TO authenticated
   USING (
     bucket_id = 'certificates'
-    AND (auth.jwt() ->> 'email') = 'neerajmohan0410@gmail.com'
+    AND (auth.jwt() ->> 'email') = 'neerajmadan2006@gmail.com'
   );
