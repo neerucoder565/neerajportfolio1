@@ -123,18 +123,18 @@ function Experience() {
                     />
                   </div>
                   <div className="mt-2 flex items-center justify-between text-[10px] tracking-widest text-muted-foreground">
-                    <span>03 JUL</span>
+                    <span>24 JUN</span>
                     <span>{p.remaining} days remaining</span>
-                    <span>24 AUG</span>
+                    <span>24 JUL</span>
                   </div>
                 </div>
 
                 {/* description */}
                 <p className="mt-7 text-muted-foreground leading-relaxed">
-                  Interning at HL Mando Anand Pvt Ltd from 3rd July 2026 to 24th July 2026,
-                  working on embedded systems and hardware alongside experienced engineers,
-                  and applying my hands-on project experience in a professional automotive
-                  engineering environment.
+                  Interning at HL Mando Anand Pvt Ltd from 24th June 2026 to 24th July 2026,
+                  learning how large-scale manufacturing operates, supporting automation
+                  workflows, and translating academic engineering knowledge into practical
+                  shop-floor impact.
                 </p>
 
                 {/* focus pills */}
