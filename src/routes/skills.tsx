@@ -17,13 +17,15 @@ export const Route = createFileRoute("/skills")({
 const GROUPS = [
   {
     icon: Code2,
-    title: "Programming & Firmware",
+    title: "Programming & Tools",
     items: [
       { name: "Embedded C", level: "Intermediate" },
       { name: "Arduino Prototyping", level: "Advanced" },
       { name: "Python", level: "Intermediate" },
       { name: "PID Control Systems", level: "Intermediate" },
       { name: "Edge AI Integration", level: "Beginner / Intermediate" },
+      { name: "Altium", level: "Intermediate" },
+      { name: "Tanner EDA", level: "Beginner" },
     ],
   },
   {
@@ -35,6 +37,8 @@ const GROUPS = [
       { name: "Sensor Fusion", level: "Intermediate" },
       { name: "Hardware Debugging", level: "Intermediate" },
       { name: "Breadboard Prototyping", level: "Intermediate" },
+      { name: "Microcontrollers", level: "Intermediate" },
+      { name: "Automation", level: "Intermediate" },
     ],
   },
   {
