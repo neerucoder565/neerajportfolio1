@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
-import { ArrowRight, Download, Cpu, Zap, CircuitBoard } from "lucide-react";
-import { HudCircle } from "@/components/HudCircle";
+import { ArrowRight, Download, Cpu, Radio, Layers } from "lucide-react";
+import { InteractivePCB } from "@/components/InteractivePCB";
 import { Panel, Section } from "@/components/SiteShell";
 
 export const Route = createFileRoute("/")({
@@ -74,22 +74,22 @@ function Home() {
 
           <motion.div
             className="flex justify-center lg:justify-end"
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.1 }}
           >
-            <HudCircle label="NK" size={460} />
+            <InteractivePCB size={500} />
           </motion.div>
         </div>
       </section>
 
       {/* CAPABILITIES */}
-      <Section eyebrow="SKILLS" title="Engineering Stack">
+      <Section eyebrow="STACK" title="Engineering Stack">
         <div className="grid md:grid-cols-3 gap-6">
           {[
-            { icon: Cpu, title: "Embedded Firmware", desc: "Arduino, embedded C, real-time control loops and PID stability tuning." },
-            { icon: CircuitBoard, title: "Hardware Design", desc: "R-2R DACs, sensor fusion rigs, PCB and breadboard prototyping." },
-            { icon: Zap, title: "System Analysis", desc: "Digital system architecture, RISC-V fundamentals, real-time system behavior and low-level hardware optimization." },
+            { icon: Cpu, title: "MCU & Firmware", desc: "STM32 (Cortex-M4) bare-metal, bootloader design, vector table relocation, interrupt-driven control loops in embedded C." },
+            { icon: Radio, title: "Peripherals & Buses", desc: "UART, SPI, I²C bring-up, sensor interfacing, DMA, and mixed-signal work — including R-2R DACs and PID actuation." },
+            { icon: Layers, title: "Systems & Edge AI", desc: "RTOS scheduling patterns, RISC-V (VEGA) fundamentals, and FPGA-fronted on-device vision pipelines." },
           ].map((c) => (
             <Panel key={c.title}>
               <c.icon className="text-neon mb-4" size={28} strokeWidth={1.5} />
