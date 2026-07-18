@@ -17,7 +17,7 @@ export const Route = createFileRoute("/experience")({
 // Internship: 24th June 2026 → 24th July 2026 (~1 month window presented)
 const START = new Date("2026-06-24T00:00:00");
 const END = new Date("2026-07-24T00:00:00");
-const TODAY = new Date("2026-07-14T00:00:00"); // aligns with current context date
+const TODAY = new Date("2026-07-18T00:00:00"); // aligns with current context date
 
 function progress() {
   const total = END.getTime() - START.getTime();
