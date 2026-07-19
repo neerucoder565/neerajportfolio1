@@ -350,7 +350,7 @@ export function CaseStudyPage({ slug }: { slug: CaseStudySlug }) {
           {/* Related */}
           <div className="border-t border-border/60 pt-10">
             <div className="text-[10px] tracking-[0.3em] text-neon mb-6">
-              // RELATED CASE STUDIES
+              // RELATED PROJECTS
             </div>
             <div className="grid md:grid-cols-3 gap-4">
               {prev ? (
@@ -366,7 +366,7 @@ export function CaseStudyPage({ slug }: { slug: CaseStudySlug }) {
                   // INDEX
                 </div>
                 <div className="mt-2 font-display uppercase tracking-widest">
-                  More Case Studies
+                  More Projects
                 </div>
               </Link>
               {next ? (
@@ -428,7 +428,7 @@ function Hero({ study }: { study: CaseStudy }) {
               to="/projects"
               className="inline-flex items-center gap-1 text-[10px] tracking-[0.3em] text-muted-foreground hover:text-neon"
             >
-              <ArrowLeft size={12} /> CASE STUDIES
+              <ArrowLeft size={12} /> PROJECTS
             </Link>
             <span className="text-neon">/</span>
             <span className="text-[10px] tracking-[0.3em] text-neon">
