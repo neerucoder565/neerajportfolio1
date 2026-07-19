@@ -542,16 +542,25 @@ export function InteractivePCB({ size = 500 }: { size?: number }) {
               </div>
               <div className="mt-2 flex flex-wrap gap-2">
                 {selectedChip.projects.length ? (
-                  selectedChip.projects.map((p) => (
-                    <Link
-                      key={p.id}
-                      to="/projects"
-                      hash={`prj-${p.id}`}
-                      className="text-[10px] uppercase tracking-[0.2em] border border-neon/40 text-neon px-2 py-1 hover:bg-neon/10 transition-colors"
-                    >
-                      PRJ_{p.id} · {p.title}
-                    </Link>
-                  ))
+                  selectedChip.projects.map((p) =>
+                    p.link ? (
+                      <Link
+                        key={p.id}
+                        to="/projects"
+                        hash={`prj-${p.id}`}
+                        className="text-[10px] uppercase tracking-[0.2em] border border-neon/40 text-neon px-2 py-1 hover:bg-neon/10 transition-colors"
+                      >
+                        PRJ_{p.id} · {p.title}
+                      </Link>
+                    ) : (
+                      <span
+                        key={p.id}
+                        className="text-[10px] uppercase tracking-[0.2em] border border-neon/40 text-neon px-2 py-1"
+                      >
+                        {p.title}
+                      </span>
+                    )
+                  )
                 ) : (
                   <span className="text-xs text-muted-foreground">
                     No linked projects yet.
