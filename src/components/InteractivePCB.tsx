@@ -544,14 +544,14 @@ export function InteractivePCB({ size = 500 }: { size?: number }) {
               <div className="mt-2 flex flex-wrap gap-2">
                 {selectedChip.projects.length ? (
                   selectedChip.projects.map((p) =>
-                    p.link ? (
+                    p.slug ? (
                       <Link
                         key={p.id}
-                        to="/projects"
-                        hash={`prj-${p.id}`}
+                        to="/projects/$slug"
+                        params={{ slug: p.slug }}
                         className="text-[10px] uppercase tracking-[0.2em] border border-neon/40 text-neon px-2 py-1 hover:bg-neon/10 transition-colors"
                       >
-                        PRJ_{p.id} · {p.title}
+                        {p.id} · {p.title}
                       </Link>
                     ) : (
                       <span
@@ -563,6 +563,7 @@ export function InteractivePCB({ size = 500 }: { size?: number }) {
                     )
                   )
                 ) : (
+
                   <span className="text-xs text-muted-foreground">
                     No linked projects yet.
                   </span>
