@@ -21,7 +21,7 @@ type ChipId =
 interface ProjectRef {
   id: string;
   title: string;
-  link?: boolean; // false = display only, no route link
+  slug?: string; // case-study slug; falsy = display only
 }
 
 interface Chip {
@@ -37,14 +37,15 @@ interface Chip {
   projects: ProjectRef[];
 }
 
-// Project catalog — matches src/routes/projects.tsx ids/titles
+// Project catalog — matches src/data/case-studies.ts
 const P: Record<string, ProjectRef> = {
-  edge: { id: "01", title: "Edge Vision Detection System", link: true },
-  r2r: { id: "02", title: "R-2R DAC", link: true },
-  boot: { id: "03", title: "Bare-Metal Bootloader", link: true },
-  pid: { id: "04", title: "PID Control System", link: true },
-  rtos: { id: "rtos", title: "RTOS Traffic Controller Monitor", link: false },
+  r2r: { id: "PRJ_02", title: "R-2R DAC", slug: "r2r-dac" },
+  boot: { id: "PRJ_01", title: "Bare-Metal Bootloader", slug: "bootloader" },
+  pid: { id: "PRJ_03", title: "PID Control System", slug: "pid-control" },
+  amr: { id: "PRJ_04", title: "Autonomous Mobile Robot", slug: "amr" },
+  rtos: { id: "RTOS", title: "RTOS Traffic Controller Monitor", slug: "rtos" },
 };
+
 
 const CHIPS: Chip[] = [
   {
