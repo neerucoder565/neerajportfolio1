@@ -93,6 +93,7 @@ function Experience() {
 
                 {/* meta grid */}
                 <div className="mt-6 grid sm:grid-cols-2 gap-3">
+                  <MetaLine icon={Briefcase} label="Role" value="Project Intern" />
                   <MetaLine icon={Calendar} label="Duration" value="24 Jun 2026 — 24 Jul 2026" />
                   <MetaLine icon={Clock} label="Length" value={`${p.totalDays} days · ~1 month`} />
                   <MetaLine icon={MapPin} label="Company" value="HL Mando Anand Pvt Ltd" />
@@ -157,7 +158,8 @@ function Experience() {
           <Panel className="h-fit">
             <div className="text-[10px] text-neon tracking-[0.3em] mb-5">// STATUS</div>
             <div className="divide-y divide-border/60">
-              <StatRow icon={Briefcase} label="Focus" value="Automation" />
+              <StatRow icon={Briefcase} label="Role" value="Project Intern" />
+              <StatRow icon={Target} label="Focus" value="Automation" />
               <StatRow icon={MapPin} label="Company" value="HL Mando Anand Pvt Ltd" />
               <StatRow icon={Calendar} label="Window" value="24 Jun → 24 Jul 2026" />
               <StatRow icon={Clock} label="Remaining" value={`${p.remaining} days`} />
