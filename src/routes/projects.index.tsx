@@ -123,7 +123,7 @@ function CaseStudyIndex() {
                   {p.duration}
                 </span>
                 <span className="inline-flex items-center gap-1 text-[10px] tracking-[0.3em] text-neon group-hover:translate-x-1 transition-transform">
-                  READ CASE STUDY <ArrowRight size={12} />
+                  VIEW PROJECT <ArrowRight size={12} />
                 </span>
               </div>
             </Link>
