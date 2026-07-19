@@ -4,8 +4,8 @@ export type CaseStudySlug =
   | "bootloader"
   | "r2r-dac"
   | "pid-control"
-  | "amr"
   | "rtos";
+
 
 export type GalleryItem = {
   src?: string;
@@ -312,82 +312,8 @@ export const CASE_STUDIES: Record<CaseStudySlug, CaseStudy> = {
     ],
   },
 
-  amr: {
-    slug: "amr",
-    index: "PRJ_04",
-    title: "Autonomous Mobile Robot",
-    subtitle: "Sensor-fused indoor navigation platform",
-    status: "completed",
-    duration: "8 weeks · 2025",
-    tech: ["Arduino", "Sensor Fusion", "Motor Control", "Embedded C"],
-    hero: undefined,
 
-    overview:
-      "A wheeled autonomous mobile robot combining ultrasonic and IMU sensing with closed-loop motor control for indoor obstacle avoidance and path following.",
-    problem:
-      "Move an untethered platform through an unknown indoor environment while avoiding obstacles and maintaining a commanded heading.",
-    objectives: [
-      "Fuse ultrasonic distance and IMU heading data at fixed rate",
-      "Drive left/right wheels with independent velocity control",
-      "Implement a reactive obstacle-avoidance behaviour",
-      "Log telemetry for offline analysis",
-    ],
 
-    architecture:
-      "Sensors → fusion layer → behaviour arbiter → per-wheel PID → H-bridge → motors. Telemetry is streamed over UART for debugging.",
-    workingPrinciple:
-      "The behaviour layer chooses a linear/angular velocity based on the current obstacle field; the low-level PID controllers translate that command into wheel PWM.",
-
-    hardware: [
-      "Chassis with two DC gear motors and encoders",
-      "Ultrasonic distance sensors",
-      "IMU (accelerometer + gyroscope)",
-      "H-bridge driver",
-      "Arduino / MCU",
-    ],
-    software: [
-      "Sensor read + filter layer",
-      "Wheel velocity PID",
-      "Reactive obstacle-avoidance behaviour",
-      "UART telemetry",
-    ],
-
-    journey:
-      "Bench-tested each subsystem in isolation before integrating on-chassis. Iterated on avoidance thresholds and PID gains under real floor conditions.",
-    decisions: [
-      { title: "Reactive over map-based navigation", body: "Simpler, deterministic and adequate for the target environment." },
-    ],
-    challenges: [
-      { title: "Ultrasonic ghost readings on angled walls", solution: "Median-filtered the distance stream and rejected outliers." },
-      { title: "Wheel slip on smooth floors", solution: "Reduced peak PWM ramp rate and added a slip-detection heuristic." },
-    ],
-    results: [
-      { label: "Avoidance", value: "Reliable in cluttered indoor test" },
-      { label: "Heading hold", value: "Stable under disturbance" },
-    ],
-
-    gallery: [
-      { caption: "Robot architecture block diagram", kind: "diagram" },
-      { caption: "Chassis and sensor mounting", kind: "image" },
-      { caption: "Behaviour state machine", kind: "diagram" },
-      { caption: "Live run — corridor traversal", kind: "image" },
-    ],
-    videos: [{ title: "Live obstacle-avoidance run" }],
-    downloads: [
-      { label: "Project Report (PDF)", kind: "report" },
-      { label: "Presentation Deck", kind: "slides" },
-    ],
-
-    improvements: [
-      "Upgrade to LiDAR + occupancy-grid mapping",
-      "Move control stack to STM32 with FreeRTOS",
-      "Add ROS 2 telemetry over Wi-Fi",
-    ],
-    lessons: [
-      "Sensor fusion is mostly about rejecting bad samples, not fancy filters.",
-      "Behaviour arbitration is easier to debug than monolithic control code.",
-    ],
-  },
 
   rtos: {
     slug: "rtos",
@@ -467,6 +393,6 @@ export const CASE_STUDY_ORDER: CaseStudySlug[] = [
   "bootloader",
   "r2r-dac",
   "pid-control",
-  "amr",
   "rtos",
 ];
+
