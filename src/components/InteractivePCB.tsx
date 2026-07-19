@@ -42,7 +42,6 @@ const P: Record<string, ProjectRef> = {
   r2r: { id: "PRJ_02", title: "R-2R DAC", slug: "r2r-dac" },
   boot: { id: "PRJ_01", title: "Bare-Metal Bootloader", slug: "bootloader" },
   pid: { id: "PRJ_03", title: "PID Control System", slug: "pid-control" },
-  amr: { id: "PRJ_04", title: "Autonomous Mobile Robot", slug: "amr" },
   rtos: { id: "RTOS", title: "RTOS Traffic Controller Monitor", slug: "rtos" },
 };
 
@@ -62,7 +61,7 @@ const CHIPS: Chip[] = [
     sub: "NPU / EDGE",
     x: 205, y: 30, w: 90, h: 54,
     trace: "250,84 250,120 250,200",
-    projects: [P.amr],
+    projects: [P.rtos],
   },
   {
     id: "EMBC",

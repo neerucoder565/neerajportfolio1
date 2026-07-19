@@ -7,13 +7,13 @@ import { CASE_STUDIES, CASE_STUDY_ORDER } from "@/data/case-studies";
 export const Route = createFileRoute("/projects/")({
   head: () => ({
     meta: [
-      { title: "Technical Case Studies — Neeraj K" },
+      { title: "Projects — Neeraj K" },
       {
         name: "description",
         content:
-          "In-depth engineering case studies: bootloader, R-2R DAC, PID control, autonomous mobile robot, and RTOS traffic controller.",
+          "In-depth engineering projects: bootloader, R-2R DAC, PID control, and RTOS traffic controller.",
       },
-      { property: "og:title", content: "Technical Case Studies — Neeraj K" },
+      { property: "og:title", content: "Projects — Neeraj K" },
       {
         property: "og:description",
         content:
@@ -27,11 +27,11 @@ export const Route = createFileRoute("/projects/")({
 function CaseStudyIndex() {
   const studies = CASE_STUDY_ORDER.map((s) => CASE_STUDIES[s]);
   return (
-    <Section eyebrow="CASE STUDY INDEX" title="Technical Case Studies">
+    <Section eyebrow="PROJECT INDEX" title="Projects">
       <p className="text-muted-foreground max-w-2xl mb-10 leading-relaxed">
-        Each project below is documented as a full engineering case study —
-        problem, architecture, hardware, software, challenges, results and
-        lessons learned. Click any card to open the case study.
+        Each project below is documented in depth — problem, architecture,
+        hardware, software, challenges, results and lessons learned. Click any
+        card to open the full write-up.
       </p>
       <div className="grid md:grid-cols-2 gap-6">
         {studies.map((p, i) => (
@@ -123,7 +123,7 @@ function CaseStudyIndex() {
                   {p.duration}
                 </span>
                 <span className="inline-flex items-center gap-1 text-[10px] tracking-[0.3em] text-neon group-hover:translate-x-1 transition-transform">
-                  READ CASE STUDY <ArrowRight size={12} />
+                  VIEW PROJECT <ArrowRight size={12} />
                 </span>
               </div>
             </Link>
