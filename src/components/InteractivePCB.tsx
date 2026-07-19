@@ -62,7 +62,7 @@ const CHIPS: Chip[] = [
     sub: "NPU / EDGE",
     x: 205, y: 30, w: 90, h: 54,
     trace: "250,84 250,120 250,200",
-    projects: [P.edge],
+    projects: [P.amr],
   },
   {
     id: "EMBC",
