@@ -12,11 +12,17 @@ type ChipId =
   | "STM32"
   | "RTOS"
   | "UART"
-  | "SPI"
-  | "I2C"
   | "AI"
-  | "PCB"
-  | "FIRMWARE";
+  | "ALTIUM"
+  | "DAC"
+  | "EMBC"
+  | "ARDUINO";
+
+interface ProjectRef {
+  id: string;
+  title: string;
+  link?: boolean; // false = display only, no route link
+}
 
 interface Chip {
   id: ChipId;
@@ -28,15 +34,16 @@ interface Chip {
   h: number;
   // trace polyline points from chip anchor toward MCU
   trace: string;
-  projects: { id: string; title: string }[];
+  projects: ProjectRef[];
 }
 
 // Project catalog — matches src/routes/projects.tsx ids/titles
-const P = {
-  edge: { id: "01", title: "Edge Vision Detection System" },
-  r2r: { id: "02", title: "4-bit R-2R Ladder DAC" },
-  boot: { id: "03", title: "Bare-Metal Bootloader" },
-  pid: { id: "04", title: "PID Control System" },
+const P: Record<string, ProjectRef> = {
+  edge: { id: "01", title: "Edge Vision Detection System", link: true },
+  r2r: { id: "02", title: "R-2R DAC", link: true },
+  boot: { id: "03", title: "Bare-Metal Bootloader", link: true },
+  pid: { id: "04", title: "PID Control System", link: true },
+  rtos: { id: "rtos", title: "RTOS Traffic Controller Monitor", link: false },
 };
 
 const CHIPS: Chip[] = [
@@ -46,7 +53,7 @@ const CHIPS: Chip[] = [
     sub: "SCHEDULER",
     x: 40, y: 55, w: 110, h: 54,
     trace: "150,82 175,82 175,140 210,140 210,200",
-    projects: [P.boot],
+    projects: [P.rtos],
   },
   {
     id: "AI",
@@ -57,9 +64,9 @@ const CHIPS: Chip[] = [
     projects: [P.edge],
   },
   {
-    id: "FIRMWARE",
-    label: "FW",
-    sub: "BOOT / APP",
+    id: "EMBC",
+    label: "EMB-C",
+    sub: "EMBEDDED C",
     x: 350, y: 55, w: 110, h: 54,
     trace: "350,82 325,82 325,140 290,140 290,200",
     projects: [P.boot, P.pid],
@@ -73,25 +80,25 @@ const CHIPS: Chip[] = [
     projects: [P.pid],
   },
   {
-    id: "SPI",
-    label: "SPI",
-    sub: "MOSI · MISO · SCK",
+    id: "ARDUINO",
+    label: "ARDUINO",
+    sub: "AVR · PROTO",
     x: 350, y: 388, w: 110, h: 54,
     trace: "350,415 325,415 325,360 290,360 290,300",
+    projects: [P.pid],
+  },
+  {
+    id: "DAC",
+    label: "DAC",
+    sub: "R-2R LADDER",
+    x: 205, y: 415, w: 90, h: 54,
+    trace: "250,415 250,380 250,300",
     projects: [P.r2r],
   },
   {
-    id: "I2C",
-    label: "I²C",
-    sub: "SDA · SCL",
-    x: 205, y: 415, w: 90, h: 54,
-    trace: "250,415 250,380 250,300",
-    projects: [P.edge, P.r2r],
-  },
-  {
-    id: "PCB",
-    label: "PCB",
-    sub: "R-2R DAC",
+    id: "ALTIUM",
+    label: "ALTIUM",
+    sub: "PCB DESIGN",
     x: 40, y: 388, w: 110, h: 54,
     trace: "150,415 175,415 175,360 210,360 210,300",
     projects: [P.r2r],
