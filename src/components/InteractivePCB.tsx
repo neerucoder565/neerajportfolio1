@@ -21,7 +21,7 @@ type ChipId =
 interface ProjectRef {
   id: string;
   title: string;
-  link?: boolean; // false = display only, no route link
+  slug?: string; // case-study slug; falsy = display only
 }
 
 interface Chip {
@@ -37,14 +37,15 @@ interface Chip {
   projects: ProjectRef[];
 }
 
-// Project catalog — matches src/routes/projects.tsx ids/titles
+// Project catalog — matches src/data/case-studies.ts
 const P: Record<string, ProjectRef> = {
-  edge: { id: "01", title: "Edge Vision Detection System", link: true },
-  r2r: { id: "02", title: "R-2R DAC", link: true },
-  boot: { id: "03", title: "Bare-Metal Bootloader", link: true },
-  pid: { id: "04", title: "PID Control System", link: true },
-  rtos: { id: "rtos", title: "RTOS Traffic Controller Monitor", link: false },
+  r2r: { id: "PRJ_02", title: "R-2R DAC", slug: "r2r-dac" },
+  boot: { id: "PRJ_01", title: "Bare-Metal Bootloader", slug: "bootloader" },
+  pid: { id: "PRJ_03", title: "PID Control System", slug: "pid-control" },
+  amr: { id: "PRJ_04", title: "Autonomous Mobile Robot", slug: "amr" },
+  rtos: { id: "RTOS", title: "RTOS Traffic Controller Monitor", slug: "rtos" },
 };
+
 
 const CHIPS: Chip[] = [
   {
@@ -61,7 +62,7 @@ const CHIPS: Chip[] = [
     sub: "NPU / EDGE",
     x: 205, y: 30, w: 90, h: 54,
     trace: "250,84 250,120 250,200",
-    projects: [P.edge],
+    projects: [P.amr],
   },
   {
     id: "EMBC",
@@ -543,14 +544,14 @@ export function InteractivePCB({ size = 500 }: { size?: number }) {
               <div className="mt-2 flex flex-wrap gap-2">
                 {selectedChip.projects.length ? (
                   selectedChip.projects.map((p) =>
-                    p.link ? (
+                    p.slug ? (
                       <Link
                         key={p.id}
-                        to="/projects"
-                        hash={`prj-${p.id}`}
+                        to="/projects/$slug"
+                        params={{ slug: p.slug }}
                         className="text-[10px] uppercase tracking-[0.2em] border border-neon/40 text-neon px-2 py-1 hover:bg-neon/10 transition-colors"
                       >
-                        PRJ_{p.id} · {p.title}
+                        {p.id} · {p.title}
                       </Link>
                     ) : (
                       <span
@@ -562,6 +563,7 @@ export function InteractivePCB({ size = 500 }: { size?: number }) {
                     )
                   )
                 ) : (
+
                   <span className="text-xs text-muted-foreground">
                     No linked projects yet.
                   </span>
