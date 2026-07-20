@@ -210,18 +210,15 @@ export const CASE_STUDIES: Record<CaseStudySlug, CaseStudy> = {
 
     gallery: [
   {
-    src: pidBreadboard,
-    caption: "Breadboard build — Arduino, H-bridge and encoder motor",
+    caption: "Breadboard R-2R DAC implementation",
     kind: "image",
   },
   {
-    src: pidStepResponse,
-    caption: "Step response — Target vs RPM vs PWM on serial plotter",
+    caption: "Measured DAC output waveform",
     kind: "scope",
   },
   {
-    src: pidBlockDiagram,
-    caption: "PID controller block diagram",
+    caption: "R-2R ladder circuit diagram",
     kind: "diagram",
   },
 ],
@@ -322,7 +319,7 @@ export const CASE_STUDIES: Record<CaseStudySlug, CaseStudy> = {
     caption: "PID controller block diagram",
     kind: "diagram",
   },
-]
+    ],
     videos: [
       {
         title: "Live disturbance rejection under load",
