@@ -216,7 +216,7 @@ export const CASE_STUDIES: Record<CaseStudySlug, CaseStudy> = {
 
     gallery: [
       {
-        src: r2rBreadboardAsset,
+        src: r2rBreadboard,
         caption: "Breadboard R-2R DAC implementation",
         kind: "image",
       },
