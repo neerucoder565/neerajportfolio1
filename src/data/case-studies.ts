@@ -1,7 +1,7 @@
 // Case study catalog — populate placeholders with real assets later.
 import pidBreadboard from "@/assets/Circuit PID.jpeg";
 import pidStepResponse from "@/assets/Pid Output.png";
-import pidBlockDiagram from "@/assets/pid-block-diagram.png";
+import pidBlockDiagram from "@/assets/Pid Block Diagram.png";
 import pidDemo from "@/assets/PID Demo video (2).mp4";
 
 import r2rBreadboard from "@/assets/r2r-breadboard.png";
