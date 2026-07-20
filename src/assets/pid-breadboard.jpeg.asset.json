@@ -1,8 +1,9 @@
+import pidBreadboard from "@/assets/pid-breadboard.jpg";
 {
   "version": 1,
   "asset_id": "e65b0bc8-0a58-4fa8-8c70-4014c8c20a65",
   "project_id": "f5fd28dd-7b71-489d-910e-961a65dfa09f",
-  "url": "/__l5e/assets-v1/e65b0bc8-0a58-4fa8-8c70-4014c8c20a65/pid-breadboard.jpeg",
+  "url": pid-breadboard
   "r2_key": "a/v1/f5fd28dd-7b71-489d-910e-961a65dfa09f/e65b0bc8-0a58-4fa8-8c70-4014c8c20a65/pid-breadboard.jpeg",
   "original_filename": "pid-breadboard.jpeg",
   "size": 156902,
