@@ -263,9 +263,19 @@ export function CaseStudyPage({ slug }: { slug: CaseStudySlug }) {
                       key={i}
                       className="corners border border-border bg-card/40 p-4"
                     >
-                      <div className="aspect-video border border-border bg-background/60 grid place-items-center text-[10px] tracking-[0.3em] text-neon/70">
-                        // VIDEO EMBED · PENDING
-                      </div>
+                      {v.src ? (
+                        <video
+                          src={v.src}
+                          poster={v.poster}
+                          controls
+                          playsInline
+                          className="aspect-video w-full border border-border bg-background/60 object-contain"
+                        />
+                      ) : (
+                        <div className="aspect-video border border-border bg-background/60 grid place-items-center text-[10px] tracking-[0.3em] text-neon/70">
+                          // VIDEO EMBED · PENDING
+                        </div>
+                      )}
                       <div className="mt-3 text-xs text-muted-foreground">
                         {v.title}
                       </div>
