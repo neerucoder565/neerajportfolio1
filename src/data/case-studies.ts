@@ -327,7 +327,7 @@ export const CASE_STUDIES: Record<CaseStudySlug, CaseStudy> = {
     videos: [
       {
         title: "Live disturbance rejection under load",
-        src: "/__l5e/assets-v1/6b3100ad-01d5-48dc-a5c7-ae0ce2f20452/pid-demo.mp4",
+        src: pidDemoAsset.url,
       },
     ],
     downloads: [
