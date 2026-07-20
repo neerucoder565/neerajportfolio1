@@ -221,12 +221,12 @@ export const CASE_STUDIES: Record<CaseStudySlug, CaseStudy> = {
         kind: "image",
       },
       {
-        src: r2rScopeAsset,
+        src: r2rScope,
         caption: "Oscilloscope capture of staircase output",
         kind: "scope",
       },
       {
-        src: r2rSchematicAsset,
+        src: r2rSchematic,
         caption: "R-2R ladder circuit schematic",
         kind: "diagram",
       },
@@ -234,7 +234,7 @@ export const CASE_STUDIES: Record<CaseStudySlug, CaseStudy> = {
     videos: [
       {
         title: "Live sweep through all 16 codes",
-        src: r2rLiveSweepAsset,
+        src: r2rLiveSweep,
       },
     ],
     downloads: [
