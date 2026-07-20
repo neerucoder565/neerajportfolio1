@@ -307,10 +307,22 @@ export const CASE_STUDIES: Record<CaseStudySlug, CaseStudy> = {
     ],
 
     gallery: [
-      { src: "/__l5e/assets-v1/d05b199e-1650-46a4-956c-c1aa1693c3e4/pid-breadboard.jpeg", caption: "Breadboard build — Arduino, H-bridge and encoder motor", kind: "image" },
-      { src: "/__l5e/assets-v1/4900f1d9-45a3-4e64-86c0-273b689ee027/pid-step-response.png", caption: "Step response — Target vs RPM vs PWM on serial plotter", kind: "scope" },
-      { src: "/__l5e/assets-v1/b773be36-6073-4379-a3f8-1c1a0c33a725/pid-block-diagram.png", caption: "PID controller block diagram", kind: "diagram" },
-    ],
+  {
+    src: pidBreadboard,
+    caption: "Breadboard build — Arduino, H-bridge and encoder motor",
+    kind: "image",
+  },
+  {
+    src: pidStepResponse,
+    caption: "Step response — Target vs RPM vs PWM on serial plotter",
+    kind: "scope",
+  },
+  {
+    src: pidBlockDiagram,
+    caption: "PID controller block diagram",
+    kind: "diagram",
+  },
+]
     videos: [
       {
         title: "Live disturbance rejection under load",
