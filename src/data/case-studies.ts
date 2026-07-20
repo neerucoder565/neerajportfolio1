@@ -1,7 +1,11 @@
 // Case study catalog — populate placeholders with real assets later.
-import pidBreadboard from "@/assets/pid-breadboard.jpeg";
-import pidStepResponse from "@/assets/pid-step-response.png";
-import pidBlockDiagram from "@/assets/pid-block-diagram.png";
+import pidBreadboardAsset from "@/assets/pid-breadboard.jpeg.asset.json";
+import pidStepResponseAsset from "@/assets/pid-step-response.png.asset.json";
+import pidBlockDiagramAsset from "@/assets/pid-block-diagram.png.asset.json";
+import pidDemoAsset from "@/assets/pid-demo.mp4.asset.json";
+const pidBreadboard = pidBreadboardAsset.url;
+const pidStepResponse = pidStepResponseAsset.url;
+const pidBlockDiagram = pidBlockDiagramAsset.url;
 export type CaseStudySlug =
   | "bootloader"
   | "r2r-dac"
@@ -323,7 +327,7 @@ export const CASE_STUDIES: Record<CaseStudySlug, CaseStudy> = {
     videos: [
       {
         title: "Live disturbance rejection under load",
-        src: "/__l5e/assets-v1/6b3100ad-01d5-48dc-a5c7-ae0ce2f20452/pid-demo.mp4",
+        src: pidDemoAsset.url,
       },
     ],
     downloads: [
