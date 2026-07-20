@@ -293,12 +293,16 @@ export const CASE_STUDIES: Record<CaseStudySlug, CaseStudy> = {
     ],
 
     gallery: [
-      { caption: "Control loop block diagram", kind: "diagram" },
-      { caption: "Wiring — encoder, H-bridge, MCU", kind: "diagram" },
-      { caption: "Step response — P vs PI vs PID", kind: "scope" },
-      { caption: "Bench setup", kind: "image" },
+      { src: "/__l5e/assets-v1/70ebb90e-0c86-4df0-9827-62bbe1861d45/pid-breadboard.jpeg", caption: "Breadboard build — Arduino, H-bridge and encoder motor", kind: "image" },
+      { src: "/__l5e/assets-v1/efd29777-509f-4e04-903e-a41fd8afe868/pid-step-response.png", caption: "Step response — Target vs RPM vs PWM on serial plotter", kind: "scope" },
+      { src: "/__l5e/assets-v1/eb9bc7b1-a53f-44a7-928d-762eb5d2f0a0/pid-block-diagram.png", caption: "PID controller block diagram", kind: "diagram" },
     ],
-    videos: [{ title: "Live disturbance rejection under load" }],
+    videos: [
+      {
+        title: "Live disturbance rejection under load",
+        src: "/__l5e/assets-v1/d1de6167-767e-4919-b5a3-2ea015613120/pid-demo.mp4",
+      },
+    ],
     downloads: [
       { label: "GitHub Repository", href: "https://github.com/Neeraj0410/Encoder-Based-PID-Motor-Control", kind: "repo" },
       { label: "Project Report (PDF)", kind: "report" },
