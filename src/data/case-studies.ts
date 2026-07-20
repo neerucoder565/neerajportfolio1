@@ -1,5 +1,7 @@
 // Case study catalog — populate placeholders with real assets later.
-
+import pidBreadboard from "@/assets/pid-breadboard.jpeg";
+import pidStepResponse from "@/assets/pid-step-response.png";
+import pidBlockDiagram from "@/assets/pid-block-diagram.png";
 export type CaseStudySlug =
   | "bootloader"
   | "r2r-dac"
@@ -207,10 +209,22 @@ export const CASE_STUDIES: Record<CaseStudySlug, CaseStudy> = {
     ],
 
     gallery: [
-      { src: "/r2r-schematic.png", caption: "R-2R ladder schematic", kind: "diagram" },
-      { src: "/r2r-breadboard.png", caption: "Breadboard build", kind: "image" },
-      { src: "/r2r-scope.png", caption: "Oscilloscope capture of staircase output", kind: "scope" },
-    ],
+  {
+    src: pidBreadboard,
+    caption: "Breadboard build — Arduino, H-bridge and encoder motor",
+    kind: "image",
+  },
+  {
+    src: pidStepResponse,
+    caption: "Step response — Target vs RPM vs PWM on serial plotter",
+    kind: "scope",
+  },
+  {
+    src: pidBlockDiagram,
+    caption: "PID controller block diagram",
+    kind: "diagram",
+  },
+],
     videos: [
       {
         title: "Live sweep through all 16 codes",
