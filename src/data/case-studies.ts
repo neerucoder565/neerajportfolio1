@@ -210,9 +210,13 @@ export const CASE_STUDIES: Record<CaseStudySlug, CaseStudy> = {
       { src: "/r2r-schematic.png", caption: "R-2R ladder schematic", kind: "diagram" },
       { src: "/r2r-breadboard.png", caption: "Breadboard build", kind: "image" },
       { src: "/r2r-scope.png", caption: "Oscilloscope capture of staircase output", kind: "scope" },
-      { caption: "Measured vs ideal transfer curve", kind: "diagram" },
     ],
-    videos: [{ title: "Live sweep through all 16 codes" }],
+    videos: [
+      {
+        title: "Live sweep through all 16 codes",
+        src: "/__l5e/assets-v1/50c185f0-19af-4d28-98a6-21e167ed920f/r2r-live-sweep.mp4",
+      },
+    ],
     downloads: [
       {
         label: "GitHub Repository",
