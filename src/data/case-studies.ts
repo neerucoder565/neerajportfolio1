@@ -1,15 +1,13 @@
 // Case study catalog — populate placeholders with real assets later.
-import pidBreadboardAsset from "@/assets/pid-breadboard.jpeg.asset.json";
-import pidStepResponseAsset from "@/assets/pid-step-response.png.asset.json";
-import pidBlockDiagramAsset from "@/assets/pid-block-diagram.png.asset.json";
-import pidDemoAsset from "@/assets/pid-demo.mp4.asset.json";
-import r2rSchematicAsset from "@/assets/r2r-schematic.png.asset.json";
-import r2rBreadboardAsset from "@/assets/r2r-breadboard.png.asset.json";
-import r2rScopeAsset from "@/assets/r2r-scope.png.asset.json";
-import r2rLiveSweepAsset from "@/assets/r2r-live-sweep.mp4.asset.json";
-const pidBreadboard = pidBreadboardAsset.url;
-const pidStepResponse = pidStepResponseAsset.url;
-const pidBlockDiagram = pidBlockDiagramAsset.url;
+import pidBreadboard from "@/assets/pid-breadboard.jpeg";
+import pidStepResponse from "@/assets/pid-step-response.png";
+import pidBlockDiagram from "@/assets/pid-block-diagram.png";
+import pidDemo from "@/assets/pid-demo.mp4";
+
+import r2rBreadboard from "@/assets/r2r-breadboard.png";
+import r2rScope from "@/assets/r2r-scope.png";
+import r2rSchematic from "@/assets/r2r-schematic.png";
+import r2rLiveSweep from "@/assets/r2r-live-sweep.mp4";
 export type CaseStudySlug =
   | "bootloader"
   | "r2r-dac"
@@ -218,17 +216,17 @@ export const CASE_STUDIES: Record<CaseStudySlug, CaseStudy> = {
 
     gallery: [
       {
-        src: r2rBreadboardAsset.url,
+        src: r2rBreadboardAsset,
         caption: "Breadboard R-2R DAC implementation",
         kind: "image",
       },
       {
-        src: r2rScopeAsset.url,
+        src: r2rScopeAsset,
         caption: "Oscilloscope capture of staircase output",
         kind: "scope",
       },
       {
-        src: r2rSchematicAsset.url,
+        src: r2rSchematicAsset,
         caption: "R-2R ladder circuit schematic",
         kind: "diagram",
       },
@@ -236,7 +234,7 @@ export const CASE_STUDIES: Record<CaseStudySlug, CaseStudy> = {
     videos: [
       {
         title: "Live sweep through all 16 codes",
-        src: r2rLiveSweepAsset.url,
+        src: r2rLiveSweepAsset,
       },
     ],
     downloads: [
@@ -334,7 +332,7 @@ export const CASE_STUDIES: Record<CaseStudySlug, CaseStudy> = {
     videos: [
       {
         title: "Live disturbance rejection under load",
-        src: pidDemoAsset.url,
+        src: pidDemo,
       },
     ],
     downloads: [
