@@ -293,14 +293,14 @@ export const CASE_STUDIES: Record<CaseStudySlug, CaseStudy> = {
     ],
 
     gallery: [
-      { src: "/__l5e/assets-v1/e65b0bc8-0a58-4fa8-8c70-4014c8c20a65/pid-breadboard.jpeg", caption: "Breadboard build — Arduino, H-bridge and encoder motor", kind: "image" },
-      { src: "/__l5e/assets-v1/d6b0014a-a79e-4d88-aabf-ad5ad8c355d4/pid-step-response.png", caption: "Step response — Target vs RPM vs PWM on serial plotter", kind: "scope" },
-      { src: "/__l5e/assets-v1/42959289-fcc3-4b04-8360-74ea4520e417/pid-block-diagram.png", caption: "PID controller block diagram", kind: "diagram" },
+      { src: "/__l5e/assets-v1/d05b199e-1650-46a4-956c-c1aa1693c3e4/pid-breadboard.jpeg", caption: "Breadboard build — Arduino, H-bridge and encoder motor", kind: "image" },
+      { src: "/__l5e/assets-v1/4900f1d9-45a3-4e64-86c0-273b689ee027/pid-step-response.png", caption: "Step response — Target vs RPM vs PWM on serial plotter", kind: "scope" },
+      { src: "/__l5e/assets-v1/b773be36-6073-4379-a3f8-1c1a0c33a725/pid-block-diagram.png", caption: "PID controller block diagram", kind: "diagram" },
     ],
     videos: [
       {
         title: "Live disturbance rejection under load",
-        src: "/__l5e/assets-v1/26c40f62-3665-4370-b105-484c5a1f6c57/pid-demo.mp4",
+        src: "/__l5e/assets-v1/6b3100ad-01d5-48dc-a5c7-ae0ce2f20452/pid-demo.mp4",
       },
     ],
     downloads: [
