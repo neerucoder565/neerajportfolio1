@@ -207,9 +207,9 @@ export const CASE_STUDIES: Record<CaseStudySlug, CaseStudy> = {
     ],
 
     gallery: [
-      { caption: "R-2R ladder schematic", kind: "diagram" },
-      { caption: "Breadboard build", kind: "image" },
-      { caption: "Oscilloscope capture of staircase output", kind: "scope" },
+      { src: "/r2r-schematic.png", caption: "R-2R ladder schematic", kind: "diagram" },
+      { src: "/r2r-breadboard.png", caption: "Breadboard build", kind: "image" },
+      { src: "/r2r-scope.png", caption: "Oscilloscope capture of staircase output", kind: "scope" },
       { caption: "Measured vs ideal transfer curve", kind: "diagram" },
     ],
     videos: [{ title: "Live sweep through all 16 codes" }],
