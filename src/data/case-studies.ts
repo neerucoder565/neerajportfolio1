@@ -1,7 +1,11 @@
 // Case study catalog — populate placeholders with real assets later.
-import pidBreadboard from "@/assets/pid-breadboard.jpeg";
-import pidStepResponse from "@/assets/pid-step-response.png";
-import pidBlockDiagram from "@/assets/pid-block-diagram.png";
+import pidBreadboardAsset from "@/assets/pid-breadboard.jpeg.asset.json";
+import pidStepResponseAsset from "@/assets/pid-step-response.png.asset.json";
+import pidBlockDiagramAsset from "@/assets/pid-block-diagram.png.asset.json";
+import pidDemoAsset from "@/assets/pid-demo.mp4.asset.json";
+const pidBreadboard = pidBreadboardAsset.url;
+const pidStepResponse = pidStepResponseAsset.url;
+const pidBlockDiagram = pidBlockDiagramAsset.url;
 export type CaseStudySlug =
   | "bootloader"
   | "r2r-dac"
