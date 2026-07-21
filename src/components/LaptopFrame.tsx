@@ -136,38 +136,55 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
               />
             </circle>
 
-            {/* Neck (stand riser) */}
-            <path
-              d={`M ${W / 2 - 40} ${STAND_TOP}
-                  L ${W / 2 + 40} ${STAND_TOP}
-                  L ${W / 2 + 30} ${STAND_TOP + NECK_H}
-                  L ${W / 2 - 30} ${STAND_TOP + NECK_H} Z`}
+            {/* Hinge strip */}
+            <rect
+              x={MON_X + 40}
+              y={STAND_TOP}
+              width={MON_W - 80}
+              height={NECK_H}
               fill="url(#stand-metal)"
+              stroke="color-mix(in oklab, var(--neon) 25%, transparent)"
+              strokeWidth="0.6"
+            />
+            <rect
+              x={MON_X + 40}
+              y={STAND_TOP}
+              width={MON_W - 80}
+              height={1}
+              fill="var(--neon)"
+              fillOpacity="0.3"
+            />
+
+            {/* Laptop base (trapezoid — front wider than back for perspective) */}
+            <path
+              d={`M ${MON_X + 20} ${STAND_TOP + NECK_H}
+                  L ${MON_X + MON_W - 20} ${STAND_TOP + NECK_H}
+                  L ${MON_X + MON_W + 20} ${STAND_TOP + NECK_H + BASE_H - 6}
+                  Q ${MON_X + MON_W + 20} ${STAND_TOP + NECK_H + BASE_H} ${MON_X + MON_W + 14} ${STAND_TOP + NECK_H + BASE_H}
+                  L ${MON_X - 14} ${STAND_TOP + NECK_H + BASE_H}
+                  Q ${MON_X - 20} ${STAND_TOP + NECK_H + BASE_H} ${MON_X - 20} ${STAND_TOP + NECK_H + BASE_H - 6} Z`}
+              fill="url(#base-metal)"
               stroke="color-mix(in oklab, var(--neon) 25%, transparent)"
               strokeWidth="0.8"
             />
-            {/* Neck highlight */}
-            <line
-              x1={W / 2}
-              y1={STAND_TOP + 2}
-              x2={W / 2}
-              y2={STAND_TOP + NECK_H - 2}
-              stroke="color-mix(in oklab, var(--neon) 35%, transparent)"
-              strokeWidth="0.6"
-            />
-
-            {/* Base */}
+            {/* Front edge highlight */}
             <path
-              d={`M ${W / 2 - 130} ${STAND_TOP + NECK_H}
-                  L ${W / 2 + 130} ${STAND_TOP + NECK_H}
-                  Q ${W / 2 + 150} ${STAND_TOP + NECK_H + 4} ${W / 2 + 140} ${STAND_TOP + NECK_H + BASE_H}
-                  L ${W / 2 - 140} ${STAND_TOP + NECK_H + BASE_H}
-                  Q ${W / 2 - 150} ${STAND_TOP + NECK_H + 4} ${W / 2 - 130} ${STAND_TOP + NECK_H} Z`}
-              fill="url(#base-metal)"
-              stroke="color-mix(in oklab, var(--neon) 28%, transparent)"
-              strokeWidth="0.8"
+              d={`M ${MON_X - 12} ${STAND_TOP + NECK_H + BASE_H - 3} L ${MON_X + MON_W + 12} ${STAND_TOP + NECK_H + BASE_H - 3}`}
+              stroke="color-mix(in oklab, var(--neon) 32%, transparent)"
+              strokeWidth="0.6"
+              fill="none"
             />
-            {/* Base front highlight */}
+            {/* Trackpad */}
+            <rect
+              x={W / 2 - 70}
+              y={STAND_TOP + NECK_H + 14}
+              width={140}
+              height={26}
+              rx={3}
+              fill="oklch(0.10 0.003 170)"
+              stroke="color-mix(in oklab, var(--neon) 18%, transparent)"
+              strokeWidth="0.5"
+            />
             <path
               d={`M ${W / 2 - 138} ${STAND_TOP + NECK_H + BASE_H - 2} L ${W / 2 + 138} ${STAND_TOP + NECK_H + BASE_H - 2}`}
               stroke="color-mix(in oklab, var(--neon) 35%, transparent)"
