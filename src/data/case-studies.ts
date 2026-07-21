@@ -1,13 +1,23 @@
 // Case study catalog — populate placeholders with real assets later.
-import pidBreadboard from "@/assets/Circuit PID.jpeg";
-import pidStepResponse from "@/assets/Pid Output.png";
-import pidBlockDiagram from "@/assets/Pid Block Diagram.png";
-import pidDemo from "@/assets/PID Demo video (2).mp4";
+import pidBreadboardAsset from "@/assets/pid-breadboard.jpeg.asset.json";
+import pidStepResponseAsset from "@/assets/pid-step-response.png.asset.json";
+import pidBlockDiagramAsset from "@/assets/pid-block-diagram.png.asset.json";
+import pidDemoAsset from "@/assets/pid-demo.mp4.asset.json";
 
-import r2rBreadboard from "@/assets/r2r-breadboard.png";
-import r2rScope from "@/assets/r2r-scope.png";
-import r2rSchematic from "@/assets/r2r-schematic.png";
-import r2rLiveSweep from "@/assets/r2r-live-sweep.mp4";
+import r2rBreadboardAsset from "@/assets/r2r-breadboard.png.asset.json";
+import r2rScopeAsset from "@/assets/r2r-scope.png.asset.json";
+import r2rSchematicAsset from "@/assets/r2r-schematic.png.asset.json";
+import r2rLiveSweepAsset from "@/assets/r2r-live-sweep.mp4.asset.json";
+
+const pidBreadboard = pidBreadboardAsset.url;
+const pidStepResponse = pidStepResponseAsset.url;
+const pidBlockDiagram = pidBlockDiagramAsset.url;
+const pidDemo = pidDemoAsset.url;
+const r2rBreadboard = r2rBreadboardAsset.url;
+const r2rScope = r2rScopeAsset.url;
+const r2rSchematic = r2rSchematicAsset.url;
+const r2rLiveSweep = r2rLiveSweepAsset.url;
+
 export type CaseStudySlug =
   | "bootloader"
   | "r2r-dac"
