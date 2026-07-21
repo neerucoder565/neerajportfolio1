@@ -524,7 +524,7 @@ export function InteractivePCB({ size = 500 }: { size?: number }) {
               <div className="flex items-center justify-between">
                 <div>
                   <div className="text-[9px] tracking-[0.3em] text-neon">
-                    // SIGNAL LOCKED
+                    // CLICK ON THE PROJECT FOR MORE DETAILS
                   </div>
                   <div className="font-display text-lg text-foreground tracking-widest mt-0.5">
                     {selectedChip.label}
