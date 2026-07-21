@@ -12,14 +12,14 @@ import { ReactNode } from "react";
  */
 export function LaptopFrame({ children }: { children: ReactNode }) {
   // Geometry (SVG units)
-  const W = 620;
-  const MON_X = 6;
+  const W = 640;
+  const MON_X = 4;
   const MON_Y = 0;
-  const MON_W = 608;
-  const MON_H = 490;
-  const BEZEL_X = 16;
-  const BEZEL_T = 14;
-  const BEZEL_B = 34; // thicker bottom bezel (brand strip)
+  const MON_W = 632;
+  const MON_H = 560;
+  const BEZEL_X = 10;
+  const BEZEL_T = 8;
+  const BEZEL_B = 26; // slimmer bottom bezel (brand strip)
   const SCREEN_X = MON_X + BEZEL_X;
   const SCREEN_Y = MON_Y + BEZEL_T;
   const SCREEN_W = MON_W - BEZEL_X * 2;
@@ -32,7 +32,7 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
   const TOTAL_H = MON_H + NECK_H + BASE_H + 4;
 
   return (
-    <div className="relative w-full" style={{ maxWidth: 760 }}>
+    <div className="relative w-full" style={{ maxWidth: 820 }}>
       <motion.div
         animate={{ y: [0, -4, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
