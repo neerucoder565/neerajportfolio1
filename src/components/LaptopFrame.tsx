@@ -15,7 +15,7 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
   // Geometry (SVG units)
   const W = 620;
   const LID_W = 560;
-  const LID_H = 470;
+  const LID_H = 540;
   const LID_X = (W - LID_W) / 2;
   const BEZEL = 14;
   const SCREEN_X = LID_X + BEZEL;
@@ -24,7 +24,7 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
   const SCREEN_H = LID_H - BEZEL * 2 - 6;
 
   return (
-    <div className="relative w-full" style={{ maxWidth: 720 }}>
+    <div className="relative w-full" style={{ maxWidth: 760 }}>
       {/* Idle float wrapper */}
       <motion.div
         animate={{ y: [0, -5, 0] }}
