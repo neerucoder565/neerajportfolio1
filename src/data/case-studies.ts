@@ -9,6 +9,12 @@ import r2rScopeAsset from "@/assets/r2r-scope.png.asset.json";
 import r2rSchematicAsset from "@/assets/r2r-schematic.png.asset.json";
 import r2rLiveSweepAsset from "@/assets/r2r-live-sweep.mp4.asset.json";
 
+import btMemoryLogAsset from "@/assets/bootloader-memory-log.png.asset.json";
+import btFlashMapAsset from "@/assets/bootloader-flash-map.png.asset.json";
+import btVectorTableAsset from "@/assets/bootloader-vector-table.png.asset.json";
+import btBootSequenceAsset from "@/assets/bootloader-boot-sequence.png.asset.json";
+import btDemoAsset from "@/assets/bootloader-demo.mp4.asset.json";
+
 // Lovable-hosted CDN assets are served from the project's lovable.app origin.
 // When the app is deployed to a custom worker (e.g. *.workers.dev), relative
 // "/__l5e/..." paths 404 because that worker doesn't proxy them. Prefix with
@@ -26,6 +32,11 @@ const r2rBreadboard = assetUrl(r2rBreadboardAsset.url);
 const r2rScope = assetUrl(r2rScopeAsset.url);
 const r2rSchematic = assetUrl(r2rSchematicAsset.url);
 const r2rLiveSweep = assetUrl(r2rLiveSweepAsset.url);
+const btMemoryLog = assetUrl(btMemoryLogAsset.url);
+const btFlashMap = assetUrl(btFlashMapAsset.url);
+const btVectorTable = assetUrl(btVectorTableAsset.url);
+const btBootSequence = assetUrl(btBootSequenceAsset.url);
+const btDemo = assetUrl(btDemoAsset.url);
 
 export type CaseStudySlug =
   | "bootloader"
@@ -158,12 +169,12 @@ export const CASE_STUDIES: Record<CaseStudySlug, CaseStudy> = {
     ],
 
     gallery: [
-      { caption: "Flash memory map — bootloader / application partition", kind: "diagram" },
-      { caption: "Boot sequence flowchart", kind: "flowchart" },
-      { caption: "Vector table layout with VTOR offset", kind: "diagram" },
-      { caption: "Live serial log of successful handoff", kind: "image" },
+      { src: btMemoryLog, caption: "Live memory download — application flashed into 0x08008000", kind: "image" },
+      { src: btFlashMap, caption: "Flash memory map — bootloader / application partition", kind: "diagram" },
+      { src: btVectorTable, caption: "Vector table layout with VTOR offset", kind: "diagram" },
+      { src: btBootSequence, caption: "Boot sequence flowchart", kind: "flowchart" },
     ],
-    videos: [{ title: "Live demo — bootloader → application handoff" }],
+    videos: [{ title: "Live demo — bootloader → application handoff", src: btDemo }],
     downloads: [
       { label: "GitHub Repository", href: "https://github.com/Neeraj0410/BootLoader", kind: "repo" },
       { label: "Project Report (PDF)", kind: "report" },
