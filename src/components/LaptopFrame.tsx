@@ -24,7 +24,7 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
   const SCREEN_H = LID_H - BEZEL * 2 - 6;
 
   return (
-    <div className="relative w-full" style={{ maxWidth: 620 }}>
+    <div className="relative w-full" style={{ maxWidth: 720 }}>
       {/* Idle float wrapper */}
       <motion.div
         animate={{ y: [0, -5, 0] }}
