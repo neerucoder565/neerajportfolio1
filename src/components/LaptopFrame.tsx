@@ -13,12 +13,12 @@ import { ReactNode } from "react";
 export function LaptopFrame({ children }: { children: ReactNode }) {
   // Geometry (SVG units)
   const W = 620;
-  const MON_X = 10;
+  const MON_X = 6;
   const MON_Y = 0;
-  const MON_W = 600;
-  const MON_H = 440;
-  const BEZEL_X = 18;
-  const BEZEL_T = 18;
+  const MON_W = 608;
+  const MON_H = 490;
+  const BEZEL_X = 16;
+  const BEZEL_T = 14;
   const BEZEL_B = 34; // thicker bottom bezel (brand strip)
   const SCREEN_X = MON_X + BEZEL_X;
   const SCREEN_Y = MON_Y + BEZEL_T;
