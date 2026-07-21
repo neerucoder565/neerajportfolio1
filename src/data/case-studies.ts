@@ -32,6 +32,11 @@ const r2rBreadboard = assetUrl(r2rBreadboardAsset.url);
 const r2rScope = assetUrl(r2rScopeAsset.url);
 const r2rSchematic = assetUrl(r2rSchematicAsset.url);
 const r2rLiveSweep = assetUrl(r2rLiveSweepAsset.url);
+const btMemoryLog = assetUrl(btMemoryLogAsset.url);
+const btFlashMap = assetUrl(btFlashMapAsset.url);
+const btVectorTable = assetUrl(btVectorTableAsset.url);
+const btBootSequence = assetUrl(btBootSequenceAsset.url);
+const btDemo = assetUrl(btDemoAsset.url);
 
 export type CaseStudySlug =
   | "bootloader"
