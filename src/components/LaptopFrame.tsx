@@ -15,7 +15,7 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
   // Geometry (SVG units)
   const W = 620;
   const LID_W = 560;
-  const LID_H = 380;
+  const LID_H = 470;
   const LID_X = (W - LID_W) / 2;
   const BEZEL = 14;
   const SCREEN_X = LID_X + BEZEL;
