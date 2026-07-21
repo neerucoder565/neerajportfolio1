@@ -167,7 +167,6 @@ export const CASE_STUDIES: Record<CaseStudySlug, CaseStudy> = {
     downloads: [
       { label: "GitHub Repository", href: "https://github.com/Neeraj0410/BootLoader", kind: "repo" },
       { label: "Project Report (PDF)", kind: "report" },
-      { label: "Presentation Deck", kind: "slides" },
     ],
     repo: "https://github.com/Neeraj0410/BootLoader",
 
