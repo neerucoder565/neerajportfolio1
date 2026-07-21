@@ -79,7 +79,9 @@ function Home() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.1 }}
           >
-            <InteractivePCB size={500} />
+            <LaptopFrame>
+              <InteractivePCB size={460} />
+            </LaptopFrame>
           </motion.div>
         </div>
       </section>
