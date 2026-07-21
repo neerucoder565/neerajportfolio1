@@ -25,10 +25,10 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
   const SCREEN_W = MON_W - BEZEL_X * 2;
   const SCREEN_H = MON_H - BEZEL_T - BEZEL_B;
 
-  // Stand
+  // Laptop base
   const STAND_TOP = MON_Y + MON_H;
-  const NECK_H = 46;
-  const BASE_H = 22;
+  const NECK_H = 6; // hinge strip
+  const BASE_H = 56; // laptop base body
   const TOTAL_H = MON_H + NECK_H + BASE_H + 4;
 
   return (
