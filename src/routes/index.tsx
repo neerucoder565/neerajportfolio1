@@ -22,7 +22,7 @@ function Home() {
     <>
       {/* HERO */}
       <section className="relative overflow-hidden">
-        <div className="mx-auto max-w-7xl px-6 pt-16 md:pt-24 pb-20 grid lg:grid-cols-2 gap-12 items-center">
+        <div className="mx-auto max-w-7xl px-6 pt-16 md:pt-24 pb-20 grid lg:grid-cols-2 gap-12 items-start">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
