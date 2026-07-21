@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { ArrowRight, Download, Cpu, Radio, Layers } from "lucide-react";
 import { InteractivePCB } from "@/components/InteractivePCB";
+import { LaptopFrame } from "@/components/LaptopFrame";
 import { Panel, Section } from "@/components/SiteShell";
 
 export const Route = createFileRoute("/")({
