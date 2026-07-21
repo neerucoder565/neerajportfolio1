@@ -342,7 +342,7 @@ export const CASE_STUDIES: Record<CaseStudySlug, CaseStudy> = {
     videos: [
       {
         title: "Live disturbance rejection under load",
-        src: PIDDemovideo,
+        src: pidDemo,
       },
     ],
     downloads: [
