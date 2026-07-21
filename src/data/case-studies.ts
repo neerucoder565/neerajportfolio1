@@ -9,6 +9,12 @@ import r2rScopeAsset from "@/assets/r2r-scope.png.asset.json";
 import r2rSchematicAsset from "@/assets/r2r-schematic.png.asset.json";
 import r2rLiveSweepAsset from "@/assets/r2r-live-sweep.mp4.asset.json";
 
+import btMemoryLogAsset from "@/assets/bootloader-memory-log.png.asset.json";
+import btFlashMapAsset from "@/assets/bootloader-flash-map.png.asset.json";
+import btVectorTableAsset from "@/assets/bootloader-vector-table.png.asset.json";
+import btBootSequenceAsset from "@/assets/bootloader-boot-sequence.png.asset.json";
+import btDemoAsset from "@/assets/bootloader-demo.mp4.asset.json";
+
 // Lovable-hosted CDN assets are served from the project's lovable.app origin.
 // When the app is deployed to a custom worker (e.g. *.workers.dev), relative
 // "/__l5e/..." paths 404 because that worker doesn't proxy them. Prefix with
