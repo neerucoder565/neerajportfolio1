@@ -32,7 +32,7 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
   const TOTAL_H = MON_H + NECK_H + BASE_H + 4;
 
   return (
-    <div className="relative w-full" style={{ maxWidth: 760 }}>
+    <div className="relative w-full" style={{ maxWidth: 820 }}>
       <motion.div
         animate={{ y: [0, -4, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
