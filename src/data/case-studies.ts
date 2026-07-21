@@ -169,12 +169,12 @@ export const CASE_STUDIES: Record<CaseStudySlug, CaseStudy> = {
     ],
 
     gallery: [
-      { caption: "Flash memory map — bootloader / application partition", kind: "diagram" },
-      { caption: "Boot sequence flowchart", kind: "flowchart" },
-      { caption: "Vector table layout with VTOR offset", kind: "diagram" },
-      { caption: "Live serial log of successful handoff", kind: "image" },
+      { src: btMemoryLog, caption: "Live memory download — application flashed into 0x08008000", kind: "image" },
+      { src: btFlashMap, caption: "Flash memory map — bootloader / application partition", kind: "diagram" },
+      { src: btVectorTable, caption: "Vector table layout with VTOR offset", kind: "diagram" },
+      { src: btBootSequence, caption: "Boot sequence flowchart", kind: "flowchart" },
     ],
-    videos: [{ title: "Live demo — bootloader → application handoff" }],
+    videos: [{ title: "Live demo — bootloader → application handoff", src: btDemo }],
     downloads: [
       { label: "GitHub Repository", href: "https://github.com/Neeraj0410/BootLoader", kind: "repo" },
       { label: "Project Report (PDF)", kind: "report" },
