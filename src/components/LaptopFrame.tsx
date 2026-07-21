@@ -113,19 +113,14 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
               rx={4}
               fill="oklch(0.04 0.005 170)"
             />
-            {/* Bottom bezel branding */}
-            <text
-              x={W / 2}
-              y={MON_Y + MON_H - 12}
-              textAnchor="middle"
-              fontSize="7"
-              letterSpacing="5"
+            {/* Bottom bezel — Apple-style logo */}
+            <g
+              transform={`translate(${W / 2 - 7}, ${MON_Y + MON_H - 22})`}
               fill="var(--neon)"
-              fillOpacity="0.55"
-              fontFamily="var(--font-mono, monospace)"
+              fillOpacity="0.7"
             >
-              NEERAJ · K
-            </text>
+              <path d="M11.5 7.6c0-2 1.6-2.9 1.7-3-0.9-1.4-2.4-1.6-2.9-1.6-1.2-0.1-2.4 0.7-3 0.7-0.6 0-1.6-0.7-2.7-0.7-1.4 0-2.7 0.8-3.4 2.1-1.5 2.5-0.4 6.3 1 8.4 0.7 1 1.6 2.2 2.7 2.2 1.1 0 1.5-0.7 2.8-0.7 1.3 0 1.7 0.7 2.8 0.7 1.2 0 1.9-1 2.6-2 0.8-1.2 1.2-2.3 1.2-2.4-0.1 0-2.3-0.9-2.3-3.5zM9.3 1.6C9.9 0.9 10.3-0.1 10.2-1c-0.9 0-2 0.6-2.6 1.3-0.5 0.6-1 1.6-0.9 2.5 1 0.1 2-0.5 2.6-1.2z" />
+            </g>
             {/* Power LED */}
             <circle
               cx={MON_X + MON_W - 22}
