@@ -80,7 +80,7 @@ function Home() {
             transition={{ duration: 0.8, delay: 0.1 }}
           >
             <LaptopFrame>
-              <InteractivePCB size={320} />
+              <InteractivePCB size={380} />
             </LaptopFrame>
           </motion.div>
         </div>
