@@ -9,14 +9,23 @@ import r2rScopeAsset from "@/assets/r2r-scope.png.asset.json";
 import r2rSchematicAsset from "@/assets/r2r-schematic.png.asset.json";
 import r2rLiveSweepAsset from "@/assets/r2r-live-sweep.mp4.asset.json";
 
-const pidBreadboard = pidBreadboardAsset.url;
-const pidStepResponse = pidStepResponseAsset.url;
-const pidBlockDiagram = pidBlockDiagramAsset.url;
-const pidDemo = pidDemoAsset.url;
-const r2rBreadboard = r2rBreadboardAsset.url;
-const r2rScope = r2rScopeAsset.url;
-const r2rSchematic = r2rSchematicAsset.url;
-const r2rLiveSweep = r2rLiveSweepAsset.url;
+// Lovable-hosted CDN assets are served from the project's lovable.app origin.
+// When the app is deployed to a custom worker (e.g. *.workers.dev), relative
+// "/__l5e/..." paths 404 because that worker doesn't proxy them. Prefix with
+// the absolute Lovable CDN origin so images work on any deployment.
+const ASSET_CDN_ORIGIN =
+  "https://project--f5fd28dd-7b71-489d-910e-961a65dfa09f.lovable.app";
+const assetUrl = (u: string) =>
+  u.startsWith("/") ? `${ASSET_CDN_ORIGIN}${u}` : u;
+
+const pidBreadboard = assetUrl(pidBreadboardAsset.url);
+const pidStepResponse = assetUrl(pidStepResponseAsset.url);
+const pidBlockDiagram = assetUrl(pidBlockDiagramAsset.url);
+const pidDemo = assetUrl(pidDemoAsset.url);
+const r2rBreadboard = assetUrl(r2rBreadboardAsset.url);
+const r2rScope = assetUrl(r2rScopeAsset.url);
+const r2rSchematic = assetUrl(r2rSchematicAsset.url);
+const r2rLiveSweep = assetUrl(r2rLiveSweepAsset.url);
 
 export type CaseStudySlug =
   | "bootloader"
