@@ -511,7 +511,7 @@ export function InteractivePCB({ size = 500 }: { size?: number }) {
       </div>
 
       {/* Readout panel */}
-      <div className="w-full max-w-[500px] min-h-[92px] border border-border bg-card/40 corners relative p-4">
+      <div className="w-full max-w-[500px] min-h-[130px] border border-border bg-card/40 corners relative p-4">
         <AnimatePresence mode="wait">
           {selectedChip ? (
             <motion.div
