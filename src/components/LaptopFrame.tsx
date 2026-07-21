@@ -185,12 +185,6 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
               stroke="color-mix(in oklab, var(--neon) 18%, transparent)"
               strokeWidth="0.5"
             />
-            <path
-              d={`M ${W / 2 - 138} ${STAND_TOP + NECK_H + BASE_H - 2} L ${W / 2 + 138} ${STAND_TOP + NECK_H + BASE_H - 2}`}
-              stroke="color-mix(in oklab, var(--neon) 35%, transparent)"
-              strokeWidth="0.6"
-              fill="none"
-            />
           </svg>
 
           {/* Screen content overlay (HTML on top of SVG screen well) */}
