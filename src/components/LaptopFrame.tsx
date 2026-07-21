@@ -25,10 +25,10 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
   const SCREEN_W = MON_W - BEZEL_X * 2;
   const SCREEN_H = MON_H - BEZEL_T - BEZEL_B;
 
-  // Stand
+  // Laptop base
   const STAND_TOP = MON_Y + MON_H;
-  const NECK_H = 46;
-  const BASE_H = 22;
+  const NECK_H = 6; // hinge strip
+  const BASE_H = 56; // laptop base body
   const TOTAL_H = MON_H + NECK_H + BASE_H + 4;
 
   return (
@@ -113,19 +113,14 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
               rx={4}
               fill="oklch(0.04 0.005 170)"
             />
-            {/* Bottom bezel branding */}
-            <text
-              x={W / 2}
-              y={MON_Y + MON_H - 12}
-              textAnchor="middle"
-              fontSize="7"
-              letterSpacing="5"
+            {/* Bottom bezel — Apple-style logo */}
+            <g
+              transform={`translate(${W / 2 - 7}, ${MON_Y + MON_H - 22})`}
               fill="var(--neon)"
-              fillOpacity="0.55"
-              fontFamily="var(--font-mono, monospace)"
+              fillOpacity="0.7"
             >
-              NEERAJ · K
-            </text>
+              <path d="M11.5 7.6c0-2 1.6-2.9 1.7-3-0.9-1.4-2.4-1.6-2.9-1.6-1.2-0.1-2.4 0.7-3 0.7-0.6 0-1.6-0.7-2.7-0.7-1.4 0-2.7 0.8-3.4 2.1-1.5 2.5-0.4 6.3 1 8.4 0.7 1 1.6 2.2 2.7 2.2 1.1 0 1.5-0.7 2.8-0.7 1.3 0 1.7 0.7 2.8 0.7 1.2 0 1.9-1 2.6-2 0.8-1.2 1.2-2.3 1.2-2.4-0.1 0-2.3-0.9-2.3-3.5zM9.3 1.6C9.9 0.9 10.3-0.1 10.2-1c-0.9 0-2 0.6-2.6 1.3-0.5 0.6-1 1.6-0.9 2.5 1 0.1 2-0.5 2.6-1.2z" />
+            </g>
             {/* Power LED */}
             <circle
               cx={MON_X + MON_W - 22}
@@ -141,43 +136,54 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
               />
             </circle>
 
-            {/* Neck (stand riser) */}
-            <path
-              d={`M ${W / 2 - 40} ${STAND_TOP}
-                  L ${W / 2 + 40} ${STAND_TOP}
-                  L ${W / 2 + 30} ${STAND_TOP + NECK_H}
-                  L ${W / 2 - 30} ${STAND_TOP + NECK_H} Z`}
+            {/* Hinge strip */}
+            <rect
+              x={MON_X + 40}
+              y={STAND_TOP}
+              width={MON_W - 80}
+              height={NECK_H}
               fill="url(#stand-metal)"
+              stroke="color-mix(in oklab, var(--neon) 25%, transparent)"
+              strokeWidth="0.6"
+            />
+            <rect
+              x={MON_X + 40}
+              y={STAND_TOP}
+              width={MON_W - 80}
+              height={1}
+              fill="var(--neon)"
+              fillOpacity="0.3"
+            />
+
+            {/* Laptop base (trapezoid — front wider than back for perspective) */}
+            <path
+              d={`M ${MON_X + 20} ${STAND_TOP + NECK_H}
+                  L ${MON_X + MON_W - 20} ${STAND_TOP + NECK_H}
+                  L ${MON_X + MON_W + 20} ${STAND_TOP + NECK_H + BASE_H - 6}
+                  Q ${MON_X + MON_W + 20} ${STAND_TOP + NECK_H + BASE_H} ${MON_X + MON_W + 14} ${STAND_TOP + NECK_H + BASE_H}
+                  L ${MON_X - 14} ${STAND_TOP + NECK_H + BASE_H}
+                  Q ${MON_X - 20} ${STAND_TOP + NECK_H + BASE_H} ${MON_X - 20} ${STAND_TOP + NECK_H + BASE_H - 6} Z`}
+              fill="url(#base-metal)"
               stroke="color-mix(in oklab, var(--neon) 25%, transparent)"
               strokeWidth="0.8"
             />
-            {/* Neck highlight */}
-            <line
-              x1={W / 2}
-              y1={STAND_TOP + 2}
-              x2={W / 2}
-              y2={STAND_TOP + NECK_H - 2}
-              stroke="color-mix(in oklab, var(--neon) 35%, transparent)"
-              strokeWidth="0.6"
-            />
-
-            {/* Base */}
+            {/* Front edge highlight */}
             <path
-              d={`M ${W / 2 - 130} ${STAND_TOP + NECK_H}
-                  L ${W / 2 + 130} ${STAND_TOP + NECK_H}
-                  Q ${W / 2 + 150} ${STAND_TOP + NECK_H + 4} ${W / 2 + 140} ${STAND_TOP + NECK_H + BASE_H}
-                  L ${W / 2 - 140} ${STAND_TOP + NECK_H + BASE_H}
-                  Q ${W / 2 - 150} ${STAND_TOP + NECK_H + 4} ${W / 2 - 130} ${STAND_TOP + NECK_H} Z`}
-              fill="url(#base-metal)"
-              stroke="color-mix(in oklab, var(--neon) 28%, transparent)"
-              strokeWidth="0.8"
-            />
-            {/* Base front highlight */}
-            <path
-              d={`M ${W / 2 - 138} ${STAND_TOP + NECK_H + BASE_H - 2} L ${W / 2 + 138} ${STAND_TOP + NECK_H + BASE_H - 2}`}
-              stroke="color-mix(in oklab, var(--neon) 35%, transparent)"
+              d={`M ${MON_X - 12} ${STAND_TOP + NECK_H + BASE_H - 3} L ${MON_X + MON_W + 12} ${STAND_TOP + NECK_H + BASE_H - 3}`}
+              stroke="color-mix(in oklab, var(--neon) 32%, transparent)"
               strokeWidth="0.6"
               fill="none"
+            />
+            {/* Trackpad */}
+            <rect
+              x={W / 2 - 70}
+              y={STAND_TOP + NECK_H + 14}
+              width={140}
+              height={26}
+              rx={3}
+              fill="oklch(0.10 0.003 170)"
+              stroke="color-mix(in oklab, var(--neon) 18%, transparent)"
+              strokeWidth="0.5"
             />
           </svg>
 
