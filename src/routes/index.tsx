@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { ArrowRight, Download, Cpu, Radio, Layers } from "lucide-react";
 import { InteractivePCB } from "@/components/InteractivePCB";
+import { LaptopFrame } from "@/components/LaptopFrame";
 import { Panel, Section } from "@/components/SiteShell";
 
 export const Route = createFileRoute("/")({
@@ -78,7 +79,9 @@ function Home() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.1 }}
           >
-            <InteractivePCB size={500} />
+            <LaptopFrame>
+              <InteractivePCB size={460} />
+            </LaptopFrame>
           </motion.div>
         </div>
       </section>
