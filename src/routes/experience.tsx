@@ -8,7 +8,7 @@ export const Route = createFileRoute("/experience")({
       { title: "Experience — Neeraj K" },
       { name: "description", content: "Engineering internship at HL Mando Anand Pvt Ltd — manufacturing automation and process improvement." },
       { property: "og:title", content: "Experience — Neeraj K" },
-      { property: "og:description", content: "Engineering intern working on manufacturing automation initiatives." },
+      { property: "og:description", content: "Completed engineering internship working on manufacturing automation initiatives." },
     ],
   }),
   component: Experience,
@@ -17,7 +17,7 @@ export const Route = createFileRoute("/experience")({
 // Internship: 24th June 2026 → 24th July 2026 (~1 month window presented)
 const START = new Date("2026-06-24T00:00:00");
 const END = new Date("2026-07-24T00:00:00");
-const TODAY = new Date("2026-07-18T00:00:00"); // aligns with current context date
+const TODAY = new Date("2026-07-25T00:00:00"); // internship completed
 
 function progress() {
   const total = END.getTime() - START.getTime();
@@ -39,9 +39,9 @@ const FOCUS = [
 ];
 
 const HIGHLIGHTS = [
-  { title: "Engineering Mindset", desc: "Translating academic project experience into structured problem-solving on the shop floor." },
-  { title: "Automation Focus", desc: "Supporting manufacturing automation initiatives and process-improvement workflows." },
-  { title: "Team Delivery", desc: "Working alongside experienced engineers across functions in a real industrial environment." },
+  { title: "Engineering Mindset", desc: "Translated academic project experience into structured problem-solving on the shop floor." },
+  { title: "Automation Focus", desc: "Supported manufacturing automation initiatives and process-improvement workflows." },
+  { title: "Team Delivery", desc: "Worked alongside experienced engineers across functions in a real industrial environment." },
 ];
 
 function Experience() {
@@ -78,12 +78,12 @@ function Experience() {
                   <div className="flex items-center gap-3">
                     <Briefcase className="text-neon" size={26} strokeWidth={1.5} />
                     <span className="text-[10px] uppercase tracking-[0.3em] text-neon">
-                      // Currently pursuing
+                      // Completed internship
                     </span>
                   </div>
                   <span className="inline-flex items-center gap-2 border border-neon/40 px-2.5 py-1 text-[10px] uppercase tracking-[0.25em] text-neon">
-                    <span className="size-1.5 rounded-full bg-neon anim-pulse-neon" />
-                    Live
+                    <span className="size-1.5 rounded-full bg-neon" />
+                    Completed
                   </span>
                 </div>
 
@@ -125,17 +125,17 @@ function Experience() {
                   </div>
                   <div className="mt-2 flex items-center justify-between text-[10px] tracking-widest text-muted-foreground">
                     <span>24 JUN</span>
-                    <span>{p.remaining} days remaining</span>
+                    <span>Completed</span>
                     <span>24 JUL</span>
                   </div>
                 </div>
 
                 {/* description */}
                 <p className="mt-7 text-muted-foreground leading-relaxed">
-                  Interning at HL Mando Anand Pvt Ltd from 24th June 2026 to 24th July 2026,
-                  learning how large-scale manufacturing operates, supporting automation
-                  workflows, and translating academic engineering knowledge into practical
-                  shop-floor impact.
+                  Completed a one-month internship at HL Mando Anand Pvt Ltd from 24th June 2026
+                  to 24th July 2026 — learning how large-scale manufacturing operates, supporting
+                  automation workflows, and translating academic engineering knowledge into
+                  practical shop-floor impact.
                 </p>
 
                 {/* focus pills */}
@@ -162,7 +162,7 @@ function Experience() {
               <StatRow icon={Target} label="Focus" value="Automation" />
               <StatRow icon={MapPin} label="Company" value="HL Mando Anand Pvt Ltd" />
               <StatRow icon={Calendar} label="Window" value="24 Jun → 24 Jul 2026" />
-              <StatRow icon={Clock} label="Remaining" value={`${p.remaining} days`} />
+              <StatRow icon={Clock} label="Status" value="Completed" />
               <StatRow icon={TrendingUp} label="Progress" value={`${p.pct}%`} />
             </div>
 
