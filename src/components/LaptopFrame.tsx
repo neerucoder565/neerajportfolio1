@@ -32,18 +32,31 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
   const TOTAL_H = MON_H + NECK_H + BASE_H + 4;
 
   return (
-    <div className="relative w-full" style={{ maxWidth: 820 }}>
+    <div
+      className="relative w-full"
+      style={{ maxWidth: 820, perspective: 1600 }}
+    >
       <motion.div
         animate={{ y: [0, -4, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         className="relative"
       >
         <motion.div
-          initial={{ opacity: 0, y: 24, scale: 0.94 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          initial={{ opacity: 0, y: 24, scale: 0.94, rotateX: -82 }}
+          animate={{ opacity: 1, y: 0, scale: 1, rotateX: 0 }}
+          transition={{
+            opacity: { duration: 0.5 },
+            y: { duration: 0.9, ease: [0.22, 1, 0.36, 1] },
+            scale: { duration: 0.9, ease: [0.22, 1, 0.36, 1] },
+            rotateX: { duration: 1.2, ease: [0.16, 1, 0.3, 1] },
+          }}
           className="relative"
+          style={{
+            transformOrigin: `50% ${((MON_H + NECK_H) / TOTAL_H) * 100}%`,
+            transformStyle: "preserve-3d",
+          }}
         >
+
           <svg
             viewBox={`0 0 ${W} ${TOTAL_H}`}
             className="w-full block"
