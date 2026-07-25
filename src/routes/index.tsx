@@ -1,9 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
-import { ArrowRight, Download, Cpu, Radio, Layers } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 import { InteractivePCB } from "@/components/InteractivePCB";
 import { LaptopFrame } from "@/components/LaptopFrame";
-import { Panel, Section } from "@/components/SiteShell";
+import { StackPipeline } from "@/components/StackPipeline";
+import { Section } from "@/components/SiteShell";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -89,21 +91,10 @@ function Home() {
       </section>
 
       {/* CAPABILITIES */}
-      <Section eyebrow="STACK" title="Engineering Stack">
-        <div className="grid md:grid-cols-3 gap-6">
-          {[
-            { icon: Cpu, title: "MCU & Firmware", desc: "STM32 (Cortex-M4) bare-metal, bootloader design, vector table relocation, interrupt-driven control loops in embedded C." },
-            { icon: Radio, title: "Peripherals & Buses", desc: "UART, SPI, I²C bring-up, sensor interfacing, DMA, and mixed-signal work — including R-2R DACs and PID actuation." },
-            { icon: Layers, title: "Systems & Edge AI", desc: "RTOS scheduling patterns, RISC-V (VEGA) fundamentals, and FPGA-fronted on-device vision pipelines." },
-          ].map((c) => (
-            <Panel key={c.title}>
-              <c.icon className="text-neon mb-4" size={28} strokeWidth={1.5} />
-              <h3 className="font-display text-xl uppercase mb-2">{c.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{c.desc}</p>
-            </Panel>
-          ))}
-        </div>
+      <Section eyebrow="STACK" title="Signal Path">
+        <StackPipeline />
       </Section>
+
     </>
   );
 }
