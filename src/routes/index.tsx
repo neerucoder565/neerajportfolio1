@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 import { ArrowRight, Download } from "lucide-react";
 import { InteractivePCB } from "@/components/InteractivePCB";
 import { LaptopFrame } from "@/components/LaptopFrame";
-import { StackPipeline } from "@/components/StackPipeline";
+import { EngineeringWorkflow } from "@/components/EngineeringWorkflow";
 import { Section } from "@/components/SiteShell";
 
 
@@ -91,8 +91,8 @@ function Home() {
       </section>
 
       {/* CAPABILITIES */}
-      <Section eyebrow="STACK" title="Signal Path">
-        <StackPipeline />
+      <Section eyebrow="PROCESS" title="Engineering Workflow">
+        <EngineeringWorkflow />
       </Section>
 
     </>
