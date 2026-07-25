@@ -11,7 +11,7 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
   const MON_X = 4;
   const MON_Y = 0;
   const MON_W = 632;
-  const MON_H = 672;
+  const MON_H = 560;
   const BEZEL_X = 8;
   const BEZEL_T = 6;
   const BEZEL_B = 26;
