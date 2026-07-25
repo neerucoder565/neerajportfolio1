@@ -75,14 +75,16 @@ function Home() {
 
           <motion.div
             className="flex justify-center lg:justify-end"
+            style={{ transform: "translateY(-113px)" }}
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.1 }}
           >
             <LaptopFrame>
-              <InteractivePCB size={430} />
+              <InteractivePCB size={400} />
             </LaptopFrame>
           </motion.div>
+
         </div>
       </section>
 
