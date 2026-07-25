@@ -22,7 +22,7 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
   const LID_H = MON_H + 4;
 
   // Base geometry
-  const BASE_H = 62;
+  const BASE_H = 122;
   const NECK_H = 6;
 
   const GRADS = (
