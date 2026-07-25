@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { ArrowDown } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 type Stage = {
   id: string;
@@ -56,6 +56,7 @@ const STAGES: Stage[] = [
 
 export function EngineeringWorkflow() {
   const [active, setActive] = useState<string | null>(STAGES[0].id);
+  const activeStage = STAGES.find((s) => s.id === active) ?? null;
 
   return (
     <div className="corners relative border border-border bg-card/40 p-5 md:p-8">
@@ -68,76 +69,79 @@ export function EngineeringWorkflow() {
         }}
       />
 
-      <div className="relative flex flex-col">
-        {STAGES.map((s, i) => {
-          const isActive = active === s.id;
-          return (
-            <div key={s.id}>
-              <motion.button
-                type="button"
-                onMouseEnter={() => setActive(s.id)}
-                onFocus={() => setActive(s.id)}
-                onClick={() => setActive(isActive ? null : s.id)}
-                initial={{ opacity: 0, x: -12 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.4, delay: i * 0.06 }}
-                className={`group w-full text-left border-l-2 pl-4 md:pl-6 py-3 transition-colors ${
-                  isActive
-                    ? "border-neon bg-neon/5"
-                    : "border-border hover:border-neon/50"
-                }`}
-              >
-                <div className="flex items-center gap-3">
-                  <span className="font-display text-[10px] tracking-[0.3em] text-muted-foreground">
+      <div className="relative">
+        {/* Horizontal rail */}
+        <div className="flex items-stretch gap-2 md:gap-3 overflow-x-auto pb-2">
+          {STAGES.map((s, i) => {
+            const isActive = active === s.id;
+            return (
+              <div key={s.id} className="flex items-center shrink-0">
+                <motion.button
+                  type="button"
+                  onMouseEnter={() => setActive(s.id)}
+                  onFocus={() => setActive(s.id)}
+                  onClick={() => setActive(isActive ? null : s.id)}
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.4, delay: i * 0.06 }}
+                  className={`group relative border-t-2 pt-3 px-3 md:px-4 pb-2 min-w-[130px] md:min-w-[150px] text-left transition-colors ${
+                    isActive
+                      ? "border-neon bg-neon/5"
+                      : "border-border hover:border-neon/50"
+                  }`}
+                >
+                  <div className="font-display text-[10px] tracking-[0.3em] text-muted-foreground">
                     {s.id}
-                  </span>
-                  <span
-                    className={`font-display text-base md:text-xl uppercase tracking-[0.2em] transition-colors ${
+                  </div>
+                  <div
+                    className={`font-display text-sm md:text-base uppercase tracking-[0.18em] mt-1 transition-colors ${
                       isActive ? "text-neon" : "text-foreground"
                     }`}
                   >
                     {s.label}
-                  </span>
-                  <span className="hidden md:block flex-1 border-b border-dashed border-border/70" />
-                </div>
+                  </div>
+                </motion.button>
 
-                <AnimatePresence initial={false}>
-                  {isActive && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: "easeOut" }}
-                      className="overflow-hidden"
+                {i < STAGES.length - 1 && (
+                  <div className="flex items-center gap-1 px-1 text-muted-foreground">
+                    <span className="h-px w-4 md:w-6 bg-border" />
+                    <ArrowRight size={14} className="text-neon/70" />
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Detail panel */}
+        <div className="mt-5 border-t border-dashed border-border/70 pt-5 min-h-[120px]">
+          <AnimatePresence mode="wait">
+            {activeStage && (
+              <motion.div
+                key={activeStage.id}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.25 }}
+              >
+                <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
+                  {activeStage.note}
+                </p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {activeStage.items.map((it) => (
+                    <span
+                      key={it}
+                      className="border border-neon/40 text-neon px-2.5 py-1 font-display text-[10px] uppercase tracking-[0.2em]"
                     >
-                      <p className="pt-3 text-sm text-muted-foreground leading-relaxed max-w-xl">
-                        {s.note}
-                      </p>
-                      <div className="mt-3 flex flex-wrap gap-2">
-                        {s.items.map((it) => (
-                          <span
-                            key={it}
-                            className="border border-neon/40 text-neon px-2.5 py-1 font-display text-[10px] uppercase tracking-[0.2em]"
-                          >
-                            {it}
-                          </span>
-                        ))}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.button>
-
-              {i < STAGES.length - 1 && (
-                <div className="flex items-center gap-2 pl-3 md:pl-5 py-1 text-muted-foreground">
-                  <ArrowDown size={14} className="text-neon/70" />
-                  <span className="h-px w-6 bg-border" />
+                      {it}
+                    </span>
+                  ))}
                 </div>
-              )}
-            </div>
-          );
-        })}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </div>
     </div>
   );
