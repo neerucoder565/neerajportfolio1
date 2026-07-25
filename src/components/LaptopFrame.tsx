@@ -141,7 +141,6 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
           className="w-full block -mt-px"
           aria-hidden
         >
-          {GRADS}
           <rect
             x={MON_X + 40}
             y={0}
