@@ -74,8 +74,8 @@ function Home() {
           </motion.div>
 
           <motion.div
-            className="flex justify-center lg:justify-end"
-            style={{ transform: "translateY(-113px)" }}
+            className="flex justify-center lg:justify-end lg:-mt-[113px]"
+
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.1 }}
