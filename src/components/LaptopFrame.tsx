@@ -22,7 +22,7 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
   const LID_H = MON_H + 4;
 
   // Base geometry
-  const BASE_H = 62;
+  const BASE_H = 122;
   const NECK_H = 6;
 
   const GRADS = (
@@ -168,16 +168,56 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
             strokeWidth="0.6"
             fill="none"
           />
+          {/* Keyboard keys */}
+          {[14, 14, 13, 12, 10].map((count, r) => {
+            const inset = 46 - r * 4;
+            const left = MON_X + inset;
+            const right = MON_X + MON_W - inset;
+            const gap = 2.4;
+            const kw = (right - left - gap * (count - 1)) / count;
+            const kh = 8.4;
+            const y = NECK_H + 9 + r * (kh + 2.6);
+            return (
+              <g key={r}>
+                {Array.from({ length: count }).map((_, i) => (
+                  <rect
+                    key={i}
+                    x={left + i * (kw + gap)}
+                    y={y}
+                    width={kw}
+                    height={kh}
+                    rx={1.6}
+                    fill="oklch(0.13 0.004 170)"
+                    stroke="color-mix(in oklab, var(--neon) 16%, transparent)"
+                    strokeWidth="0.4"
+                  />
+                ))}
+              </g>
+            );
+          })}
+          {/* Spacebar row */}
           <rect
-            x={W / 2 - 70}
-            y={NECK_H + 16}
-            width={140}
+            x={W / 2 - 90}
+            y={NECK_H + 9 + 5 * 11}
+            width={180}
+            height={8.4}
+            rx={1.6}
+            fill="oklch(0.13 0.004 170)"
+            stroke="color-mix(in oklab, var(--neon) 16%, transparent)"
+            strokeWidth="0.4"
+          />
+          {/* Trackpad */}
+          <rect
+            x={W / 2 - 62}
+            y={NECK_H + 9 + 6 * 11 + 5}
+            width={124}
             height={26}
             rx={3}
             fill="oklch(0.10 0.003 170)"
-            stroke="color-mix(in oklab, var(--neon) 18%, transparent)"
+            stroke="color-mix(in oklab, var(--neon) 20%, transparent)"
             strokeWidth="0.5"
           />
+
         </svg>
       </motion.div>
 
