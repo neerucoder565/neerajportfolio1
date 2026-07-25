@@ -12,8 +12,8 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
   const MON_Y = 0;
   const MON_W = 632;
   const MON_H = 560;
-  const BEZEL_X = 10;
-  const BEZEL_T = 8;
+  const BEZEL_X = 8;
+  const BEZEL_T = 6;
   const BEZEL_B = 26;
   const SCREEN_X = MON_X + BEZEL_X;
   const SCREEN_Y = MON_Y + BEZEL_T;
@@ -52,7 +52,7 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
   );
 
   return (
-    <div className="relative w-full" style={{ maxWidth: 820, perspective: 1800 }}>
+    <div className="relative w-full" style={{ maxWidth: 960, perspective: 1800 }}>
       <motion.div
         animate={{ y: [0, -4, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
@@ -129,7 +129,7 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
                   "radial-gradient(ellipse at 50% 40%, color-mix(in oklab, var(--neon) 8%, transparent), transparent 70%)",
               }}
             />
-            <div className="relative z-[5] w-full h-full flex items-center justify-center p-2">
+            <div className="relative z-[5] w-full h-full flex items-center justify-center p-1">
               {children}
             </div>
           </motion.div>
