@@ -74,7 +74,7 @@ function Home() {
           </motion.div>
 
           <motion.div
-            className="flex justify-center lg:justify-end lg:-mt-[113px]"
+            className="flex justify-center lg:justify-end lg:-mt-[88px]"
 
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
