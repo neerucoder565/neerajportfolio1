@@ -13,7 +13,7 @@ import {
   ShieldCheck,
   CheckCircle2,
 } from "lucide-react";
-import entranceImg from "@/assets/mando-entrance.jpg";
+import buildingAsset from "@/assets/hl-mando-building.jpeg.asset.json";
 import gateImg from "@/assets/mando-gate.jpg";
 import campusImg from "@/assets/mando-campus.jpg";
 import officeImg from "@/assets/mando-office.jpg";
@@ -23,7 +23,7 @@ import landscapeImg from "@/assets/mando-landscape.jpg";
 export const Route = createFileRoute("/experience_/hl-mando")({
   head: () => ({
     meta: [
-      { title: "Project Dossier #02 — HL Mando Anand Pvt Ltd · Neeraj K" },
+      { title: "HL Mando Anand Pvt Ltd Internship — Neeraj K" },
       {
         name: "description",
         content:
@@ -31,12 +31,12 @@ export const Route = createFileRoute("/experience_/hl-mando")({
       },
       {
         property: "og:title",
-        content: "Project Dossier #02 — HL Mando Anand Pvt Ltd",
+        content: "HL Mando Anand Pvt Ltd — Engineering Internship",
       },
       {
         property: "og:description",
         content:
-          "Manufacturing automation internship dossier — mission context, assignments, timeline and outcomes.",
+          "Manufacturing automation internship — mission context, assignments, timeline and outcomes.",
       },
       { property: "og:type", content: "article" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -75,8 +75,7 @@ const ASSIGNMENTS = [
 ];
 
 const GALLERY = [
-  { src: entranceImg, alt: "Plant main entrance", label: "Entrance", span: "md:col-span-2 md:row-span-2", h: "h-64 md:h-full" },
-  { src: campusImg, alt: "Industrial campus aerial view", label: "Campus", span: "md:col-span-2", h: "h-48 md:h-56" },
+  { src: campusImg, alt: "Industrial campus aerial view", label: "Campus", span: "md:col-span-2 md:row-span-2", h: "h-64 md:h-full" },
   { src: gateImg, alt: "Security gate", label: "Gate", span: "", h: "h-48 md:h-56" },
   { src: officeImg, alt: "Office building", label: "Office", span: "", h: "h-48 md:h-56" },
   { src: signImg, alt: "Company signboard", label: "Signboard", span: "", h: "h-48 md:h-52" },
@@ -112,7 +111,10 @@ const STATS = [
 function useTyped(text: string, active: boolean, speed = 28) {
   const [out, setOut] = useState("");
   useEffect(() => {
-    if (!active) return;
+    if (!active) {
+      setOut("");
+      return;
+    }
     let i = 0;
     const id = setInterval(() => {
       i += 1;
@@ -124,13 +126,12 @@ function useTyped(text: string, active: boolean, speed = 28) {
   return active ? out : "";
 }
 
-function Heading({ eyebrow, title }: { eyebrow: string; title: string }) {
+function Heading({ title }: { title: string }) {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const inView = useInView(ref, { once: false, margin: "-80px" });
   const typed = useTyped(title, inView, 26);
   return (
     <div ref={ref} className="mb-10">
-      <div className="text-[10px] tracking-[0.35em] text-neon mb-3">// {eyebrow}</div>
       <h2 className="font-display text-2xl md:text-4xl uppercase min-h-[1.2em]">
         {typed}
         {inView && typed.length < title.length && (
@@ -143,7 +144,7 @@ function Heading({ eyebrow, title }: { eyebrow: string; title: string }) {
 
 function Bar({ pct, label }: { pct: number; label: string }) {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
+  const inView = useInView(ref, { once: false, margin: "-60px" });
   return (
     <div ref={ref}>
       <div className="flex items-end justify-between mb-2">
@@ -168,7 +169,7 @@ function Bar({ pct, label }: { pct: number; label: string }) {
 const BOOT = [
   "ACCESS REQUEST...",
   "VERIFYING CLEARANCE...",
-  "DECRYPTING FILE #02...",
+  "LOADING RECORD...",
   "ACCESS GRANTED",
 ];
 
@@ -264,8 +265,8 @@ function Dossier() {
         {/* HERO */}
         <section className="relative min-h-[85vh] flex items-end overflow-hidden border-b border-border">
           <img
-            src={entranceImg}
-            alt="HL Mando Anand plant entrance"
+            src={buildingAsset.url}
+            alt="HL Mando Anand plant facility"
             width={1600}
             height={900}
             className="absolute inset-0 size-full object-cover opacity-45"
@@ -301,11 +302,11 @@ function Dossier() {
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <span className="border border-neon/40 px-2.5 py-1 text-[10px] uppercase tracking-[0.3em] text-neon">
-                Project Dossier #02
+                Engineering Internship
               </span>
               <span className="inline-flex items-center gap-2 border border-border px-2.5 py-1 text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
                 <span className="size-1.5 rounded-full bg-neon anim-pulse-neon" />
-                Status : Declassified
+                Status : Completed
               </span>
             </div>
 
@@ -323,19 +324,19 @@ function Dossier() {
               href="#mission-context"
               className="mt-9 inline-flex items-center gap-3 border border-neon/50 px-5 py-3 text-[11px] uppercase tracking-[0.3em] text-neon hover:bg-neon/10 transition-colors"
             >
-              [ Open Dossier ] <ChevronDown size={14} />
+              View Details <ChevronDown size={14} />
             </a>
           </div>
         </section>
 
         {/* MISSION CONTEXT */}
         <section id="mission-context" className="mx-auto max-w-7xl px-6 py-20">
-          <Heading eyebrow="FILE 01" title="Mission Context" />
+          <Heading title="Mission Context" />
           <div className="grid lg:grid-cols-2 gap-10 items-start">
             <div className="corners relative border border-border overflow-hidden group">
               <img
-                src={entranceImg}
-                alt="Plant entrance, wide view"
+                src={buildingAsset.url}
+                alt="HL Mando Anand plant building"
                 loading="lazy"
                 width={1600}
                 height={900}
@@ -343,7 +344,7 @@ function Dossier() {
               />
               <div className="pointer-events-none absolute inset-0 scanline opacity-30" />
               <div className="absolute bottom-0 left-0 right-0 bg-background/80 px-4 py-2 text-[10px] uppercase tracking-[0.3em] text-neon">
-                // Entrance · Site Overview
+                // HL Mando Anand · Plant Facility
               </div>
             </div>
 
@@ -365,7 +366,7 @@ function Dossier() {
 
         {/* INITIAL BRIEF */}
         <section className="mx-auto max-w-7xl px-6 py-20">
-          <Heading eyebrow="FILE 02" title="Initial Brief" />
+          <Heading title="Initial Brief" />
           <div className="corners relative border border-border bg-card/40 p-6 md:p-10 max-w-3xl">
             <div className="pointer-events-none absolute inset-0 scanline opacity-40" />
             <div className="relative font-mono text-sm space-y-6">
@@ -396,14 +397,14 @@ function Dossier() {
 
         {/* ASSIGNMENTS */}
         <section className="mx-auto max-w-7xl px-6 py-20">
-          <Heading eyebrow="FILE 03" title="Assignments Received" />
+          <Heading title="Assignments Received" />
           <div className="grid md:grid-cols-3 gap-6">
             {ASSIGNMENTS.map((a, i) => (
               <motion.div
                 key={a.id}
                 initial={{ opacity: 0, y: 28 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
+                viewport={{ once: false, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: i * 0.18 }}
                 className="corners relative border border-border bg-card/40 p-6 glow-border-hover"
               >
@@ -429,7 +430,7 @@ function Dossier() {
 
         {/* GALLERY */}
         <section className="mx-auto max-w-7xl px-6 py-20">
-          <Heading eyebrow="FILE 04" title="Site Imagery" />
+          <Heading title="Site Imagery" />
           <div className="grid md:grid-cols-4 md:auto-rows-[13rem] gap-4">
             {GALLERY.map((g) => (
               <div
@@ -457,7 +458,7 @@ function Dossier() {
 
         {/* TIMELINE */}
         <section className="mx-auto max-w-7xl px-6 py-20">
-          <Heading eyebrow="FILE 05" title="Deployment Timeline" />
+          <Heading title="Deployment Timeline" />
           <div className="relative max-w-3xl pl-8 md:pl-12">
             <div className="absolute left-[7px] md:left-[11px] top-2 bottom-2 w-px bg-border" />
             {TIMELINE.map((t, i) => (
@@ -465,7 +466,7 @@ function Dossier() {
                 key={t.tag}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
+                viewport={{ once: false, margin: "-60px" }}
                 transition={{ duration: 0.45, delay: i * 0.08 }}
                 className="relative pb-10 last:pb-0"
               >
@@ -491,7 +492,7 @@ function Dossier() {
 
         {/* LEARNING MATRIX */}
         <section className="mx-auto max-w-7xl px-6 py-20">
-          <Heading eyebrow="FILE 06" title="System Upgrade" />
+          <Heading title="System Upgrade" />
           <div className="grid md:grid-cols-2 gap-x-12 gap-y-8 max-w-4xl">
             {MATRIX.map((m) => (
               <Bar key={m.label} pct={m.pct} label={m.label} />
@@ -507,7 +508,7 @@ function Dossier() {
                 key={s.label}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 transition={{ duration: 0.45, delay: i * 0.1 }}
                 className="border-t border-neon/40 pt-4"
               >
@@ -524,7 +525,7 @@ function Dossier() {
 
         {/* MISSION COMPLETE */}
         <section className="mx-auto max-w-7xl px-6 py-24">
-          <Heading eyebrow="FILE 07" title="Mission Complete" />
+          <Heading title="Mission Complete" />
           <div className="grid lg:grid-cols-[auto_1fr] gap-12 items-center">
             <div className="relative size-56 md:size-64 mx-auto">
               <svg viewBox="0 0 200 200" className="absolute inset-0 anim-spin-slow">
@@ -564,7 +565,7 @@ function Dossier() {
                   strokeDasharray={2 * Math.PI * 58}
                   initial={{ strokeDashoffset: 2 * Math.PI * 58 }}
                   whileInView={{ strokeDashoffset: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false }}
                   transition={{ duration: 1.6, ease: "easeOut" }}
                   style={{ filter: "drop-shadow(0 0 8px var(--neon))" }}
                 />
@@ -609,7 +610,7 @@ function Dossier() {
                   to="/experience"
                   className="border border-border px-4 py-2.5 text-[10px] uppercase tracking-[0.3em] text-muted-foreground hover:text-neon hover:border-neon/60 transition-colors"
                 >
-                  Close Dossier
+                  Back to Experience
                 </Link>
                 <Link
                   to="/contact"
