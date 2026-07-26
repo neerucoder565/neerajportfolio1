@@ -27,7 +27,7 @@ export const Route = createFileRoute("/experience_/hl-mando")({
       {
         name: "description",
         content:
-          "Industrial immersion dossier: one-month engineering internship at HL Mando Anand Pvt Ltd covering manufacturing automation, production observation and an engineering proposal.",
+          "One-month engineering internship at HL Mando Anand Pvt Ltd covering manufacturing automation, production observation and an engineering proposal.",
       },
       {
         property: "og:title",
@@ -42,7 +42,7 @@ export const Route = createFileRoute("/experience_/hl-mando")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  component: Dossier,
+  component: InternshipDetail,
 });
 
 /* ---------------------------------------------------------------- data --- */
@@ -250,7 +250,7 @@ function Particles() {
 
 /* ----------------------------------------------------------------- page --- */
 
-function Dossier() {
+function InternshipDetail() {
   const [locked, setLocked] = useState(true);
 
   return (
