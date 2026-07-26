@@ -268,9 +268,9 @@ function Dossier() {
             alt="HL Mando Anand plant entrance"
             width={1600}
             height={900}
-            className="absolute inset-0 size-full object-cover opacity-30"
+            className="absolute inset-0 size-full object-cover opacity-45"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/85 to-background/60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/45" />
           <div
             className="pointer-events-none absolute inset-0 opacity-[0.12]"
             style={{
