@@ -1,6 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Panel, Section } from "@/components/SiteShell";
-import { Briefcase, MapPin, Calendar, Target, Cog, Factory, Users, Clock, TrendingUp } from "lucide-react";
+import { Briefcase, MapPin, Calendar, Target, Cog, Factory, Users, Clock, TrendingUp, ArrowRight } from "lucide-react";
+
 
 export const Route = createFileRoute("/experience")({
   head: () => ({
