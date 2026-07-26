@@ -23,7 +23,6 @@ const buildingSrc = buildingAsset.url.startsWith("/")
 import gateImg from "@/assets/mando-gate.jpg";
 import campusImg from "@/assets/mando-campus.jpg";
 import officeImg from "@/assets/mando-office.jpg";
-import signImg from "@/assets/mando-sign.jpg";
 import landscapeImg from "@/assets/mando-landscape.jpg";
 
 export const Route = createFileRoute("/experience_/hl-mando")({
@@ -58,7 +57,7 @@ const CONTEXT = [
   { icon: Layers, label: "Operations", value: "Braking & suspension systems" },
   { icon: Building2, label: "Scale", value: "Multi-line production plant" },
   { icon: Target, label: "Focus", value: "Automation & process improvement" },
-  { icon: MapPin, label: "Location", value: "India" },
+  { icon: MapPin, label: "Location", value: "Plant 1, Sipcot Industrial Park, Sriperambadur" },
   { icon: CalendarDays, label: "Window", value: "24 Jun — 24 Jul 2026" },
 ];
 
@@ -84,7 +83,6 @@ const GALLERY = [
   { src: campusImg, alt: "Industrial campus aerial view", label: "Campus", span: "md:col-span-2 md:row-span-2", h: "h-64 md:h-full" },
   { src: gateImg, alt: "Security gate", label: "Gate", span: "", h: "h-48 md:h-56" },
   { src: officeImg, alt: "Office building", label: "Office", span: "", h: "h-48 md:h-56" },
-  { src: signImg, alt: "Company signboard", label: "Signboard", span: "", h: "h-48 md:h-52" },
   { src: landscapeImg, alt: "Plant landscape", label: "Landscape", span: "md:col-span-3", h: "h-48 md:h-52" },
 ];
 
@@ -617,12 +615,6 @@ function InternshipDetail() {
                   className="border border-border px-4 py-2.5 text-[10px] uppercase tracking-[0.3em] text-muted-foreground hover:text-neon hover:border-neon/60 transition-colors"
                 >
                   Back to Experience
-                </Link>
-                <Link
-                  to="/contact"
-                  className="border border-neon/50 px-4 py-2.5 text-[10px] uppercase tracking-[0.3em] text-neon hover:bg-neon/10 transition-colors"
-                >
-                  Request Debrief
                 </Link>
               </div>
             </div>
