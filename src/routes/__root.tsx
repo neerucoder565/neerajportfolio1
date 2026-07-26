@@ -52,7 +52,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   head: () => ({
     meta: [
       { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      // Lock the viewport to a desktop width so phones/tablets render the exact
+      // same layout as a laptop (scaled to fit) instead of reflowing to mobile.
+      { name: "viewport", content: "width=1280, minimum-scale=0.1, maximum-scale=5, user-scalable=yes" },
       { title: "Neeraj K — Embedded Systems & Hardware Engineer" },
       { name: "description", content: "Portfolio of Neeraj K — building intelligent embedded systems, electronics, and hardware solutions." },
       { name: "author", content: "Neeraj K" },
