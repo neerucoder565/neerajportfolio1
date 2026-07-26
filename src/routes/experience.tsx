@@ -150,6 +150,15 @@ function Experience() {
                     </span>
                   ))}
                 </div>
+
+                {/* dossier CTA */}
+                <Link
+                  to="/experience/hl-mando"
+                  className="mt-7 inline-flex items-center gap-3 border border-neon/50 px-5 py-3 text-[10px] uppercase tracking-[0.3em] text-neon hover:bg-neon/10 transition-colors"
+                >
+                  [ Open Dossier ] <ArrowRight size={13} />
+                </Link>
+
               </div>
             </div>
           </div>
