@@ -54,7 +54,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       // Lock the viewport to a desktop width so phones/tablets render the exact
       // same layout as a laptop (scaled to fit) instead of reflowing to mobile.
-      { name: "viewport", content: "width=1280, initial-scale=0.1, minimum-scale=0.1, maximum-scale=5, user-scalable=yes" },
+      { name: "viewport", content: "width=1280, minimum-scale=0.1, maximum-scale=5, user-scalable=yes" },
       { title: "Neeraj K — Embedded Systems & Hardware Engineer" },
       { name: "description", content: "Portfolio of Neeraj K — building intelligent embedded systems, electronics, and hardware solutions." },
       { name: "author", content: "Neeraj K" },
