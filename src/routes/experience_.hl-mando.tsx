@@ -14,6 +14,12 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import buildingAsset from "@/assets/hl-mando-building.jpeg.asset.json";
+
+// Relative "/__l5e/..." asset paths only resolve on the Lovable-hosted origin.
+// Use the absolute CDN origin so the image loads on custom worker deployments.
+const buildingSrc = buildingAsset.url.startsWith("/")
+  ? `https://project--f5fd28dd-7b71-489d-910e-961a65dfa09f.lovable.app${buildingAsset.url}`
+  : buildingAsset.url;
 import gateImg from "@/assets/mando-gate.jpg";
 import campusImg from "@/assets/mando-campus.jpg";
 import officeImg from "@/assets/mando-office.jpg";
@@ -265,7 +271,7 @@ function InternshipDetail() {
         {/* HERO */}
         <section className="relative min-h-[85vh] flex items-end overflow-hidden border-b border-border">
           <img
-            src={buildingAsset.url}
+            src={buildingSrc}
             alt="HL Mando Anand plant facility"
             width={1600}
             height={900}
@@ -335,7 +341,7 @@ function InternshipDetail() {
           <div className="grid lg:grid-cols-2 gap-10 items-start">
             <div className="corners relative border border-border overflow-hidden group">
               <img
-                src={buildingAsset.url}
+                src={buildingSrc}
                 alt="HL Mando Anand plant building"
                 loading="lazy"
                 width={1600}
