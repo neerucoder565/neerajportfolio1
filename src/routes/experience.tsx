@@ -53,7 +53,10 @@ function Experience() {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* MAIN CARD */}
           <div className="lg:col-span-2">
-            <div className="corners relative bg-card/40 border border-border p-6 md:p-8 glow-border-hover overflow-hidden group">
+            <Link
+              to="/experience/hl-mando"
+              className="corners relative block bg-card/40 border border-border p-6 md:p-8 glow-border-hover overflow-hidden group cursor-pointer"
+            >
               {/* inner grid texture */}
               <div
                 className="pointer-events-none absolute inset-0 opacity-[0.08]"
@@ -152,16 +155,13 @@ function Experience() {
                   ))}
                 </div>
 
-                {/* dossier CTA */}
-                <Link
-                  to="/experience/hl-mando"
-                  className="mt-7 inline-flex items-center gap-3 border border-neon/50 px-5 py-3 text-[10px] uppercase tracking-[0.3em] text-neon hover:bg-neon/10 transition-colors"
-                >
-                  [ Open Dossier ] <ArrowRight size={13} />
-                </Link>
+                {/* CTA */}
+                <span className="mt-7 inline-flex items-center gap-3 border border-neon/50 px-5 py-3 text-[10px] uppercase tracking-[0.3em] text-neon group-hover:bg-neon/10 transition-colors">
+                  View Full Details <ArrowRight size={13} />
+                </span>
 
               </div>
-            </div>
+            </Link>
           </div>
 
           {/* SIDE STATUS PANEL */}
