@@ -53,7 +53,10 @@ function Experience() {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* MAIN CARD */}
           <div className="lg:col-span-2">
-            <div className="corners relative bg-card/40 border border-border p-6 md:p-8 glow-border-hover overflow-hidden group">
+            <Link
+              to="/experience/hl-mando"
+              className="corners relative block bg-card/40 border border-border p-6 md:p-8 glow-border-hover overflow-hidden group cursor-pointer"
+            >
               {/* inner grid texture */}
               <div
                 className="pointer-events-none absolute inset-0 opacity-[0.08]"
