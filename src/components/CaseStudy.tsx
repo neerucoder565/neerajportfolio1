@@ -573,12 +573,24 @@ function Section({
 }) {
   return (
     <section id={id} className="scroll-mt-24">
-      <div className="text-[10px] tracking-[0.3em] text-neon mb-2">
+      <motion.div
+        initial={{ opacity: 0, x: -12 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true, amount: 0.6 }}
+        transition={{ duration: 0.45, ease: "easeOut" }}
+        className="text-[10px] tracking-[0.3em] text-neon mb-2"
+      >
         // {eyebrow}
-      </div>
-      <h2 className="font-display text-2xl md:text-3xl uppercase mb-6">
+      </motion.div>
+      <motion.h2
+        initial={{ opacity: 0, y: 14, filter: "blur(5px)" }}
+        whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        viewport={{ once: true, amount: 0.6 }}
+        transition={{ duration: 0.55, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+        className="font-display text-2xl md:text-3xl uppercase mb-6 text-glow-soft"
+      >
         {title}
-      </h2>
+      </motion.h2>
       {children}
     </section>
   );
