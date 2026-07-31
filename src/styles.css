@@ -126,9 +126,18 @@
 
 @layer utilities {
   .text-neon {
-    color: var(--neon);
-    text-shadow: 0 0 12px oklch(0.62 0.26 300 / 0.5);
+    color: var(--neon-bright);
+    text-shadow:
+      0 0 6px oklch(0.62 0.26 300 / 0.75),
+      0 0 18px oklch(0.62 0.26 300 / 0.45),
+      0 0 42px oklch(0.62 0.26 300 / 0.28);
   }
+  .text-glow-soft {
+    text-shadow:
+      0 0 10px oklch(0.62 0.26 300 / 0.35),
+      0 0 30px oklch(0.62 0.26 300 / 0.18);
+  }
+
   .glow-border {
     box-shadow:
       0 0 0 1px oklch(0.62 0.26 300 / 0.3),
