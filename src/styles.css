@@ -50,7 +50,7 @@
   --popover: oklch(0.19 0.015 305);
   --popover-foreground: oklch(0.95 0.01 305);
 
-  --primary: oklch(0.72 0.21 305);
+  --primary: oklch(0.62 0.26 300);
   --primary-foreground: oklch(0.14 0.02 305);
 
   --secondary: oklch(0.24 0.02 305);
@@ -59,7 +59,7 @@
   --muted: oklch(0.22 0.015 305);
   --muted-foreground: oklch(0.65 0.03 305);
 
-  --accent: oklch(0.72 0.21 305);
+  --accent: oklch(0.62 0.26 300);
   --accent-foreground: oklch(0.14 0.02 305);
 
   --destructive: oklch(0.65 0.22 25);
@@ -67,22 +67,23 @@
 
   --border: oklch(0.3 0.025 305 / 0.4);
   --input: oklch(0.24 0.02 305);
-  --ring: oklch(0.72 0.21 305);
+  --ring: oklch(0.62 0.26 300);
 
-  --neon: oklch(0.72 0.21 305);
-  --neon-dim: oklch(0.55 0.13 305);
+  --neon: oklch(0.62 0.26 300);
+  --neon-bright: oklch(0.74 0.23 300);
+  --neon-dim: oklch(0.5 0.16 300);
   --grid: oklch(0.3 0.04 305 / 0.18);
 
   --sidebar: oklch(0.16 0.012 305);
   --sidebar-foreground: oklch(0.95 0.01 305);
-  --sidebar-primary: oklch(0.72 0.21 305);
+  --sidebar-primary: oklch(0.62 0.26 300);
   --sidebar-primary-foreground: oklch(0.14 0.02 305);
   --sidebar-accent: oklch(0.22 0.015 305);
   --sidebar-accent-foreground: oklch(0.95 0.01 305);
   --sidebar-border: oklch(0.3 0.025 305 / 0.4);
-  --sidebar-ring: oklch(0.72 0.21 305);
+  --sidebar-ring: oklch(0.62 0.26 300);
 
-  --chart-1: oklch(0.72 0.21 305);
+  --chart-1: oklch(0.62 0.26 300);
   --chart-2: oklch(0.7 0.14 285);
   --chart-3: oklch(0.6 0.11 275);
   --chart-4: oklch(0.55 0.18 320);
@@ -106,8 +107,8 @@
   }
   body {
     background-image:
-      radial-gradient(circle at 20% 10%, oklch(0.72 0.21 305 / 0.07), transparent 50%),
-      radial-gradient(circle at 80% 90%, oklch(0.72 0.21 305 / 0.05), transparent 50%),
+      radial-gradient(circle at 20% 10%, oklch(0.62 0.26 300 / 0.07), transparent 50%),
+      radial-gradient(circle at 80% 90%, oklch(0.62 0.26 300 / 0.05), transparent 50%),
       linear-gradient(var(--grid) 1px, transparent 1px),
       linear-gradient(90deg, var(--grid) 1px, transparent 1px);
     background-size: auto, auto, 56px 56px, 56px 56px;
@@ -116,6 +117,17 @@
   h1, h2, h3, h4 {
     font-family: var(--font-display);
     letter-spacing: 0.02em;
+    text-shadow:
+      0 0 14px oklch(0.62 0.26 300 / 0.28),
+      0 0 40px oklch(0.62 0.26 300 / 0.14);
+  }
+  a, button {
+    transition: color 200ms ease, text-shadow 220ms ease, filter 220ms ease;
+  }
+  a:hover {
+    text-shadow:
+      0 0 8px oklch(0.62 0.26 300 / 0.6),
+      0 0 24px oklch(0.62 0.26 300 / 0.3);
   }
   ::selection {
     background-color: var(--neon);
@@ -125,23 +137,32 @@
 
 @layer utilities {
   .text-neon {
-    color: var(--neon);
-    text-shadow: 0 0 12px oklch(0.72 0.21 305 / 0.5);
+    color: var(--neon-bright);
+    text-shadow:
+      0 0 6px oklch(0.62 0.26 300 / 0.75),
+      0 0 18px oklch(0.62 0.26 300 / 0.45),
+      0 0 42px oklch(0.62 0.26 300 / 0.28);
   }
+  .text-glow-soft {
+    text-shadow:
+      0 0 10px oklch(0.62 0.26 300 / 0.35),
+      0 0 30px oklch(0.62 0.26 300 / 0.18);
+  }
+
   .glow-border {
     box-shadow:
-      0 0 0 1px oklch(0.72 0.21 305 / 0.3),
-      0 0 24px -4px oklch(0.72 0.21 305 / 0.35),
-      inset 0 0 24px -12px oklch(0.72 0.21 305 / 0.25);
+      0 0 0 1px oklch(0.62 0.26 300 / 0.3),
+      0 0 24px -4px oklch(0.62 0.26 300 / 0.35),
+      inset 0 0 24px -12px oklch(0.62 0.26 300 / 0.25);
   }
   .glow-border-hover {
     transition: box-shadow 200ms ease, transform 200ms ease, border-color 200ms ease;
   }
   .glow-border-hover:hover {
     box-shadow:
-      0 0 0 1px oklch(0.72 0.21 305 / 0.6),
-      0 0 32px -2px oklch(0.72 0.21 305 / 0.5),
-      inset 0 0 32px -10px oklch(0.72 0.21 305 / 0.35);
+      0 0 0 1px oklch(0.62 0.26 300 / 0.6),
+      0 0 32px -2px oklch(0.62 0.26 300 / 0.5),
+      inset 0 0 32px -10px oklch(0.62 0.26 300 / 0.35);
   }
   .corners::before,
   .corners::after {
@@ -168,8 +189,8 @@
       0deg,
       transparent 0,
       transparent 3px,
-      oklch(0.72 0.21 305 / 0.04) 3px,
-      oklch(0.72 0.21 305 / 0.04) 4px
+      oklch(0.62 0.26 300 / 0.04) 3px,
+      oklch(0.62 0.26 300 / 0.04) 4px
     );
   }
   @keyframes spin-slow { to { transform: rotate(360deg); } }
@@ -181,4 +202,31 @@
   .anim-spin-slow { animation: spin-slow 18s linear infinite; }
   .anim-spin-reverse { animation: spin-reverse 24s linear infinite; }
   .anim-pulse-neon { animation: pulse-neon 2.4s ease-in-out infinite; }
+
+  @keyframes reveal-up {
+    from { opacity: 0; transform: translateY(28px) scale(0.985); filter: blur(6px); }
+    to { opacity: 1; transform: none; filter: blur(0); }
+  }
+  @keyframes glow-breathe {
+    0%, 100% { text-shadow: 0 0 6px oklch(0.62 0.26 300 / 0.5), 0 0 20px oklch(0.62 0.26 300 / 0.25); }
+    50% { text-shadow: 0 0 12px oklch(0.62 0.26 300 / 0.85), 0 0 44px oklch(0.62 0.26 300 / 0.45); }
+  }
+  .anim-glow-breathe { animation: glow-breathe 3.6s ease-in-out infinite; }
+
+  /* Scroll-linked reveal; only applies where supported so content never hides. */
+  @supports (animation-timeline: view()) {
+    .reveal,
+    section > .corners,
+    main section > h2,
+    main section > div > h2 {
+      animation: reveal-up linear both;
+      animation-timeline: view();
+      animation-range: entry 2% cover 26%;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .anim-glow-breathe, .anim-spin-slow, .anim-spin-reverse, .anim-pulse-neon {
+      animation: none !important;
+    }
+  }
 }
