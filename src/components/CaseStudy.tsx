@@ -237,7 +237,7 @@ export function CaseStudyPage({ slug }: { slug: CaseStudySlug }) {
                         className="absolute inset-0 grid place-items-center text-[10px] tracking-[0.3em] text-neon/70"
                         style={{
                           backgroundImage:
-                            "linear-gradient(rgba(0,255,170,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,170,0.05) 1px, transparent 1px)",
+                            "linear-gradient(rgba(168,85,247,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(168,85,247,0.05) 1px, transparent 1px)",
                           backgroundSize: "16px 16px",
                         }}
                       >
@@ -423,7 +423,7 @@ function Hero({ study }: { study: CaseStudy }) {
       className="relative border-b border-border/60 overflow-hidden"
       style={{
         backgroundImage:
-          "linear-gradient(rgba(0,255,170,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,170,0.04) 1px, transparent 1px)",
+          "linear-gradient(rgba(168,85,247,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(168,85,247,0.04) 1px, transparent 1px)",
         backgroundSize: "24px 24px",
       }}
     >
@@ -529,7 +529,7 @@ function Hero({ study }: { study: CaseStudy }) {
               className="absolute inset-0 grid place-items-center text-[10px] tracking-[0.3em] text-neon/70"
               style={{
                 backgroundImage:
-                  "linear-gradient(rgba(0,255,170,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,170,0.06) 1px, transparent 1px)",
+                  "linear-gradient(rgba(168,85,247,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(168,85,247,0.06) 1px, transparent 1px)",
                 backgroundSize: "18px 18px",
               }}
             >

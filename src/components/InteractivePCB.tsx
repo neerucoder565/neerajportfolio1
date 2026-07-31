@@ -139,17 +139,17 @@ export function InteractivePCB({ size = 500 }: { size?: number }) {
           <defs>
             {/* PCB substrate — subtle dark green with fiber texture */}
             <linearGradient id="pcb-body" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="oklch(0.22 0.05 165)" />
-              <stop offset="55%" stopColor="oklch(0.18 0.04 170)" />
-              <stop offset="100%" stopColor="oklch(0.14 0.03 175)" />
+              <stop offset="0%" stopColor="oklch(0.22 0.05 305)" />
+              <stop offset="55%" stopColor="oklch(0.18 0.04 305)" />
+              <stop offset="100%" stopColor="oklch(0.14 0.03 305)" />
             </linearGradient>
             <linearGradient id="chip-body" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="oklch(0.20 0.008 170)" />
-              <stop offset="100%" stopColor="oklch(0.10 0.006 175)" />
+              <stop offset="0%" stopColor="oklch(0.20 0.008 305)" />
+              <stop offset="100%" stopColor="oklch(0.10 0.006 305)" />
             </linearGradient>
             <linearGradient id="mcu-body" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="oklch(0.24 0.01 170)" />
-              <stop offset="100%" stopColor="oklch(0.08 0.006 175)" />
+              <stop offset="0%" stopColor="oklch(0.24 0.01 305)" />
+              <stop offset="100%" stopColor="oklch(0.08 0.006 305)" />
             </linearGradient>
             <radialGradient id="signal-glow" cx="0.5" cy="0.5" r="0.5">
               <stop offset="0%" stopColor={NEON} stopOpacity="1" />
@@ -276,7 +276,7 @@ export function InteractivePCB({ size = 500 }: { size?: number }) {
             ))}
             {/* Crystal oscillator */}
             <g>
-              <rect x="315" y="185" width="30" height="14" rx="3" fill="oklch(0.28 0.02 180)" stroke={NEON} strokeOpacity="0.55" strokeWidth="0.6" />
+              <rect x="315" y="185" width="30" height="14" rx="3" fill="oklch(0.28 0.02 305)" stroke={NEON} strokeOpacity="0.55" strokeWidth="0.6" />
               <text x="330" y="195" fontSize="5" fill={NEON} fillOpacity="0.75" textAnchor="middle" fontFamily="var(--font-mono)">8MHz</text>
             </g>
           </g>

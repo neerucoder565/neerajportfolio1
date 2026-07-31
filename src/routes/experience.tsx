@@ -72,7 +72,7 @@ function Experience() {
                 className="pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 style={{
                   background:
-                    "radial-gradient(600px circle at var(--x,50%) var(--y,0%), oklch(0.82 0.19 158 / 0.12), transparent 40%)",
+                    "radial-gradient(600px circle at var(--x,50%) var(--y,0%), oklch(0.72 0.21 305 / 0.12), transparent 40%)",
                 }}
               />
 
@@ -119,7 +119,7 @@ function Experience() {
                       className="absolute inset-y-0 left-0 bg-neon"
                       style={{
                         width: `${p.pct}%`,
-                        boxShadow: "0 0 12px var(--neon), 0 0 24px oklch(0.82 0.19 158 / 0.5)",
+                        boxShadow: "0 0 12px var(--neon), 0 0 24px oklch(0.72 0.21 305 / 0.5)",
                       }}
                     />
                     <div

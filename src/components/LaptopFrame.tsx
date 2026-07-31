@@ -28,25 +28,25 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
   const GRADS = (
     <defs>
       <linearGradient id="mon-metal" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stopColor="oklch(0.26 0.006 170)" />
-        <stop offset="55%" stopColor="oklch(0.16 0.005 170)" />
-        <stop offset="100%" stopColor="oklch(0.10 0.004 170)" />
+        <stop offset="0%" stopColor="oklch(0.26 0.006 305)" />
+        <stop offset="55%" stopColor="oklch(0.16 0.005 305)" />
+        <stop offset="100%" stopColor="oklch(0.10 0.004 305)" />
       </linearGradient>
       <linearGradient id="mon-bezel" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stopColor="oklch(0.10 0.003 170)" />
-        <stop offset="100%" stopColor="oklch(0.05 0.002 170)" />
+        <stop offset="0%" stopColor="oklch(0.10 0.003 305)" />
+        <stop offset="100%" stopColor="oklch(0.05 0.002 305)" />
       </linearGradient>
       <linearGradient id="mon-hi" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0%" stopColor="var(--neon)" stopOpacity="0.35" />
         <stop offset="100%" stopColor="var(--neon)" stopOpacity="0" />
       </linearGradient>
       <linearGradient id="stand-metal" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stopColor="oklch(0.22 0.006 170)" />
-        <stop offset="100%" stopColor="oklch(0.10 0.004 170)" />
+        <stop offset="0%" stopColor="oklch(0.22 0.006 305)" />
+        <stop offset="100%" stopColor="oklch(0.10 0.004 305)" />
       </linearGradient>
       <linearGradient id="base-metal" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stopColor="oklch(0.20 0.005 170)" />
-        <stop offset="100%" stopColor="oklch(0.08 0.003 170)" />
+        <stop offset="0%" stopColor="oklch(0.20 0.005 305)" />
+        <stop offset="100%" stopColor="oklch(0.08 0.003 305)" />
       </linearGradient>
     </defs>
   );
@@ -93,7 +93,7 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
               stroke="color-mix(in oklab, var(--neon) 22%, transparent)"
               strokeWidth="0.75"
             />
-            <rect x={SCREEN_X} y={SCREEN_Y} width={SCREEN_W} height={SCREEN_H} rx={4} fill="oklch(0.04 0.005 170)" />
+            <rect x={SCREEN_X} y={SCREEN_Y} width={SCREEN_W} height={SCREEN_H} rx={4} fill="oklch(0.04 0.005 305)" />
             {/* Apple-style logo on bottom bezel */}
             <g transform={`translate(${W / 2 - 7}, ${MON_Y + MON_H - 22})`} fill="var(--neon)" fillOpacity="0.7">
               <path d="M11.5 7.6c0-2 1.6-2.9 1.7-3-0.9-1.4-2.4-1.6-2.9-1.6-1.2-0.1-2.4 0.7-3 0.7-0.6 0-1.6-0.7-2.7-0.7-1.4 0-2.7 0.8-3.4 2.1-1.5 2.5-0.4 6.3 1 8.4 0.7 1 1.6 2.2 2.7 2.2 1.1 0 1.5-0.7 2.8-0.7 1.3 0 1.7 0.7 2.8 0.7 1.2 0 1.9-1 2.6-2 0.8-1.2 1.2-2.3 1.2-2.4-0.1 0-2.3-0.9-2.3-3.5zM9.3 1.6C9.9 0.9 10.3-0.1 10.2-1c-0.9 0-2 0.6-2.6 1.3-0.5 0.6-1 1.6-0.9 2.5 1 0.1 2-0.5 2.6-1.2z" />
@@ -187,7 +187,7 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
                     width={kw}
                     height={kh}
                     rx={1.6}
-                    fill="oklch(0.13 0.004 170)"
+                    fill="oklch(0.13 0.004 305)"
                     stroke="color-mix(in oklab, var(--neon) 16%, transparent)"
                     strokeWidth="0.4"
                   />
@@ -202,7 +202,7 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
             width={180}
             height={8.4}
             rx={1.6}
-            fill="oklch(0.13 0.004 170)"
+            fill="oklch(0.13 0.004 305)"
             stroke="color-mix(in oklab, var(--neon) 16%, transparent)"
             strokeWidth="0.4"
           />
@@ -213,7 +213,7 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
             width={124}
             height={26}
             rx={3}
-            fill="oklch(0.10 0.003 170)"
+            fill="oklch(0.10 0.003 305)"
             stroke="color-mix(in oklab, var(--neon) 20%, transparent)"
             strokeWidth="0.5"
           />
