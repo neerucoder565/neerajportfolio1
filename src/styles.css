@@ -70,7 +70,8 @@
   --ring: oklch(0.62 0.26 300);
 
   --neon: oklch(0.62 0.26 300);
-  --neon-dim: oklch(0.55 0.13 305);
+  --neon-bright: oklch(0.74 0.23 300);
+  --neon-dim: oklch(0.5 0.16 300);
   --grid: oklch(0.3 0.04 305 / 0.18);
 
   --sidebar: oklch(0.16 0.012 305);
