@@ -10,7 +10,7 @@ import {
   Target,
   CalendarDays,
   ChevronDown,
-  ShieldCheck,
+  Cog,
   CheckCircle2,
 } from "lucide-react";
 import buildingAsset from "@/assets/hl-mando-building.jpeg.asset.json";
