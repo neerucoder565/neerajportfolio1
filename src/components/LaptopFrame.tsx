@@ -79,22 +79,22 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
             transform: "rotateY(180deg) translateZ(1px)",
             backfaceVisibility: "hidden",
             background:
-              "linear-gradient(135deg, color-mix(in oklab, var(--neon) 78%, black) 0%, color-mix(in oklab, var(--neon) 92%, white 6%) 38%, color-mix(in oklab, var(--neon) 55%, black) 70%, color-mix(in oklab, var(--neon) 85%, white 10%) 100%)",
+              "linear-gradient(135deg, oklch(0.52 0.06 330) 0%, oklch(0.62 0.07 335) 35%, oklch(0.5 0.06 328) 68%, oklch(0.58 0.065 332) 100%)",
             boxShadow:
-              "0 0 60px color-mix(in oklab, var(--neon) 55%, transparent), inset 0 1px 0 rgba(255,255,255,0.35)",
+              "0 0 50px color-mix(in oklab, var(--neon) 40%, transparent), inset 0 1px 0 rgba(255,255,255,0.25)",
           }}
         >
-          {/* gloss sweep */}
+          {/* soft matte sheen */}
           <div
-            className="absolute inset-0 opacity-60"
+            className="absolute inset-0 opacity-40"
             style={{
               background:
-                "linear-gradient(115deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0) 35%, rgba(255,255,255,0) 62%, rgba(255,255,255,0.18) 100%)",
+                "linear-gradient(115deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 45%, rgba(0,0,0,0.12) 100%)",
             }}
           />
           {/* logo */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <svg viewBox="0 0 18 20" className="w-[13%] opacity-95" fill="white" aria-hidden>
+            <svg viewBox="0 0 18 20" className="w-[13%] opacity-90" fill="oklch(0.18 0.03 320)" aria-hidden>
               <path d="M11.5 7.6c0-2 1.6-2.9 1.7-3-0.9-1.4-2.4-1.6-2.9-1.6-1.2-0.1-2.4 0.7-3 0.7-0.6 0-1.6-0.7-2.7-0.7-1.4 0-2.7 0.8-3.4 2.1-1.5 2.5-0.4 6.3 1 8.4 0.7 1 1.6 2.2 2.7 2.2 1.1 0 1.5-0.7 2.8-0.7 1.3 0 1.7 0.7 2.8 0.7 1.2 0 1.9-1 2.6-2 0.8-1.2 1.2-2.3 1.2-2.4-0.1 0-2.3-0.9-2.3-3.5zM9.3 1.6C9.9 0.9 10.3-0.1 10.2-1c-0.9 0-2 0.6-2.6 1.3-0.5 0.6-1 1.6-0.9 2.5 1 0.1 2-0.5 2.6-1.2z" />
             </svg>
           </div>
