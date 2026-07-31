@@ -63,14 +63,15 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
       />
       <motion.div
         initial={{ rotateY: 180 }}
-        animate={{ rotateY: [180, 0], y: [0, -4, 0] }}
+        animate={{ rotateY: [180, 180, 0], y: [0, -4, 0] }}
         transition={{
-          rotateY: { duration: 2.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 },
-          y: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2.7 },
+          rotateY: { duration: 3.6, times: [0, 0.42, 1], ease: [0.22, 1, 0.36, 1] },
+          y: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 3.8 },
         }}
         className="relative"
         style={{ transformStyle: "preserve-3d" }}
       >
+
         {/* ---------------- BACK SHELL (glossy purple lid) ---------------- */}
         <div
           className="absolute inset-0 rounded-2xl overflow-hidden"
