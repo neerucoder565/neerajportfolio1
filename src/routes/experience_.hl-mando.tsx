@@ -669,7 +669,7 @@ function InternshipDetail() {
                   TECHNOLOGIES
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  {["ESP32-S3", "Raspberry Pi 5", "Altium", "AutoCAD"].map((t) => (
+                  {["ESP32-S3", "Raspberry Pi 5", "Altium", "AutoCAD", "FreeRTOS"].map((t) => (
                     <span
                       key={t}
                       className="text-[10px] tracking-[0.2em] uppercase border border-neon/40 text-neon px-3 py-1.5"
@@ -684,7 +684,7 @@ function InternshipDetail() {
                     to="/experience"
                     className="border border-border px-4 py-2.5 text-[10px] uppercase tracking-[0.3em] text-muted-foreground hover:text-neon hover:border-neon/60 transition-colors"
                   >
-                    Return to Experience
+                    ← Back to Experience
                   </Link>
                 </div>
               </div>
