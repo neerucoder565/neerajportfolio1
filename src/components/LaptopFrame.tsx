@@ -258,7 +258,7 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
             strokeWidth="0.5"
           />
 
-        </svg>
+        </motion.svg>
         </div>
       </motion.div>
 
