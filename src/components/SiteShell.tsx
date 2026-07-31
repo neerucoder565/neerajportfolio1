@@ -1,5 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { Menu, X, Github, Linkedin, Mail } from "lucide-react";
 import { CircuitBackdrop } from "./CircuitBackdrop";
 
@@ -137,14 +138,36 @@ export function Section({
       {(eyebrow || title) && (
         <div className="mb-12">
           {eyebrow && (
-            <div className="text-xs text-neon tracking-[0.3em] mb-3">
+            <motion.div
+              initial={{ opacity: 0, x: -14 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.6 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="text-xs text-neon tracking-[0.3em] mb-3"
+            >
               // {eyebrow}
-            </div>
+            </motion.div>
           )}
           {title && (
-            <h2 className="font-display text-3xl md:text-5xl uppercase">
-              {title}
-            </h2>
+            <div className="relative inline-block">
+              <motion.h2
+                initial={{ opacity: 0, y: 18, filter: "blur(6px)" }}
+                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                viewport={{ once: true, amount: 0.6 }}
+                transition={{ duration: 0.6, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+                className="font-display text-3xl md:text-5xl uppercase text-glow"
+              >
+                {title}
+              </motion.h2>
+              <motion.span
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true, amount: 0.6 }}
+                transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                className="block h-px mt-3 origin-left bg-gradient-to-r from-neon via-neon/40 to-transparent"
+                style={{ boxShadow: "0 0 12px color-mix(in oklab, var(--neon) 60%, transparent)" }}
+              />
+            </div>
           )}
         </div>
       )}
