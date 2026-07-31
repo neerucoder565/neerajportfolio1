@@ -530,7 +530,7 @@ function InternshipDetail() {
         {/* INTERNSHIP COMPLETED */}
 
         <section className="mx-auto max-w-7xl px-6 py-24">
-          <Heading title="Mission Complete" />
+          <Heading title="Internship Completed" />
           <div className="grid lg:grid-cols-[auto_1fr] gap-12 items-center">
             <div className="relative size-56 md:size-64 mx-auto">
               <svg viewBox="0 0 200 200" className="absolute inset-0 anim-spin-slow">
