@@ -63,14 +63,15 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
       />
       <motion.div
         initial={{ rotateY: 180 }}
-        animate={{ rotateY: [180, 0], y: [0, -4, 0] }}
+        animate={{ rotateY: [180, 180, 0], y: [0, -4, 0] }}
         transition={{
-          rotateY: { duration: 2.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 },
-          y: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2.7 },
+          rotateY: { duration: 3.6, times: [0, 0.42, 1], ease: [0.22, 1, 0.36, 1] },
+          y: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 3.8 },
         }}
         className="relative"
         style={{ transformStyle: "preserve-3d" }}
       >
+
         {/* ---------------- BACK SHELL (glossy purple lid) ---------------- */}
         <div
           className="absolute inset-0 rounded-2xl overflow-hidden"
@@ -106,9 +107,10 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
           initial={{ rotateX: -88, opacity: 0.15 }}
           animate={{ rotateX: 0, opacity: 1 }}
           transition={{
-            rotateX: { duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 2.4 },
-            opacity: { duration: 0.6, delay: 2.4 },
+            rotateX: { duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 3.7 },
+            opacity: { duration: 0.6, delay: 3.7 },
           }}
+
 
           className="relative origin-bottom"
           style={{ transformStyle: "preserve-3d", transformOrigin: "50% 100%" }}
@@ -151,7 +153,7 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
             className="absolute overflow-hidden rounded-[4px]"
             initial={{ opacity: 0 }}
             animate={{ opacity: [0, 0.2, 0.9, 0.4, 1] }}
-            transition={{ duration: 1.1, delay: 3.5, times: [0, 0.2, 0.5, 0.7, 1] }}
+            transition={{ duration: 1.1, delay: 4.8, times: [0, 0.2, 0.5, 0.7, 1] }}
             style={{
               left: `${(SCREEN_X / W) * 100}%`,
               top: `${(SCREEN_Y / LID_H) * 100}%`,
