@@ -173,9 +173,12 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
         </motion.div>
 
         {/* ---------------- BASE (static deck) ---------------- */}
-        <svg
+        <motion.svg
           viewBox={`0 0 ${W} ${NECK_H + BASE_H}`}
           className="w-full block -mt-px"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: [0, 0, 1] }}
+          transition={{ duration: 1.6, times: [0, 0.55, 0.85] }}
           aria-hidden
         >
           <rect
