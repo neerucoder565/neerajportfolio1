@@ -527,7 +527,8 @@ function InternshipDetail() {
           </div>
         </section>
 
-        {/* MISSION COMPLETE */}
+        {/* INTERNSHIP COMPLETED */}
+
         <section className="mx-auto max-w-7xl px-6 py-24">
           <Heading title="Mission Complete" />
           <div className="grid lg:grid-cols-[auto_1fr] gap-12 items-center">
