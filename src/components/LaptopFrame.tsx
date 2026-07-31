@@ -64,23 +64,23 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
       <motion.div
         initial={{ y: 0 }}
         animate={{ y: [0, -4, 0] }}
-        transition={{ y: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1.6 } }}
+        transition={{ y: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 3.6 } }}
         className="relative"
         style={{ transformStyle: "preserve-3d" }}
       >
         <motion.div
           initial={{ rotateY: 180 }}
           animate={{ rotateY: 0 }}
-          transition={{ rotateY: { duration: 0.85, ease: [0.16, 1, 0.3, 1] } }}
+          transition={{ rotateY: { duration: 2.2, ease: [0.4, 0, 0.2, 1] } }}
           style={{ transformStyle: "preserve-3d" }}
         >
 
         {/* ---------------- LID (starts closed, hinges open) ---------------- */}
         <motion.div
           initial={{ rotateX: -90 }}
-          animate={{ rotateX: [-90, -90, 0] }}
+          animate={{ rotateX: 0 }}
           transition={{
-            rotateX: { duration: 1.6, times: [0, 0.5, 1], ease: [0.16, 1, 0.3, 1] },
+            rotateX: { duration: 1.5, delay: 2.2, ease: [0.33, 1, 0.68, 1] },
           }}
           className="relative origin-bottom"
           style={{ transformStyle: "preserve-3d", transformOrigin: "50% 100%" }}
@@ -150,7 +150,7 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
             className="absolute overflow-hidden rounded-[4px]"
             initial={{ opacity: 0 }}
             animate={{ opacity: [0, 0.2, 0.9, 0.4, 1] }}
-            transition={{ duration: 0.7, delay: 1.5, times: [0, 0.2, 0.5, 0.7, 1] }}
+            transition={{ duration: 0.9, delay: 3.2, times: [0, 0.2, 0.5, 0.7, 1] }}
             style={{
               backfaceVisibility: "hidden",
               left: `${(SCREEN_X / W) * 100}%`,
@@ -184,7 +184,7 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
           className="w-full block -mt-px"
           initial={{ opacity: 0 }}
           animate={{ opacity: [0, 0, 1] }}
-          transition={{ duration: 1.5, times: [0, 0.55, 0.8] }}
+          transition={{ duration: 3.4, times: [0, 0.68, 0.9], ease: "easeOut" }}
           aria-hidden
         >
 
