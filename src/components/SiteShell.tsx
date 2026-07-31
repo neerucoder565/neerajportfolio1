@@ -1,6 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useState } from "react";
 import { Menu, X, Github, Linkedin, Mail } from "lucide-react";
+import { CircuitBackdrop } from "./CircuitBackdrop";
 
 const NAV = [
   { to: "/", label: "Home" },
@@ -19,6 +20,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <CircuitBackdrop />
       <header className="sticky top-0 z-50 border-b border-border/50 backdrop-blur-md bg-background/70">
         <div className="mx-auto max-w-7xl px-6 h-16 flex items-center justify-between">
           <Link to="/" className="group flex items-center gap-2">
