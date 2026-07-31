@@ -64,14 +64,14 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
       <motion.div
         initial={{ y: 0 }}
         animate={{ y: [0, -4, 0] }}
-        transition={{ y: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2.2 } }}
+        transition={{ y: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1.6 } }}
         className="relative"
         style={{ transformStyle: "preserve-3d" }}
       >
         <motion.div
           initial={{ rotateY: 180 }}
-          animate={{ rotateY: [180, 180, 0] }}
-          transition={{ rotateY: { duration: 1.3, times: [0, 0.35, 1], ease: [0.16, 1, 0.3, 1] } }}
+          animate={{ rotateY: 0 }}
+          transition={{ rotateY: { duration: 0.85, ease: [0.16, 1, 0.3, 1] } }}
           style={{ transformStyle: "preserve-3d" }}
         >
 
@@ -80,7 +80,7 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
           initial={{ rotateX: -90 }}
           animate={{ rotateX: [-90, -90, 0] }}
           transition={{
-            rotateX: { duration: 2.4, times: [0, 0.58, 1], ease: [0.16, 1, 0.3, 1] },
+            rotateX: { duration: 1.6, times: [0, 0.5, 1], ease: [0.16, 1, 0.3, 1] },
           }}
           className="relative origin-bottom"
           style={{ transformStyle: "preserve-3d", transformOrigin: "50% 100%" }}
@@ -150,7 +150,7 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
             className="absolute overflow-hidden rounded-[4px]"
             initial={{ opacity: 0 }}
             animate={{ opacity: [0, 0.2, 0.9, 0.4, 1] }}
-            transition={{ duration: 1, delay: 2.3, times: [0, 0.2, 0.5, 0.7, 1] }}
+            transition={{ duration: 0.7, delay: 1.5, times: [0, 0.2, 0.5, 0.7, 1] }}
             style={{
               backfaceVisibility: "hidden",
               left: `${(SCREEN_X / W) * 100}%`,
@@ -184,7 +184,7 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
           className="w-full block -mt-px"
           initial={{ opacity: 0 }}
           animate={{ opacity: [0, 0, 1] }}
-          transition={{ duration: 2.2, times: [0, 0.62, 0.85] }}
+          transition={{ duration: 1.5, times: [0, 0.55, 0.8] }}
           aria-hidden
         >
 
