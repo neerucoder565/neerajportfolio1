@@ -577,16 +577,19 @@ function InternshipDetail() {
               </svg>
               <div className="absolute inset-0 grid place-items-center text-center">
                 <div>
-                  <ShieldCheck size={22} className="text-neon mx-auto anim-pulse-neon" />
-                  <div className="font-display text-4xl text-neon mt-2 leading-none">4</div>
-                  <div className="text-[10px] tracking-[0.3em] text-muted-foreground mt-1">
-                    WEEKS ON SITE
+                  <Cog size={24} className="text-neon mx-auto anim-spin-slow" />
+                  <div className="font-display text-5xl text-neon mt-2 leading-none anim-glow-breathe">
+                    30
                   </div>
-                  <div className="text-[10px] tracking-[0.3em] text-neon/80 mt-2">
-                    6 DELIVERABLES
+                  <div className="text-[10px] tracking-[0.35em] text-foreground/80 mt-1.5">
+                    DAYS
+                  </div>
+                  <div className="text-[10px] tracking-[0.35em] text-muted-foreground mt-0.5">
+                    COMPLETED
                   </div>
                 </div>
               </div>
+
 
             </div>
 
