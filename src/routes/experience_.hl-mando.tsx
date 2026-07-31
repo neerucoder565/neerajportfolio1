@@ -106,7 +106,7 @@ const STATS = [
   { n: "30", label: "Days" },
   { n: "06", label: "Production lines studied" },
   { n: "01", label: "Engineering proposal" },
-  { n: "05", label: "Weeks" },
+  { n: "01", label: "Month On Site" },
   { n: "100%", label: "Completion" },
 ];
 
