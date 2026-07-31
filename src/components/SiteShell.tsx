@@ -155,7 +155,7 @@ export function Section({
                 whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 viewport={{ once: true, amount: 0.6 }}
                 transition={{ duration: 0.6, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-                className="font-display text-3xl md:text-5xl uppercase text-glow"
+                className="font-display text-3xl md:text-5xl uppercase text-glow-soft"
               >
                 {title}
               </motion.h2>
