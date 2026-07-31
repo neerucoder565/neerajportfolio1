@@ -608,13 +608,36 @@ function InternshipDetail() {
                 </div>
                 <div className="h-px bg-gradient-to-r from-neon/60 via-border to-transparent mb-6" />
 
+                <div className="grid sm:grid-cols-2 gap-x-10 gap-y-1.5 mb-8">
+                  {[
+                    ["STATUS", "COMPLETED"],
+                    ["ROLE", "PROJECT INTERN"],
+                    ["LOCATION", "CHENNAI"],
+                    ["DURATION", "30 DAYS"],
+                  ].map(([k, v], i) => (
+                    <motion.div
+                      key={k}
+                      initial={{ opacity: 0, y: 6 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: false }}
+                      transition={{ duration: 0.35, delay: i * 0.06 }}
+                      className="flex items-baseline gap-3 text-[10px] tracking-[0.25em]"
+                    >
+                      <span className="text-muted-foreground w-24 shrink-0">{k}</span>
+                      <span className="flex-1 border-b border-dashed border-border/60" />
+                      <span className="text-neon">{v}</span>
+                    </motion.div>
+                  ))}
+                </div>
+
                 <div className="text-[10px] tracking-[0.3em] text-muted-foreground mb-2">
                   OBJECTIVE
                 </div>
                 <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
-                  Understand manufacturing operations and identify automation
-                  opportunities.
+                  Studied manufacturing workflows and proposed an embedded automation
+                  solution to improve material movement efficiency.
                 </p>
+
 
                 <div className="text-[10px] tracking-[0.3em] text-muted-foreground mt-8 mb-3">
                   KEY DELIVERABLES
