@@ -106,7 +106,7 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
             </div>
           </div>
 
-          <svg viewBox={`0 0 ${W} ${LID_H}`} className="w-full block" aria-hidden>
+          <svg viewBox={`0 0 ${W} ${LID_H}`} className="w-full block" style={{ backfaceVisibility: "hidden" }} aria-hidden>
             {GRADS}
             <rect
               x={MON_X}
