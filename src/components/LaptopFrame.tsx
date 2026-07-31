@@ -65,8 +65,8 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
         initial={{ rotateY: 180 }}
         animate={{ rotateY: [180, 180, 0], y: [0, -4, 0] }}
         transition={{
-          rotateY: { duration: 3.6, times: [0, 0.42, 1], ease: [0.22, 1, 0.36, 1] },
-          y: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 3.8 },
+          rotateY: { duration: 1.5, times: [0, 0.35, 1], ease: [0.22, 1, 0.36, 1] },
+          y: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1.6 },
         }}
         className="relative"
         style={{ transformStyle: "preserve-3d" }}
