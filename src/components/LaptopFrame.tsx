@@ -107,8 +107,8 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
           initial={{ rotateX: -88, opacity: 0.15 }}
           animate={{ rotateX: 0, opacity: 1 }}
           transition={{
-            rotateX: { duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 3.7 },
-            opacity: { duration: 0.6, delay: 3.7 },
+            rotateX: { duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 1.45 },
+            opacity: { duration: 0.6, delay: 1.45 },
           }}
 
 
@@ -153,7 +153,7 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
             className="absolute overflow-hidden rounded-[4px]"
             initial={{ opacity: 0 }}
             animate={{ opacity: [0, 0.2, 0.9, 0.4, 1] }}
-            transition={{ duration: 1.1, delay: 4.8, times: [0, 0.2, 0.5, 0.7, 1] }}
+            transition={{ duration: 1.1, delay: 2.3, times: [0, 0.2, 0.5, 0.7, 1] }}
             style={{
               left: `${(SCREEN_X / W) * 100}%`,
               top: `${(SCREEN_Y / LID_H) * 100}%`,
