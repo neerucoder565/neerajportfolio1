@@ -106,6 +106,9 @@
     -webkit-font-smoothing: antialiased;
   }
   body {
+    background-color: transparent;
+  }
+  html {
     background-image:
       radial-gradient(circle at 20% 10%, oklch(0.62 0.26 300 / 0.07), transparent 50%),
       radial-gradient(circle at 80% 90%, oklch(0.62 0.26 300 / 0.05), transparent 50%),
@@ -228,5 +231,19 @@
     .reveal, .anim-glow-breathe, .anim-spin-slow, .anim-spin-reverse, .anim-pulse-neon {
       animation: none !important;
     }
+  }
+
+  /* Electronics backdrop animations */
+  @keyframes cb-flow { from { stroke-dashoffset: 970; } to { stroke-dashoffset: 0; } }
+  @keyframes cb-blink { 0%, 100% { opacity: 0.25; } 50% { opacity: 1; } }
+  @keyframes cb-breathe { 0%, 100% { opacity: 0.45; } 50% { opacity: 1; } }
+  @keyframes cb-scan { 0% { transform: translateY(-20px); } 100% { transform: translateY(820px); } }
+  .cb-flow { animation: cb-flow linear infinite; }
+  .cb-blink { animation: cb-blink 3.2s ease-in-out infinite; }
+  .cb-breathe { animation: cb-breathe 5s ease-in-out infinite; }
+  .cb-scan { animation: cb-scan 11s linear infinite; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cb-flow, .cb-blink, .cb-breathe, .cb-scan { animation: none !important; }
   }
 }
