@@ -36,7 +36,7 @@ export function CircuitBackdrop() {
   return (
     <div
       aria-hidden
-      className="pointer-events-none fixed inset-0 -z-10 overflow-hidden opacity-[0.55]"
+      className="pointer-events-none fixed inset-0 -z-10 overflow-hidden opacity-100"
     >
       <svg
         viewBox="0 0 1440 800"
@@ -62,7 +62,7 @@ export function CircuitBackdrop() {
         <g
           fill="none"
           stroke="var(--neon)"
-          strokeOpacity="0.16"
+          strokeOpacity="0.34"
           strokeWidth="1.25"
           strokeLinecap="square"
         >
@@ -99,7 +99,7 @@ export function CircuitBackdrop() {
                 r="4.5"
                 fill="none"
                 stroke="var(--neon)"
-                strokeOpacity="0.3"
+                strokeOpacity="0.5"
               />
               <circle
                 cx={x}
@@ -124,15 +124,15 @@ export function CircuitBackdrop() {
                 height={c.h}
                 rx="3"
                 fill="var(--neon)"
-                fillOpacity="0.05"
+                fillOpacity="0.09"
                 stroke="var(--neon)"
-                strokeOpacity="0.28"
+                strokeOpacity="0.45"
               />
               {Array.from({ length: c.pins }).map((_, p) => {
                 const step = c.w / (c.pins + 1);
                 const px = c.x + step * (p + 1);
                 return (
-                  <g key={p} stroke="var(--neon)" strokeOpacity="0.28">
+                  <g key={p} stroke="var(--neon)" strokeOpacity="0.45">
                     <line x1={px} y1={c.y} x2={px} y2={c.y - 7} />
                     <line x1={px} y1={c.y + c.h} x2={px} y2={c.y + c.h + 7} />
                   </g>
@@ -144,7 +144,7 @@ export function CircuitBackdrop() {
         </g>
 
         {/* resistors */}
-        <g stroke="var(--neon)" strokeOpacity="0.25" fill="none">
+        <g stroke="var(--neon)" strokeOpacity="0.4" fill="none">
           {[
             [430, 340],
             [940, 580],
@@ -166,7 +166,7 @@ export function CircuitBackdrop() {
           width="1440"
           height="2"
           fill="url(#cb-pulse)"
-          opacity="0.35"
+          opacity="0.6"
           className="cb-scan"
         />
       </svg>
