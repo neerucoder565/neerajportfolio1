@@ -68,7 +68,7 @@ function CaseStudyIndex() {
                   !p.hero
                     ? {
                         backgroundImage:
-                          "linear-gradient(rgba(0,255,170,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,170,0.06) 1px, transparent 1px)",
+                          "linear-gradient(rgba(168,85,247,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(168,85,247,0.06) 1px, transparent 1px)",
                         backgroundSize: "20px 20px",
                       }
                     : undefined

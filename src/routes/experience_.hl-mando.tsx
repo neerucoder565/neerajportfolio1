@@ -289,7 +289,7 @@ function InternshipDetail() {
             className="pointer-events-none absolute left-0 right-0 h-24"
             style={{
               background:
-                "linear-gradient(to bottom, transparent, oklch(0.82 0.19 158 / 0.10), transparent)",
+                "linear-gradient(to bottom, transparent, oklch(0.72 0.21 305 / 0.10), transparent)",
             }}
             initial={{ top: "-10%" }}
             animate={{ top: "100%" }}
@@ -590,7 +590,7 @@ function InternshipDetail() {
                 className="absolute inset-0 pointer-events-none opacity-40"
                 style={{
                   backgroundImage:
-                    "linear-gradient(rgba(0,255,170,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,170,0.05) 1px, transparent 1px)",
+                    "linear-gradient(rgba(168,85,247,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(168,85,247,0.05) 1px, transparent 1px)",
                   backgroundSize: "22px 22px",
                 }}
               />
