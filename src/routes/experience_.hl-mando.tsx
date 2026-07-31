@@ -527,9 +527,10 @@ function InternshipDetail() {
           </div>
         </section>
 
-        {/* MISSION COMPLETE */}
+        {/* INTERNSHIP COMPLETED */}
+
         <section className="mx-auto max-w-7xl px-6 py-24">
-          <Heading title="Mission Complete" />
+          <Heading title="Internship Completed" />
           <div className="grid lg:grid-cols-[auto_1fr] gap-12 items-center">
             <div className="relative size-56 md:size-64 mx-auto">
               <svg viewBox="0 0 200 200" className="absolute inset-0 anim-spin-slow">
@@ -577,12 +578,16 @@ function InternshipDetail() {
               <div className="absolute inset-0 grid place-items-center text-center">
                 <div>
                   <ShieldCheck size={22} className="text-neon mx-auto anim-pulse-neon" />
-                  <div className="font-display text-2xl text-neon mt-2">SUCCESS</div>
+                  <div className="font-display text-4xl text-neon mt-2 leading-none">4</div>
                   <div className="text-[10px] tracking-[0.3em] text-muted-foreground mt-1">
-                    100% COMPLETE
+                    WEEKS ON SITE
+                  </div>
+                  <div className="text-[10px] tracking-[0.3em] text-neon/80 mt-2">
+                    6 DELIVERABLES
                   </div>
                 </div>
               </div>
+
             </div>
 
             <div className="corners relative border border-border bg-card/40 p-6 md:p-8 overflow-hidden">
