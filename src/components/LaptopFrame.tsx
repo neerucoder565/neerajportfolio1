@@ -261,7 +261,9 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
           />
 
         </svg>
+        </div>
       </motion.div>
+
 
       <div
         className="absolute left-1/2 -translate-x-1/2 -bottom-3 h-8 w-[70%] blur-2xl opacity-50 pointer-events-none"
