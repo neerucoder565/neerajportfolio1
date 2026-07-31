@@ -107,9 +107,10 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
           initial={{ rotateX: -88, opacity: 0.15 }}
           animate={{ rotateX: 0, opacity: 1 }}
           transition={{
-            rotateX: { duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 2.4 },
-            opacity: { duration: 0.6, delay: 2.4 },
+            rotateX: { duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 3.7 },
+            opacity: { duration: 0.6, delay: 3.7 },
           }}
+
 
           className="relative origin-bottom"
           style={{ transformStyle: "preserve-3d", transformOrigin: "50% 100%" }}
