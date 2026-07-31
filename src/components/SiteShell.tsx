@@ -1,6 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { Menu, X, Github, Linkedin, Mail } from "lucide-react";
 import { CircuitBackdrop } from "./CircuitBackdrop";
 
