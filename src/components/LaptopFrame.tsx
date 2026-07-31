@@ -52,21 +52,64 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
   );
 
   return (
-    <div className="relative w-full" style={{ maxWidth: 960, perspective: 1800 }}>
+    <div className="relative w-full" style={{ maxWidth: 960, perspective: 2200 }}>
+      {/* ambient glow behind the whole machine */}
+      <div
+        className="absolute inset-0 -z-10 blur-3xl opacity-60 pointer-events-none anim-glow-breathe"
+        style={{
+          background:
+            "radial-gradient(ellipse at 50% 45%, color-mix(in oklab, var(--neon) 45%, transparent), transparent 70%)",
+        }}
+      />
       <motion.div
-        animate={{ y: [0, -4, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        initial={{ rotateY: 180 }}
+        animate={{ rotateY: [180, 0], y: [0, -4, 0] }}
+        transition={{
+          rotateY: { duration: 2.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 },
+          y: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2.7 },
+        }}
         className="relative"
         style={{ transformStyle: "preserve-3d" }}
       >
+        {/* ---------------- BACK SHELL (glossy purple lid) ---------------- */}
+        <div
+          className="absolute inset-0 rounded-2xl overflow-hidden"
+          style={{
+            transform: "rotateY(180deg) translateZ(1px)",
+            backfaceVisibility: "hidden",
+            background:
+              "linear-gradient(135deg, color-mix(in oklab, var(--neon) 78%, black) 0%, color-mix(in oklab, var(--neon) 92%, white 6%) 38%, color-mix(in oklab, var(--neon) 55%, black) 70%, color-mix(in oklab, var(--neon) 85%, white 10%) 100%)",
+            boxShadow:
+              "0 0 60px color-mix(in oklab, var(--neon) 55%, transparent), inset 0 1px 0 rgba(255,255,255,0.35)",
+          }}
+        >
+          {/* gloss sweep */}
+          <div
+            className="absolute inset-0 opacity-60"
+            style={{
+              background:
+                "linear-gradient(115deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0) 35%, rgba(255,255,255,0) 62%, rgba(255,255,255,0.18) 100%)",
+            }}
+          />
+          {/* logo */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <svg viewBox="0 0 18 20" className="w-[13%] opacity-95" fill="white" aria-hidden>
+              <path d="M11.5 7.6c0-2 1.6-2.9 1.7-3-0.9-1.4-2.4-1.6-2.9-1.6-1.2-0.1-2.4 0.7-3 0.7-0.6 0-1.6-0.7-2.7-0.7-1.4 0-2.7 0.8-3.4 2.1-1.5 2.5-0.4 6.3 1 8.4 0.7 1 1.6 2.2 2.7 2.2 1.1 0 1.5-0.7 2.8-0.7 1.3 0 1.7 0.7 2.8 0.7 1.2 0 1.9-1 2.6-2 0.8-1.2 1.2-2.3 1.2-2.4-0.1 0-2.3-0.9-2.3-3.5zM9.3 1.6C9.9 0.9 10.3-0.1 10.2-1c-0.9 0-2 0.6-2.6 1.3-0.5 0.6-1 1.6-0.9 2.5 1 0.1 2-0.5 2.6-1.2z" />
+            </svg>
+          </div>
+        </div>
+
+        <div style={{ backfaceVisibility: "hidden", transformStyle: "preserve-3d" }}>
+
         {/* ---------------- LID (hinges open) ---------------- */}
         <motion.div
           initial={{ rotateX: -88, opacity: 0.15 }}
           animate={{ rotateX: 0, opacity: 1 }}
           transition={{
-            rotateX: { duration: 1.6, ease: [0.16, 1, 0.3, 1], delay: 0.15 },
-            opacity: { duration: 0.6, delay: 0.15 },
+            rotateX: { duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 2.4 },
+            opacity: { duration: 0.6, delay: 2.4 },
           }}
+
           className="relative origin-bottom"
           style={{ transformStyle: "preserve-3d", transformOrigin: "50% 100%" }}
         >
@@ -108,7 +151,7 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
             className="absolute overflow-hidden rounded-[4px]"
             initial={{ opacity: 0 }}
             animate={{ opacity: [0, 0.2, 0.9, 0.4, 1] }}
-            transition={{ duration: 1.1, delay: 1.5, times: [0, 0.2, 0.5, 0.7, 1] }}
+            transition={{ duration: 1.1, delay: 3.5, times: [0, 0.2, 0.5, 0.7, 1] }}
             style={{
               left: `${(SCREEN_X / W) * 100}%`,
               top: `${(SCREEN_Y / LID_H) * 100}%`,
@@ -219,7 +262,9 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
           />
 
         </svg>
+        </div>
       </motion.div>
+
 
       <div
         className="absolute left-1/2 -translate-x-1/2 -bottom-3 h-8 w-[70%] blur-2xl opacity-50 pointer-events-none"
