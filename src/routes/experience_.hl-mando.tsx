@@ -10,7 +10,7 @@ import {
   Target,
   CalendarDays,
   ChevronDown,
-  ShieldCheck,
+  Cog,
   CheckCircle2,
 } from "lucide-react";
 import buildingAsset from "@/assets/hl-mando-building.jpeg.asset.json";
@@ -106,7 +106,7 @@ const STATS = [
   { n: "30", label: "Days" },
   { n: "06", label: "Production lines studied" },
   { n: "01", label: "Engineering proposal" },
-  { n: "05", label: "Weeks" },
+  { n: "01", label: "Month On Site" },
   { n: "100%", label: "Completion" },
 ];
 
@@ -577,16 +577,19 @@ function InternshipDetail() {
               </svg>
               <div className="absolute inset-0 grid place-items-center text-center">
                 <div>
-                  <ShieldCheck size={22} className="text-neon mx-auto anim-pulse-neon" />
-                  <div className="font-display text-4xl text-neon mt-2 leading-none">4</div>
-                  <div className="text-[10px] tracking-[0.3em] text-muted-foreground mt-1">
-                    WEEKS ON SITE
+                  <Cog size={24} className="text-neon mx-auto anim-spin-slow" />
+                  <div className="font-display text-5xl text-neon mt-2 leading-none anim-glow-breathe">
+                    30
                   </div>
-                  <div className="text-[10px] tracking-[0.3em] text-neon/80 mt-2">
-                    6 DELIVERABLES
+                  <div className="text-[10px] tracking-[0.35em] text-foreground/80 mt-1.5">
+                    DAYS
+                  </div>
+                  <div className="text-[10px] tracking-[0.35em] text-muted-foreground mt-0.5">
+                    COMPLETED
                   </div>
                 </div>
               </div>
+
 
             </div>
 
@@ -605,13 +608,36 @@ function InternshipDetail() {
                 </div>
                 <div className="h-px bg-gradient-to-r from-neon/60 via-border to-transparent mb-6" />
 
+                <div className="grid sm:grid-cols-2 gap-x-10 gap-y-1.5 mb-8">
+                  {[
+                    ["STATUS", "COMPLETED"],
+                    ["ROLE", "PROJECT INTERN"],
+                    ["LOCATION", "CHENNAI"],
+                    ["DURATION", "30 DAYS"],
+                  ].map(([k, v], i) => (
+                    <motion.div
+                      key={k}
+                      initial={{ opacity: 0, y: 6 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: false }}
+                      transition={{ duration: 0.35, delay: i * 0.06 }}
+                      className="flex items-baseline gap-3 text-[10px] tracking-[0.25em]"
+                    >
+                      <span className="text-muted-foreground w-24 shrink-0">{k}</span>
+                      <span className="flex-1 border-b border-dashed border-border/60" />
+                      <span className="text-neon">{v}</span>
+                    </motion.div>
+                  ))}
+                </div>
+
                 <div className="text-[10px] tracking-[0.3em] text-muted-foreground mb-2">
                   OBJECTIVE
                 </div>
                 <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
-                  Understand manufacturing operations and identify automation
-                  opportunities.
+                  Studied manufacturing workflows and proposed an embedded automation
+                  solution to improve material movement efficiency.
                 </p>
+
 
                 <div className="text-[10px] tracking-[0.3em] text-muted-foreground mt-8 mb-3">
                   KEY DELIVERABLES
@@ -643,7 +669,7 @@ function InternshipDetail() {
                   TECHNOLOGIES
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  {["ESP32-S3", "Raspberry Pi 5", "Altium", "AutoCAD"].map((t) => (
+                  {["ESP32-S3", "Raspberry Pi 5", "Altium", "AutoCAD", "FreeRTOS"].map((t) => (
                     <span
                       key={t}
                       className="text-[10px] tracking-[0.2em] uppercase border border-neon/40 text-neon px-3 py-1.5"
@@ -658,7 +684,7 @@ function InternshipDetail() {
                     to="/experience"
                     className="border border-border px-4 py-2.5 text-[10px] uppercase tracking-[0.3em] text-muted-foreground hover:text-neon hover:border-neon/60 transition-colors"
                   >
-                    Return to Experience
+                    ← Back to Experience
                   </Link>
                 </div>
               </div>
