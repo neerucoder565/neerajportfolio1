@@ -266,7 +266,8 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
           />
 
         </motion.svg>
-        </div>
+        </motion.div>
+
       </motion.div>
 
 
