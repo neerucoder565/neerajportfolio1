@@ -585,37 +585,77 @@ function InternshipDetail() {
               </div>
             </div>
 
-            <div className="corners relative border border-border bg-card/40 p-6 md:p-8">
-              <div className="text-[10px] tracking-[0.35em] text-neon mb-5">
-                // PROJECT STATUS
-              </div>
-              <div className="grid sm:grid-cols-3 gap-6 font-mono">
-                <div>
-                  <div className="text-[10px] tracking-[0.25em] text-muted-foreground mb-1">
-                    START
-                  </div>
-                  <div className="font-display text-2xl uppercase">24 Jun</div>
+            <div className="corners relative border border-border bg-card/40 p-6 md:p-8 overflow-hidden">
+              <div
+                className="absolute inset-0 pointer-events-none opacity-40"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(rgba(0,255,170,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,170,0.05) 1px, transparent 1px)",
+                  backgroundSize: "22px 22px",
+                }}
+              />
+              <div className="relative">
+                <div className="text-[10px] tracking-[0.35em] text-neon mb-1">
+                  // INTERNSHIP DEBRIEF
                 </div>
-                <div>
-                  <div className="text-[10px] tracking-[0.25em] text-muted-foreground mb-1">
-                    END
-                  </div>
-                  <div className="font-display text-2xl uppercase">24 Jul</div>
+                <div className="h-px bg-gradient-to-r from-neon/60 via-border to-transparent mb-6" />
+
+                <div className="text-[10px] tracking-[0.3em] text-muted-foreground mb-2">
+                  OBJECTIVE
                 </div>
-                <div>
-                  <div className="text-[10px] tracking-[0.25em] text-muted-foreground mb-1">
-                    DURATION
-                  </div>
-                  <div className="font-display text-2xl uppercase">30 Days</div>
+                <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
+                  Understand manufacturing operations and identify automation
+                  opportunities.
+                </p>
+
+                <div className="text-[10px] tracking-[0.3em] text-muted-foreground mt-8 mb-3">
+                  KEY DELIVERABLES
                 </div>
-              </div>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Link
-                  to="/experience"
-                  className="border border-border px-4 py-2.5 text-[10px] uppercase tracking-[0.3em] text-muted-foreground hover:text-neon hover:border-neon/60 transition-colors"
-                >
-                  Back to Experience
-                </Link>
+                <div className="grid sm:grid-cols-2 gap-x-8 gap-y-2">
+                  {[
+                    "Process Analysis",
+                    "Automation Proposal",
+                    "Hardware Architecture",
+                    "PCB Design",
+                    "Mechanical Design",
+                    "RTOS Architecture",
+                  ].map((d, i) => (
+                    <motion.div
+                      key={d}
+                      initial={{ opacity: 0, x: -12 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: false }}
+                      transition={{ duration: 0.4, delay: i * 0.08 }}
+                      className="flex items-center gap-2 text-sm text-foreground/90 border-b border-border/40 py-1.5"
+                    >
+                      <CheckCircle2 size={14} className="text-neon shrink-0" />
+                      <span>{d}</span>
+                    </motion.div>
+                  ))}
+                </div>
+
+                <div className="text-[10px] tracking-[0.3em] text-muted-foreground mt-8 mb-3">
+                  TECHNOLOGIES
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {["ESP32-S3", "Raspberry Pi 5", "Altium", "AutoCAD"].map((t) => (
+                    <span
+                      key={t}
+                      className="text-[10px] tracking-[0.2em] uppercase border border-neon/40 text-neon px-3 py-1.5"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <Link
+                    to="/experience"
+                    className="border border-border px-4 py-2.5 text-[10px] uppercase tracking-[0.3em] text-muted-foreground hover:text-neon hover:border-neon/60 transition-colors"
+                  >
+                    Return to Experience
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
