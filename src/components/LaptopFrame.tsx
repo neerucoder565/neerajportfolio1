@@ -71,7 +71,7 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
         <motion.div
           initial={{ rotateY: 180 }}
           animate={{ rotateY: 0 }}
-          transition={{ rotateY: { duration: 0.75, ease: [0.4, 0, 0.2, 1] } }}
+          transition={{ rotateY: { duration: 1.05, ease: [0.4, 0, 0.2, 1] } }}
           style={{ transformStyle: "preserve-3d" }}
         >
 
@@ -80,7 +80,7 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
           initial={{ rotateX: -90 }}
           animate={{ rotateX: 0 }}
           transition={{
-            rotateX: { duration: 0.55, delay: 0.75, ease: [0.33, 1, 0.68, 1] },
+            rotateX: { duration: 0.75, delay: 1.05, ease: [0.33, 1, 0.68, 1] },
           }}
           className="relative origin-bottom"
           style={{ transformStyle: "preserve-3d", transformOrigin: "50% 100%" }}
@@ -150,7 +150,7 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
             className="absolute overflow-hidden rounded-[4px]"
             initial={{ opacity: 0 }}
             animate={{ opacity: [0, 0.2, 0.9, 0.4, 1] }}
-            transition={{ duration: 0.4, delay: 1.0, times: [0, 0.2, 0.5, 0.7, 1] }}
+            transition={{ duration: 0.55, delay: 1.45, times: [0, 0.2, 0.5, 0.7, 1] }}
             style={{
               backfaceVisibility: "hidden",
               left: `${(SCREEN_X / W) * 100}%`,
@@ -184,7 +184,7 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
           className="w-full block -mt-px"
           initial={{ opacity: 0 }}
           animate={{ opacity: [0, 0, 1] }}
-          transition={{ duration: 1.4, times: [0, 0.6, 0.85], ease: "easeOut" }}
+          transition={{ duration: 2, times: [0, 0.6, 0.85], ease: "easeOut" }}
           aria-hidden
         >
 
