@@ -235,75 +235,15 @@
     }
   }
 
-  /* ---- Ambient engineering workstation backdrop ---- */
-  .cb-parallax {
-    transform: translate3d(var(--par-x, 0px), var(--par-y, 0px), 0);
-    transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  .cb-grid {
-    background-image:
-      linear-gradient(var(--grid) 1px, transparent 1px),
-      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-    background-size: 56px 56px;
-    animation: grid-drift 34s linear infinite, grid-breathe 16s ease-in-out infinite;
-  }
-  .cb-cursor-glow {
-    background: radial-gradient(
-      420px circle at var(--mx, 50%) var(--my, 40%),
-      oklch(0.62 0.26 300 / 0.1),
-      oklch(0.62 0.26 300 / 0.04) 40%,
-      transparent 72%
-    );
-    transition: background 200ms linear;
-  }
-  .cb-sweep {
-    top: -10rem;
-    background: linear-gradient(
-      to bottom,
-      transparent,
-      oklch(0.62 0.26 300 / 0.05) 45%,
-      oklch(0.74 0.23 300 / 0.5) 50%,
-      oklch(0.62 0.26 300 / 0.05) 55%,
-      transparent
-    );
-    filter: blur(0.4px);
-    animation: sweep-down 9s cubic-bezier(0.45, 0, 0.55, 1) infinite;
-  }
-
-  @keyframes grid-drift {
-    from { background-position: 0 0; }
-    to { background-position: 56px 56px; }
-  }
-  @keyframes grid-breathe {
-    0%, 100% { opacity: 0.75; }
-    50% { opacity: 1; }
-  }
-  @keyframes sweep-down {
-    0% { transform: translateY(0); opacity: 0; }
-    6% { opacity: 1; }
-    72% { opacity: 1; }
-    80%, 100% { transform: translateY(115vh); opacity: 0; }
-  }
-  @keyframes cb-flow { from { stroke-dashoffset: 970; } to { stroke-dashoffset: 0; } }
-  @keyframes cb-blink { 0%, 100% { opacity: 0.22; } 50% { opacity: 0.9; } }
-  @keyframes cb-node {
-    0%, 82%, 100% { stroke-opacity: 0.12; }
-    88% { stroke-opacity: 0.85; }
-  }
   @keyframes bracket-breathe {
     0%, 100% { width: 12px; height: 12px; opacity: 0.55; }
     50% { width: 22px; height: 22px; opacity: 1; }
   }
-  .cb-flow { animation: cb-flow linear infinite; }
-  .cb-blink { animation: cb-blink 3.4s ease-in-out infinite; }
-  .cb-node { animation: cb-node ease-in-out infinite; }
 
   @media (prefers-reduced-motion: reduce) {
-    .cb-flow, .cb-blink, .cb-node, .cb-grid, .cb-sweep, .cb-parallax,
     .corners::before, .corners::after {
       animation: none !important;
       transition: none !important;
     }
-    .cb-sweep { display: none; }
   }
 }
