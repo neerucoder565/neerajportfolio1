@@ -1,5 +1,13 @@
 import { useEffect, useRef, useState } from "react";
-import bgVideo from "@/assets/exploded-view.mp4.asset.json";
+import bgVideoAsset from "@/assets/exploded-view.mp4.asset.json";
+
+// Non-Lovable deployments (e.g. *.workers.dev) don't proxy "/__l5e/..." paths,
+// so point at the absolute Lovable CDN origin.
+const ASSET_CDN_ORIGIN =
+  "https://project--f5fd28dd-7b71-489d-910e-961a65dfa09f.lovable.app";
+const bgVideoUrl = bgVideoAsset.url.startsWith("/")
+  ? `${ASSET_CDN_ORIGIN}${bgVideoAsset.url}`
+  : bgVideoAsset.url;
 
 /**
  * Site-wide cinematic backdrop: a slow-motion exploded-view product render,
