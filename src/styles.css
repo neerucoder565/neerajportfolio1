@@ -107,6 +107,10 @@
   }
   body {
     background-color: transparent;
+    /* soft purple halo on all body text so it reads like the headings */
+    text-shadow:
+      0 0 1px oklch(0.88 0.06 300 / 0.35),
+      0 0 6px oklch(0.62 0.26 300 / 0.12);
   }
   html {
     background-image:
@@ -117,12 +121,23 @@
   h1, h2, h3, h4 {
     font-family: var(--font-display);
     letter-spacing: 0.02em;
+    color: var(--neon-bright);
     text-shadow:
-      0 0 14px oklch(0.62 0.26 300 / 0.28),
-      0 0 40px oklch(0.62 0.26 300 / 0.14);
+      0 0 14px oklch(0.62 0.26 300 / 0.55),
+      0 0 40px oklch(0.62 0.26 300 / 0.28);
+  }
+  /* muted / secondary body text gets a gentler readable glow */
+  p, li, span, label, small {
+    text-shadow:
+      0 0 1px oklch(0.88 0.06 300 / 0.3),
+      0 0 5px oklch(0.62 0.26 300 / 0.1);
   }
   a, button {
     transition: color 200ms ease, text-shadow 220ms ease, filter 220ms ease;
+  }
+  a {
+    color: var(--neon-bright);
+    text-shadow: 0 0 8px oklch(0.62 0.26 300 / 0.5);
   }
   a:hover {
     text-shadow:
