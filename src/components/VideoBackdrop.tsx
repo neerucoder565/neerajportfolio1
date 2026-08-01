@@ -39,19 +39,19 @@ export function VideoBackdrop() {
         onCanPlay={() => setReady(true)}
         className="absolute inset-0 h-full w-full object-cover transition-opacity duration-[2000ms] ease-out"
         style={{
-          opacity: ready ? 0.85 : 0,
-          filter: "saturate(1.05) contrast(1.08) brightness(1.35)",
+          opacity: ready ? 0.7 : 0,
+          filter: "saturate(1.05) contrast(1.06) brightness(1.05)",
         }}
       />
 
-      {/* readability scrim (light — video stays bright) */}
-      <div className="absolute inset-0 bg-background/25" />
+      {/* readability scrim (medium — balanced for text legibility) */}
+      <div className="absolute inset-0 bg-background/45" />
       {/* vignette + brand tint */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse at 50% 45%, transparent 0%, color-mix(in oklab, var(--background) 25%, transparent) 62%, color-mix(in oklab, var(--background) 82%, transparent) 100%)",
+            "radial-gradient(ellipse at 50% 45%, transparent 0%, color-mix(in oklab, var(--background) 30%, transparent) 62%, color-mix(in oklab, var(--background) 85%, transparent) 100%)",
         }}
       />
       <div
@@ -62,16 +62,6 @@ export function VideoBackdrop() {
         }}
       />
 
-      {/* chip callout label over the exploded-view render */}
-      <div className="absolute left-1/2 top-[45%] -translate-x-1/2 -translate-y-1/2">
-        <div className="relative flex items-center gap-3">
-          <span className="block h-px w-16 bg-[var(--neon)]/60" />
-          <span className="rounded-sm border border-[var(--neon)]/40 bg-background/60 px-2.5 py-1 font-mono text-[10px] tracking-[0.22em] text-[var(--neon)] backdrop-blur-sm">
-            STM32F407VGT6 · ARM CORTEX-M4
-          </span>
-          <span className="block h-px w-16 bg-[var(--neon)]/60" />
-        </div>
-      </div>
 
     </div>
   );
