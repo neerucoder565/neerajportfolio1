@@ -38,26 +38,41 @@ export function VideoBackdrop() {
         preload="auto"
         onCanPlay={() => setReady(true)}
         className="absolute inset-0 h-full w-full object-cover transition-opacity duration-[2000ms] ease-out"
-        style={{ opacity: ready ? 0.4 : 0, filter: "saturate(0.85) contrast(1.05)" }}
+        style={{
+          opacity: ready ? 0.85 : 0,
+          filter: "saturate(1.05) contrast(1.08) brightness(1.35)",
+        }}
       />
 
-      {/* readability scrim */}
-      <div className="absolute inset-0 bg-background/70" />
+      {/* readability scrim (light — video stays bright) */}
+      <div className="absolute inset-0 bg-background/25" />
       {/* vignette + brand tint */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse at 50% 45%, transparent 0%, color-mix(in oklab, var(--background) 65%, transparent) 55%, var(--background) 100%)",
+            "radial-gradient(ellipse at 50% 45%, transparent 0%, color-mix(in oklab, var(--background) 25%, transparent) 62%, color-mix(in oklab, var(--background) 82%, transparent) 100%)",
         }}
       />
       <div
-        className="absolute inset-0 opacity-40"
+        className="absolute inset-0 opacity-30"
         style={{
           background:
             "radial-gradient(ellipse at 70% 20%, color-mix(in oklab, var(--neon) 12%, transparent), transparent 60%)",
         }}
       />
+
+      {/* chip callout label over the exploded-view render */}
+      <div className="absolute left-1/2 top-[45%] -translate-x-1/2 -translate-y-1/2">
+        <div className="relative flex items-center gap-3">
+          <span className="block h-px w-16 bg-[var(--neon)]/60" />
+          <span className="rounded-sm border border-[var(--neon)]/40 bg-background/60 px-2.5 py-1 font-mono text-[10px] tracking-[0.22em] text-[var(--neon)] backdrop-blur-sm">
+            STM32F407VGT6 · ARM CORTEX-M4
+          </span>
+          <span className="block h-px w-16 bg-[var(--neon)]/60" />
+        </div>
+      </div>
+
     </div>
   );
 }
