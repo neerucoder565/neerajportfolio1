@@ -30,7 +30,7 @@ export function VideoBackdrop() {
     <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-background">
       <video
         ref={ref}
-        src={bgVideo.url}
+        src={bgVideoUrl}
         autoPlay
         muted
         loop
