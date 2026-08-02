@@ -150,7 +150,7 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
             className="absolute overflow-hidden rounded-[4px]"
             initial={{ opacity: 0 }}
             animate={{ opacity: [0, 0.2, 0.9, 0.4, 1] }}
-            transition={{ duration: 0.6, delay: 1.7, times: [0, 0.2, 0.5, 0.7, 1] }}
+            transition={{ duration: 0.5, delay: 1.6, times: [0, 0.2, 0.5, 0.7, 1] }}
             style={{
               backfaceVisibility: "hidden",
               left: `${(SCREEN_X / W) * 100}%`,
