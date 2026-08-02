@@ -122,17 +122,99 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
   );
 }
 
+type TitleAnim = "blur" | "slide" | "scale" | "clip" | "stagger" | "flip";
+
+const TITLE_ANIMS: TitleAnim[] = ["blur", "slide", "scale", "clip", "stagger", "flip"];
+
+function pickAnim(seed: string): TitleAnim {
+  let h = 0;
+  for (let i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) >>> 0;
+  return TITLE_ANIMS[h % TITLE_ANIMS.length];
+}
+
+function AnimatedTitle({ text, anim }: { text: string; anim: TitleAnim }) {
+  const cls = "font-display text-3xl md:text-5xl uppercase text-glow-soft";
+  const vp = { once: true, amount: 0.6 } as const;
+
+  if (anim === "stagger") {
+    return (
+      <motion.h2
+        className={cls}
+        initial="hidden"
+        whileInView="show"
+        viewport={vp}
+        variants={{ show: { transition: { staggerChildren: 0.035 } } }}
+      >
+        {text.split("").map((ch, i) => (
+          <motion.span
+            key={`${ch}-${i}`}
+            className="inline-block"
+            variants={{
+              hidden: { opacity: 0, y: 22, rotateX: -70 },
+              show: { opacity: 1, y: 0, rotateX: 0 },
+            }}
+            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {ch === " " ? "\u00A0" : ch}
+          </motion.span>
+        ))}
+      </motion.h2>
+    );
+  }
+
+  const presets = {
+    blur: {
+      initial: { opacity: 0, y: 18, filter: "blur(8px)" },
+      whileInView: { opacity: 1, y: 0, filter: "blur(0px)" },
+    },
+    slide: {
+      initial: { opacity: 0, x: -60, skewX: 8 },
+      whileInView: { opacity: 1, x: 0, skewX: 0 },
+    },
+    scale: {
+      initial: { opacity: 0, scale: 0.82, letterSpacing: "0.4em" },
+      whileInView: { opacity: 1, scale: 1, letterSpacing: "0em" },
+    },
+    clip: {
+      initial: { opacity: 0, clipPath: "inset(0 100% 0 0)" },
+      whileInView: { opacity: 1, clipPath: "inset(0 0% 0 0)" },
+    },
+    flip: {
+      initial: { opacity: 0, rotateX: -85, y: 10 },
+      whileInView: { opacity: 1, rotateX: 0, y: 0 },
+    },
+  };
+
+  const p = presets[anim as Exclude<TitleAnim, "stagger">];
+
+  return (
+    <motion.h2
+      className={cls}
+      style={{ transformPerspective: 800 }}
+      initial={p.initial}
+      whileInView={p.whileInView}
+      viewport={vp}
+      transition={{ duration: 0.7, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+    >
+      {text}
+    </motion.h2>
+  );
+}
+
 export function Section({
   eyebrow,
   title,
+  titleAnim,
   children,
   className = "",
 }: {
   eyebrow?: string;
   title?: string;
+  titleAnim?: TitleAnim;
   children: React.ReactNode;
   className?: string;
 }) {
+  const anim = titleAnim ?? pickAnim(title ?? eyebrow ?? "section");
   return (
     <section className={`mx-auto max-w-7xl px-6 py-16 md:py-24 ${className}`}>
       {(eyebrow || title) && (
@@ -150,15 +232,7 @@ export function Section({
           )}
           {title && (
             <div className="relative inline-block">
-              <motion.h2
-                initial={{ opacity: 0, y: 18, filter: "blur(6px)" }}
-                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                viewport={{ once: true, amount: 0.6 }}
-                transition={{ duration: 0.6, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-                className="font-display text-3xl md:text-5xl uppercase text-glow-soft"
-              >
-                {title}
-              </motion.h2>
+              <AnimatedTitle text={title} anim={anim} />
               <motion.span
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}

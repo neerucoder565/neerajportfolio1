@@ -80,7 +80,7 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
           initial={{ rotateX: -90 }}
           animate={{ rotateX: 0 }}
           transition={{
-            rotateX: { duration: 0.9, delay: 1.2, ease: [0.33, 1, 0.68, 1] },
+            rotateX: { duration: 0.4, delay: 1.2, ease: [0.33, 1, 0.68, 1] },
           }}
           className="relative origin-bottom"
           style={{ transformStyle: "preserve-3d", transformOrigin: "50% 100%" }}
@@ -150,7 +150,7 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
             className="absolute overflow-hidden rounded-[4px]"
             initial={{ opacity: 0 }}
             animate={{ opacity: [0, 0.2, 0.9, 0.4, 1] }}
-            transition={{ duration: 0.6, delay: 1.7, times: [0, 0.2, 0.5, 0.7, 1] }}
+            transition={{ duration: 0.5, delay: 1.6, times: [0, 0.2, 0.5, 0.7, 1] }}
             style={{
               backfaceVisibility: "hidden",
               left: `${(SCREEN_X / W) * 100}%`,
@@ -184,7 +184,7 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
           className="w-full block -mt-px"
           initial={{ opacity: 0 }}
           animate={{ opacity: [0, 0, 1] }}
-          transition={{ duration: 2.3, times: [0, 0.55, 0.8], ease: "easeOut" }}
+          transition={{ duration: 1.7, times: [0, 0.7, 0.95], ease: "easeOut" }}
           aria-hidden
         >
 
