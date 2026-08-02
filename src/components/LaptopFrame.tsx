@@ -80,7 +80,7 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
           initial={{ rotateX: -90 }}
           animate={{ rotateX: 0 }}
           transition={{
-            rotateX: { duration: 0.9, delay: 1.2, ease: [0.33, 1, 0.68, 1] },
+            rotateX: { duration: 0.4, delay: 1.2, ease: [0.33, 1, 0.68, 1] },
           }}
           className="relative origin-bottom"
           style={{ transformStyle: "preserve-3d", transformOrigin: "50% 100%" }}
