@@ -176,8 +176,8 @@ function AnimatedTitle({ text, anim }: { text: string; anim: TitleAnim }) {
       whileInView: { opacity: 1, scale: 1, letterSpacing: "0em" },
     },
     clip: {
-      initial: { opacity: 0, clipPath: "inset(0 100% 0 0)" },
-      whileInView: { opacity: 1, clipPath: "inset(0 0% 0 0)" },
+      initial: { opacity: 0, clipPath: "inset(0px 100% 0px 0px)" },
+      whileInView: { opacity: 1, clipPath: "inset(0px 0px 0px 0px)" },
     },
     flip: {
       initial: { opacity: 0, rotateX: -85, y: 10 },
