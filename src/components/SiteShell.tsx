@@ -126,10 +126,14 @@ type TitleAnim = "blur" | "slide" | "scale" | "clip" | "stagger" | "flip";
 
 const TITLE_ANIMS: TitleAnim[] = ["blur", "slide", "scale", "clip", "stagger", "flip"];
 
+const animAssignments = new Map<string, TitleAnim>();
+
 function pickAnim(seed: string): TitleAnim {
-  let h = 0;
-  for (let i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) >>> 0;
-  return TITLE_ANIMS[h % TITLE_ANIMS.length];
+  const existing = animAssignments.get(seed);
+  if (existing) return existing;
+  const next = TITLE_ANIMS[animAssignments.size % TITLE_ANIMS.length];
+  animAssignments.set(seed, next);
+  return next;
 }
 
 function AnimatedTitle({ text, anim }: { text: string; anim: TitleAnim }) {
