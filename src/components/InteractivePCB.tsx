@@ -589,6 +589,23 @@ export function InteractivePCB({ size = 500 }: { size?: number }) {
                   </span>
                 )}
               </div>
+              {selectedChip.topics && selectedChip.topics.length > 0 && (
+                <div className="mt-3 border-t border-border/60 pt-2">
+                  <div className="text-[9px] tracking-[0.3em] text-neon/70 mb-1.5">
+                    // WHAT I KNOW IN C
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {selectedChip.topics.map((t) => (
+                      <span
+                        key={t}
+                        className="text-[9px] uppercase tracking-[0.18em] border border-border bg-background/40 text-muted-foreground px-2 py-0.5"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
             </motion.div>
           ) : (
             <motion.div
