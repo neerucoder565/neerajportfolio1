@@ -184,7 +184,7 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
           className="w-full block -mt-px"
           initial={{ opacity: 0 }}
           animate={{ opacity: [0, 0, 1] }}
-          transition={{ duration: 2.3, times: [0, 0.55, 0.8], ease: "easeOut" }}
+          transition={{ duration: 1.7, times: [0, 0.7, 0.95], ease: "easeOut" }}
           aria-hidden
         >
 
