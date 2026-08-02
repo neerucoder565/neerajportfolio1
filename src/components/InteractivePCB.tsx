@@ -139,6 +139,7 @@ export function InteractivePCB({ size = 500 }: { size?: number }) {
             label: "STM32F407",
             sub: "ARM CORTEX-M4",
             projects: [P.boot],
+            topics: [] as string[],
           }
         : CHIPS.find((c) => c.id === selected) || null,
     [selected]
