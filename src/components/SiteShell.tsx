@@ -122,14 +122,18 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
   );
 }
 
-type TitleAnim = "blur" | "slide" | "scale" | "clip" | "stagger" | "flip";
+type TitleAnim = "blur" | "slide" | "scale" | "glitch" | "stagger" | "flip";
 
-const TITLE_ANIMS: TitleAnim[] = ["blur", "slide", "scale", "clip", "stagger", "flip"];
+const TITLE_ANIMS: TitleAnim[] = ["blur", "slide", "scale", "glitch", "stagger", "flip"];
+
+const animAssignments = new Map<string, TitleAnim>();
 
 function pickAnim(seed: string): TitleAnim {
-  let h = 0;
-  for (let i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) >>> 0;
-  return TITLE_ANIMS[h % TITLE_ANIMS.length];
+  const existing = animAssignments.get(seed);
+  if (existing) return existing;
+  const next = TITLE_ANIMS[animAssignments.size % TITLE_ANIMS.length];
+  animAssignments.set(seed, next);
+  return next;
 }
 
 function AnimatedTitle({ text, anim }: { text: string; anim: TitleAnim }) {
@@ -175,9 +179,9 @@ function AnimatedTitle({ text, anim }: { text: string; anim: TitleAnim }) {
       initial: { opacity: 0, scale: 0.82, letterSpacing: "0.4em" },
       whileInView: { opacity: 1, scale: 1, letterSpacing: "0em" },
     },
-    clip: {
-      initial: { opacity: 0, clipPath: "inset(0 100% 0 0)" },
-      whileInView: { opacity: 1, clipPath: "inset(0 0% 0 0)" },
+    glitch: {
+      initial: { opacity: 0, skewY: 6, y: -18, filter: "blur(4px)" },
+      whileInView: { opacity: 1, skewY: 0, y: 0, filter: "blur(0px)" },
     },
     flip: {
       initial: { opacity: 0, rotateX: -85, y: 10 },
@@ -245,7 +249,15 @@ export function Section({
           )}
         </div>
       )}
-      {children}
+      <motion.div
+        className="section-body-glow"
+        initial={{ opacity: 0, y: 16, filter: "blur(6px)" }}
+        whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.6, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+      >
+        {children}
+      </motion.div>
     </section>
   );
 }
