@@ -16,7 +16,8 @@ type ChipId =
   | "ALTIUM"
   | "DAC"
   | "EMBC"
-  | "ARDUINO";
+  | "ARDUINO"
+  | "CPROG";
 
 interface ProjectRef {
   id: string;
@@ -35,6 +36,7 @@ interface Chip {
   // trace polyline points from chip anchor toward MCU
   trace: string;
   projects: ProjectRef[];
+  topics?: string[];
 }
 
 // Project catalog — matches src/data/case-studies.ts
