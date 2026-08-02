@@ -249,7 +249,15 @@ export function Section({
           )}
         </div>
       )}
-      {children}
+      <motion.div
+        className="section-body-glow"
+        initial={{ opacity: 0, y: 16, filter: "blur(6px)" }}
+        whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.6, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+      >
+        {children}
+      </motion.div>
     </section>
   );
 }
