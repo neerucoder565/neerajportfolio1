@@ -55,7 +55,8 @@ function Home() {
               <a
                 href="/Neeraj_K_Resume.pdf"
                 download="Neeraj_K_Resume.pdf"
-                className="inline-flex items-center gap-2 border border-border px-5 py-3 text-xs uppercase tracking-[0.25em] text-muted-foreground hover:text-foreground hover:border-foreground transition-colors"
+                className="anim-pulse-neon inline-flex items-center gap-2 bg-neon/15 border border-neon-bright px-5 py-3 text-xs uppercase tracking-[0.25em] font-semibold text-neon-bright rounded-sm transition-all hover:bg-neon hover:text-primary-foreground hover:shadow-[0_0_24px_var(--neon)]"
+                style={{ boxShadow: "0 0 14px color-mix(in oklab, var(--neon) 55%, transparent)" }}
               >
                 <Download size={14} /> Resume
               </a>
