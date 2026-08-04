@@ -160,9 +160,9 @@ export function InteractivePCB({ size = 500 }: { size?: number }) {
           <defs>
             {/* PCB substrate — subtle dark green with fiber texture */}
             <linearGradient id="pcb-body" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="oklch(0.22 0.05 305)" />
-              <stop offset="55%" stopColor="oklch(0.18 0.04 305)" />
-              <stop offset="100%" stopColor="oklch(0.14 0.03 305)" />
+              <stop offset="0%" stopColor="oklch(0.22 0.05 305)" stopOpacity="0.35" />
+              <stop offset="55%" stopColor="oklch(0.18 0.04 305)" stopOpacity="0.3" />
+              <stop offset="100%" stopColor="oklch(0.14 0.03 305)" stopOpacity="0.35" />
             </linearGradient>
             <linearGradient id="chip-body" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stopColor="oklch(0.20 0.008 305)" />
