@@ -242,7 +242,10 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
               />
             </div>
 
-            <div className="relative z-[5] w-full h-full flex items-center justify-center p-1">
+            <div
+              className="w-full h-full flex items-center justify-center p-1"
+              style={{ position: "relative", zIndex: 2 }}
+            >
               {children}
             </div>
           </motion.div>
