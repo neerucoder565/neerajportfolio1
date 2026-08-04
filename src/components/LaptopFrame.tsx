@@ -166,7 +166,7 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
               }}
             />
             {/* animated wallpaper: drifting aurora blobs */}
-            <div className="absolute inset-0 z-0 overflow-hidden" style={{ background: "oklch(0.08 0.03 300)" }}>
+            <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" style={{ background: "oklch(0.08 0.03 300)" }}>
               <motion.div
                 className="absolute -inset-1/4 blur-2xl"
                 style={{
