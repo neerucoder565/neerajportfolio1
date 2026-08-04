@@ -2,6 +2,11 @@ import { motion } from "motion/react";
 import { ReactNode } from "react";
 import heroLoop from "@/assets/hero-circuit-loop.mp4.asset.json";
 
+// Non-Lovable deployments (e.g. *.workers.dev) don't proxy "/__l5e/..." paths,
+// so the CDN asset must be referenced from the Lovable project origin.
+const ASSET_BASE = "https://project--f5fd28dd-7b71-489d-910e-961a65dfa09f.lovable.app";
+const HERO_LOOP_URL = `${ASSET_BASE}${heroLoop.url}`;
+
 /**
  * Laptop chassis: the lid (screen) physically hinges open on mount,
  * then the screen boots. The base stays flat on the "desk".
