@@ -148,7 +148,7 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
 
           {/* Screen content overlay */}
           <motion.div
-            className="absolute overflow-hidden rounded-[4px]"
+            className="absolute overflow-hidden rounded-[4px] isolate"
             initial={{ opacity: 0 }}
             animate={{ opacity: [0, 0.2, 0.9, 0.4, 1] }}
             transition={{ duration: 0.5, delay: 2.2, times: [0, 0.2, 0.5, 0.7, 1] }}
