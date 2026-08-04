@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { ReactNode } from "react";
-import pcbMacro from "@/assets/pcb-macro.png.asset.json";
+import heroLoop from "@/assets/hero-circuit-loop.mp4.asset.json";
 
 /**
  * Laptop chassis: the lid (screen) physically hinges open on mount,
@@ -168,20 +168,28 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
             />
             {/* animated wallpaper: drifting aurora blobs */}
             <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" style={{ background: "oklch(0.08 0.03 300)" }}>
-              {/* chip-on-PCB macro backdrop, graded to the purple palette */}
-              <div
-                className="absolute -inset-2"
+              {/* rotating circuit-board macro loop, graded to the purple palette */}
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
+                className="absolute inset-0 w-full h-full"
                 style={{
-                  backgroundImage: `url('${pcbMacro.url}')`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center 40%",
+                  objectFit: "cover",
+                  objectPosition: "center",
+                  zIndex: 0,
                   filter:
-                    "blur(2px) hue-rotate(255deg) saturate(130%) brightness(0.5) contrast(1.15)",
+                    "hue-rotate(255deg) saturate(130%) brightness(0.45) contrast(1.15)",
                 }}
-              />
+              >
+                <source src={heroLoop.url} type="video/mp4" />
+              </video>
               <div
                 className="absolute inset-0"
                 style={{
+                  zIndex: 1,
                   background:
                     "radial-gradient(circle at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.9) 100%)",
                 }}
