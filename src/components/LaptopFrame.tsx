@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { ReactNode } from "react";
+import pcbMacro from "@/assets/pcb-macro.png.asset.json";
 
 /**
  * Laptop chassis: the lid (screen) physically hinges open on mount,
