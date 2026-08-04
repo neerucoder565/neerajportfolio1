@@ -189,7 +189,7 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
                     "hue-rotate(255deg) saturate(130%) brightness(0.45) contrast(1.15)",
                 }}
               >
-                <source src={heroLoop.url} type="video/mp4" />
+                <source src={HERO_LOOP_URL} type="video/mp4" />
               </video>
               <div
                 className="absolute inset-0"
