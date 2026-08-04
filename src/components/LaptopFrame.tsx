@@ -171,19 +171,18 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
               <div
                 className="absolute -inset-2"
                 style={{
-                  backgroundImage:
-                    "url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80')",
+                  backgroundImage: `url('${pcbMacro.url}')`,
                   backgroundSize: "cover",
-                  backgroundPosition: "center",
+                  backgroundPosition: "center 40%",
                   filter:
-                    "hue-rotate(220deg) saturate(120%) brightness(0.45) contrast(1.1) blur(1.5px)",
+                    "blur(2px) hue-rotate(255deg) saturate(130%) brightness(0.5) contrast(1.15)",
                 }}
               />
               <div
                 className="absolute inset-0"
                 style={{
                   background:
-                    "radial-gradient(circle at center, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.88) 100%)",
+                    "radial-gradient(circle at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.9) 100%)",
                 }}
               />
               <motion.div
