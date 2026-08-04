@@ -165,13 +165,56 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
                 backgroundImage: "repeating-linear-gradient(0deg, var(--neon) 0 1px, transparent 1px 3px)",
               }}
             />
-            <div
-              className="pointer-events-none absolute inset-0 z-0"
-              style={{
-                background:
-                  "radial-gradient(ellipse at 50% 40%, color-mix(in oklab, var(--neon) 8%, transparent), transparent 70%)",
-              }}
-            />
+            {/* animated wallpaper: drifting aurora blobs */}
+            <div className="absolute inset-0 z-0 overflow-hidden" style={{ background: "oklch(0.08 0.03 300)" }}>
+              <motion.div
+                className="absolute -inset-1/4 blur-2xl"
+                style={{
+                  background:
+                    "radial-gradient(circle at 30% 35%, color-mix(in oklab, var(--neon) 55%, transparent), transparent 55%)",
+                }}
+                animate={{ x: ["-6%", "8%", "-6%"], y: ["-4%", "6%", "-4%"], scale: [1, 1.15, 1] }}
+                transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+              />
+              <motion.div
+                className="absolute -inset-1/4 blur-2xl opacity-70"
+                style={{
+                  background:
+                    "radial-gradient(circle at 70% 65%, oklch(0.55 0.18 265 / 0.75), transparent 55%)",
+                }}
+                animate={{ x: ["6%", "-8%", "6%"], y: ["5%", "-6%", "5%"], scale: [1.1, 1, 1.1] }}
+                transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+              />
+              <motion.div
+                className="absolute -inset-1/4 blur-3xl opacity-50"
+                style={{
+                  background:
+                    "radial-gradient(circle at 50% 85%, oklch(0.5 0.2 330 / 0.7), transparent 60%)",
+                }}
+                animate={{ x: ["0%", "-6%", "0%"], y: ["0%", "-8%", "0%"] }}
+                transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
+              />
+              {/* faint grid */}
+              <div
+                className="absolute inset-0 opacity-[0.12]"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(var(--neon) 1px, transparent 1px), linear-gradient(90deg, var(--neon) 1px, transparent 1px)",
+                  backgroundSize: "26px 26px",
+                }}
+              />
+              {/* sheen sweep */}
+              <motion.div
+                className="absolute inset-y-0 w-1/3"
+                style={{
+                  background:
+                    "linear-gradient(100deg, transparent, rgba(255,255,255,0.10), transparent)",
+                }}
+                animate={{ x: ["-120%", "320%"] }}
+                transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", repeatDelay: 2 }}
+              />
+            </div>
+
             <div className="relative z-[5] w-full h-full flex items-center justify-center p-1">
               {children}
             </div>
