@@ -35,7 +35,9 @@
   --color-ring: var(--ring);
   --color-neon: var(--neon);
   --color-neon-dim: var(--neon-dim);
+  --color-cyan: var(--cyan);
   --color-grid: var(--grid);
+
 }
 
 :root {
