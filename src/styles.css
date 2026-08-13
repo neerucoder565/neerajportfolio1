@@ -35,7 +35,9 @@
   --color-ring: var(--ring);
   --color-neon: var(--neon);
   --color-neon-dim: var(--neon-dim);
+  --color-cyan: var(--cyan);
   --color-grid: var(--grid);
+
 }
 
 :root {
@@ -72,7 +74,9 @@
   --neon: oklch(0.62 0.26 300);
   --neon-bright: oklch(0.74 0.23 300);
   --neon-dim: oklch(0.5 0.16 300);
+  --cyan: oklch(0.82 0.13 200);
   --grid: oklch(0.3 0.04 305 / 0.18);
+
 
   --sidebar: oklch(0.16 0.012 305);
   --sidebar-foreground: oklch(0.88 0.06 300);
@@ -158,7 +162,39 @@
       0 0 18px oklch(0.62 0.26 300 / 0.45),
       0 0 42px oklch(0.62 0.26 300 / 0.28);
   }
+  .text-cyan {
+    color: var(--cyan);
+    text-shadow:
+      0 0 6px oklch(0.82 0.13 200 / 0.5),
+      0 0 18px oklch(0.82 0.13 200 / 0.28);
+  }
+  @keyframes caret-blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+  .caret {
+    display: inline-block;
+    width: 0.5ch;
+    height: 1em;
+    vertical-align: -0.12em;
+    background: var(--cyan);
+    box-shadow: 0 0 8px oklch(0.82 0.13 200 / 0.7);
+    animation: caret-blink 1.1s steps(1) infinite;
+  }
+  .spec-row {
+    border-left: 1px solid transparent;
+    padding-left: 0.5rem;
+    transition: border-color 180ms ease, background-color 180ms ease, transform 180ms ease;
+  }
+  .spec-row:hover {
+    border-left-color: var(--cyan);
+    background-color: oklch(0.82 0.13 200 / 0.06);
+    transform: translateX(2px);
+  }
+  @keyframes status-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 oklch(0.82 0.13 200 / 0.5); }
+    70% { box-shadow: 0 0 0 7px oklch(0.82 0.13 200 / 0); }
+  }
+  .status-dot { animation: status-pulse 2.2s ease-out infinite; }
   .text-glow-soft {
+
     text-shadow:
       0 0 10px oklch(0.62 0.26 300 / 0.35),
       0 0 30px oklch(0.62 0.26 300 / 0.18);

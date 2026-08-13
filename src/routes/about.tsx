@@ -25,26 +25,58 @@ function About() {
   return (
     <>
       <Section eyebrow="IDENTITY.LOG" title="About Neeraj K">
-        <div className="grid lg:grid-cols-3 gap-8">
-          <Panel className="lg:col-span-2">
-            <p className="text-muted-foreground leading-relaxed">
-              Electronics and Embedded Systems enthusiast with a strong interest in developing intelligent hardware and low-level software solutions. Hands-on experience through academic and personal projects involving microcontrollers, circuit design, sensor interfacing, digital-to-analog conversion, motor control, and real-time system implementation.
-            </p>
-            <p className="mt-4 text-muted-foreground leading-relaxed">
-              Proficient in C, C++, and Python, with a focus on understanding hardware-software interaction, system optimization, and practical engineering problem-solving. Passionate about emerging technologies including RISC-V architectures, VLSI design, edge computing, and next-generation embedded platforms. Continuously exploring new concepts and building projects to strengthen expertise in embedded electronics, digital systems, and semiconductor technologies.
-            </p>
+        <div className="grid lg:grid-cols-3 gap-8 items-stretch">
+          <Panel className="lg:col-span-2 h-full flex flex-col">
+            <div className="text-xs text-neon tracking-[0.3em] mb-4">// BACKGROUND</div>
+            <div className="max-w-[68ch] space-y-4">
+              <p className="text-muted-foreground leading-relaxed">
+                Electronics and Embedded Systems enthusiast with a strong interest in developing intelligent hardware and low-level software solutions.
+              </p>
+              <div className="text-xs text-neon tracking-[0.3em] pt-2">// SKILLS</div>
+              <p className="text-muted-foreground leading-relaxed">
+                Hands-on experience through academic and personal projects involving microcontrollers, circuit design, sensor interfacing, digital-to-analog conversion, motor control, and real-time system implementation. Proficient in C, C++, and Python, with a focus on hardware-software interaction, system optimization, and practical engineering problem-solving.
+              </p>
+              <div className="text-xs text-neon tracking-[0.3em] pt-2">// INTERESTS</div>
+              <p className="text-muted-foreground leading-relaxed">
+                Passionate about emerging technologies including RISC-V architectures, VLSI design, edge computing, and next-generation embedded platforms — continuously building projects to strengthen expertise in digital systems and semiconductor technologies.
+              </p>
+            </div>
           </Panel>
-          <Panel>
+          <Panel className="h-full bg-card/70 backdrop-blur-sm">
             <div className="text-xs text-neon tracking-[0.3em] mb-4">// QUICK SPECS</div>
-            <ul className="space-y-3 text-sm">
-              <li className="flex justify-between"><span className="text-muted-foreground">Role</span><span>Hardware Engineer</span></li>
-              <li className="flex justify-between"><span className="text-muted-foreground">Focus</span><span>Embedded / VLSI</span></li>
-              <li className="flex justify-between"><span className="text-muted-foreground">Location</span><span>India</span></li>
-              <li className="flex justify-between"><span className="text-muted-foreground">Status</span><span className="text-neon">Open to work</span></li>
+            <ul className="space-y-2 text-sm">
+              {[
+                { k: "Role", v: "Hardware Engineer" },
+                { k: "Focus", v: "Embedded / VLSI" },
+                { k: "Location", v: "India" },
+              ].map((s) => (
+                <li key={s.k} className="spec-row flex justify-between gap-4">
+                  <span className="text-muted-foreground">
+                    <span className="text-neon mr-1">&gt;</span>{s.k}
+                  </span>
+                  <span className="text-cyan">{s.v}</span>
+                </li>
+              ))}
+              <li className="spec-row flex justify-between gap-4 items-center">
+                <span className="text-muted-foreground">
+                  <span className="text-neon mr-1">&gt;</span>Status
+                </span>
+                <span className="inline-flex items-center gap-2 text-cyan">
+                  <span
+                    className="status-dot size-2 rounded-full"
+                    style={{ backgroundColor: "var(--cyan)" }}
+                  />
+                  Open to work
+                </span>
+              </li>
             </ul>
+            <div className="mt-6 pt-4 border-t border-border text-xs text-muted-foreground">
+              <span className="text-neon">$</span> status --live <span className="caret" />
+            </div>
           </Panel>
         </div>
       </Section>
+
 
       <Section eyebrow="EDUCATION" title="Trajectory">
         <div className="grid md:grid-cols-1 gap-6">
