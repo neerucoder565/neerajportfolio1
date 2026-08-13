@@ -70,9 +70,6 @@ function About() {
                 </span>
               </li>
             </ul>
-            <div className="mt-6 pt-4 border-t border-border text-xs text-muted-foreground">
-              <span className="text-neon">$</span> status --live <span className="caret" />
-            </div>
           </Panel>
         </div>
       </Section>
@@ -81,12 +78,20 @@ function About() {
       <Section eyebrow="EDUCATION" title="Trajectory">
         <div className="grid md:grid-cols-1 gap-6">
           <Panel>
-            <GraduationCap className="text-neon mb-3" size={24} strokeWidth={1.5} />
-            <h3 className="font-display text-xl uppercase">Education</h3>
-            <div className="mt-4">
-              <div className="text-sm">B.E. — Electronics & Communication Engineering</div>
-              <div className="text-xs text-muted-foreground mt-1">
-                Easwari Engineering College
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <GraduationCap className="text-neon mb-3" size={24} strokeWidth={1.5} />
+                <h3 className="font-display text-xl uppercase">Education</h3>
+                <div className="mt-4">
+                  <div className="text-sm">B.E. — Electronics & Communication Engineering</div>
+                  <div className="text-xs text-muted-foreground mt-1">
+                    Easwari Engineering College
+                  </div>
+                </div>
+              </div>
+              <div className="text-right">
+                <div className="text-xs text-neon tracking-[0.2em] mb-1">// CGPA</div>
+                <div className="font-display text-3xl text-cyan glow-text">8.2<span className="text-sm text-muted-foreground ml-1">/10</span></div>
               </div>
             </div>
           </Panel>
