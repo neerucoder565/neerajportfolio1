@@ -70,9 +70,6 @@ function About() {
                 </span>
               </li>
             </ul>
-            <div className="mt-6 pt-4 border-t border-border text-xs text-muted-foreground">
-              <span className="text-neon">$</span> status --live <span className="caret" />
-            </div>
           </Panel>
         </div>
       </Section>
