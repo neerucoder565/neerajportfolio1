@@ -332,13 +332,15 @@ function SkillPart({
       {/* glowing trace to the nearest power rail */}
       <span
         aria-hidden
-        className="pointer-events-none absolute left-4 bottom-full w-px transition-opacity duration-300"
+        className="pointer-events-none absolute left-4 bottom-full transition-opacity duration-300"
         style={{
+          width: 3,
           height: traceH,
           opacity: active && lit ? 1 : 0,
           background:
-            "linear-gradient(to top, var(--neon-bright), color-mix(in oklab, var(--neon-bright) 20%, transparent))",
-          boxShadow: "0 0 8px var(--neon-bright)",
+            "linear-gradient(to top, var(--neon-bright), color-mix(in oklab, var(--neon-bright) 35%, transparent))",
+          boxShadow:
+            "0 0 10px var(--neon-bright), 0 0 24px 6px color-mix(in oklab, var(--neon-bright) 55%, transparent)",
         }}
       />
 
@@ -350,7 +352,7 @@ function SkillPart({
         onFocus={() => onHover(true)}
         onBlur={() => onHover(false)}
         aria-label={`${skill.name} — ${skill.level}`}
-        className="group w-full min-h-11 flex items-center gap-2 border px-2 py-2 text-left transition-all duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--neon-bright)]"
+        className="group w-full min-h-[52px] flex items-center gap-2 border px-2 py-2.5 text-left transition-all duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--neon-bright)]"
         style={{
           borderColor: lit
             ? `color-mix(in oklab, var(--neon-bright) ${a * 60}%, transparent)`
@@ -358,7 +360,7 @@ function SkillPart({
           background: lit ? "rgba(255,255,255,0.03)" : "rgba(255,255,255,0.015)",
           boxShadow:
             lit && active
-              ? "0 0 18px color-mix(in oklab, var(--neon-bright) 45%, transparent)"
+              ? "0 0 22px color-mix(in oklab, var(--neon-bright) 55%, transparent)"
               : "none",
         }}
       >
@@ -385,24 +387,40 @@ function SkillPart({
           )}
         </span>
 
-        <span
-          className="flex-1 font-mono text-[11px] leading-tight transition-colors duration-500"
-          style={{
-            color: lit
-              ? `color-mix(in oklab, var(--foreground) ${40 + a * 60}%, transparent)`
-              : "rgba(200,190,210,0.28)",
-          }}
-        >
-          {skill.name}
+        <span className="flex-1 flex flex-col items-start min-w-0">
+          <span
+            className="font-mono text-[13px] leading-tight transition-all duration-500"
+            style={{
+              color: lit
+                ? `color-mix(in oklab, var(--foreground) ${40 + a * 60}%, transparent)`
+                : "rgba(200,190,210,0.28)",
+              textShadow: lit
+                ? `0 0 ${6 + a * 10}px color-mix(in oklab, var(--neon-bright) ${a * 90}%, transparent)`
+                : "none",
+            }}
+          >
+            {skill.name}
+          </span>
+          <span
+            className="font-mono text-[10px] font-normal uppercase tracking-wider transition-all duration-500"
+            style={{
+              color: lit ? "var(--cyan)" : "rgba(160,150,180,0.45)",
+              textShadow: lit
+                ? `0 0 ${4 + a * 6}px color-mix(in oklab, var(--cyan) ${a * 70}%, transparent)`
+                : "none",
+            }}
+          >
+            {skill.level}
+          </span>
         </span>
 
         <Led level={skill.level} lit={lit} />
       </button>
 
       {active && lit && (
-        <div className="absolute z-30 left-0 right-0 top-full mt-1 border border-border bg-background/95 backdrop-blur-sm p-3 text-[11px] font-mono shadow-lg">
+        <div className="absolute z-30 left-0 right-0 top-full mt-2 border border-border bg-background/95 backdrop-blur-sm p-3 text-[12px] font-mono shadow-lg">
           <div className="text-neon">{skill.name}</div>
-          <div className="text-cyan uppercase tracking-[0.2em] text-[9px] mt-1">{skill.level}</div>
+          <div className="text-cyan uppercase tracking-[0.2em] text-[10px] mt-1">{skill.level}</div>
           <div className="text-muted-foreground mt-1 leading-relaxed">{skill.note}</div>
         </div>
       )}
