@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Code2, CircuitBoard, Cpu, Power } from "lucide-react";
+import { Code2, CircuitBoard, Cpu } from "lucide-react";
 
 type Level = "Beginner" | "Intermediate" | "Advanced";
 
