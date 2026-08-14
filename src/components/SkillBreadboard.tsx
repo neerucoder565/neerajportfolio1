@@ -174,21 +174,32 @@ export function SkillBreadboard() {
     timers.current.push(window.setTimeout(() => setLogs((p) => [...p, "SYSTEM READY."]), t));
   }, [clearTimers, order.length, reduced]);
 
-  const shutdown = useCallback(() => {
-    clearTimers();
-    setPowered(false);
-    setRailPulse(false);
-    setLitCount(0);
-    setLogs([]);
-    setActive(null);
-  }, [clearTimers]);
+  const boardRef = useRef<HTMLDivElement | null>(null);
+  const bootedOnce = useRef(false);
 
-  const toggle = () => (powered ? shutdown() : boot());
+  useEffect(() => {
+    const el = boardRef.current;
+    if (!el || bootedOnce.current) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting && !bootedOnce.current) {
+            bootedOnce.current = true;
+            io.disconnect();
+            timers.current.push(window.setTimeout(() => boot(), reduced ? 0 : 1000));
+          }
+        }
+      },
+      { threshold: 0.35 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [boot, reduced]);
 
   const isLit = (idx: number) => powered && idx < litCount;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6" ref={boardRef}>
       <Legend />
 
       <div
@@ -202,32 +213,11 @@ export function SkillBreadboard() {
         }}
       >
         {/* top power rails */}
-        <div className="relative mb-5">
-          <div className="flex items-center justify-between gap-4">
-            <div className="flex-1 space-y-1">
-              <Rail color="rgba(255,90,120,0.5)" pulse={railPulse} lit={powered} />
-              <Rail color="rgba(90,150,255,0.45)" pulse={railPulse} lit={powered} delay={120} />
-            </div>
-            <button
-              type="button"
-              onClick={toggle}
-              aria-pressed={powered}
-              aria-label={powered ? "Power off skill board" : "Power on skill board"}
-              className="shrink-0 inline-flex items-center gap-2 border border-border bg-card/70 px-3 py-2 text-[10px] uppercase tracking-[0.25em] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--neon-bright)] transition-colors hover:border-[var(--neon-bright)]"
-            >
-              <Power size={13} className={powered ? "text-neon" : "text-muted-foreground"} />
-              PWR
-              <span
-                aria-hidden
-                className="size-2 rounded-full transition-all"
-                style={{
-                  background: powered ? "var(--cyan)" : "#3a3540",
-                  boxShadow: powered ? "0 0 10px var(--cyan)" : "none",
-                }}
-              />
-            </button>
-          </div>
+        <div className="relative mb-5 space-y-1">
+          <Rail color="rgba(255,90,120,0.5)" pulse={railPulse} lit={powered} />
+          <Rail color="rgba(90,150,255,0.45)" pulse={railPulse} lit={powered} delay={120} />
         </div>
+
 
         <div className="grid gap-6 lg:grid-cols-3">
           {ZONES.map((z) => {
