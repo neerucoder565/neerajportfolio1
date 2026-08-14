@@ -317,8 +317,30 @@ function SkillPart({
   onHover: (v: boolean) => void;
 }) {
   const a = LEVEL_ALPHA[skill.level];
+  const wrapRef = useRef<HTMLDivElement | null>(null);
+  const [traceH, setTraceH] = useState(0);
+
+  useEffect(() => {
+    if (active && wrapRef.current) {
+      setTraceH(wrapRef.current.offsetTop + 28);
+    }
+  }, [active]);
+
   return (
-    <div className="relative">
+    <div className="relative" ref={wrapRef}>
+      {/* glowing trace to the nearest power rail */}
+      <span
+        aria-hidden
+        className="pointer-events-none absolute left-4 bottom-full w-px transition-opacity duration-300"
+        style={{
+          height: traceH,
+          opacity: active && lit ? 1 : 0,
+          background:
+            "linear-gradient(to top, var(--neon-bright), color-mix(in oklab, var(--neon-bright) 20%, transparent))",
+          boxShadow: "0 0 8px var(--neon-bright)",
+        }}
+      />
+
       <button
         type="button"
         onClick={onActivate}
