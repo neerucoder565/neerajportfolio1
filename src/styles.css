@@ -315,3 +315,15 @@
     }
   }
 }
+
+@layer utilities {
+  @keyframes rail-sweep {
+    0% { left: -20%; opacity: 0; }
+    15% { opacity: 1; }
+    100% { left: 105%; opacity: 0; }
+  }
+  .rail-pulse { animation: rail-sweep 520ms ease-out forwards; }
+  @media (prefers-reduced-motion: reduce) {
+    .rail-pulse { animation: none !important; }
+  }
+}
