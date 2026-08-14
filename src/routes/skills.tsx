@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Section } from "@/components/SiteShell";
-import { Code2, CircuitBoard, Cpu } from "lucide-react";
+import { SkillBreadboard } from "@/components/SkillBreadboard";
+
 
 export const Route = createFileRoute("/skills")({
   head: () => ({
