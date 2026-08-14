@@ -83,6 +83,7 @@ function usePrefersReducedMotion() {
 
 function Led({ level, lit }: { level: Level; lit: boolean }) {
   const a = LEVEL_ALPHA[level];
+  const core = `color-mix(in oklab, var(--neon-bright) ${a * 100}%, transparent)`;
   return (
     <span
       aria-hidden
@@ -92,7 +93,7 @@ function Led({ level, lit }: { level: Level; lit: boolean }) {
           ? `color-mix(in oklab, var(--neon-bright) ${a * 100}%, #2a2030)`
           : "#3a3540",
         boxShadow: lit
-          ? `0 0 ${4 + a * 12}px color-mix(in oklab, var(--neon-bright) ${a * 90}%, transparent)`
+          ? `0 0 ${4 + a * 10}px ${core}, 0 0 ${18 + a * 26}px ${6 + a * 8}px ${core}`
           : "none",
       }}
     />
