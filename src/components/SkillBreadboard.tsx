@@ -233,7 +233,7 @@ export function SkillBreadboard() {
                   />
                   <h3 className="font-display uppercase text-xs tracking-[0.2em]">{z.title}</h3>
                 </div>
-                <div className="grid grid-cols-2 lg:grid-cols-1 gap-2">
+                <div className="grid grid-cols-2 lg:grid-cols-1 gap-x-2 gap-y-4">
                   {z.items.map((s, i) => (
                     <SkillPart
                       key={s.name}
