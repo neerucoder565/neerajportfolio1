@@ -80,11 +80,11 @@ const ASSIGNMENTS = [
 ];
 
 const GALLERY = [
-  { src: campusImg, alt: "Industrial campus aerial view", label: "Campus", span: "md:col-span-2 md:row-span-2", h: "h-64 md:h-full" },
+  { src: landscapeImg, alt: "HL Mando plant view", label: "Plant", span: "md:col-span-2 md:row-span-2", h: "h-64 md:h-full" },
   { src: gateImg, alt: "Security gate", label: "Gate", span: "", h: "h-48 md:h-56" },
   { src: officeImg, alt: "Office building", label: "Office", span: "", h: "h-48 md:h-56" },
-  { src: landscapeImg, alt: "Plant landscape", label: "Landscape", span: "md:col-span-3", h: "h-48 md:h-52" },
 ];
+
 
 const TIMELINE = [
   { tag: "DAY 01", title: "Security briefing", note: "Safety induction, plant rules, PPE and access protocol." },
