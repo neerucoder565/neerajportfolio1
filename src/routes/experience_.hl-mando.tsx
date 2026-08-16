@@ -460,6 +460,29 @@ function InternshipDetail() {
           </p>
         </section>
 
+        {/* CERTIFICATION */}
+        <section className="mx-auto max-w-7xl px-6 py-20">
+          <Heading title="Certification" />
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6 }}
+            className="corners relative bg-card/40 border border-border p-4 md:p-6 glow-border-hover max-w-3xl"
+          >
+            <img
+              src={certificateAsset.url}
+              alt="HL Mando Anand India Private Limited internship completion certificate for Neeraj K"
+              loading="lazy"
+              className="w-full h-auto border border-border/60"
+            />
+            <div className="mt-3 text-[10px] uppercase tracking-[0.3em] text-neon">
+              // Internship completion — 18 Jun 2026 to 24 Jul 2026
+            </div>
+          </motion.div>
+        </section>
+
+
         {/* TIMELINE */}
         <section className="mx-auto max-w-7xl px-6 py-20">
           <Heading title="Deployment Timeline" />
