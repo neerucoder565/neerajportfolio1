@@ -471,7 +471,7 @@ function InternshipDetail() {
             className="corners relative bg-card/40 border border-border p-4 md:p-6 glow-border-hover max-w-3xl"
           >
             <img
-              src={certificateAsset.url}
+              src={`https://project--f5fd28dd-7b71-489d-910e-961a65dfa09f.lovable.app${certificateAsset.url}`}
               alt="HL Mando Anand India Private Limited internship completion certificate for Neeraj K"
               loading="lazy"
               className="w-full h-auto border border-border/60"
