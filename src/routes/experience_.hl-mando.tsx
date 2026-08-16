@@ -468,7 +468,7 @@ function InternshipDetail() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6 }}
-            className="corners relative bg-card/40 border border-border p-4 md:p-6 glow-border-hover max-w-3xl"
+            className="corners relative bg-card/40 border border-border p-4 md:p-6 glow-border-hover max-w-3xl mx-auto"
           >
             <img
               src={`https://project--f5fd28dd-7b71-489d-910e-961a65dfa09f.lovable.app${certificateAsset.url}`}
