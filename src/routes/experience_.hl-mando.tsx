@@ -21,7 +21,7 @@ const buildingSrc = buildingAsset.url.startsWith("/")
   ? `https://project--f5fd28dd-7b71-489d-910e-961a65dfa09f.lovable.app${buildingAsset.url}`
   : buildingAsset.url;
 import gateImg from "@/assets/mando-gate.jpg";
-import campusImg from "@/assets/mando-campus.jpg";
+import certificateAsset from "@/assets/hl-mando-certificate.png.asset.json";
 import officeImg from "@/assets/mando-office.jpg";
 import landscapeImg from "@/assets/mando-landscape.jpg";
 
