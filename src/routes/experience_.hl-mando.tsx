@@ -474,7 +474,7 @@ function InternshipDetail() {
               src={`https://project--f5fd28dd-7b71-489d-910e-961a65dfa09f.lovable.app${certificateAsset.url}`}
               alt="HL Mando Anand India Private Limited internship completion certificate for Neeraj K"
               loading="lazy"
-              className="w-full max-h-[26rem] md:max-h-[32rem] object-contain mx-auto border border-border/60"
+              className="w-full h-auto mx-auto border border-border/60"
             />
             <div className="mt-3 text-[10px] uppercase tracking-[0.3em] text-neon">
               // Internship completion — 18 Jun 2026 to 24 Jul 2026
