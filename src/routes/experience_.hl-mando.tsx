@@ -21,7 +21,7 @@ const buildingSrc = buildingAsset.url.startsWith("/")
   ? `https://project--f5fd28dd-7b71-489d-910e-961a65dfa09f.lovable.app${buildingAsset.url}`
   : buildingAsset.url;
 import gateImg from "@/assets/mando-gate.jpg";
-import campusImg from "@/assets/mando-campus.jpg";
+import certificateAsset from "@/assets/hl-mando-certificate.png.asset.json";
 import officeImg from "@/assets/mando-office.jpg";
 import landscapeImg from "@/assets/mando-landscape.jpg";
 
@@ -80,11 +80,11 @@ const ASSIGNMENTS = [
 ];
 
 const GALLERY = [
-  { src: campusImg, alt: "Industrial campus aerial view", label: "Campus", span: "md:col-span-2 md:row-span-2", h: "h-64 md:h-full" },
+  { src: landscapeImg, alt: "HL Mando plant view", label: "Plant", span: "md:col-span-2 md:row-span-2", h: "h-64 md:h-full" },
   { src: gateImg, alt: "Security gate", label: "Gate", span: "", h: "h-48 md:h-56" },
   { src: officeImg, alt: "Office building", label: "Office", span: "", h: "h-48 md:h-56" },
-  { src: landscapeImg, alt: "Plant landscape", label: "Landscape", span: "md:col-span-3", h: "h-48 md:h-52" },
 ];
+
 
 const TIMELINE = [
   { tag: "DAY 01", title: "Security briefing", note: "Safety induction, plant rules, PPE and access protocol." },
@@ -459,6 +459,29 @@ function InternshipDetail() {
             process content is published.
           </p>
         </section>
+
+        {/* CERTIFICATION */}
+        <section className="mx-auto max-w-7xl px-6 py-20">
+          <Heading title="Certification" />
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6 }}
+            className="corners relative bg-card/40 border border-border p-4 md:p-6 glow-border-hover max-w-3xl"
+          >
+            <img
+              src={certificateAsset.url}
+              alt="HL Mando Anand India Private Limited internship completion certificate for Neeraj K"
+              loading="lazy"
+              className="w-full h-auto border border-border/60"
+            />
+            <div className="mt-3 text-[10px] uppercase tracking-[0.3em] text-neon">
+              // Internship completion — 18 Jun 2026 to 24 Jul 2026
+            </div>
+          </motion.div>
+        </section>
+
 
         {/* TIMELINE */}
         <section className="mx-auto max-w-7xl px-6 py-20">
