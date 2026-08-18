@@ -59,7 +59,8 @@ export const SERVICES: Service[] = [
 const CMD = "$ systemctl status neeraj-services.target";
 
 export function ServiceBootDashboard() {
-  const reduced = useReducedMotion();
+  const prefersReducedMotion = useReducedMotion();
+  const reduced = prefersReducedMotion === true;
   const rootRef = useRef<HTMLDivElement | null>(null);
   const [inView, setInView] = useState(false);
   const [typed, setTyped] = useState(0);
