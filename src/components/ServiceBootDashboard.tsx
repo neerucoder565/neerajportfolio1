@@ -69,6 +69,7 @@ export function ServiceBootDashboard() {
   const [active, setActive] = useState<number | null>(null);
   const [ping, setPing] = useState<number | null>(null);
   const lastInteract = useRef(Date.now());
+  const bootStarted = useRef(false);
 
   useEffect(() => {
     if (reduced) return;
@@ -76,9 +77,15 @@ export function ServiceBootDashboard() {
     if (!el) return;
     const io = new IntersectionObserver(
       (entries) => {
-        for (const e of entries) if (e.isIntersecting) setInView(true);
+        for (const entry of entries) {
+          if (entry.isIntersecting || entry.intersectionRatio >= 0.3) {
+            setInView(true);
+            io.disconnect();
+            break;
+          }
+        }
       },
-      { threshold: 0.35 },
+      { threshold: [0, 0.3, 0.4], rootMargin: "0px 0px -8% 0px" },
     );
     io.observe(el);
     return () => io.disconnect();
@@ -86,22 +93,25 @@ export function ServiceBootDashboard() {
 
   // boot sequence
   useEffect(() => {
-    if (reduced || !inView || phase !== "idle") return;
+    if (reduced || !inView || bootStarted.current) return;
+    bootStarted.current = true;
     const timers: ReturnType<typeof setTimeout>[] = [];
     setPhase("boot");
-    const start = 500;
+    const start = 180;
     for (let i = 1; i <= CMD.length; i++) {
       timers.push(setTimeout(() => setTyped(i), start + i * 22));
     }
-    const afterType = start + CMD.length * 22 + 600;
+    const afterType = start + CMD.length * 22 + 260;
     for (let i = 0; i < SERVICES.length; i++) {
-      timers.push(setTimeout(() => setShown(i + 1), afterType + i * 150));
-      timers.push(setTimeout(() => setOk(i + 1), afterType + i * 150 + 380));
+      timers.push(setTimeout(() => setShown(i + 1), afterType + i * 220));
+      timers.push(setTimeout(() => setOk(i + 1), afterType + i * 220 + 150));
     }
-    const done = afterType + (SERVICES.length - 1) * 150 + 380 + 500;
+    const done = afterType + (SERVICES.length - 1) * 220 + 150 + 420;
     timers.push(setTimeout(() => setPhase("dash"), done));
+    // Fail safe: the services must never remain trapped in the boot terminal.
+    timers.push(setTimeout(() => setPhase("dash"), 5000));
     return () => timers.forEach(clearTimeout);
-  }, [inView, phase, reduced]);
+  }, [inView, reduced]);
 
   // ambient health-check ping
   useEffect(() => {
