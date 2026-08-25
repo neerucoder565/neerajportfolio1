@@ -81,6 +81,9 @@ const ASSIGNMENTS = [
 
 const GALLERY = [
   { src: landscapeImg, alt: "HL Mando plant view", label: "Plant", span: "md:col-span-2 md:row-span-2", h: "h-64 md:h-full" },
+  { src: sideviewAsset.url, alt: "HL Mando plant side view with shift buses", label: "Side View", span: "", h: "h-48 md:h-56" },
+  { src: groupAsset.url, alt: "Interns at the HL Mando main entrance signage", label: "Intern Team", span: "", h: "h-48 md:h-56" },
+  { src: cepsAsset.url, alt: "Column Electric Power Steering assembly parts display", label: "CEPS Assembly", span: "md:col-span-2", h: "h-56 md:h-full" },
   { src: gateImg, alt: "Security gate", label: "Gate", span: "", h: "h-48 md:h-56" },
   { src: officeImg, alt: "Office building", label: "Office", span: "", h: "h-48 md:h-56" },
 ];
