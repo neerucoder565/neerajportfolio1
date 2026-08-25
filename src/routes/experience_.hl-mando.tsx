@@ -24,6 +24,9 @@ import gateImg from "@/assets/mando-gate.jpg";
 import certificateAsset from "@/assets/hl-mando-certificate.png.asset.json";
 import officeImg from "@/assets/mando-office.jpg";
 import landscapeImg from "@/assets/mando-landscape.jpg";
+import cepsAsset from "@/assets/CEPS_Assembly_Parts_Image.jpeg.asset.json";
+import groupAsset from "@/assets/Group_Pic.jpeg.asset.json";
+import sideviewAsset from "@/assets/Sideview_HL_MANDO.jpeg.asset.json";
 
 export const Route = createFileRoute("/experience_/hl-mando")({
   head: () => ({
