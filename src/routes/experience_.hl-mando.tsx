@@ -24,6 +24,9 @@ import gateImg from "@/assets/mando-gate.jpg";
 import certificateAsset from "@/assets/hl-mando-certificate.png.asset.json";
 import officeImg from "@/assets/mando-office.jpg";
 import landscapeImg from "@/assets/mando-landscape.jpg";
+import cepsAsset from "@/assets/CEPS_Assembly_Parts_Image.jpeg.asset.json";
+import groupAsset from "@/assets/Group_Pic.jpeg.asset.json";
+import sideviewAsset from "@/assets/Sideview_HL_MANDO.jpeg.asset.json";
 
 export const Route = createFileRoute("/experience_/hl-mando")({
   head: () => ({
@@ -81,6 +84,9 @@ const ASSIGNMENTS = [
 
 const GALLERY = [
   { src: landscapeImg, alt: "HL Mando plant view", label: "Plant", span: "md:col-span-2 md:row-span-2", h: "h-64 md:h-full" },
+  { src: sideviewAsset.url, alt: "HL Mando plant side view with shift buses", label: "Side View", span: "", h: "h-48 md:h-56" },
+  { src: groupAsset.url, alt: "Interns at the HL Mando main entrance signage", label: "Intern Team", span: "", h: "h-48 md:h-56" },
+  { src: cepsAsset.url, alt: "Column Electric Power Steering assembly parts display", label: "CEPS Assembly", span: "md:col-span-2", h: "h-56 md:h-full" },
   { src: gateImg, alt: "Security gate", label: "Gate", span: "", h: "h-48 md:h-56" },
   { src: officeImg, alt: "Office building", label: "Office", span: "", h: "h-48 md:h-56" },
 ];
