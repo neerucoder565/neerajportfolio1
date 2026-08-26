@@ -265,6 +265,19 @@ function Particles() {
 
 function InternshipDetail() {
   const [locked, setLocked] = useState(true);
+  const [viewer, setViewer] = useState<{ src: string; alt: string; label: string } | null>(null);
+
+  useEffect(() => {
+    if (!viewer) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setViewer(null);
+    window.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [viewer]);
 
   return (
     <>
