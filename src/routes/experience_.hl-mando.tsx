@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { motion, useInView } from "motion/react";
+import { motion, AnimatePresence, useInView } from "motion/react";
 import {
+  X as XIcon,
   ArrowLeft,
   Factory,
   MapPin,
