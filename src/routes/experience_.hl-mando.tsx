@@ -476,7 +476,7 @@ function InternshipDetail() {
                 <div className="absolute bottom-0 left-0 px-3 py-1.5 text-[10px] uppercase tracking-[0.3em] text-neon bg-background/80">
                   {g.label}
                 </div>
-              </div>
+              </button>
             ))}
           </div>
           <p className="mt-4 text-[11px] text-muted-foreground">
