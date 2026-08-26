@@ -459,9 +459,12 @@ function InternshipDetail() {
           <Heading title="Site Imagery" />
           <div className="grid md:grid-cols-4 md:auto-rows-[13rem] gap-4">
             {GALLERY.map((g) => (
-              <div
+              <button
+                type="button"
                 key={g.label}
-                className={`relative overflow-hidden border border-border group ${g.span}`}
+                onClick={() => setViewer({ src: g.src, alt: g.alt, label: g.label })}
+                aria-label={`View ${g.label} full screen`}
+                className={`relative overflow-hidden border border-border group cursor-zoom-in text-left ${g.span}`}
               >
                 <img
                   src={g.src}
