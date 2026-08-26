@@ -495,12 +495,25 @@ function InternshipDetail() {
             transition={{ duration: 0.6 }}
             className="corners relative bg-card/40 border border-border p-4 md:p-6 glow-border-hover max-w-3xl mx-auto"
           >
-            <img
-              src={certificateSrc}
-              alt="HL Mando Anand India Private Limited internship completion certificate for Neeraj K"
-              loading="lazy"
-              className="w-full max-h-[26rem] md:max-h-[32rem] object-contain mx-auto border border-border/60"
-            />
+            <button
+              type="button"
+              onClick={() =>
+                setViewer({
+                  src: certificateSrc,
+                  alt: "HL Mando Anand India Private Limited internship completion certificate for Neeraj K",
+                  label: "Certificate",
+                })
+              }
+              aria-label="View certificate full screen"
+              className="block w-full cursor-zoom-in"
+            >
+              <img
+                src={certificateSrc}
+                alt="HL Mando Anand India Private Limited internship completion certificate for Neeraj K"
+                loading="lazy"
+                className="w-full max-h-[26rem] md:max-h-[32rem] object-contain mx-auto border border-border/60"
+              />
+            </button>
             <div className="mt-3 text-[10px] uppercase tracking-[0.3em] text-neon">
               // Internship completion — 18 Jun 2026 to 24 Jul 2026
             </div>
