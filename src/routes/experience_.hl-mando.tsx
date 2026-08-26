@@ -753,6 +753,45 @@ function InternshipDetail() {
           </div>
         </section>
       </motion.div>
+
+      <AnimatePresence>
+        {viewer && (
+          <motion.div
+            key="lightbox"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            onClick={() => setViewer(null)}
+            className="fixed inset-0 z-[200] bg-background/95 backdrop-blur-md grid place-items-center p-4 md:p-10 cursor-zoom-out"
+            role="dialog"
+            aria-modal="true"
+            aria-label={viewer.label}
+          >
+            <motion.img
+              src={viewer.src}
+              alt={viewer.alt}
+              onClick={(e) => e.stopPropagation()}
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.92, opacity: 0 }}
+              transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+              className="max-h-[85vh] max-w-full object-contain border border-neon/40 shadow-[0_0_60px_-10px_var(--neon)]"
+            />
+            <div className="absolute bottom-6 left-0 right-0 text-center text-[10px] uppercase tracking-[0.3em] text-neon">
+              // {viewer.label}
+            </div>
+            <button
+              type="button"
+              onClick={() => setViewer(null)}
+              aria-label="Close image"
+              className="absolute top-5 right-5 border border-neon/60 text-neon bg-background/80 p-2 hover:bg-neon hover:text-primary-foreground transition-colors"
+            >
+              <XIcon size={18} />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
