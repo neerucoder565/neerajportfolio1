@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { motion, useInView } from "motion/react";
+import { motion, AnimatePresence, useInView } from "motion/react";
 import {
+  X as XIcon,
   ArrowLeft,
   Factory,
   MapPin,
@@ -264,6 +265,19 @@ function Particles() {
 
 function InternshipDetail() {
   const [locked, setLocked] = useState(true);
+  const [viewer, setViewer] = useState<{ src: string; alt: string; label: string } | null>(null);
+
+  useEffect(() => {
+    if (!viewer) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setViewer(null);
+    window.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [viewer]);
 
   return (
     <>
@@ -445,9 +459,12 @@ function InternshipDetail() {
           <Heading title="Site Imagery" />
           <div className="grid md:grid-cols-4 md:auto-rows-[13rem] gap-4">
             {GALLERY.map((g) => (
-              <div
+              <button
+                type="button"
                 key={g.label}
-                className={`relative overflow-hidden border border-border group ${g.span}`}
+                onClick={() => setViewer({ src: g.src, alt: g.alt, label: g.label })}
+                aria-label={`View ${g.label} full screen`}
+                className={`relative overflow-hidden border border-border group cursor-zoom-in text-left ${g.span}`}
               >
                 <img
                   src={g.src}
@@ -459,7 +476,7 @@ function InternshipDetail() {
                 <div className="absolute bottom-0 left-0 px-3 py-1.5 text-[10px] uppercase tracking-[0.3em] text-neon bg-background/80">
                   {g.label}
                 </div>
-              </div>
+              </button>
             ))}
           </div>
           <p className="mt-4 text-[11px] text-muted-foreground">
@@ -478,12 +495,25 @@ function InternshipDetail() {
             transition={{ duration: 0.6 }}
             className="corners relative bg-card/40 border border-border p-4 md:p-6 glow-border-hover max-w-3xl mx-auto"
           >
-            <img
-              src={certificateSrc}
-              alt="HL Mando Anand India Private Limited internship completion certificate for Neeraj K"
-              loading="lazy"
-              className="w-full max-h-[26rem] md:max-h-[32rem] object-contain mx-auto border border-border/60"
-            />
+            <button
+              type="button"
+              onClick={() =>
+                setViewer({
+                  src: certificateSrc,
+                  alt: "HL Mando Anand India Private Limited internship completion certificate for Neeraj K",
+                  label: "Certificate",
+                })
+              }
+              aria-label="View certificate full screen"
+              className="block w-full cursor-zoom-in"
+            >
+              <img
+                src={certificateSrc}
+                alt="HL Mando Anand India Private Limited internship completion certificate for Neeraj K"
+                loading="lazy"
+                className="w-full max-h-[26rem] md:max-h-[32rem] object-contain mx-auto border border-border/60"
+              />
+            </button>
             <div className="mt-3 text-[10px] uppercase tracking-[0.3em] text-neon">
               // Internship completion — 18 Jun 2026 to 24 Jul 2026
             </div>
@@ -723,6 +753,45 @@ function InternshipDetail() {
           </div>
         </section>
       </motion.div>
+
+      <AnimatePresence>
+        {viewer && (
+          <motion.div
+            key="lightbox"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            onClick={() => setViewer(null)}
+            className="fixed inset-0 z-[200] bg-background/95 backdrop-blur-md grid place-items-center p-4 md:p-10 cursor-zoom-out"
+            role="dialog"
+            aria-modal="true"
+            aria-label={viewer.label}
+          >
+            <motion.img
+              src={viewer.src}
+              alt={viewer.alt}
+              onClick={(e) => e.stopPropagation()}
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.92, opacity: 0 }}
+              transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+              className="max-h-[85vh] max-w-full object-contain border border-neon/40 shadow-[0_0_60px_-10px_var(--neon)]"
+            />
+            <div className="absolute bottom-6 left-0 right-0 text-center text-[10px] uppercase tracking-[0.3em] text-neon">
+              // {viewer.label}
+            </div>
+            <button
+              type="button"
+              onClick={() => setViewer(null)}
+              aria-label="Close image"
+              className="absolute top-5 right-5 border border-neon/60 text-neon bg-background/80 p-2 hover:bg-neon hover:text-primary-foreground transition-colors"
+            >
+              <XIcon size={18} />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
