@@ -80,6 +80,11 @@ function About() {
         <CapabilityBootLog />
       </Section>
 
+      <Section eyebrow="INVENTORY" title="Parts On Hand">
+        <PartsTray />
+      </Section>
+
+
       <Section eyebrow="EDUCATION" title="Trajectory">
         <div className="grid md:grid-cols-1 gap-6">
           <Panel>
