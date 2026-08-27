@@ -368,9 +368,6 @@ function TraceNode({
           </Link>
         )}
       </div>
-      <span className="absolute left-1/2 top-6 -translate-x-1/2 whitespace-nowrap font-mono text-[9px] tracking-[0.2em] text-muted-foreground/70">
-        {String(cap.x | 0).padStart(2, "0")}
-      </span>
     </div>
   );
 }
