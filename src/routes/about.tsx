@@ -2,6 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Panel, Section } from "@/components/SiteShell";
 import { GraduationCap } from "lucide-react";
 import { CapabilityBootLog } from "@/components/CapabilityBootLog";
+import { PartsTray } from "@/components/PartsTray";
+
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -79,6 +81,11 @@ function About() {
       <Section eyebrow="CAPABILITIES" title="System Boot Log">
         <CapabilityBootLog />
       </Section>
+
+      <Section eyebrow="INVENTORY" title="Parts On Hand">
+        <PartsTray />
+      </Section>
+
 
       <Section eyebrow="EDUCATION" title="Trajectory">
         <div className="grid md:grid-cols-1 gap-6">
