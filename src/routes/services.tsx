@@ -47,20 +47,24 @@ function WhatIBuild() {
           // CAPABILITY_MATRIX
         </span>
       </div>
-      <h1 className="font-display text-4xl md:text-6xl uppercase text-glow-soft">
+      <h1 className="font-display text-4xl md:text-6xl uppercase wb-title">
         What I Build
       </h1>
       <p className="wb-body text-muted-foreground mt-4 max-w-2xl">
         Six components, one balanced bridge — probe any node to see what it does.
       </p>
 
-      <div className="corners relative border border-border bg-card/40 p-6 mt-10">
+      <div className="wb-chamfer relative border border-border bg-card/40 p-6 mt-10">
         <h2 className="font-display text-lg md:text-xl uppercase mb-6">
           Why a Wheatstone bridge?
         </h2>
         <div className="grid gap-6 md:grid-cols-3">
-          {EXPLAINER.map((e) => (
-            <div key={e.k} className="spec-row">
+          {EXPLAINER.map((e, i) => (
+            <div
+              key={e.k}
+              className="spec-row wb-col"
+              style={{ animationDelay: `${0.15 + i * 0.15}s` }}
+            >
               <div className="font-display text-[11px] tracking-[0.3em] text-cyan mb-2">
                 {e.k}
               </div>
