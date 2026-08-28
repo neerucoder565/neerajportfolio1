@@ -187,8 +187,8 @@ export function WheatstoneBridge() {
               />
             )}
             <circle cx={360} cy={240} r={32} className="wb-meter" />
-            <path d="M 344 254 L 360 224 L 376 254" className="wb-needle" />
-            <text x={360} y={246} textAnchor="middle" className="wb-label wb-label-lg">
+            <path d="M 347 231 L 360 216 L 373 231" className="wb-needle" />
+            <text x={360} y={256} textAnchor="middle" className="wb-label wb-label-lg">
               G
             </text>
           </g>
