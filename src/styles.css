@@ -446,102 +446,236 @@
 @layer utilities {
   /* --- Wheatstone bridge capability matrix --- */
   .wb-root {
-    --wb-copper: #d9a441;
-    --wb-signal: #a78bfa;
+    --wb-idle: #7b8aa8;
+    --c: #7b8aa8;
   }
   .wb-body { font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif; }
 
+  .wb-chamfer {
+    clip-path: polygon(
+      14px 0, 100% 0, 100% calc(100% - 14px),
+      calc(100% - 14px) 100%, 0 100%, 0 14px
+    );
+  }
+
   .wb-diagram {
+    overflow: hidden;
     background-image:
-      linear-gradient(oklch(0.62 0.26 300 / 0.07) 1px, transparent 1px),
-      linear-gradient(90deg, oklch(0.62 0.26 300 / 0.07) 1px, transparent 1px),
-      radial-gradient(circle at 30% 20%, oklch(0.62 0.26 300 / 0.1), transparent 55%),
-      radial-gradient(circle at 75% 85%, oklch(0.62 0.26 300 / 0.08), transparent 55%);
-    background-size: 28px 28px, 28px 28px, 100% 100%, 100% 100%;
-    background-color: #07080c;
+      linear-gradient(oklch(0.7 0.12 260 / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, oklch(0.7 0.12 260 / 0.05) 1px, transparent 1px);
+    background-size: 26px 26px, 26px 26px;
+    background-color: #0a0a14;
+    box-shadow: 0 24px 70px -30px var(--active-c, #7b8aa8);
+    transition: box-shadow 400ms ease;
+  }
+  .wb-blob {
+    position: absolute;
+    width: 46%;
+    aspect-ratio: 1;
+    border-radius: 9999px;
+    filter: blur(70px);
+    pointer-events: none;
+  }
+  .wb-blob-a { background: #22e3ff33; top: -12%; left: -8%; animation: wb-drift-a 22s ease-in-out infinite; }
+  .wb-blob-b { background: #ff4fd82e; bottom: -14%; right: -6%; animation: wb-drift-b 27s ease-in-out infinite; }
+  @keyframes wb-drift-a {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(14%, 12%) scale(1.15); }
+  }
+  @keyframes wb-drift-b {
+    0%, 100% { transform: translate(0, 0) scale(1.1); }
+    50% { transform: translate(-12%, -10%) scale(0.95); }
   }
 
-  .wb-part { cursor: pointer; outline: none; transition: opacity 220ms ease; }
-  .wb-part.wb-dim { opacity: 0.22; }
-  .wb-part:focus-visible .wb-trace,
-  .wb-part:focus-visible .wb-meter,
-  .wb-part:focus-visible .wb-chip {
-    stroke: var(--wb-signal);
-    filter: drop-shadow(0 0 8px var(--wb-signal));
+  .wb-part {
+    cursor: pointer;
+    outline: none;
+    transition: opacity 340ms ease, filter 340ms ease;
+    transform-box: fill-box;
+    transform-origin: center;
   }
-  .wb-part:focus-visible { outline: 2px solid var(--wb-signal); outline-offset: 4px; }
+  .wb-part.wb-dim { opacity: 0.24; filter: saturate(0.35); }
+  .wb-part:focus-visible { outline: 2px solid var(--c); outline-offset: 4px; animation: wb-focus 1.4s ease-in-out infinite; }
+  @keyframes wb-focus {
+    0%, 100% { filter: drop-shadow(0 0 4px var(--c)); }
+    50% { filter: drop-shadow(0 0 14px var(--c)); }
+  }
 
-  .wb-hit { stroke: transparent; stroke-width: 26; fill: none; }
+  .wb-hit { stroke: transparent; stroke-width: 30; fill: none; }
+
   .wb-trace {
     fill: none;
-    stroke: var(--wb-copper);
+    stroke: var(--wb-idle);
     stroke-width: 2.4;
     stroke-linejoin: round;
     stroke-linecap: round;
-    filter: drop-shadow(0 0 4px oklch(0.78 0.13 80 / 0.45));
-    transition: stroke 220ms ease, filter 220ms ease;
+    filter: drop-shadow(0 0 4px oklch(0.75 0.06 260 / 0.5));
+    transition: stroke 320ms cubic-bezier(0.2, 0.9, 0.3, 1.3),
+      stroke-width 320ms ease, filter 320ms ease;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: wb-draw 0.85s cubic-bezier(0.65, 0, 0.35, 1) var(--draw-delay, 0s) forwards;
   }
-  .wb-part:hover .wb-trace { filter: drop-shadow(0 0 9px oklch(0.8 0.14 80 / 0.8)); }
-  .wb-on .wb-trace { stroke: var(--wb-signal); filter: drop-shadow(0 0 10px var(--wb-signal)); }
+  @keyframes wb-draw { to { stroke-dashoffset: 0; } }
+  .wb-part:hover .wb-trace {
+    stroke: var(--c);
+    stroke-width: 3;
+    filter: drop-shadow(0 0 10px var(--c));
+  }
+  .wb-on .wb-trace {
+    stroke: var(--c);
+    stroke-width: 3.2;
+    animation: wb-draw 0.85s cubic-bezier(0.65, 0, 0.35, 1) var(--draw-delay, 0s) forwards,
+      wb-breathe 2.2s ease-in-out 1s infinite;
+  }
+  @keyframes wb-breathe {
+    0%, 100% { filter: drop-shadow(0 0 8px var(--c)); }
+    50% { filter: drop-shadow(0 0 20px var(--c)) drop-shadow(0 0 40px var(--c)); }
+  }
+
+  .wb-symbol {
+    transform-box: fill-box;
+    transform-origin: center;
+    transition: transform 320ms cubic-bezier(0.2, 1.4, 0.4, 1);
+    animation: wb-symbol-in 0.6s ease-out 1.7s both;
+  }
+  @keyframes wb-symbol-in { from { opacity: 0; transform: scale(0.7); } to { opacity: 1; transform: scale(1); } }
+  .wb-part:hover .wb-symbol, .wb-on .wb-symbol { transform: scale(1.06); }
 
   .wb-flow {
     fill: none;
-    stroke: var(--wb-signal);
-    stroke-width: 3.4;
+    stroke: var(--c);
+    stroke-width: 3.6;
     stroke-linecap: round;
     stroke-dasharray: 10 16;
-    filter: drop-shadow(0 0 10px var(--wb-signal));
+    filter: drop-shadow(0 0 10px var(--c));
     animation: wb-current 1.1s linear infinite;
   }
+  .wb-drain .wb-flow { animation: wb-current-rev 0.5s linear forwards; opacity: 0.7; }
   @keyframes wb-current { to { stroke-dashoffset: -52; } }
+  @keyframes wb-current-rev { from { stroke-dashoffset: 0; opacity: 0.8; } to { stroke-dashoffset: 52; opacity: 0; } }
 
-  .wb-node { fill: var(--wb-copper); filter: drop-shadow(0 0 6px oklch(0.8 0.14 80 / 0.7)); }
+  .wb-ambient {
+    fill: none;
+    stroke: #6ad7ff;
+    stroke-width: 2;
+    opacity: 0.22;
+    stroke-dasharray: 0.03 0.22;
+    animation: wb-ambient-drift 9s linear infinite;
+  }
+  @keyframes wb-ambient-drift { to { stroke-dashoffset: -1; } }
+
+  .wb-spark {
+    fill: var(--active-c);
+    filter: drop-shadow(0 0 10px var(--active-c)) drop-shadow(0 0 22px var(--active-c));
+  }
+
+  .wb-node {
+    fill: #9fb2d0;
+    filter: drop-shadow(0 0 6px oklch(0.8 0.08 250 / 0.7));
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: wb-node-pop 0.5s cubic-bezier(0.2, 1.7, 0.4, 1) both;
+  }
+  @keyframes wb-node-pop {
+    0% { opacity: 0; transform: scale(0); }
+    70% { transform: scale(1.5); }
+    100% { opacity: 1; transform: scale(1); }
+  }
 
   .wb-chip {
     fill: oklch(0.16 0.012 305 / 0.9);
-    stroke: oklch(0.62 0.26 300 / 0.45);
+    stroke: oklch(0.7 0.05 260 / 0.4);
     stroke-width: 1;
+    transition: stroke 320ms ease;
   }
-  .wb-on .wb-chip { stroke: var(--wb-signal); }
+  .wb-part:hover .wb-chip, .wb-on .wb-chip { stroke: var(--c); }
   .wb-label {
     font-family: "JetBrains Mono", ui-monospace, monospace;
     font-size: 15px;
     letter-spacing: 0.18em;
-    fill: var(--wb-copper);
+    fill: var(--wb-idle);
+    transition: fill 320ms ease;
   }
   .wb-label-lg { font-size: 20px; }
-  .wb-on .wb-label { fill: var(--wb-signal); }
+  .wb-part:hover .wb-label, .wb-on .wb-label { fill: var(--c); }
 
   .wb-meter {
     fill: oklch(0.16 0.012 305 / 0.92);
-    stroke: var(--wb-copper);
+    stroke: var(--wb-idle);
     stroke-width: 2.2;
-    transition: stroke 220ms ease;
+    transition: stroke 320ms ease, filter 320ms ease;
   }
-  .wb-on .wb-meter { stroke: var(--wb-signal); filter: drop-shadow(0 0 12px var(--wb-signal)); }
-  .wb-needle { fill: none; stroke: oklch(0.82 0.13 200); stroke-width: 1.6; opacity: 0.7; }
+  .wb-part:hover .wb-meter, .wb-on .wb-meter { stroke: var(--c); filter: drop-shadow(0 0 12px var(--c)); }
+  .wb-needle { fill: none; stroke: #b9e9ff; stroke-width: 1.6; opacity: 0.75; }
   .wb-batt-long, .wb-batt-short {
-    stroke: var(--wb-copper);
+    stroke: var(--wb-idle);
     stroke-width: 3;
     stroke-linecap: round;
-    filter: drop-shadow(0 0 5px oklch(0.8 0.14 80 / 0.6));
+    transition: stroke 320ms ease, filter 320ms ease;
   }
   .wb-batt-short { stroke-width: 5; }
-  .wb-on .wb-batt-long, .wb-on .wb-batt-short { stroke: var(--wb-signal); }
+  .wb-part:hover .wb-batt-long, .wb-part:hover .wb-batt-short,
+  .wb-on .wb-batt-long, .wb-on .wb-batt-short {
+    stroke: var(--c);
+    filter: drop-shadow(0 0 8px var(--c));
+  }
+
+  .wb-readout {
+    background: oklch(0.16 0.012 305 / 0.55);
+    backdrop-filter: blur(8px);
+    border-left: 2px solid var(--active-c);
+    box-shadow:
+      inset 0 2px 18px oklch(0 0 0 / 0.7),
+      0 0 34px -14px var(--active-c);
+    transition: box-shadow 400ms ease, border-color 400ms ease;
+  }
 
   .wb-led {
     width: 8px; height: 8px; border-radius: 9999px;
-    background: oklch(0.82 0.2 145);
-    box-shadow: 0 0 8px oklch(0.82 0.2 145 / 0.9);
+    background: var(--active-c);
+    box-shadow: 0 0 10px var(--active-c);
     animation: wb-blink 1.6s steps(1) infinite;
     display: inline-block;
   }
   @keyframes wb-blink { 0%, 60% { opacity: 1; } 61%, 100% { opacity: 0.25; } }
 
-  @keyframes wb-readout { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-  .wb-readout-in { animation: wb-readout 320ms ease-out both; }
+  @keyframes wb-readout {
+    0% { opacity: 0; filter: blur(8px); transform: translateY(6px); }
+    18% { opacity: 0.5; }
+    26% { opacity: 0.1; }
+    38% { opacity: 0.9; }
+    46% { opacity: 0.3; }
+    100% { opacity: 1; filter: blur(0); transform: none; }
+  }
+  .wb-readout-in { animation: wb-readout 520ms ease-out both; }
+
+  @keyframes wb-title-sweep { to { background-position: 220% center; } }
+  .wb-title {
+    background-image: linear-gradient(
+      100deg,
+      var(--neon-bright) 0%, var(--neon-bright) 38%,
+      #22e3ff 48%, #ff4fd8 56%,
+      var(--neon-bright) 66%, var(--neon-bright) 100%
+    );
+    background-size: 220% auto;
+    background-position: -20% center;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: wb-title-sweep 6s linear infinite;
+  }
+
+  @keyframes wb-col-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+  .wb-col { animation: wb-col-in 0.6s ease-out both; }
 
   @media (prefers-reduced-motion: reduce) {
-    .wb-flow, .wb-led, .wb-readout-in { animation: none !important; }
+    .wb-flow, .wb-led, .wb-readout-in, .wb-ambient, .wb-node, .wb-symbol,
+    .wb-blob, .wb-title, .wb-col, .wb-trace, .wb-spark, .wb-part:focus-visible {
+      animation: none !important;
+    }
+    .wb-trace { stroke-dashoffset: 0; }
+    .wb-part, .wb-trace, .wb-symbol, .wb-readout, .wb-diagram { transition: none !important; }
   }
 }
+
