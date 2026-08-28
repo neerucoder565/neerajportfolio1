@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { WheatstoneBridge } from "@/components/WheatstoneBridge";
+import { CircuitBackdrop } from "@/components/CircuitBackdrop";
+
 
 export const Route = createFileRoute("/services")({
   head: () => ({
@@ -40,7 +42,10 @@ const EXPLAINER = [
 
 function WhatIBuild() {
   return (
-    <section className="mx-auto max-w-5xl px-6 py-16 md:py-24">
+    <>
+      <CircuitBackdrop />
+      <section className="relative z-10 mx-auto max-w-5xl px-6 py-16 md:py-24">
+
       <div className="flex items-center gap-3 mb-4">
         <span className="wb-led" aria-hidden />
         <span className="font-display text-xs text-neon tracking-[0.3em]">
@@ -74,9 +79,11 @@ function WhatIBuild() {
         </div>
       </div>
 
-      <div className="mt-10">
+      <div className="mt-16 md:mt-20 flex justify-center">
         <WheatstoneBridge />
       </div>
-    </section>
+      </section>
+    </>
   );
 }
+

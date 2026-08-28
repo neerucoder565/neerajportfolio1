@@ -194,12 +194,13 @@ export function WheatstoneBridge() {
   return (
     <div
       ref={rootRef}
-      className="wb-root"
+      className="wb-root w-full max-w-[320px] md:max-w-[420px] mx-auto"
       style={
         { ["--active-c" as string]: sel?.color ?? "#7b8aa8" } as React.CSSProperties
       }
     >
-      <div className="wb-diagram wb-chamfer relative border border-border p-4 md:p-8">
+      <div className="wb-diagram wb-chamfer relative border border-border p-3 md:p-4">
+
         <span className="wb-blob wb-blob-a" aria-hidden />
         <span className="wb-blob wb-blob-b" aria-hidden />
         <svg
@@ -302,7 +303,7 @@ export function WheatstoneBridge() {
       </div>
 
       {/* readout */}
-      <div className="mt-6 wb-chamfer wb-readout relative border border-border p-5 md:p-6">
+      <div className="mt-5 wb-chamfer wb-readout relative border border-border p-4 md:p-5">
         <div className="flex items-center gap-3 mb-4">
           <span className="wb-led" aria-hidden />
           <span className="font-display text-[10px] tracking-[0.3em] text-muted-foreground">
