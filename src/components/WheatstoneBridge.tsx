@@ -303,7 +303,7 @@ export function WheatstoneBridge() {
       </div>
 
       {/* readout */}
-      <div className="mt-6 wb-chamfer wb-readout relative border border-border p-5 md:p-6">
+      <div className="mt-5 wb-chamfer wb-readout relative border border-border p-4 md:p-5">
         <div className="flex items-center gap-3 mb-4">
           <span className="wb-led" aria-hidden />
           <span className="font-display text-[10px] tracking-[0.3em] text-muted-foreground">
