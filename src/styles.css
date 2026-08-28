@@ -442,3 +442,106 @@
   }
 }
 
+
+@layer utilities {
+  /* --- Wheatstone bridge capability matrix --- */
+  .wb-root {
+    --wb-copper: #d9a441;
+    --wb-signal: #a78bfa;
+  }
+  .wb-body { font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif; }
+
+  .wb-diagram {
+    background-image:
+      linear-gradient(oklch(0.62 0.26 300 / 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, oklch(0.62 0.26 300 / 0.07) 1px, transparent 1px),
+      radial-gradient(circle at 30% 20%, oklch(0.62 0.26 300 / 0.1), transparent 55%),
+      radial-gradient(circle at 75% 85%, oklch(0.62 0.26 300 / 0.08), transparent 55%);
+    background-size: 28px 28px, 28px 28px, 100% 100%, 100% 100%;
+    background-color: #07080c;
+  }
+
+  .wb-part { cursor: pointer; outline: none; transition: opacity 220ms ease; }
+  .wb-part.wb-dim { opacity: 0.22; }
+  .wb-part:focus-visible .wb-trace,
+  .wb-part:focus-visible .wb-meter,
+  .wb-part:focus-visible .wb-chip {
+    stroke: var(--wb-signal);
+    filter: drop-shadow(0 0 8px var(--wb-signal));
+  }
+  .wb-part:focus-visible { outline: 2px solid var(--wb-signal); outline-offset: 4px; }
+
+  .wb-hit { stroke: transparent; stroke-width: 26; fill: none; }
+  .wb-trace {
+    fill: none;
+    stroke: var(--wb-copper);
+    stroke-width: 2.4;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    filter: drop-shadow(0 0 4px oklch(0.78 0.13 80 / 0.45));
+    transition: stroke 220ms ease, filter 220ms ease;
+  }
+  .wb-part:hover .wb-trace { filter: drop-shadow(0 0 9px oklch(0.8 0.14 80 / 0.8)); }
+  .wb-on .wb-trace { stroke: var(--wb-signal); filter: drop-shadow(0 0 10px var(--wb-signal)); }
+
+  .wb-flow {
+    fill: none;
+    stroke: var(--wb-signal);
+    stroke-width: 3.4;
+    stroke-linecap: round;
+    stroke-dasharray: 10 16;
+    filter: drop-shadow(0 0 10px var(--wb-signal));
+    animation: wb-current 1.1s linear infinite;
+  }
+  @keyframes wb-current { to { stroke-dashoffset: -52; } }
+
+  .wb-node { fill: var(--wb-copper); filter: drop-shadow(0 0 6px oklch(0.8 0.14 80 / 0.7)); }
+
+  .wb-chip {
+    fill: oklch(0.16 0.012 305 / 0.9);
+    stroke: oklch(0.62 0.26 300 / 0.45);
+    stroke-width: 1;
+  }
+  .wb-on .wb-chip { stroke: var(--wb-signal); }
+  .wb-label {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 15px;
+    letter-spacing: 0.18em;
+    fill: var(--wb-copper);
+  }
+  .wb-label-lg { font-size: 20px; }
+  .wb-on .wb-label { fill: var(--wb-signal); }
+
+  .wb-meter {
+    fill: oklch(0.16 0.012 305 / 0.92);
+    stroke: var(--wb-copper);
+    stroke-width: 2.2;
+    transition: stroke 220ms ease;
+  }
+  .wb-on .wb-meter { stroke: var(--wb-signal); filter: drop-shadow(0 0 12px var(--wb-signal)); }
+  .wb-needle { fill: none; stroke: oklch(0.82 0.13 200); stroke-width: 1.6; opacity: 0.7; }
+  .wb-batt-long, .wb-batt-short {
+    stroke: var(--wb-copper);
+    stroke-width: 3;
+    stroke-linecap: round;
+    filter: drop-shadow(0 0 5px oklch(0.8 0.14 80 / 0.6));
+  }
+  .wb-batt-short { stroke-width: 5; }
+  .wb-on .wb-batt-long, .wb-on .wb-batt-short { stroke: var(--wb-signal); }
+
+  .wb-led {
+    width: 8px; height: 8px; border-radius: 9999px;
+    background: oklch(0.82 0.2 145);
+    box-shadow: 0 0 8px oklch(0.82 0.2 145 / 0.9);
+    animation: wb-blink 1.6s steps(1) infinite;
+    display: inline-block;
+  }
+  @keyframes wb-blink { 0%, 60% { opacity: 1; } 61%, 100% { opacity: 0.25; } }
+
+  @keyframes wb-readout { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  .wb-readout-in { animation: wb-readout 320ms ease-out both; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .wb-flow, .wb-led, .wb-readout-in { animation: none !important; }
+  }
+}
