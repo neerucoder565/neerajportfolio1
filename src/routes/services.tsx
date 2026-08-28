@@ -79,9 +79,11 @@ function WhatIBuild() {
         </div>
       </div>
 
-      <div className="mt-10">
+      <div className="mt-16 md:mt-20 flex justify-center">
         <WheatstoneBridge />
       </div>
-    </section>
+      </section>
+    </>
   );
 }
+
