@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Panel, Section } from "@/components/SiteShell";
 import { GraduationCap } from "lucide-react";
-import { CapabilityBootLog } from "@/components/CapabilityBootLog";
+
 import { PartsTray } from "@/components/PartsTray";
 
 
@@ -77,10 +77,6 @@ function About() {
         </div>
       </Section>
 
-
-      <Section eyebrow="CAPABILITIES" title="System Boot Log">
-        <CapabilityBootLog />
-      </Section>
 
       <Section eyebrow="INVENTORY" title="Parts On Hand">
         <PartsTray />
