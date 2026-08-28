@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { WheatstoneBridge } from "@/components/WheatstoneBridge";
+import { CircuitBackdrop } from "@/components/CircuitBackdrop";
+
 
 export const Route = createFileRoute("/services")({
   head: () => ({
