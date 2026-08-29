@@ -460,11 +460,8 @@
 
   .wb-diagram {
     overflow: hidden;
-    background-image:
-      linear-gradient(oklch(0.7 0.12 260 / 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, oklch(0.7 0.12 260 / 0.05) 1px, transparent 1px);
-    background-size: 26px 26px, 26px 26px;
-    background-color: #0a0a14;
+    /* transparent so the site-wide video backdrop shows through */
+    background-color: transparent;
     box-shadow: 0 24px 70px -30px var(--active-c, #7b8aa8);
     transition: box-shadow 400ms ease;
   }

@@ -306,7 +306,7 @@ export function WheatstoneBridge() {
         <div className="flex items-center gap-3 mb-4">
           <span className="wb-led" aria-hidden />
           <span className="font-display text-[10px] tracking-[0.3em] text-muted-foreground">
-            READOUT // {sel ? "SIGNAL DETECTED" : "NULL"}
+            READOUT
           </span>
         </div>
         <div key={readoutKey} className="wb-readout-in">
