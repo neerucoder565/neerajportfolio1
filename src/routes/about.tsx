@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Panel, Section } from "@/components/SiteShell";
-import { GraduationCap } from "lucide-react";
+import { GraduationCap, FileText } from "lucide-react";
+import certificatePlaceholder from "@/assets/hackathon-certificate-placeholder.pdf.asset.json";
 
 
 export const Route = createFileRoute("/about")({
