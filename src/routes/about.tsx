@@ -115,6 +115,54 @@ function About() {
           ))}
         </div>
       </Section>
+
+      <Section eyebrow="ACHIEVEMENTS" title="Hackathons">
+        <div className="grid md:grid-cols-2 gap-6">
+          {[
+            {
+              project: "MediFind",
+              event: "Genesis 2026",
+              outcome: "Smart emergency hospital finder.",
+            },
+            {
+              project: "Arch Nova",
+              event: "DVCon India 2026 Design Contest (Stage 1 & 2A)",
+              outcome: "YOLO-based adaptive task-aware object detection with FPGA preprocessing context.",
+            },
+            {
+              project: "AutoManuscript AI",
+              event: 'Team "The Big Four"',
+              outcome: "Six-stage AI manuscript formatting pipeline with citation engine and dual validation.",
+            },
+            {
+              project: "UrjaNet",
+              event: "MSME Idea Hackathon 6.0",
+              outcome: "AI-powered NILM and carbon compliance platform.",
+            },
+          ].map((h, i) => (
+            <Panel key={h.project} className="flex flex-col justify-between gap-4">
+              <div>
+                <div className="text-xs text-neon tracking-[0.25em] mb-2">
+                  // ENTRY_{String(i + 1).padStart(2, "0")}
+                </div>
+                <h3 className="font-display text-xl uppercase text-glow-soft">{h.project}</h3>
+                <div className="text-sm text-muted-foreground mt-1">{h.event}</div>
+                <p className="text-sm text-muted-foreground/80 mt-3 leading-relaxed">
+                  {h.outcome}
+                </p>
+              </div>
+              <a
+                href={certificatePlaceholder.url}
+                download
+                className="inline-flex items-center gap-2 self-start text-xs uppercase tracking-[0.2em] text-neon hover:text-neon-bright transition-colors"
+              >
+                <FileText size={14} />
+                View Certificate
+              </a>
+            </Panel>
+          ))}
+        </div>
+      </Section>
     </>
   );
 }
