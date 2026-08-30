@@ -123,21 +123,49 @@ function About() {
               project: "MediFind",
               event: "Genesis 2026",
               outcome: "Smart emergency hospital finder.",
+              cert: genesisCert.url,
             },
             {
               project: "Arch Nova",
               event: "DVCon India 2026 Design Contest (Stage 1 & 2A)",
               outcome: "YOLO-based adaptive task-aware object detection with FPGA preprocessing context.",
+              cert: null,
             },
             {
               project: "AutoManuscript AI",
               event: 'Team "The Big Four"',
               outcome: "Six-stage AI manuscript formatting pipeline with citation engine and dual validation.",
+              cert: null,
             },
             {
               project: "UrjaNet",
               event: "MSME Idea Hackathon 6.0",
               outcome: "AI-powered NILM and carbon compliance platform.",
+              cert: null,
+            },
+            {
+              project: "Hackathon 360°",
+              event: "National Level ECLearnix Innovation Challenge — Round 2",
+              outcome: "Selected through to Round 2 of the national innovation challenge.",
+              cert: ecLearnixCert.url,
+            },
+            {
+              project: "Hackathon 360° 4.0",
+              event: "International Level — NSIT-IFSCS & ECLearnix",
+              outcome: "Round 1 participant in the international innovation and problem-solving track.",
+              cert: intl40Cert.url,
+            },
+            {
+              project: "Hackathon 360° 3.0",
+              event: "International Level — KPR Institute of Engineering & Technology",
+              outcome: "International hackathon focused on rapid innovation and prototyping.",
+              cert: kprietCert.url,
+            },
+            {
+              project: "Quintessence 2026",
+              event: "SECE Student Society, Easwari Engineering College",
+              outcome: "Technical quiz on core electronics and communication fundamentals.",
+              cert: quintessenceCert.url,
             },
           ].map((h, i) => (
             <Panel key={h.project} className="flex flex-col justify-between gap-4">
@@ -151,14 +179,17 @@ function About() {
                   {h.outcome}
                 </p>
               </div>
-              <a
-                href={certificatePlaceholder.url}
-                download
-                className="inline-flex items-center gap-2 self-start text-xs uppercase tracking-[0.2em] text-neon hover:text-neon-bright transition-colors"
-              >
-                <FileText size={14} />
-                View Certificate
-              </a>
+              {h.cert && (
+                <a
+                  href={h.cert}
+                  download
+                  className="inline-flex items-center gap-2 self-start text-xs uppercase tracking-[0.2em] text-neon hover:text-neon-bright transition-colors"
+                >
+                  <FileText size={14} />
+                  View Certificate
+                </a>
+              )}
+
             </Panel>
           ))}
         </div>
