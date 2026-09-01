@@ -2,11 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Panel, Section } from "@/components/SiteShell";
 import { FileText, ArrowLeft, Download } from "lucide-react";
-import genesisCert from "@/assets/genesis-2026-certificate.pdf.asset.json";
-import ecLearnixCert from "@/assets/eclearnix-360-round2-certificate.pdf.asset.json";
-import intl40Cert from "@/assets/hackathon-360-4-0-certificate.pdf.asset.json";
-import kprietCert from "@/assets/hackathon-360-3-0-kpriet-certificate.pdf.asset.json";
-import quintessenceCert from "@/assets/quintessence-2026-certificate.pdf.asset.json";
 
 export const Route = createFileRoute("/hackathons")({
   head: () => ({
@@ -27,7 +22,7 @@ const HACKATHONS = [
     project: "MediFind",
     event: "Genesis 2026",
     outcome: "Smart emergency hospital finder.",
-    cert: genesisCert.url,
+    cert: "/certificates/genesis-2026-certificate.pdf",
   },
   {
     project: "Arch Nova",
@@ -51,25 +46,25 @@ const HACKATHONS = [
     project: "Hackathon 360°",
     event: "National Level ECLearnix Innovation Challenge — Round 2",
     outcome: "Selected through to Round 2 of the national innovation challenge.",
-    cert: ecLearnixCert.url,
+    cert: "/certificates/eclearnix-360-round2-certificate.pdf",
   },
   {
     project: "Hackathon 360° 4.0",
     event: "International Level — NSIT-IFSCS & ECLearnix",
     outcome: "Round 1 participant in the international innovation and problem-solving track.",
-    cert: intl40Cert.url,
+    cert: "/certificates/hackathon-360-4-0-certificate.pdf",
   },
   {
     project: "Hackathon 360° 3.0",
     event: "International Level — KPR Institute of Engineering & Technology",
     outcome: "International hackathon focused on rapid innovation and prototyping.",
-    cert: kprietCert.url,
+    cert: "/certificates/hackathon-360-3-0-kpriet-certificate.pdf",
   },
   {
     project: "Quintessence 2026",
     event: "SECE Student Society, Easwari Engineering College",
     outcome: "Technical quiz on core electronics and communication fundamentals.",
-    cert: quintessenceCert.url,
+    cert: "/certificates/quintessence-2026-certificate.pdf",
   },
 ];
 
