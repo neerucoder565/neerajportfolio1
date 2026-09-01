@@ -104,12 +104,6 @@ const TIMELINE = [
   { tag: "FINAL", title: "Presentation", note: "Presented findings and the proposal to the engineering team." },
 ];
 
-const MATRIX = [
-  { label: "Manufacturing Knowledge", pct: 88 },
-  { label: "Automation Workflow", pct: 82 },
-  { label: "Industrial Documentation", pct: 76 },
-  { label: "Cross Functional Collaboration", pct: 90 },
-];
 
 const STATS = [
   { n: "30", label: "Days" },
@@ -155,27 +149,6 @@ function Heading({ title }: { title: string }) {
   );
 }
 
-function Bar({ pct, label }: { pct: number; label: string }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: false, margin: "-60px" });
-  return (
-    <div ref={ref}>
-      <div className="flex items-end justify-between mb-2">
-        <span className="text-sm text-foreground">{label}</span>
-        <span className="font-mono text-[11px] text-neon">{pct}%</span>
-      </div>
-      <div className="h-2.5 border border-border bg-background/60 relative overflow-hidden">
-        <motion.div
-          initial={{ width: 0 }}
-          animate={inView ? { width: `${pct}%` } : { width: 0 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
-          className="absolute inset-y-0 left-0 bg-neon"
-          style={{ boxShadow: "0 0 12px var(--neon)" }}
-        />
-      </div>
-    </div>
-  );
-}
 
 /* ---------------------------------------------------------- access gate --- */
 
@@ -551,16 +524,6 @@ function InternshipDetail() {
                   {t.note}
                 </p>
               </motion.div>
-            ))}
-          </div>
-        </section>
-
-        {/* LEARNING MATRIX */}
-        <section className="mx-auto max-w-7xl px-6 py-20">
-          <Heading title="System Upgrade" />
-          <div className="grid md:grid-cols-2 gap-x-12 gap-y-8 max-w-4xl">
-            {MATRIX.map((m) => (
-              <Bar key={m.label} pct={m.pct} label={m.label} />
             ))}
           </div>
         </section>
