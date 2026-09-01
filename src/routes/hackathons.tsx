@@ -104,7 +104,7 @@ function Hackathons() {
   }
 
   return (
-    <Section eyebrow="ACHIEVEMENTS" title="Hackathons">
+    <Section title="Hackathons">
       <div className="grid md:grid-cols-2 gap-6">
         {HACKATHONS.map((h, i) => (
           <Panel key={h.project} className="flex flex-col justify-between gap-4">
