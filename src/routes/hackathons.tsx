@@ -93,17 +93,11 @@ function Hackathons() {
           </a>
         </div>
         <Panel className="p-2">
-          <object
-            data={viewing.cert}
-            type="application/pdf"
-            className="w-full h-[75vh] rounded-md bg-background"
-          >
-            <iframe
-              src={viewing.cert}
-              title={`${viewing.project} certificate`}
-              className="w-full h-[75vh] rounded-md"
-            />
-          </object>
+          <img
+            src={viewing.cert.replace(/\.pdf$/, ".png")}
+            alt={`${viewing.project} certificate`}
+            className="w-full h-auto rounded-md"
+          />
         </Panel>
       </Section>
     );
