@@ -74,6 +74,46 @@ const HACKATHONS = [
 ];
 
 function Hackathons() {
+  const [viewing, setViewing] = useState<{ project: string; cert: string } | null>(null);
+
+  if (viewing) {
+    return (
+      <Section eyebrow="CERTIFICATE" title={viewing.project}>
+        <div className="flex items-center justify-between gap-4 mb-4">
+          <button
+            type="button"
+            onClick={() => setViewing(null)}
+            className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-neon hover:text-neon-bright transition-colors"
+          >
+            <ArrowLeft size={14} />
+            Back to Hackathons
+          </button>
+          <a
+            href={viewing.cert}
+            download
+            className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-neon hover:text-neon-bright transition-colors"
+          >
+            <Download size={14} />
+            Download
+          </a>
+        </div>
+        <Panel className="p-2">
+          <object
+            data={viewing.cert}
+            type="application/pdf"
+            className="w-full h-[75vh] rounded-md bg-background"
+          >
+            <iframe
+              src={viewing.cert}
+              title={`${viewing.project} certificate`}
+              className="w-full h-[75vh] rounded-md"
+            />
+          </object>
+        </Panel>
+      </Section>
+    );
+  }
+
   return (
     <Section eyebrow="ACHIEVEMENTS" title="Hackathons">
       <div className="grid md:grid-cols-2 gap-6">
@@ -90,14 +130,14 @@ function Hackathons() {
               </p>
             </div>
             {h.cert && (
-              <a
-                href={h.cert}
-                download
+              <button
+                type="button"
+                onClick={() => setViewing({ project: h.project, cert: h.cert! })}
                 className="inline-flex items-center gap-2 self-start text-xs uppercase tracking-[0.2em] text-neon hover:text-neon-bright transition-colors"
               >
                 <FileText size={14} />
                 View Certificate
-              </a>
+              </button>
             )}
           </Panel>
         ))}
