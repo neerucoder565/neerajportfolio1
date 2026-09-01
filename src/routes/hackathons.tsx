@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 import { Panel, Section } from "@/components/SiteShell";
-import { FileText } from "lucide-react";
+import { FileText, ArrowLeft, Download } from "lucide-react";
 import genesisCert from "@/assets/genesis-2026-certificate.pdf.asset.json";
 import ecLearnixCert from "@/assets/eclearnix-360-round2-certificate.pdf.asset.json";
 import intl40Cert from "@/assets/hackathon-360-4-0-certificate.pdf.asset.json";
