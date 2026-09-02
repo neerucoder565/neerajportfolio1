@@ -25,24 +25,6 @@ const HACKATHONS = [
     cert: "/certificates/genesis-2026-certificate.pdf",
   },
   {
-    project: "Arch Nova",
-    event: "DVCon India 2026 Design Contest (Stage 1 & 2A)",
-    outcome: "YOLO-based adaptive task-aware object detection with FPGA preprocessing context.",
-    cert: null,
-  },
-  {
-    project: "AutoManuscript AI",
-    event: 'Team "The Big Four"',
-    outcome: "Six-stage AI manuscript formatting pipeline with citation engine and dual validation.",
-    cert: null,
-  },
-  {
-    project: "UrjaNet",
-    event: "MSME Idea Hackathon 6.0",
-    outcome: "AI-powered NILM and carbon compliance platform.",
-    cert: null,
-  },
-  {
     project: "Hackathon 360°",
     event: "National Level ECLearnix Innovation Challenge — Round 2",
     outcome: "Selected through to Round 2 of the national innovation challenge.",
