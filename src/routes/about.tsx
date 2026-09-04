@@ -31,15 +31,15 @@ const TOOL_LOGOS = [
 const ABOUT_SEGMENTS: { label: string; text: string }[] = [
   {
     label: "// BACKGROUND",
-    text: "Electronics and Embedded Systems engineer focused on building intelligent hardware and low-level software. I enjoy taking ideas from schematic to working prototype — writing firmware, designing circuits, and iterating on real hardware until it works reliably. Currently completing my B.E. in Electronics & Communication Engineering.",
+    text: "Electronics engineer building intelligent hardware from schematic to prototype. Currently completing B.E. in Electronics & Communication Engineering.",
   },
   {
     label: "// SKILLS",
-    text: "Hands-on experience with microcontrollers, circuit design, sensor interfacing, DAC systems, and motor control through academic and personal projects. Proficient in Embedded C, C++, and Python, with a strong focus on hardware-software interaction, system debugging, and practical engineering problem-solving on the bench.",
+    text: "Embedded C, C++, Python; microcontrollers, circuit design, sensor interfacing, motor control and hands-on bench debugging.",
   },
   {
     label: "// INTERESTS",
-    text: "Exploring RISC-V architectures, VLSI design, edge AI, and next-generation embedded platforms — continuously building projects to deepen my expertise in digital systems and semiconductor technologies, and to bridge the gap between theory and working silicon.",
+    text: "RISC-V, VLSI, edge AI and next-generation embedded platforms that bridge theory and working silicon.",
   },
 ];
 
@@ -190,14 +190,14 @@ function About() {
       </Section>
 
       <Section eyebrow="TECHNICAL STACK" title="Tools & Platforms">
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-wrap gap-5">
           {TOOL_LOGOS.map((t) => (
             <div
               key={t.name}
               title={t.name}
-              className="corners relative group flex items-center gap-3 border border-border bg-card/40 px-4 py-3 transition-all duration-300 hover:border-[var(--neon-bright)]/50 hover:shadow-[0_0_18px_color-mix(in_oklab,var(--neon-bright)_35%,transparent)]"
+              className="corners relative group flex items-center gap-4 border border-border bg-card/40 px-5 py-4 transition-all duration-300 hover:border-[var(--neon-bright)]/50 hover:shadow-[0_0_18px_color-mix(in_oklab,var(--neon-bright)_35%,transparent)]"
             >
-              <span className="size-12 rounded-md bg-white/95 flex items-center justify-center p-2 shrink-0 transition-transform duration-300 group-hover:scale-110">
+              <span className="size-16 rounded-md bg-white/95 flex items-center justify-center p-3 shrink-0 transition-transform duration-300 group-hover:scale-110">
                 <img
                   src={t.icon}
                   alt={`${t.name} logo`}
@@ -205,7 +205,7 @@ function About() {
                   className="size-full object-contain"
                 />
               </span>
-              <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground group-hover:text-foreground transition-colors">
+              <span className="font-mono text-sm uppercase tracking-wider text-muted-foreground group-hover:text-foreground transition-colors">
                 {t.name}
               </span>
             </div>
