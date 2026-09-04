@@ -293,55 +293,180 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
             strokeWidth="0.6"
             fill="none"
           />
-          {/* Keyboard keys */}
-          {[14, 14, 13, 12, 10].map((count, r) => {
-            const inset = 46 - r * 4;
-            const left = MON_X + inset;
-            const right = MON_X + MON_W - inset;
-            const gap = 2.4;
-            const kw = (right - left - gap * (count - 1)) / count;
-            const kh = 8.4;
-            const y = NECK_H + 9 + r * (kh + 2.6);
+          {/* ---- Realistic backlit Apple-style keyboard ---- */}
+          {(() => {
+            const KB_L = MON_X + 30;
+            const KB_R = MON_X + MON_W - 30;
+            const GAP = 1.5;
+            const UNITS = 14.5;
+            const rows: { label: string; u: number; sub?: string }[][] = [
+              [
+                { label: "esc", u: 1.5 },
+                ...["F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12"].map((l) => ({ label: l, u: 1 })),
+                { label: "⏻", u: 1 },
+              ],
+              [
+                { label: "~", u: 1 },
+                ...["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "="].map((l) => ({ label: l, u: 1 })),
+                { label: "delete", u: 1.5 },
+              ],
+              [
+                { label: "tab", u: 1.5 },
+                ...["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "[", "]"].map((l) => ({ label: l, u: 1 })),
+                { label: "\\", u: 1 },
+              ],
+              [
+                { label: "caps", u: 1.75 },
+                ...["A", "S", "D", "F", "G", "H", "J", "K", "L", ";", "'"].map((l) => ({ label: l, u: 1 })),
+                { label: "return", u: 1.75 },
+              ],
+              [
+                { label: "shift", u: 2.25 },
+                ...["Z", "X", "C", "V", "B", "N", "M", ",", ".", "/"].map((l) => ({ label: l, u: 1 })),
+                { label: "shift", u: 2.25 },
+              ],
+              [
+                { label: "fn", u: 1 },
+                { label: "ctrl", u: 1 },
+                { label: "⌥", u: 1 },
+                { label: "⌘", u: 1.25 },
+                { label: "", u: 5 },
+                { label: "⌘", u: 1.25 },
+                { label: "⌥", u: 1 },
+                { label: "◀", u: 1 },
+                { label: "▲▼", u: 1 },
+                { label: "▶", u: 1 },
+              ],
+            ];
+            const TOP = NECK_H + 5;
+            let y = TOP;
             return (
-              <g key={r}>
-                {Array.from({ length: count }).map((_, i) => (
-                  <rect
-                    key={i}
-                    x={left + i * (kw + gap)}
-                    y={y}
-                    width={kw}
-                    height={kh}
-                    rx={1.6}
-                    fill="oklch(0.13 0.004 305)"
-                    stroke="color-mix(in oklab, var(--neon) 16%, transparent)"
-                    strokeWidth="0.4"
-                  />
-                ))}
+              <g>
+                {/* keyboard well */}
+                <rect
+                  x={KB_L - 4}
+                  y={TOP - 3}
+                  width={KB_R - KB_L + 8}
+                  height={68}
+                  rx={3}
+                  fill="oklch(0.09 0.004 305)"
+                  stroke="color-mix(in oklab, var(--neon) 14%, transparent)"
+                  strokeWidth="0.4"
+                />
+                {rows.map((row, r) => {
+                  const kh = r === 0 ? 6.2 : 9.2;
+                  const u = (KB_R - KB_L - GAP * (row.length - 1)) / UNITS;
+                  let x = KB_L;
+                  const rowY = y;
+                  y += kh + GAP;
+                  return (
+                    <g key={r}>
+                      {row.map((k, i) => {
+                        const kw = u * k.u;
+                        const kx = x;
+                        x += kw + GAP;
+                        return (
+                          <g key={i}>
+                            <rect
+                              x={kx}
+                              y={rowY}
+                              width={kw}
+                              height={kh}
+                              rx={1.4}
+                              fill="oklch(0.145 0.008 300)"
+                              stroke="color-mix(in oklab, var(--neon) 30%, transparent)"
+                              strokeWidth="0.35"
+                            />
+                            {/* backlight bleed under each key */}
+                            <rect
+                              x={kx}
+                              y={rowY + kh - 1.2}
+                              width={kw}
+                              height={1.2}
+                              rx={0.6}
+                              fill="var(--neon)"
+                              fillOpacity="0.35"
+                            />
+                            {k.label && (
+                              <text
+                                x={kx + kw / 2}
+                                y={rowY + kh / 2 + (r === 0 ? 1.1 : 1.4)}
+                                textAnchor="middle"
+                                fontSize={r === 0 ? 2.6 : 3.4}
+                                fill="oklch(0.93 0.05 300)"
+                                fillOpacity="0.85"
+                                style={{ fontFamily: "ui-sans-serif, system-ui" }}
+                              >
+                                {k.label}
+                              </text>
+                            )}
+                          </g>
+                        );
+                      })}
+                    </g>
+                  );
+                })}
+                {/* overall backlight glow */}
+                <rect
+                  x={KB_L - 4}
+                  y={TOP - 3}
+                  width={KB_R - KB_L + 8}
+                  height={68}
+                  rx={3}
+                  fill="var(--neon)"
+                  fillOpacity="0.05"
+                />
               </g>
             );
-          })}
-          {/* Spacebar row */}
-          <rect
-            x={W / 2 - 90}
-            y={NECK_H + 9 + 5 * 11}
-            width={180}
-            height={8.4}
-            rx={1.6}
-            fill="oklch(0.13 0.004 305)"
-            stroke="color-mix(in oklab, var(--neon) 16%, transparent)"
-            strokeWidth="0.4"
-          />
+          })()}
+
           {/* Trackpad */}
           <rect
-            x={W / 2 - 62}
-            y={NECK_H + 9 + 6 * 11 + 5}
-            width={124}
-            height={26}
+            x={W / 2 - 60}
+            y={NECK_H + 78}
+            width={120}
+            height={32}
             rx={3}
-            fill="oklch(0.10 0.003 305)"
-            stroke="color-mix(in oklab, var(--neon) 20%, transparent)"
+            fill="oklch(0.11 0.005 305)"
+            stroke="color-mix(in oklab, var(--neon) 22%, transparent)"
             strokeWidth="0.5"
           />
+
+          {/* ---- Deck stickers (left of trackpad) ---- */}
+          <g style={{ fontFamily: "ui-monospace, monospace" }}>
+            {[
+              { t: "STM32", y: 0 },
+              { t: "ARM", y: 11 },
+              { t: "FreeRTOS", y: 22 },
+            ].map((s, i) => (
+              <g key={i} transform={`translate(${W / 2 - 118}, ${NECK_H + 79 + s.y})`}>
+                <rect
+                  width={44}
+                  height={9}
+                  rx={1.6}
+                  fill="oklch(0.16 0.02 305)"
+                  stroke="var(--neon)"
+                  strokeOpacity="0.5"
+                  strokeWidth="0.4"
+                />
+                <text x={22} y={6.2} textAnchor="middle" fontSize={4} fill="var(--neon)" fillOpacity="0.9">
+                  {s.t}
+                </text>
+              </g>
+            ))}
+            {/* QR-style sticker right of trackpad */}
+            <g transform={`translate(${W / 2 + 74}, ${NECK_H + 80})`}>
+              <rect width={26} height={26} rx={1.6} fill="oklch(0.14 0.01 305)" stroke="var(--neon)" strokeOpacity="0.4" strokeWidth="0.4" />
+              {Array.from({ length: 25 }).map((_, i) => {
+                const cx = 3 + (i % 5) * 4.6;
+                const cy = 3 + Math.floor(i / 5) * 4.6;
+                return (i * 7) % 3 === 0 ? (
+                  <rect key={i} x={cx} y={cy} width={3.6} height={3.6} fill="var(--neon)" fillOpacity="0.55" />
+                ) : null;
+              })}
+            </g>
+          </g>
+
 
         </motion.svg>
         </motion.div>
