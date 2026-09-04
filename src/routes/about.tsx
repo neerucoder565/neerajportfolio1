@@ -23,6 +23,17 @@ const SKILLS = [
   "Structural Analysis", "Weight Analysis", "Basic AI + Hardware Integration",
 ];
 
+const TOOL_LOGOS = [
+  { name: "C", icon: "https://cdn.simpleicons.org/c" },
+  { name: "C++", icon: "https://cdn.simpleicons.org/cplusplus" },
+  { name: "Python", icon: "https://cdn.simpleicons.org/python" },
+  { name: "Arduino", icon: "https://cdn.simpleicons.org/arduino" },
+  { name: "STM32", icon: "https://cdn.simpleicons.org/stmicroelectronics" },
+  { name: "FreeRTOS", icon: "https://cdn.simpleicons.org/freertos" },
+  { name: "Altium", icon: "https://cdn.simpleicons.org/altiumdesigner" },
+  { name: "Git", icon: "https://cdn.simpleicons.org/git" },
+];
+
 function About() {
   return (
     <>
