@@ -119,19 +119,23 @@ function About() {
       <Section eyebrow="IDENTITY.LOG" title="About Neeraj K">
         <div className="grid lg:grid-cols-3 gap-8 items-stretch">
           <Panel className="lg:col-span-2 h-full flex flex-col">
-            <div className="text-xs text-neon tracking-[0.3em] mb-4">// BACKGROUND</div>
-            <div className="max-w-[68ch] space-y-4">
-              <p className="text-muted-foreground leading-relaxed">
-                Electronics and Embedded Systems enthusiast with a strong interest in developing intelligent hardware and low-level software solutions.
-              </p>
-              <div className="text-xs text-neon tracking-[0.3em] pt-2">// SKILLS</div>
-              <p className="text-muted-foreground leading-relaxed">
-                Hands-on experience through academic and personal projects involving microcontrollers, circuit design, sensor interfacing, digital-to-analog conversion, motor control, and real-time system implementation. Proficient in C, C++, and Python, with a focus on hardware-software interaction, system optimization, and practical engineering problem-solving.
-              </p>
-              <div className="text-xs text-neon tracking-[0.3em] pt-2">// INTERESTS</div>
-              <p className="text-muted-foreground leading-relaxed">
-                Passionate about emerging technologies including RISC-V architectures, VLSI design, edge computing, and next-generation embedded platforms — continuously building projects to strengthen expertise in digital systems and semiconductor technologies.
-              </p>
+            <div ref={panelRef} className="max-w-[68ch] space-y-4 font-mono">
+              {ABOUT_SEGMENTS.map((seg, i) => {
+                const typed = seg.text.slice(0, counts[i] ?? 0);
+                const isActive = !done && counts[i] < seg.text.length && (i === 0 || counts[i - 1] >= ABOUT_SEGMENTS[i - 1].text.length);
+                const isLast = done && i === ABOUT_SEGMENTS.length - 1;
+                return (
+                  <div key={seg.label}>
+                    <div className="text-xs text-neon tracking-[0.3em] pt-2 first:pt-0">{seg.label}</div>
+                    <p className="text-muted-foreground leading-relaxed mt-1 min-h-[3.5rem]">
+                      {typed}
+                      {(isActive || isLast) && !done && (
+                        <span className="inline-block w-[7px] h-[1.05em] align-text-bottom bg-[var(--neon-bright)] animate-pulse ml-0.5 shadow-[0_0_8px_var(--neon-bright)]" />
+                      )}
+                    </p>
+                  </div>
+                );
+              })}
             </div>
           </Panel>
           <Panel className="h-full bg-card/70 backdrop-blur-sm">
