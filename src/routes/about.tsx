@@ -35,7 +35,85 @@ const TOOL_LOGOS = [
   { name: "Git", icon: "https://cdn.simpleicons.org/git" },
 ];
 
+const ABOUT_SEGMENTS: { label: string; text: string }[] = [
+  {
+    label: "// BACKGROUND",
+    text: "Electronics and Embedded Systems engineer focused on building intelligent hardware and low-level software. I enjoy taking ideas from schematic to working prototype — writing firmware, designing circuits, and iterating on real hardware until it works reliably.",
+  },
+  {
+    label: "// SKILLS",
+    text: "Hands-on experience with microcontrollers, circuit design, sensor interfacing, DAC systems, and motor control. Proficient in Embedded C, C++, and Python, with a strong focus on hardware-software interaction, debugging, and practical engineering problem-solving.",
+  },
+  {
+    label: "// INTERESTS",
+    text: "Exploring RISC-V architectures, VLSI design, edge AI, and next-generation embedded platforms — continuously building projects to deepen my expertise in digital systems and semiconductor technologies.",
+  },
+];
+
+function useTypewriter(segments: { text: string }[], start: boolean) {
+  const [counts, setCounts] = useState<number[]>(() => segments.map(() => 0));
+  const [done, setDone] = useState(false);
+
+  useEffect(() => {
+    if (!start || done) return;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) {
+      setCounts(segments.map((s) => s.text.length));
+      setDone(true);
+      return;
+    }
+    let seg = 0;
+    let char = 0;
+    let timer: number;
+    const tick = () => {
+      char += 1;
+      const s = seg;
+      const c = char;
+      setCounts((prev) => {
+        const next = [...prev];
+        next[s] = c;
+        return next;
+      });
+      if (char >= segments[seg].text.length) {
+        seg += 1;
+        char = 0;
+        if (seg >= segments.length) {
+          setDone(true);
+          return;
+        }
+        timer = window.setTimeout(tick, 400);
+        return;
+      }
+      timer = window.setTimeout(tick, 18);
+    };
+    timer = window.setTimeout(tick, 500);
+    return () => window.clearTimeout(timer);
+  }, [start, done, segments]);
+
+  return { counts, done };
+}
+
 function About() {
+  const panelRef = useRef<HTMLDivElement | null>(null);
+  const [inView, setInView] = useState(false);
+  const { counts, done } = useTypewriter(ABOUT_SEGMENTS, inView);
+
+  useEffect(() => {
+    const el = panelRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setInView(true);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   return (
     <>
       <Section eyebrow="IDENTITY.LOG" title="About Neeraj K">
