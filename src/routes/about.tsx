@@ -190,14 +190,14 @@ function About() {
       </Section>
 
       <Section eyebrow="TECHNICAL STACK" title="Tools & Platforms">
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-wrap gap-5">
           {TOOL_LOGOS.map((t) => (
             <div
               key={t.name}
               title={t.name}
-              className="corners relative group flex items-center gap-3 border border-border bg-card/40 px-4 py-3 transition-all duration-300 hover:border-[var(--neon-bright)]/50 hover:shadow-[0_0_18px_color-mix(in_oklab,var(--neon-bright)_35%,transparent)]"
+              className="corners relative group flex items-center gap-4 border border-border bg-card/40 px-5 py-4 transition-all duration-300 hover:border-[var(--neon-bright)]/50 hover:shadow-[0_0_18px_color-mix(in_oklab,var(--neon-bright)_35%,transparent)]"
             >
-              <span className="size-12 rounded-md bg-white/95 flex items-center justify-center p-2 shrink-0 transition-transform duration-300 group-hover:scale-110">
+              <span className="size-16 rounded-md bg-white/95 flex items-center justify-center p-3 shrink-0 transition-transform duration-300 group-hover:scale-110">
                 <img
                   src={t.icon}
                   alt={`${t.name} logo`}
@@ -205,7 +205,7 @@ function About() {
                   className="size-full object-contain"
                 />
               </span>
-              <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground group-hover:text-foreground transition-colors">
+              <span className="font-mono text-sm uppercase tracking-wider text-muted-foreground group-hover:text-foreground transition-colors">
                 {t.name}
               </span>
             </div>
