@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { Panel, Section } from "@/components/SiteShell";
 import { GraduationCap } from "lucide-react";
+import altiumLogo from "@/assets/altium-logo.png.asset.json";
 
 
 
@@ -17,21 +18,13 @@ export const Route = createFileRoute("/about")({
   component: About,
 });
 
-const SKILLS = [
-  "Embedded Systems", "Arduino Programming", "Electronics Circuit Design",
-  "Sensor Fusion", "PID Control Systems", "DAC Design (R-2R Ladder)",
-  "Circuit Simulation & Testing", "Hardware Debugging", "PCB / Breadboard Prototyping",
-  "Structural Analysis", "Weight Analysis", "Basic AI + Hardware Integration",
-];
-
 const TOOL_LOGOS = [
   { name: "C", icon: "https://cdn.simpleicons.org/c" },
   { name: "C++", icon: "https://cdn.simpleicons.org/cplusplus" },
   { name: "Python", icon: "https://cdn.simpleicons.org/python" },
   { name: "Arduino", icon: "https://cdn.simpleicons.org/arduino" },
   { name: "STM32", icon: "https://cdn.simpleicons.org/stmicroelectronics" },
-  { name: "FreeRTOS", icon: "https://cdn.simpleicons.org/freertos" },
-  { name: "Altium", icon: "https://cdn.simpleicons.org/altiumdesigner" },
+  { name: "Altium", icon: altiumLogo.url },
   { name: "Git", icon: "https://cdn.simpleicons.org/git" },
 ];
 
@@ -196,42 +189,27 @@ function About() {
         </div>
       </Section>
 
-      <Section eyebrow="TECHNICAL STACK" title="Skills Matrix">
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
-          {SKILLS.map((s, i) => (
+      <Section eyebrow="TECHNICAL STACK" title="Tools & Platforms">
+        <div className="flex flex-wrap gap-4">
+          {TOOL_LOGOS.map((t) => (
             <div
-              key={s}
-              className="corners relative border border-border bg-card/30 px-4 py-3 text-sm glow-border-hover"
+              key={t.name}
+              title={t.name}
+              className="corners relative group flex items-center gap-3 border border-border bg-card/40 px-4 py-3 transition-all duration-300 hover:border-[var(--neon-bright)]/50 hover:shadow-[0_0_18px_color-mix(in_oklab,var(--neon-bright)_35%,transparent)]"
             >
-              <span className="text-neon mr-2 text-xs">{String(i + 1).padStart(2, "0")}</span>
-              {s}
+              <span className="size-12 rounded-md bg-white/95 flex items-center justify-center p-2 shrink-0 transition-transform duration-300 group-hover:scale-110">
+                <img
+                  src={t.icon}
+                  alt={`${t.name} logo`}
+                  loading="lazy"
+                  className="size-full object-contain"
+                />
+              </span>
+              <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground group-hover:text-foreground transition-colors">
+                {t.name}
+              </span>
             </div>
           ))}
-        </div>
-
-        <div className="mt-10">
-          <div className="text-xs text-neon tracking-[0.3em] mb-4">// TOOLS &amp; PLATFORMS</div>
-          <div className="flex flex-wrap gap-3">
-            {TOOL_LOGOS.map((t) => (
-              <div
-                key={t.name}
-                title={t.name}
-                className="corners relative group flex items-center gap-2.5 border border-border bg-card/40 px-3.5 py-2.5 transition-all duration-300 hover:border-[var(--neon-bright)]/50 hover:shadow-[0_0_18px_color-mix(in_oklab,var(--neon-bright)_35%,transparent)]"
-              >
-                <span className="size-8 rounded-md bg-white/95 flex items-center justify-center p-1.5 shrink-0 transition-transform duration-300 group-hover:scale-110">
-                  <img
-                    src={t.icon}
-                    alt={`${t.name} logo`}
-                    loading="lazy"
-                    className="size-full object-contain"
-                  />
-                </span>
-                <span className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground group-hover:text-foreground transition-colors">
-                  {t.name}
-                </span>
-              </div>
-            ))}
-          </div>
         </div>
       </Section>
     </>
