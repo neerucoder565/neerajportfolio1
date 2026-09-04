@@ -23,6 +23,17 @@ const SKILLS = [
   "Structural Analysis", "Weight Analysis", "Basic AI + Hardware Integration",
 ];
 
+const TOOL_LOGOS = [
+  { name: "C", icon: "https://cdn.simpleicons.org/c" },
+  { name: "C++", icon: "https://cdn.simpleicons.org/cplusplus" },
+  { name: "Python", icon: "https://cdn.simpleicons.org/python" },
+  { name: "Arduino", icon: "https://cdn.simpleicons.org/arduino" },
+  { name: "STM32", icon: "https://cdn.simpleicons.org/stmicroelectronics" },
+  { name: "FreeRTOS", icon: "https://cdn.simpleicons.org/freertos" },
+  { name: "Altium", icon: "https://cdn.simpleicons.org/altiumdesigner" },
+  { name: "Git", icon: "https://cdn.simpleicons.org/git" },
+];
+
 function About() {
   return (
     <>
@@ -113,6 +124,31 @@ function About() {
               {s}
             </div>
           ))}
+        </div>
+
+        <div className="mt-10">
+          <div className="text-xs text-neon tracking-[0.3em] mb-4">// TOOLS &amp; PLATFORMS</div>
+          <div className="flex flex-wrap gap-3">
+            {TOOL_LOGOS.map((t) => (
+              <div
+                key={t.name}
+                title={t.name}
+                className="corners relative group flex items-center gap-2.5 border border-border bg-card/40 px-3.5 py-2.5 transition-all duration-300 hover:border-[var(--neon-bright)]/50 hover:shadow-[0_0_18px_color-mix(in_oklab,var(--neon-bright)_35%,transparent)]"
+              >
+                <span className="size-8 rounded-md bg-white/95 flex items-center justify-center p-1.5 shrink-0 transition-transform duration-300 group-hover:scale-110">
+                  <img
+                    src={t.icon}
+                    alt={`${t.name} logo`}
+                    loading="lazy"
+                    className="size-full object-contain"
+                  />
+                </span>
+                <span className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground group-hover:text-foreground transition-colors">
+                  {t.name}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </Section>
     </>
