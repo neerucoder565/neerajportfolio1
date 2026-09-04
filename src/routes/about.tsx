@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useRef, useState } from "react";
 import { Panel, Section } from "@/components/SiteShell";
 import { GraduationCap } from "lucide-react";
 
