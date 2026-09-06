@@ -152,6 +152,12 @@
     background-color: var(--neon);
     color: var(--primary-foreground);
   }
+  /* Custom neon cursor on pointer devices; touch devices keep the native cursor. */
+  @media (hover: hover) and (pointer: fine) {
+    html, body, a, button, [role="button"], input, textarea, select, label, [data-cursor-hover] {
+      cursor: none !important;
+    }
+  }
 }
 
 @layer utilities {
