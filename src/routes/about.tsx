@@ -195,11 +195,11 @@ function About() {
               </div>
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <div className="text-sm">HSC (12th)</div>
+                  <div className="text-sm">HSC</div>
                   <div className="text-xs text-muted-foreground mt-1">Chinmaya Vidyalaya Sr Sec School, Virugambakkam</div>
                 </div>
                 <div className="text-right shrink-0">
-                  <div className="text-xs text-neon tracking-[0.2em] mb-1">// SCORE</div>
+                  <div className="text-xs text-neon tracking-[0.2em] mb-1">// PERCENTAGE</div>
                   <div className="font-display text-2xl text-cyan glow-text">90.8<span className="text-sm text-muted-foreground ml-1">%</span></div>
                 </div>
               </div>
