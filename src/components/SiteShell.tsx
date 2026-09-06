@@ -3,6 +3,7 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import { Menu, X, Github, Linkedin, Mail } from "lucide-react";
 import { VideoBackdrop } from "./VideoBackdrop";
+import { CustomCursor } from "./CustomCursor";
 
 const NAV = [
   { to: "/", label: "Home" },
@@ -19,7 +20,8 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col cursor-none md:cursor-none">
+      <CustomCursor />
       <VideoBackdrop />
       <header className="sticky top-0 z-50 border-b border-border/50 backdrop-blur-md bg-background/70">
         <div className="mx-auto max-w-7xl px-6 h-16 flex items-center justify-between">
