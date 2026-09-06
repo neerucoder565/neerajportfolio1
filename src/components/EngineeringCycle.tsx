@@ -56,7 +56,7 @@ const STAGES: Stage[] = [
 
 const SIZE = 660;
 const C = SIZE / 2;
-const R = 180;
+const R = 150;
 const CIRC = 2 * Math.PI * R;
 const N = STAGES.length;
 
@@ -216,7 +216,7 @@ export function EngineeringCycle() {
 
           {/* leader lines */}
           {nodes.map((n) => {
-            const outer = pointAt(n.i, R + 34);
+            const outer = pointAt(n.i, R + 20);
             const isOn = n.i === index || n.i === hover;
             return (
               <motion.line
@@ -303,7 +303,7 @@ export function EngineeringCycle() {
 
         {/* labels */}
         {nodes.map((n) => {
-          const p = pointAt(n.i, R + 62);
+          const p = pointAt(n.i, R + 34);
           const isOn = n.i === index || n.i === hover;
           const cos = Math.cos(p.a);
           const align =
