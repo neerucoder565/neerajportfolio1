@@ -178,20 +178,30 @@ function About() {
       <Section eyebrow="EDUCATION" title="Trajectory">
         <div className="grid md:grid-cols-1 gap-6">
           <Panel>
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <GraduationCap className="text-neon mb-3" size={24} strokeWidth={1.5} />
-                <h3 className="font-display text-xl uppercase">Education</h3>
-                <div className="mt-4">
+            <div className="flex items-start gap-4 mb-4">
+              <GraduationCap className="text-neon shrink-0" size={24} strokeWidth={1.5} />
+              <h3 className="font-display text-xl uppercase">Education</h3>
+            </div>
+            <div className="space-y-5">
+              <div className="flex items-start justify-between gap-4 border-b border-border/50 pb-5">
+                <div>
                   <div className="text-sm">B.E. — Electronics & Communication Engineering</div>
-                  <div className="text-xs text-muted-foreground mt-1">
-                    Easwari Engineering College
-                  </div>
+                  <div className="text-xs text-muted-foreground mt-1">Easwari Engineering College</div>
+                </div>
+                <div className="text-right shrink-0">
+                  <div className="text-xs text-neon tracking-[0.2em] mb-1">// CGPA</div>
+                  <div className="font-display text-2xl text-cyan glow-text">8.2<span className="text-sm text-muted-foreground ml-1">/10</span></div>
                 </div>
               </div>
-              <div className="text-right">
-                <div className="text-xs text-neon tracking-[0.2em] mb-1">// CGPA</div>
-                <div className="font-display text-3xl text-cyan glow-text">8.2<span className="text-sm text-muted-foreground ml-1">/10</span></div>
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <div className="text-sm">HSC (12th)</div>
+                  <div className="text-xs text-muted-foreground mt-1">Chinmaya Vidyalaya Sr Sec School, Virugambakkam</div>
+                </div>
+                <div className="text-right shrink-0">
+                  <div className="text-xs text-neon tracking-[0.2em] mb-1">// SCORE</div>
+                  <div className="font-display text-2xl text-cyan glow-text">90.8<span className="text-sm text-muted-foreground ml-1">%</span></div>
+                </div>
               </div>
             </div>
           </Panel>
