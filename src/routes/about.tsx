@@ -43,15 +43,15 @@ const TOOL_LOGOS = [
 const ABOUT_SEGMENTS: { label: string; text: string }[] = [
   {
     label: "// BACKGROUND",
-    text: "Electronics engineer building intelligent hardware from schematic to prototype. Currently completing B.E. in Electronics & Communication Engineering.",
+    text: "Electronics engineer building intelligent embedded systems from circuit design to working hardware. Currently pursuing B.E. in Electronics & Communication Engineering.",
   },
   {
-    label: "// SKILLS",
-    text: "Embedded C, C++, Python; microcontrollers, circuit design, sensor interfacing, motor control and hands-on bench debugging.",
+    label: "// APPROACH",
+    text: "Embedded systems, real-time control, intelligent hardware and system-level engineering—turning concepts into reliable, working solutions.",
   },
   {
     label: "// INTERESTS",
-    text: "RISC-V, VLSI, edge AI and next-generation embedded platforms that bridge theory and working silicon.",
+    text: "RISC-V, VLSI, edge AI and next-generation embedded platforms—where hardware, software and intelligence converge to solve real-world problems.",
   },
 ];
 
