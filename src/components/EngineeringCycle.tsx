@@ -56,7 +56,7 @@ const STAGES: Stage[] = [
 
 const SIZE = 520;
 const C = SIZE / 2;
-const R = 196;
+const R = 158;
 const CIRC = 2 * Math.PI * R;
 const N = STAGES.length;
 
