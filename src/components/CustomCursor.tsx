@@ -38,8 +38,9 @@ export function CustomCursor() {
     let active = true;
     const loop = () => {
       if (!active) return;
-      display.current.x += (pos.current.x - display.current.x) * 0.22;
-      display.current.y += (pos.current.y - display.current.y) * 0.22;
+      // Higher lerp factor makes the cursor follow the real pointer faster.
+      display.current.x += (pos.current.x - display.current.x) * 0.75;
+      display.current.y += (pos.current.y - display.current.y) * 0.75;
       const el = document.getElementById("custom-cursor");
       if (el) {
         el.style.transform = `translate3d(${display.current.x}px, ${display.current.y}px, 0) translate(-50%, -50%)`;
