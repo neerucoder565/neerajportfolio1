@@ -3,6 +3,7 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import { Menu, X, Github, Linkedin, Mail } from "lucide-react";
 import { VideoBackdrop } from "./VideoBackdrop";
+import { CustomCursor } from "./CustomCursor";
 
 const NAV = [
   { to: "/", label: "Home" },
