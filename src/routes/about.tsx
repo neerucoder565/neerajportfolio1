@@ -31,9 +31,6 @@ const TOOL_LOGOS = [
   { name: "Altium", icon: `${ASSET_BASE}${altiumLogo.url}` },
   { name: "ESP32", icon: "https://cdn.simpleicons.org/espressif" },
   { name: "Raspberry Pi", icon: "https://cdn.simpleicons.org/raspberrypi" },
-  { name: "KiCad", icon: "https://cdn.simpleicons.org/kicad" },
-  { name: "MATLAB", icon: "https://cdn.simpleicons.org/mathworks" },
-  { name: "Linux", icon: "https://cdn.simpleicons.org/linux" },
   { name: "VS Code", icon: "https://cdn.simpleicons.org/vscodium" },
   { name: "GitHub", icon: "https://cdn.simpleicons.org/github" },
   { name: "Git", icon: "https://cdn.simpleicons.org/git" },
@@ -202,14 +199,14 @@ function About() {
       </Section>
 
       <Section eyebrow="TECHNICAL STACK" title="Tools & Platforms">
-        <div className="flex flex-wrap gap-5">
+        <div className="flex flex-wrap gap-6">
           {TOOL_LOGOS.map((t) => (
             <div
               key={t.name}
               title={t.name}
-              className="corners relative group flex items-center gap-4 border border-border bg-card/40 px-5 py-4 transition-all duration-300 hover:border-[var(--neon-bright)]/50 hover:shadow-[0_0_18px_color-mix(in_oklab,var(--neon-bright)_35%,transparent)]"
+              className="corners relative group flex items-center gap-5 border border-border bg-card/40 px-6 py-5 transition-all duration-300 hover:border-[var(--neon-bright)]/50 hover:shadow-[0_0_18px_color-mix(in_oklab,var(--neon-bright)_35%,transparent)]"
             >
-              <span className="size-16 rounded-md bg-white/95 flex items-center justify-center p-3 shrink-0 transition-transform duration-300 group-hover:scale-110">
+              <span className="size-20 rounded-md bg-white/95 flex items-center justify-center p-4 shrink-0 transition-transform duration-300 group-hover:scale-110">
                 <img
                   src={t.icon}
                   alt={`${t.name} logo`}
@@ -217,7 +214,7 @@ function About() {
                   className="size-full object-contain"
                 />
               </span>
-              <span className="font-mono text-sm uppercase tracking-wider text-muted-foreground group-hover:text-foreground transition-colors">
+              <span className="font-mono text-base uppercase tracking-wider text-muted-foreground group-hover:text-foreground transition-colors">
                 {t.name}
               </span>
             </div>
