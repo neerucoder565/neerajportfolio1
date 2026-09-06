@@ -56,7 +56,7 @@ const STAGES: Stage[] = [
 
 const SIZE = 660;
 const C = SIZE / 2;
-const R = 150;
+const R = 190;
 const CIRC = 2 * Math.PI * R;
 const N = STAGES.length;
 
@@ -337,7 +337,7 @@ export function EngineeringCycle() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.96 }}
               transition={{ type: "spring", stiffness: 220, damping: 22, duration: 0.3 }}
-              className="w-[240px] rounded-xl border border-[rgba(167,139,250,0.3)] bg-[#0a0e17]/90 p-5 text-center backdrop-blur"
+              className="w-[215px] rounded-xl border border-[rgba(167,139,250,0.3)] bg-[#0a0e17]/90 p-5 text-center backdrop-blur"
               style={{ boxShadow: "0 0 40px rgba(124,58,237,0.25)" }}
             >
               <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
