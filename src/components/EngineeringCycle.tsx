@@ -318,10 +318,10 @@ export function EngineeringCycle() {
                 left: `${(p.x / SIZE) * 100}%`,
                 top: `${(p.y / SIZE) * 100}%`,
                 transform: `translate(${align === "center" ? "-50%" : align === "left" ? "0%" : "-100%"}, -50%)`,
-                color: isOn ? "#f3e8ff" : "rgba(196,181,253,0.55)",
+                color: isOn ? "#a78bfa" : "rgba(124,58,237,0.7)",
                 textShadow: isOn
-                  ? "0 0 8px rgba(167,139,250,0.95), 0 0 22px rgba(124,58,237,0.65), 0 0 38px rgba(124,58,237,0.35)"
-                  : "0 0 10px rgba(167,139,250,0.25)",
+                  ? "0 0 8px rgba(124,58,237,0.95), 0 0 22px rgba(124,58,237,0.65), 0 0 38px rgba(124,58,237,0.35)"
+                  : "0 0 10px rgba(124,58,237,0.2)",
               }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
