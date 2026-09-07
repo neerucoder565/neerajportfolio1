@@ -54,9 +54,9 @@ const STAGES: Stage[] = [
   },
 ];
 
-const SIZE = 660;
+const SIZE = 800;
 const C = SIZE / 2;
-const R = 190;
+const R = 250;
 const CIRC = 2 * Math.PI * R;
 const N = STAGES.length;
 
@@ -121,11 +121,12 @@ export function EngineeringCycle() {
         >
           <defs>
             <linearGradient id="ec-arc" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#a78bfa" />
+              <stop offset="0%" stopColor="#c4b5fd" />
+              <stop offset="50%" stopColor="#a78bfa" />
               <stop offset="100%" stopColor="#7c3aed" />
             </linearGradient>
-            <filter id="ec-glow" x="-60%" y="-60%" width="220%" height="220%">
-              <feGaussianBlur stdDeviation="5" result="b" />
+            <filter id="ec-glow" x="-80%" y="-80%" width="260%" height="260%">
+              <feGaussianBlur stdDeviation="7" result="b" />
               <feMerge>
                 <feMergeNode in="b" />
                 <feMergeNode in="SourceGraphic" />
@@ -140,8 +141,8 @@ export function EngineeringCycle() {
             r={R}
             fill="none"
             stroke="#a78bfa"
-            strokeOpacity={0.18}
-            strokeWidth={2}
+            strokeOpacity={0.22}
+            strokeWidth={3}
           />
 
           {/* progress arc */}
@@ -151,7 +152,7 @@ export function EngineeringCycle() {
             r={R}
             fill="none"
             stroke="url(#ec-arc)"
-            strokeWidth={4}
+            strokeWidth={6}
             strokeLinecap="round"
             filter="url(#ec-glow)"
             strokeDasharray={CIRC}
@@ -163,8 +164,8 @@ export function EngineeringCycle() {
 
           {/* traveling spark along the ring */}
           <motion.circle
-            r={4}
-            fill="#e9d5ff"
+            r={5}
+            fill="#f3e8ff"
             filter="url(#ec-glow)"
             animate={{ opacity: [0, 1, 1, 0] }}
             transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
@@ -178,7 +179,7 @@ export function EngineeringCycle() {
 
           {/* occasional signal dots */}
           {[0, 1, 2].map((k) => (
-            <circle key={k} r={2.5} fill="#a78bfa" opacity={0.7}>
+            <circle key={k} r={3} fill="#c4b5fd" opacity={0.8}>
               <animateMotion
                 dur={`${7 + k * 2}s`}
                 begin={`${k * 2.5}s`}
@@ -187,7 +188,7 @@ export function EngineeringCycle() {
               />
               <animate
                 attributeName="opacity"
-                values="0;0.8;0"
+                values="0;0.9;0"
                 dur={`${7 + k * 2}s`}
                 begin={`${k * 2.5}s`}
                 repeatCount="indefinite"
@@ -204,11 +205,11 @@ export function EngineeringCycle() {
                 cy={C}
                 r={R}
                 fill="none"
-                stroke="#c4b5fd"
-                strokeWidth={3}
-                initial={{ opacity: 0.7, scale: 1 }}
-                animate={{ opacity: 0, scale: 1.06 }}
-                transition={{ duration: 1.2, ease: "easeOut" }}
+                stroke="#f3e8ff"
+                strokeWidth={4}
+                initial={{ opacity: 0.8, scale: 1 }}
+                animate={{ opacity: 0, scale: 1.07 }}
+                transition={{ duration: 1.4, ease: "easeOut" }}
                 style={{ transformOrigin: `${C}px ${C}px` }}
               />
             )}
@@ -216,7 +217,7 @@ export function EngineeringCycle() {
 
           {/* leader lines */}
           {nodes.map((n) => {
-            const outer = pointAt(n.i, R + 20);
+            const outer = pointAt(n.i, R + 46);
             const isOn = n.i === index || n.i === hover;
             return (
               <motion.line
@@ -226,8 +227,8 @@ export function EngineeringCycle() {
                 x2={outer.x}
                 y2={outer.y}
                 stroke="#a78bfa"
-                strokeWidth={1}
-                strokeOpacity={isOn ? 0.85 : 0.3}
+                strokeWidth={1.5}
+                strokeOpacity={isOn ? 0.95 : 0.35}
                 initial={{ pathLength: 0, opacity: 0 }}
                 animate={{ pathLength: 1, opacity: 1 }}
                 transition={{ delay: 0.4 + n.i * 0.1, duration: 0.5 }}
@@ -251,27 +252,27 @@ export function EngineeringCycle() {
               onMouseEnter={() => setHover(n.i)}
               onMouseLeave={() => setHover(null)}
               onClick={() => setIndex(n.i)}
-              className="absolute grid place-items-center rounded-full font-mono text-[11px] tracking-[0.1em]"
+              className="absolute grid place-items-center rounded-full font-mono text-[13px] tracking-[0.1em]"
               style={{
                 left: pct(n.x),
                 top: pct(n.y),
-                width: 46,
-                height: 46,
-                marginLeft: -23,
-                marginTop: -23,
+                width: 56,
+                height: 56,
+                marginLeft: -28,
+                marginTop: -28,
                 background: done
                   ? "#7c3aed"
                   : isActive
-                    ? "rgba(124,58,237,0.35)"
+                    ? "rgba(124,58,237,0.45)"
                     : "rgba(10,14,23,0.85)",
-                border: `1px solid ${isActive ? "#c4b5fd" : done ? "#a78bfa" : "rgba(167,139,250,0.35)"}`,
-                color: done || isActive ? "#f5f3ff" : "rgba(196,181,253,0.6)",
+                border: `1.5px solid ${isActive ? "#e9d5ff" : done ? "#a78bfa" : "rgba(167,139,250,0.4)"}`,
+                color: done || isActive ? "#f5f3ff" : "rgba(196,181,253,0.65)",
                 boxShadow: isActive
-                  ? "0 0 24px rgba(167,139,250,0.8), 0 0 60px rgba(124,58,237,0.5)"
+                  ? "0 0 28px rgba(167,139,250,0.95), 0 0 72px rgba(124,58,237,0.6), inset 0 0 18px rgba(196,181,253,0.15)"
                   : hover === n.i
-                    ? "0 0 18px rgba(167,139,250,0.5)"
+                    ? "0 0 22px rgba(167,139,250,0.7), 0 0 44px rgba(124,58,237,0.35)"
                     : "none",
-                opacity: done || isActive ? 1 : 0.75,
+                opacity: done || isActive ? 1 : 0.8,
               }}
               initial={{ scale: 0, opacity: 0 }}
               animate={
@@ -290,8 +291,9 @@ export function EngineeringCycle() {
                 <motion.span
                   className="pointer-events-none absolute rounded-full"
                   style={{
-                    inset: -9,
-                    border: "1px dashed rgba(196,181,253,0.7)",
+                    inset: -12,
+                    border: "1.5px dashed rgba(196,181,253,0.75)",
+                    boxShadow: "0 0 18px rgba(167,139,250,0.35)",
                   }}
                   animate={{ rotate: 360 }}
                   transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
@@ -303,7 +305,7 @@ export function EngineeringCycle() {
 
         {/* labels */}
         {nodes.map((n) => {
-          const p = pointAt(n.i, R + 34);
+          const p = pointAt(n.i, R + 52);
           const isOn = n.i === index || n.i === hover;
           const cos = Math.cos(p.a);
           const align =
@@ -311,13 +313,15 @@ export function EngineeringCycle() {
           return (
             <motion.div
               key={`t-${n.id}`}
-              className="pointer-events-none absolute font-mono text-[10px] uppercase tracking-[0.18em] whitespace-nowrap"
+              className="pointer-events-none absolute font-mono text-[13px] md:text-[14px] uppercase tracking-[0.22em] whitespace-nowrap"
               style={{
                 left: `${(p.x / SIZE) * 100}%`,
                 top: `${(p.y / SIZE) * 100}%`,
                 transform: `translate(${align === "center" ? "-50%" : align === "left" ? "0%" : "-100%"}, -50%)`,
-                color: isOn ? "#e9d5ff" : "rgba(196,181,253,0.45)",
-                textShadow: isOn ? "0 0 12px rgba(167,139,250,0.8)" : "none",
+                color: isOn ? "#f3e8ff" : "rgba(196,181,253,0.55)",
+                textShadow: isOn
+                  ? "0 0 8px rgba(167,139,250,0.95), 0 0 22px rgba(124,58,237,0.65), 0 0 38px rgba(124,58,237,0.35)"
+                  : "0 0 10px rgba(167,139,250,0.25)",
               }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -337,23 +341,23 @@ export function EngineeringCycle() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.96 }}
               transition={{ type: "spring", stiffness: 220, damping: 22, duration: 0.3 }}
-              className="w-[215px] rounded-xl border border-[rgba(167,139,250,0.3)] bg-[#0a0e17]/90 p-5 text-center backdrop-blur"
-              style={{ boxShadow: "0 0 40px rgba(124,58,237,0.25)" }}
+              className="w-[260px] rounded-xl border border-[rgba(167,139,250,0.35)] bg-[#0a0e17]/90 p-6 text-center backdrop-blur"
+              style={{ boxShadow: "0 0 60px rgba(124,58,237,0.35), inset 0 0 30px rgba(124,58,237,0.08)" }}
             >
-              <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+              <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
                 Stage {stage.id} of 07
               </div>
-              <div className="mt-2 font-mono text-base uppercase tracking-[0.12em] text-foreground">
+              <div className="mt-2 font-mono text-lg uppercase tracking-[0.12em] text-foreground">
                 {stage.label}
               </div>
-              <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 {stage.note}
               </p>
-              <div className="mt-3 flex flex-wrap justify-center gap-1.5">
+              <div className="mt-4 flex flex-wrap justify-center gap-2">
                 {stage.items.map((it) => (
                   <span
                     key={it}
-                    className="rounded-full border border-[rgba(167,139,250,0.35)] px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.1em] text-[#c4b5fd]"
+                    className="rounded-full border border-[rgba(167,139,250,0.4)] px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.1em] text-[#c4b5fd]"
                   >
                     {it}
                   </span>
