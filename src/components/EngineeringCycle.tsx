@@ -121,11 +121,12 @@ export function EngineeringCycle() {
         >
           <defs>
             <linearGradient id="ec-arc" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#a78bfa" />
+              <stop offset="0%" stopColor="#c4b5fd" />
+              <stop offset="50%" stopColor="#a78bfa" />
               <stop offset="100%" stopColor="#7c3aed" />
             </linearGradient>
-            <filter id="ec-glow" x="-60%" y="-60%" width="220%" height="220%">
-              <feGaussianBlur stdDeviation="5" result="b" />
+            <filter id="ec-glow" x="-80%" y="-80%" width="260%" height="260%">
+              <feGaussianBlur stdDeviation="7" result="b" />
               <feMerge>
                 <feMergeNode in="b" />
                 <feMergeNode in="SourceGraphic" />
