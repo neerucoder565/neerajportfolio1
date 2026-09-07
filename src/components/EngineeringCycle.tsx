@@ -262,16 +262,16 @@ export function EngineeringCycle() {
                 background: done
                   ? "#7c3aed"
                   : isActive
-                    ? "rgba(124,58,237,0.35)"
+                    ? "rgba(124,58,237,0.45)"
                     : "rgba(10,14,23,0.85)",
-                border: `1px solid ${isActive ? "#c4b5fd" : done ? "#a78bfa" : "rgba(167,139,250,0.35)"}`,
-                color: done || isActive ? "#f5f3ff" : "rgba(196,181,253,0.6)",
+                border: `1.5px solid ${isActive ? "#e9d5ff" : done ? "#a78bfa" : "rgba(167,139,250,0.4)"}`,
+                color: done || isActive ? "#f5f3ff" : "rgba(196,181,253,0.65)",
                 boxShadow: isActive
-                  ? "0 0 24px rgba(167,139,250,0.8), 0 0 60px rgba(124,58,237,0.5)"
+                  ? "0 0 28px rgba(167,139,250,0.95), 0 0 72px rgba(124,58,237,0.6), inset 0 0 18px rgba(196,181,253,0.15)"
                   : hover === n.i
-                    ? "0 0 18px rgba(167,139,250,0.5)"
+                    ? "0 0 22px rgba(167,139,250,0.7), 0 0 44px rgba(124,58,237,0.35)"
                     : "none",
-                opacity: done || isActive ? 1 : 0.75,
+                opacity: done || isActive ? 1 : 0.8,
               }}
               initial={{ scale: 0, opacity: 0 }}
               animate={
