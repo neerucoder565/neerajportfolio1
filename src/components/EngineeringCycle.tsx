@@ -339,23 +339,23 @@ export function EngineeringCycle() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.96 }}
               transition={{ type: "spring", stiffness: 220, damping: 22, duration: 0.3 }}
-              className="w-[215px] rounded-xl border border-[rgba(167,139,250,0.3)] bg-[#0a0e17]/90 p-5 text-center backdrop-blur"
-              style={{ boxShadow: "0 0 40px rgba(124,58,237,0.25)" }}
+              className="w-[260px] rounded-xl border border-[rgba(167,139,250,0.35)] bg-[#0a0e17]/90 p-6 text-center backdrop-blur"
+              style={{ boxShadow: "0 0 60px rgba(124,58,237,0.35), inset 0 0 30px rgba(124,58,237,0.08)" }}
             >
-              <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+              <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
                 Stage {stage.id} of 07
               </div>
-              <div className="mt-2 font-mono text-base uppercase tracking-[0.12em] text-foreground">
+              <div className="mt-2 font-mono text-lg uppercase tracking-[0.12em] text-foreground">
                 {stage.label}
               </div>
-              <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 {stage.note}
               </p>
-              <div className="mt-3 flex flex-wrap justify-center gap-1.5">
+              <div className="mt-4 flex flex-wrap justify-center gap-2">
                 {stage.items.map((it) => (
                   <span
                     key={it}
-                    className="rounded-full border border-[rgba(167,139,250,0.35)] px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.1em] text-[#c4b5fd]"
+                    className="rounded-full border border-[rgba(167,139,250,0.4)] px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.1em] text-[#c4b5fd]"
                   >
                     {it}
                   </span>
