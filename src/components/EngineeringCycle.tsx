@@ -290,8 +290,9 @@ export function EngineeringCycle() {
                 <motion.span
                   className="pointer-events-none absolute rounded-full"
                   style={{
-                    inset: -9,
-                    border: "1px dashed rgba(196,181,253,0.7)",
+                    inset: -12,
+                    border: "1.5px dashed rgba(196,181,253,0.75)",
+                    boxShadow: "0 0 18px rgba(167,139,250,0.35)",
                   }}
                   animate={{ rotate: 360 }}
                   transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
