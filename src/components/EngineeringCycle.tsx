@@ -141,8 +141,8 @@ export function EngineeringCycle() {
             r={R}
             fill="none"
             stroke="#a78bfa"
-            strokeOpacity={0.18}
-            strokeWidth={2}
+            strokeOpacity={0.22}
+            strokeWidth={3}
           />
 
           {/* progress arc */}
@@ -152,7 +152,7 @@ export function EngineeringCycle() {
             r={R}
             fill="none"
             stroke="url(#ec-arc)"
-            strokeWidth={4}
+            strokeWidth={6}
             strokeLinecap="round"
             filter="url(#ec-glow)"
             strokeDasharray={CIRC}
@@ -164,8 +164,8 @@ export function EngineeringCycle() {
 
           {/* traveling spark along the ring */}
           <motion.circle
-            r={4}
-            fill="#e9d5ff"
+            r={5}
+            fill="#f3e8ff"
             filter="url(#ec-glow)"
             animate={{ opacity: [0, 1, 1, 0] }}
             transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
