@@ -303,7 +303,7 @@ export function EngineeringCycle() {
 
         {/* labels */}
         {nodes.map((n) => {
-          const p = pointAt(n.i, R + 34);
+          const p = pointAt(n.i, R + 52);
           const isOn = n.i === index || n.i === hover;
           const cos = Math.cos(p.a);
           const align =
@@ -311,13 +311,15 @@ export function EngineeringCycle() {
           return (
             <motion.div
               key={`t-${n.id}`}
-              className="pointer-events-none absolute font-mono text-[10px] uppercase tracking-[0.18em] whitespace-nowrap"
+              className="pointer-events-none absolute font-mono text-[13px] md:text-[14px] uppercase tracking-[0.22em] whitespace-nowrap"
               style={{
                 left: `${(p.x / SIZE) * 100}%`,
                 top: `${(p.y / SIZE) * 100}%`,
                 transform: `translate(${align === "center" ? "-50%" : align === "left" ? "0%" : "-100%"}, -50%)`,
-                color: isOn ? "#e9d5ff" : "rgba(196,181,253,0.45)",
-                textShadow: isOn ? "0 0 12px rgba(167,139,250,0.8)" : "none",
+                color: isOn ? "#f3e8ff" : "rgba(196,181,253,0.55)",
+                textShadow: isOn
+                  ? "0 0 8px rgba(167,139,250,0.95), 0 0 22px rgba(124,58,237,0.65), 0 0 38px rgba(124,58,237,0.35)"
+                  : "0 0 10px rgba(167,139,250,0.25)",
               }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
