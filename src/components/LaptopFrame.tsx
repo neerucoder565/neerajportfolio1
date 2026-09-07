@@ -265,6 +265,19 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
           transition={{ duration: 1.7, times: [0, 0.7, 0.95], ease: "easeOut" }}
           aria-hidden
         >
+          <defs>
+            <linearGradient id="rainbow-glow" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="#ff0055" />
+              <stop offset="16%" stopColor="#ff9900" />
+              <stop offset="33%" stopColor="#ccff00" />
+              <stop offset="50%" stopColor="#00ff99" />
+              <stop offset="66%" stopColor="#0099ff" />
+              <stop offset="83%" stopColor="#6600ff" />
+              <stop offset="100%" stopColor="#ff0055" />
+              <animate attributeName="x1" values="0;1;0" dur="8s" repeatCount="indefinite" />
+              <animate attributeName="x2" values="1;2;1" dur="8s" repeatCount="indefinite" />
+            </linearGradient>
+          </defs>
 
           <rect
             x={MON_X + 40}
