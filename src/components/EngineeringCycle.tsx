@@ -251,14 +251,14 @@ export function EngineeringCycle() {
               onMouseEnter={() => setHover(n.i)}
               onMouseLeave={() => setHover(null)}
               onClick={() => setIndex(n.i)}
-              className="absolute grid place-items-center rounded-full font-mono text-[11px] tracking-[0.1em]"
+              className="absolute grid place-items-center rounded-full font-mono text-[13px] tracking-[0.1em]"
               style={{
                 left: pct(n.x),
                 top: pct(n.y),
-                width: 46,
-                height: 46,
-                marginLeft: -23,
-                marginTop: -23,
+                width: 56,
+                height: 56,
+                marginLeft: -28,
+                marginTop: -28,
                 background: done
                   ? "#7c3aed"
                   : isActive
