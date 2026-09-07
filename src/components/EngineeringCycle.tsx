@@ -179,7 +179,7 @@ export function EngineeringCycle() {
 
           {/* occasional signal dots */}
           {[0, 1, 2].map((k) => (
-            <circle key={k} r={2.5} fill="#a78bfa" opacity={0.7}>
+            <circle key={k} r={3} fill="#c4b5fd" opacity={0.8}>
               <animateMotion
                 dur={`${7 + k * 2}s`}
                 begin={`${k * 2.5}s`}
@@ -188,7 +188,7 @@ export function EngineeringCycle() {
               />
               <animate
                 attributeName="opacity"
-                values="0;0.8;0"
+                values="0;0.9;0"
                 dur={`${7 + k * 2}s`}
                 begin={`${k * 2.5}s`}
                 repeatCount="indefinite"
@@ -205,11 +205,11 @@ export function EngineeringCycle() {
                 cy={C}
                 r={R}
                 fill="none"
-                stroke="#c4b5fd"
-                strokeWidth={3}
-                initial={{ opacity: 0.7, scale: 1 }}
-                animate={{ opacity: 0, scale: 1.06 }}
-                transition={{ duration: 1.2, ease: "easeOut" }}
+                stroke="#f3e8ff"
+                strokeWidth={4}
+                initial={{ opacity: 0.8, scale: 1 }}
+                animate={{ opacity: 0, scale: 1.07 }}
+                transition={{ duration: 1.4, ease: "easeOut" }}
                 style={{ transformOrigin: `${C}px ${C}px` }}
               />
             )}
