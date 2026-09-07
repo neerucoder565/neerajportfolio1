@@ -216,7 +216,7 @@ export function EngineeringCycle() {
 
           {/* leader lines */}
           {nodes.map((n) => {
-            const outer = pointAt(n.i, R + 20);
+            const outer = pointAt(n.i, R + 46);
             const isOn = n.i === index || n.i === hover;
             return (
               <motion.line
@@ -226,8 +226,8 @@ export function EngineeringCycle() {
                 x2={outer.x}
                 y2={outer.y}
                 stroke="#a78bfa"
-                strokeWidth={1}
-                strokeOpacity={isOn ? 0.85 : 0.3}
+                strokeWidth={1.5}
+                strokeOpacity={isOn ? 0.95 : 0.35}
                 initial={{ pathLength: 0, opacity: 0 }}
                 animate={{ pathLength: 1, opacity: 1 }}
                 transition={{ delay: 0.4 + n.i * 0.1, duration: 0.5 }}
