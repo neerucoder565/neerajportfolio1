@@ -419,15 +419,15 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
                     </g>
                   );
                 })}
-                {/* overall backlight glow */}
+                {/* overall rainbow keyboard glow */}
                 <rect
                   x={KB_L - 4}
                   y={TOP - 3}
                   width={KB_R - KB_L + 8}
                   height={68}
                   rx={3}
-                  fill="var(--neon)"
-                  fillOpacity="0.05"
+                  fill="url(#rainbow-glow)"
+                  fillOpacity="0.12"
                 />
               </g>
             );
