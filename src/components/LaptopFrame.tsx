@@ -390,15 +390,15 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
                               stroke="color-mix(in oklab, var(--neon) 30%, transparent)"
                               strokeWidth="0.35"
                             />
-                            {/* backlight bleed under each key */}
+                            {/* rainbow backlight bleed under each key */}
                             <rect
                               x={kx}
                               y={rowY + kh - 1.2}
                               width={kw}
                               height={1.2}
                               rx={0.6}
-                              fill="var(--neon)"
-                              fillOpacity="0.35"
+                              fill="url(#rainbow-glow)"
+                              fillOpacity="0.55"
                             />
                             {k.label && (
                               <text
