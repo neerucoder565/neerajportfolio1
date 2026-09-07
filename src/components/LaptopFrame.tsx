@@ -265,6 +265,19 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
           transition={{ duration: 1.7, times: [0, 0.7, 0.95], ease: "easeOut" }}
           aria-hidden
         >
+          <defs>
+            <linearGradient id="rainbow-glow" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="#ff0055" />
+              <stop offset="16%" stopColor="#ff9900" />
+              <stop offset="33%" stopColor="#ccff00" />
+              <stop offset="50%" stopColor="#00ff99" />
+              <stop offset="66%" stopColor="#0099ff" />
+              <stop offset="83%" stopColor="#6600ff" />
+              <stop offset="100%" stopColor="#ff0055" />
+              <animate attributeName="x1" values="0;1;0" dur="8s" repeatCount="indefinite" />
+              <animate attributeName="x2" values="1;2;1" dur="8s" repeatCount="indefinite" />
+            </linearGradient>
+          </defs>
 
           <rect
             x={MON_X + 40}
@@ -377,15 +390,15 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
                               stroke="color-mix(in oklab, var(--neon) 30%, transparent)"
                               strokeWidth="0.35"
                             />
-                            {/* backlight bleed under each key */}
+                            {/* rainbow backlight bleed under each key */}
                             <rect
                               x={kx}
                               y={rowY + kh - 1.2}
                               width={kw}
                               height={1.2}
                               rx={0.6}
-                              fill="var(--neon)"
-                              fillOpacity="0.35"
+                              fill="url(#rainbow-glow)"
+                              fillOpacity="0.55"
                             />
                             {k.label && (
                               <text
@@ -406,15 +419,15 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
                     </g>
                   );
                 })}
-                {/* overall backlight glow */}
+                {/* overall rainbow keyboard glow */}
                 <rect
                   x={KB_L - 4}
                   y={TOP - 3}
                   width={KB_R - KB_L + 8}
                   height={68}
                   rx={3}
-                  fill="var(--neon)"
-                  fillOpacity="0.05"
+                  fill="url(#rainbow-glow)"
+                  fillOpacity="0.12"
                 />
               </g>
             );
