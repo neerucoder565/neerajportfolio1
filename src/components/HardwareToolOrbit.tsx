@@ -58,9 +58,18 @@ function Orbit({ tools, radius, duration, reverse, reducedMotion }: OrbitProps) 
             >
               <Icon
                 aria-hidden="true"
-                className="size-8 stroke-[2] drop-shadow-[0_0_10px_var(--neon)] drop-shadow-[0_0_18px_var(--neon-bright)] transition-transform duration-300 group-hover:scale-125"
+                className="size-8 stroke-[2] transition-transform duration-300 group-hover:scale-125"
+                style={{
+                  filter: "drop-shadow(0 0 8px var(--neon)) drop-shadow(0 0 16px var(--neon-bright))",
+                }}
               />
-              <span className="font-display text-sm font-semibold uppercase tracking-[0.12em] text-shadow-[0_0_8px_var(--neon),0_0_16px_var(--neon-bright)] opacity-95 transition-opacity group-hover:opacity-100">
+              <span
+                className="font-display text-sm font-semibold uppercase tracking-[0.12em] opacity-95 transition-opacity group-hover:opacity-100"
+                style={{
+                  textShadow:
+                    "0 0 8px var(--neon), 0 0 16px var(--neon-bright), 0 0 24px var(--neon)",
+                }}
+              >
                 {tool.name}
               </span>
             </motion.div>
