@@ -126,14 +126,22 @@ export function HardwareToolOrbit() {
         reducedMotion={reducedMotion}
       />
 
-      <motion.div
-        className="absolute left-1/2 top-1/2 grid size-12 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border text-white"
+      <div
+        className="absolute left-1/2 top-1/2 size-16 -translate-x-1/2 -translate-y-1/2 rounded-full"
         style={{
-          background: `linear-gradient(135deg, ${CYAN_LIGHT}, ${CYAN_DARK})`,
-          borderColor: CYAN_LIGHT,
-          boxShadow: `0 0 28px ${CYAN_GLOW}`,
+          background: RAINBOW,
+          filter: "blur(14px) saturate(1.2)",
+          opacity: 0.65,
         }}
-        animate={reducedMotion ? undefined : { scale: [1, 1.08, 1], opacity: [0.75, 1, 0.75] }}
+      />
+      <motion.div
+        className="absolute left-1/2 top-1/2 grid size-12 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border-2 text-white"
+        style={{
+          background: RAINBOW,
+          borderColor: "rgba(255,255,255,0.35)",
+          boxShadow: `0 0 28px ${CYAN_GLOW}, inset 0 0 12px rgba(255,255,255,0.25)`,
+        }}
+        animate={reducedMotion ? undefined : { scale: [1, 1.08, 1], opacity: [0.85, 1, 0.85] }}
         transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
       >
         <Cpu className="size-6" aria-hidden="true" style={{ filter: `drop-shadow(0 0 6px ${CYAN_DARK})` }} />
