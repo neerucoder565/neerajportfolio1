@@ -2,8 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Section } from "@/components/SiteShell";
 import { SkillBreadboard } from "@/components/SkillBreadboard";
 
-const TOOLS_VIDEO_URL =
-  "/__l5e/assets-v1/1d85acac-4115-4f41-bc9c-8b412be5bc27/tools-360.mp4";
+const TOOLS_VIDEO_URL = "/videos/tools-360.mp4";
 
 export const Route = createFileRoute("/skills")({
   head: () => ({
