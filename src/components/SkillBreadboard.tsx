@@ -187,7 +187,7 @@ export function SkillBreadboard() {
           if (e.isIntersecting && !bootedOnce.current) {
             bootedOnce.current = true;
             io.disconnect();
-            timers.current.push(window.setTimeout(() => boot(), reduced ? 0 : 1000));
+            timers.current.push(window.setTimeout(() => boot(), reduced ? 0 : 500));
           }
         }
       },

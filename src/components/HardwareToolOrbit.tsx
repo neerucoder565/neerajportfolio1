@@ -126,25 +126,37 @@ export function HardwareToolOrbit() {
         reducedMotion={reducedMotion}
       />
 
+      {/* soft rainbow glow behind the cycle */}
       <div
-        className="absolute left-1/2 top-1/2 size-16 -translate-x-1/2 -translate-y-1/2 rounded-full"
+        className="pointer-events-none absolute left-1/2 top-1/2 size-24 -translate-x-1/2 -translate-y-1/2 rounded-full"
         style={{
           background: RAINBOW,
-          filter: "blur(14px) saturate(1.2)",
-          opacity: 0.65,
+          filter: "blur(28px) saturate(1.6)",
+          opacity: 0.72,
         }}
+      />
+      {/* spinning rainbow ring */}
+      <motion.div
+        className="pointer-events-none absolute left-1/2 top-1/2 size-16 -translate-x-1/2 -translate-y-1/2 rounded-full"
+        style={{
+          background: RAINBOW,
+          WebkitMask: "radial-gradient(circle, transparent 48%, black 49%, black 56%, transparent 57%)",
+          mask: "radial-gradient(circle, transparent 48%, black 49%, black 56%, transparent 57%)",
+        }}
+        animate={reducedMotion ? undefined : { rotate: 360 }}
+        transition={{ duration: 10, ease: "linear", repeat: Infinity }}
       />
       <motion.div
         className="absolute left-1/2 top-1/2 grid size-12 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border-2 text-white"
         style={{
           background: RAINBOW,
-          borderColor: "rgba(255,255,255,0.35)",
-          boxShadow: `0 0 28px ${CYAN_GLOW}, inset 0 0 12px rgba(255,255,255,0.25)`,
+          borderColor: "rgba(255,255,255,0.4)",
+          boxShadow: "0 0 32px rgba(255,255,255,0.35), inset 0 0 14px rgba(255,255,255,0.25)",
         }}
-        animate={reducedMotion ? undefined : { scale: [1, 1.08, 1], opacity: [0.85, 1, 0.85] }}
+        animate={reducedMotion ? undefined : { scale: [1, 1.08, 1], opacity: [0.88, 1, 0.88] }}
         transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
       >
-        <Cpu className="size-6" aria-hidden="true" style={{ filter: `drop-shadow(0 0 6px ${CYAN_DARK})` }} />
+        <Cpu className="size-6" aria-hidden="true" style={{ filter: `drop-shadow(0 0 8px ${CYAN_DARK})` }} />
       </motion.div>
     </div>
   );
