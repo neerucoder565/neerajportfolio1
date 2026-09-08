@@ -8,11 +8,10 @@ import {
   Radio,
 } from "lucide-react";
 
-const RED_LIGHT = "#DC2626";
-const RED_DARK = "#991B1B";
-const RED_CORE = "#7F1D1D";
-const RED_GLOW = `${RED_LIGHT}CC`;
-const RED_SOFT = `${RED_LIGHT}4D`;
+const CYAN_LIGHT = "#22D3EE";
+const CYAN_DARK = "#0891B2";
+const CYAN_GLOW = `${CYAN_LIGHT}CC`;
+const CYAN_SOFT = `${CYAN_LIGHT}4D`;
 
 const OUTER_TOOLS = [
   { name: "STM32", icon: Cpu },
@@ -58,32 +57,23 @@ function Orbit({ tools, radius, duration, reverse, reducedMotion }: OrbitProps) 
             style={{ transform: `rotate(${angle}deg) translateY(-${radius}px)` }}
           >
             <motion.div
-              className="group absolute left-0 top-0 flex -translate-x-1/2 -translate-y-1/2 items-center gap-2 whitespace-nowrap"
+              className="group absolute left-0 top-0 flex -translate-x-1/2 -translate-y-1/2 items-center gap-2 whitespace-nowrap text-white"
               animate={reducedMotion ? undefined : { rotate: -direction }}
               transition={{ duration, ease: "linear", repeat: Infinity }}
             >
-              <div
-                className="grid size-10 place-items-center rounded-full border"
+              <Icon
+                aria-hidden="true"
+                className="size-8 stroke-[2] transition-transform duration-300 group-hover:scale-125"
                 style={{
-                  background: "oklch(0.12 0.02 25 / 0.72)",
-                  borderColor: RED_LIGHT,
-                  boxShadow: `0 0 10px ${RED_GLOW}, inset 0 0 12px ${RED_CORE}`,
+                  filter: `drop-shadow(0 0 8px ${CYAN_LIGHT}) drop-shadow(0 0 16px ${CYAN_DARK})`,
                 }}
-              >
-                <Icon
-                  aria-hidden="true"
-                  className="size-5 stroke-[2] text-white transition-transform duration-300 group-hover:scale-110"
-                  style={{
-                    filter: `drop-shadow(0 0 6px ${RED_LIGHT})`,
-                  }}
-                />
-              </div>
+              />
               <span
                 className="font-display text-sm font-semibold uppercase tracking-[0.12em] opacity-95 transition-opacity group-hover:opacity-100"
                 style={{
-                  color: RED_LIGHT,
+                  color: CYAN_LIGHT,
                   textShadow:
-                    `0 0 8px ${RED_LIGHT}, 0 0 16px ${RED_DARK}, 0 0 24px ${RED_LIGHT}`,
+                    `0 0 8px ${CYAN_LIGHT}, 0 0 16px ${CYAN_DARK}, 0 0 24px ${CYAN_LIGHT}`,
                 }}
               >
                 {tool.name}
@@ -108,16 +98,16 @@ export function HardwareToolOrbit() {
         className="pointer-events-none absolute left-1/2 top-1/2 h-[320px] w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-full"
         style={{
           background:
-            "radial-gradient(circle, oklch(0.12 0.04 25 / 0.5) 0%, oklch(0.12 0.04 25 / 0.18) 55%, transparent 72%)",
+            "radial-gradient(circle, oklch(0.12 0.02 305 / 0.55) 0%, oklch(0.12 0.02 305 / 0.2) 55%, transparent 72%)",
         }}
       />
       <div
         className="pointer-events-none absolute left-1/2 top-1/2 h-[276px] w-[276px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed"
-        style={{ borderColor: RED_SOFT }}
+        style={{ borderColor: CYAN_SOFT }}
       />
       <div
         className="pointer-events-none absolute left-1/2 top-1/2 h-[166px] w-[166px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed"
-        style={{ borderColor: `${RED_LIGHT}26` }}
+        style={{ borderColor: `${CYAN_LIGHT}26` }}
       />
 
       <Orbit
@@ -137,14 +127,14 @@ export function HardwareToolOrbit() {
       <motion.div
         className="absolute left-1/2 top-1/2 grid size-12 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border text-white"
         style={{
-          background: `linear-gradient(135deg, ${RED_LIGHT}, ${RED_DARK})`,
-          borderColor: RED_LIGHT,
-          boxShadow: `0 0 28px ${RED_GLOW}`,
+          background: `linear-gradient(135deg, ${CYAN_LIGHT}, ${CYAN_DARK})`,
+          borderColor: CYAN_LIGHT,
+          boxShadow: `0 0 28px ${CYAN_GLOW}`,
         }}
         animate={reducedMotion ? undefined : { scale: [1, 1.08, 1], opacity: [0.75, 1, 0.75] }}
         transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
       >
-        <Cpu className="size-6" aria-hidden="true" style={{ filter: `drop-shadow(0 0 6px ${RED_DARK})` }} />
+        <Cpu className="size-6" aria-hidden="true" style={{ filter: `drop-shadow(0 0 6px ${CYAN_DARK})` }} />
       </motion.div>
     </div>
   );
