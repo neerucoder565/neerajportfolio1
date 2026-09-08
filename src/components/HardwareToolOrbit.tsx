@@ -137,11 +137,11 @@ export function HardwareToolOrbit() {
       />
       {/* spinning rainbow ring */}
       <motion.div
-        className="pointer-events-none absolute left-1/2 top-1/2 size-16 -translate-x-1/2 -translate-y-1/2 rounded-full"
+        className="pointer-events-none absolute left-1/2 top-1/2 size-20 -translate-x-1/2 -translate-y-1/2 rounded-full"
         style={{
           background: RAINBOW,
-          WebkitMask: "radial-gradient(circle, transparent 48%, black 49%, black 56%, transparent 57%)",
-          mask: "radial-gradient(circle, transparent 48%, black 49%, black 56%, transparent 57%)",
+          WebkitMask: "radial-gradient(circle, transparent 58%, black 59%, black 70%, transparent 71%)",
+          mask: "radial-gradient(circle, transparent 58%, black 59%, black 70%, transparent 71%)",
         }}
         animate={reducedMotion ? undefined : { rotate: 360 }}
         transition={{ duration: 10, ease: "linear", repeat: Infinity }}
