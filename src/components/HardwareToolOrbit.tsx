@@ -52,15 +52,24 @@ function Orbit({ tools, radius, duration, reverse, reducedMotion }: OrbitProps) 
             style={{ transform: `rotate(${angle}deg) translateY(-${radius}px)` }}
           >
             <motion.div
-              className="group absolute left-0 top-0 flex -translate-x-1/2 -translate-y-1/2 items-center gap-2 whitespace-nowrap text-neon"
+              className="group absolute left-0 top-0 flex -translate-x-1/2 -translate-y-1/2 items-center gap-2 whitespace-nowrap text-white"
               animate={reducedMotion ? undefined : { rotate: -direction }}
               transition={{ duration, ease: "linear", repeat: Infinity }}
             >
               <Icon
                 aria-hidden="true"
-                className="size-7 stroke-[1.6] drop-shadow-[0_0_9px_var(--neon)] transition-transform duration-300 group-hover:scale-125"
+                className="size-8 stroke-[2] transition-transform duration-300 group-hover:scale-125"
+                style={{
+                  filter: "drop-shadow(0 0 8px var(--neon)) drop-shadow(0 0 16px var(--neon-bright))",
+                }}
               />
-              <span className="font-display text-xs uppercase tracking-[0.12em] opacity-80 transition-opacity group-hover:opacity-100">
+              <span
+                className="font-display text-sm font-semibold uppercase tracking-[0.12em] opacity-95 transition-opacity group-hover:opacity-100"
+                style={{
+                  textShadow:
+                    "0 0 8px var(--neon), 0 0 16px var(--neon-bright), 0 0 24px var(--neon)",
+                }}
+              >
                 {tool.name}
               </span>
             </motion.div>
@@ -79,8 +88,15 @@ export function HardwareToolOrbit() {
       className="relative mx-auto h-[330px] w-full max-w-[560px] overflow-hidden"
       aria-label="Hardware and embedded engineering tools"
     >
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[276px] w-[276px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-neon/15" />
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[166px] w-[166px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-neon/10" />
+      <div
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[320px] w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-full"
+        style={{
+          background:
+            "radial-gradient(circle, oklch(0.12 0.02 305 / 0.55) 0%, oklch(0.12 0.02 305 / 0.2) 55%, transparent 72%)",
+        }}
+      />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[276px] w-[276px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-neon/30" />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[166px] w-[166px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-neon/20" />
 
       <Orbit
         tools={OUTER_TOOLS}
