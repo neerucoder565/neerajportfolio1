@@ -93,7 +93,7 @@ function Led({ level, lit }: { level: Level; lit: boolean }) {
           ? `color-mix(in oklab, var(--neon-bright) ${a * 100}%, #2a2030)`
           : "#3a3540",
         boxShadow: lit
-          ? `0 0 ${4 + a * 10}px ${core}, 0 0 ${18 + a * 26}px ${6 + a * 8}px ${core}`
+          ? `0 0 ${8 + a * 16}px ${core}, 0 0 ${28 + a * 38}px ${10 + a * 12}px ${core}`
           : "none",
       }}
     />
@@ -358,10 +358,9 @@ function SkillPart({
             ? `color-mix(in oklab, var(--neon-bright) ${a * 60}%, transparent)`
             : "rgba(255,255,255,0.08)",
           background: lit ? "rgba(255,255,255,0.03)" : "rgba(255,255,255,0.015)",
-          boxShadow:
-            lit && active
-              ? "0 0 22px color-mix(in oklab, var(--neon-bright) 55%, transparent)"
-              : "none",
+          boxShadow: lit
+            ? `0 0 ${18 + a * 22}px color-mix(in oklab, var(--neon-bright) ${50 + a * 50}%, transparent), inset 0 0 ${6 + a * 8}px color-mix(in oklab, var(--neon-bright) ${25 + a * 35}%, transparent)${active ? `, 0 0 ${32 + a * 28}px color-mix(in oklab, var(--neon-bright) ${70 + a * 30}%, transparent)` : ""}`
+            : "none",
         }}
       >
         {/* part body */}
@@ -395,7 +394,7 @@ function SkillPart({
                 ? `color-mix(in oklab, var(--foreground) ${40 + a * 60}%, transparent)`
                 : "rgba(200,190,210,0.28)",
               textShadow: lit
-                ? `0 0 ${6 + a * 10}px color-mix(in oklab, var(--neon-bright) ${a * 90}%, transparent)`
+                ? `0 0 ${10 + a * 18}px color-mix(in oklab, var(--neon-bright) ${a * 100}%, transparent), 0 0 ${20 + a * 30}px color-mix(in oklab, var(--neon-bright) ${a * 70}%, transparent)`
                 : "none",
             }}
           >
@@ -406,7 +405,7 @@ function SkillPart({
             style={{
               color: lit ? "var(--cyan)" : "rgba(160,150,180,0.45)",
               textShadow: lit
-                ? `0 0 ${4 + a * 6}px color-mix(in oklab, var(--cyan) ${a * 70}%, transparent)`
+                ? `0 0 ${8 + a * 12}px color-mix(in oklab, var(--cyan) ${a * 90}%, transparent), 0 0 ${14 + a * 22}px color-mix(in oklab, var(--cyan) ${a * 60}%, transparent)`
                 : "none",
             }}
           >
