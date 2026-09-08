@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Section } from "@/components/SiteShell";
 import { SkillBreadboard } from "@/components/SkillBreadboard";
+import { ToolSphere } from "@/components/ToolSphere";
 
 
 export const Route = createFileRoute("/skills")({
@@ -17,9 +18,14 @@ export const Route = createFileRoute("/skills")({
 
 function Skills() {
   return (
-    <Section eyebrow="CAPABILITY_LEVELS" title="Skill Telemetry">
-      <SkillBreadboard />
-    </Section>
+    <>
+      <Section eyebrow="TOOLCHAIN" title="Hardware & Tools">
+        <ToolSphere height={440} />
+      </Section>
+      <Section eyebrow="CAPABILITY_LEVELS" title="Skill Telemetry">
+        <SkillBreadboard />
+      </Section>
+    </>
   );
 }
 
