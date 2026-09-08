@@ -1,8 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Section } from "@/components/SiteShell";
 import { SkillBreadboard } from "@/components/SkillBreadboard";
-import { ToolSphere } from "@/components/ToolSphere";
 
+const TOOLS_VIDEO_URL =
+  "/__l5e/assets-v1/1d85acac-4115-4f41-bc9c-8b412be5bc27/tools-360.mp4";
 
 export const Route = createFileRoute("/skills")({
   head: () => ({
@@ -19,9 +20,17 @@ export const Route = createFileRoute("/skills")({
 function Skills() {
   return (
     <>
-      <Section eyebrow="TOOLCHAIN" title="Hardware & Tools">
-        <ToolSphere height={440} />
-      </Section>
+      <div className="relative mx-auto w-full max-w-6xl overflow-hidden rounded-3xl border border-violet-500/20 shadow-[0_0_80px_-20px_rgba(124,58,237,0.5)]">
+        <video
+          src={TOOLS_VIDEO_URL}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          className="block h-auto w-full"
+        />
+      </div>
       <Section eyebrow="CAPABILITY_LEVELS" title="Skill Telemetry">
         <SkillBreadboard />
       </Section>
