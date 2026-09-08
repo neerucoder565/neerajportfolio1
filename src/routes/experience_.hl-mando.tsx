@@ -15,9 +15,7 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import buildingAsset from "@/assets/hl-mando-building.jpeg.asset.json";
-import gateImg from "@/assets/mando-gate.jpg";
 import certificateAsset from "@/assets/hl-mando-certificate.png.asset.json";
-import officeImg from "@/assets/mando-office.jpg";
 import landscapeImg from "@/assets/mando-landscape.jpg";
 import cepsAsset from "@/assets/CEPS_Assembly_Parts_Image.jpeg.asset.json";
 import groupAsset from "@/assets/Group_Pic.jpeg.asset.json";
