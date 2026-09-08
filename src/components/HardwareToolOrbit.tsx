@@ -88,8 +88,15 @@ export function HardwareToolOrbit() {
       className="relative mx-auto h-[330px] w-full max-w-[560px] overflow-hidden"
       aria-label="Hardware and embedded engineering tools"
     >
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[276px] w-[276px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-neon/15" />
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[166px] w-[166px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-neon/10" />
+      <div
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[320px] w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-full"
+        style={{
+          background:
+            "radial-gradient(circle, oklch(0.12 0.02 305 / 0.55) 0%, oklch(0.12 0.02 305 / 0.2) 55%, transparent 72%)",
+        }}
+      />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[276px] w-[276px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-neon/30" />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[166px] w-[166px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-neon/20" />
 
       <Orbit
         tools={OUTER_TOOLS}
