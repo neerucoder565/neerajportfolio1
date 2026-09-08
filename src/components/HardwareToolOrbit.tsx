@@ -52,15 +52,15 @@ function Orbit({ tools, radius, duration, reverse, reducedMotion }: OrbitProps) 
             style={{ transform: `rotate(${angle}deg) translateY(-${radius}px)` }}
           >
             <motion.div
-              className="group absolute left-0 top-0 flex -translate-x-1/2 -translate-y-1/2 items-center gap-2 whitespace-nowrap text-neon"
+              className="group absolute left-0 top-0 flex -translate-x-1/2 -translate-y-1/2 items-center gap-2 whitespace-nowrap text-white"
               animate={reducedMotion ? undefined : { rotate: -direction }}
               transition={{ duration, ease: "linear", repeat: Infinity }}
             >
               <Icon
                 aria-hidden="true"
-                className="size-7 stroke-[1.6] drop-shadow-[0_0_9px_var(--neon)] transition-transform duration-300 group-hover:scale-125"
+                className="size-8 stroke-[2] drop-shadow-[0_0_10px_var(--neon)] drop-shadow-[0_0_18px_var(--neon-bright)] transition-transform duration-300 group-hover:scale-125"
               />
-              <span className="font-display text-xs uppercase tracking-[0.12em] opacity-80 transition-opacity group-hover:opacity-100">
+              <span className="font-display text-sm font-semibold uppercase tracking-[0.12em] text-shadow-[0_0_8px_var(--neon),0_0_16px_var(--neon-bright)] opacity-95 transition-opacity group-hover:opacity-100">
                 {tool.name}
               </span>
             </motion.div>
