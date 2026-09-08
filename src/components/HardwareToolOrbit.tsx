@@ -12,6 +12,8 @@ const CYAN_LIGHT = "#22D3EE";
 const CYAN_DARK = "#0891B2";
 const CYAN_GLOW = `${CYAN_LIGHT}CC`;
 const CYAN_SOFT = `${CYAN_LIGHT}4D`;
+const RAINBOW =
+  "conic-gradient(from 0deg, #FF0000, #FF8C00, #FFD700, #22C55E, #06B6D4, #6366F1, #EC4899, #FF0000)";
 
 const OUTER_TOOLS = [
   { name: "STM32", icon: Cpu },
