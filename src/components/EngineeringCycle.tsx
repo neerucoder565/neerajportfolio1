@@ -326,23 +326,25 @@ export function EngineeringCycle() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.96 }}
               transition={{ type: "spring", stiffness: 220, damping: 22, duration: 0.3 }}
-              className="w-[210px] rounded-xl border border-[rgba(167,139,250,0.28)] bg-[#0a0e17]/55 p-4 text-center backdrop-blur-sm"
-              style={{ boxShadow: "0 0 36px rgba(124,58,237,0.28), inset 0 0 22px rgba(124,58,237,0.06)" }}
+              className="w-[200px] p-3 text-center"
             >
-              <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+              <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#a78bfa]"
+                   style={{ textShadow: "0 0 6px rgba(124,58,237,0.8)" }}>
                 Stage {stage.id} of 07
               </div>
-              <div className="mt-2 font-mono text-base uppercase tracking-[0.12em] text-foreground">
+              <div className="mt-1.5 font-mono text-base uppercase tracking-[0.12em] text-foreground"
+                   style={{ textShadow: "0 0 10px rgba(124,58,237,0.75), 0 0 22px rgba(0,0,0,0.55)" }}>
                 {stage.label}
               </div>
-              <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+              <p className="mt-1.5 text-xs leading-relaxed text-[#c4b5fd]"
+                 style={{ textShadow: "0 0 8px rgba(0,0,0,0.7)" }}>
                 {stage.note}
               </p>
-              <div className="mt-3 flex flex-wrap justify-center gap-1.5">
+              <div className="mt-2.5 flex flex-wrap justify-center gap-1.5">
                 {stage.items.map((it) => (
                   <span
                     key={it}
-                    className="rounded-full border border-[rgba(167,139,250,0.35)] px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.08em] text-[#c4b5fd]"
+                    className="rounded-full bg-[#0a0e17]/50 border border-[rgba(167,139,250,0.35)] px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.08em] text-[#c4b5fd]"
                   >
                     {it}
                   </span>
