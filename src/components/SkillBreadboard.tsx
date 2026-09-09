@@ -391,10 +391,10 @@ function SkillPart({
             className="font-mono text-[13px] leading-tight transition-all duration-500"
             style={{
               color: lit
-                ? `color-mix(in oklab, var(--foreground) ${40 + a * 60}%, transparent)`
+                ? `color-mix(in oklab, #ffffff ${45 + a * 55}%, var(--foreground))`
                 : "rgba(200,190,210,0.28)",
               textShadow: lit
-                ? `0 0 ${10 + a * 18}px color-mix(in oklab, var(--neon-bright) ${a * 100}%, transparent), 0 0 ${20 + a * 30}px color-mix(in oklab, var(--neon-bright) ${a * 70}%, transparent)`
+                ? `0 0 ${8 + a * 14}px var(--neon-bright), 0 0 ${18 + a * 28}px var(--neon-bright), 0 0 ${32 + a * 48}px color-mix(in oklab, var(--neon-bright) 75%, transparent)`
                 : "none",
             }}
           >
@@ -405,7 +405,7 @@ function SkillPart({
             style={{
               color: lit ? "var(--cyan)" : "rgba(160,150,180,0.45)",
               textShadow: lit
-                ? `0 0 ${8 + a * 12}px color-mix(in oklab, var(--cyan) ${a * 90}%, transparent), 0 0 ${14 + a * 22}px color-mix(in oklab, var(--cyan) ${a * 60}%, transparent)`
+                ? `0 0 ${6 + a * 10}px var(--cyan), 0 0 ${14 + a * 24}px var(--cyan), 0 0 ${26 + a * 36}px color-mix(in oklab, var(--cyan) 70%, transparent)`
                 : "none",
             }}
           >
