@@ -93,7 +93,9 @@ function Home() {
 
       {/* CAPABILITIES */}
       <Section eyebrow="PROCESS" title="Engineering Workflow">
-        <EngineeringCycle />
+        <div className="max-w-[640px] mx-auto">
+          <EngineeringCycle />
+        </div>
       </Section>
 
     </>
