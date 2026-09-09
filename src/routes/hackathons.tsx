@@ -206,11 +206,11 @@ function Hackathons() {
                 Download
               </a>
             </div>
-            <Panel className="p-2 overflow-hidden">
+            <Panel className="p-2 md:p-4 overflow-hidden flex items-center justify-center">
               <motion.img
                 src={viewing.cert.replace(/\.pdf$/, ".png")}
                 alt={`${viewing.project} certificate`}
-                className="w-full h-auto rounded-md"
+                className="max-h-[55vh] md:max-h-[62vh] w-auto max-w-full rounded-md object-contain shadow-lg"
                 initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.55, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
