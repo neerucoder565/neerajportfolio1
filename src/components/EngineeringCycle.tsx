@@ -271,14 +271,14 @@ export function EngineeringCycle() {
                   : { type: "spring", stiffness: 320, damping: 14, delay: n.i * 0.1 }
               }
             >
-              {done ? <Check size={16} strokeWidth={3} /> : n.id}
+              {done ? <Check size={14} strokeWidth={3} /> : n.id}
               {isActive && (
                 <motion.span
                   className="pointer-events-none absolute rounded-full"
                   style={{
-                    inset: -12,
+                    inset: -10,
                     border: "1.5px dashed rgba(196,181,253,0.75)",
-                    boxShadow: "0 0 18px rgba(167,139,250,0.35)",
+                    boxShadow: "0 0 14px rgba(167,139,250,0.35)",
                   }}
                   animate={{ rotate: 360 }}
                   transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
@@ -290,7 +290,7 @@ export function EngineeringCycle() {
 
         {/* labels */}
         {nodes.map((n) => {
-          const p = pointAt(n.i, R + 52);
+          const p = pointAt(n.i, R + 40);
           const isOn = n.i === index || n.i === hover;
           const cos = Math.cos(p.a);
           const align =
@@ -298,7 +298,7 @@ export function EngineeringCycle() {
           return (
             <motion.div
               key={`t-${n.id}`}
-              className="pointer-events-none absolute font-mono text-[13px] md:text-[14px] uppercase tracking-[0.22em] whitespace-nowrap"
+              className="pointer-events-none absolute font-mono text-[11px] md:text-[12px] uppercase tracking-[0.18em] whitespace-nowrap"
               style={{
                 left: `${(p.x / SIZE) * 100}%`,
                 top: `${(p.y / SIZE) * 100}%`,
