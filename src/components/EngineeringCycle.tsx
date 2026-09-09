@@ -85,25 +85,10 @@ export function EngineeringCycle() {
   }, [index]);
 
   return (
-    <div className="corners relative overflow-hidden border border-border bg-[#0a0e17]/70 p-4 md:p-8">
-      {/* circuit trace pattern, very slow drift */}
-      <motion.div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.12]"
-        style={{
-          backgroundImage:
-            "linear-gradient(var(--neon) 1px, transparent 1px), linear-gradient(90deg, var(--neon) 1px, transparent 1px)",
-          backgroundSize: "44px 44px",
-        }}
-        animate={{ backgroundPosition: ["0px 0px", "44px 44px"] }}
-        transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-      />
-
+    <div className="relative overflow-hidden" role="tablist" aria-label="Engineering cycle stages">
       <div
         className="relative mx-auto"
         style={{ width: SIZE, maxWidth: "100%" }}
-        role="tablist"
-        aria-label="Engineering cycle stages"
         tabIndex={0}
         onKeyDown={(e) => {
           if (e.key === "ArrowRight" || e.key === "ArrowDown") {
