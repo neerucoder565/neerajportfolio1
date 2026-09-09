@@ -237,25 +237,25 @@ export function EngineeringCycle() {
               onMouseEnter={() => setHover(n.i)}
               onMouseLeave={() => setHover(null)}
               onClick={() => setIndex(n.i)}
-              className="absolute grid place-items-center rounded-full font-mono text-[13px] tracking-[0.1em]"
+              className="absolute grid place-items-center rounded-full font-mono text-[11px] tracking-[0.08em]"
               style={{
                 left: pct(n.x),
                 top: pct(n.y),
-                width: 56,
-                height: 56,
-                marginLeft: -28,
-                marginTop: -28,
+                width: 44,
+                height: 44,
+                marginLeft: -22,
+                marginTop: -22,
                 background: done
                   ? "#7c3aed"
                   : isActive
                     ? "rgba(124,58,237,0.45)"
-                    : "rgba(10,14,23,0.85)",
+                    : "rgba(10,14,23,0.7)",
                 border: `1.5px solid ${isActive ? "#e9d5ff" : done ? "#a78bfa" : "rgba(167,139,250,0.4)"}`,
                 color: done || isActive ? "#f5f3ff" : "rgba(196,181,253,0.65)",
                 boxShadow: isActive
-                  ? "0 0 28px rgba(167,139,250,0.95), 0 0 72px rgba(124,58,237,0.6), inset 0 0 18px rgba(196,181,253,0.15)"
+                  ? "0 0 22px rgba(167,139,250,0.95), 0 0 52px rgba(124,58,237,0.55), inset 0 0 14px rgba(196,181,253,0.15)"
                   : hover === n.i
-                    ? "0 0 22px rgba(167,139,250,0.7), 0 0 44px rgba(124,58,237,0.35)"
+                    ? "0 0 16px rgba(167,139,250,0.65), 0 0 32px rgba(124,58,237,0.3)"
                     : "none",
                 opacity: done || isActive ? 1 : 0.8,
               }}
