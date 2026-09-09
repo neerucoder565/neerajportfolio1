@@ -165,12 +165,9 @@ function DomainModal({ open, onClose }: { open: boolean; onClose: () => void }) 
               />
 
               <div className="flex items-center justify-between gap-4 mb-6">
-                <div>
-                  <div className="text-xs text-neon tracking-[0.25em] mb-1">// DOMAIN BREAKDOWN</div>
-                  <h3 className="font-display text-2xl md:text-3xl uppercase text-glow-soft">
-                    Hackathon Domains
-                  </h3>
-                </div>
+                <h3 className="font-display text-2xl md:text-3xl uppercase text-glow-soft">
+                  Hackathon Domains
+                </h3>
                 <button
                   type="button"
                   onClick={onClose}
@@ -180,6 +177,7 @@ function DomainModal({ open, onClose }: { open: boolean; onClose: () => void }) 
                   <X size={18} />
                 </button>
               </div>
+
 
               <div className="space-y-3">
                 {HACKATHONS.map((h, i) => (
@@ -207,20 +205,8 @@ function DomainModal({ open, onClose }: { open: boolean; onClose: () => void }) 
                 ))}
               </div>
 
-              <div className="mt-6 flex flex-wrap gap-2">
-                {DOMAINS.map((d, i) => (
-                  <motion.span
-                    key={d}
-                    initial={{ opacity: 0, scale: 0.85 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3, delay: 0.3 + i * 0.07 }}
-                    className="text-[10px] uppercase tracking-[0.18em] border border-neon/40 text-neon bg-neon/5 px-3 py-1"
-                  >
-                    {d}
-                  </motion.span>
-                ))}
-              </div>
             </Panel>
+
           </motion.div>
         </motion.div>
       )}
