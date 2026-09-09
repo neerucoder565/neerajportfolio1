@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Panel, Section } from "@/components/SiteShell";
-import { FileText, ArrowLeft, Download, Trophy, Globe, Zap, Cpu } from "lucide-react";
+import { FileText, ArrowLeft, Download, Trophy, Globe, Zap, Cpu, X } from "lucide-react";
 
 export const Route = createFileRoute("/hackathons")({
   head: () => ({
@@ -26,6 +26,7 @@ const HACKATHONS = [
     tags: ["Emergency Tech", "Full Stack", "Maps"],
     outcome: "Smart emergency hospital finder.",
     cert: "/certificates/genesis-2026-certificate.pdf",
+    domain: "Healthcare + Full Stack",
   },
   {
     project: "Hackathon 360°",
@@ -34,6 +35,7 @@ const HACKATHONS = [
     tags: ["Innovation", "Round 2", "Pitch"],
     outcome: "Selected through to Round 2 of the national innovation challenge.",
     cert: "/certificates/eclearnix-360-round2-certificate.pdf",
+    domain: "Innovation & Prototyping",
   },
   {
     project: "Hackathon 360° 4.0",
@@ -42,6 +44,7 @@ const HACKATHONS = [
     tags: ["Problem Solving", "Prototype"],
     outcome: "Round 1 participant in the international innovation and problem-solving track.",
     cert: "/certificates/hackathon-360-4-0-certificate.pdf",
+    domain: "Problem Solving",
   },
   {
     project: "Hackathon 360° 3.0",
@@ -50,6 +53,7 @@ const HACKATHONS = [
     tags: ["Rapid Build", "Ideation"],
     outcome: "International hackathon focused on rapid innovation and prototyping.",
     cert: "/certificates/hackathon-360-3-0-kpriet-certificate.pdf",
+    domain: "Innovation & Prototyping",
   },
   {
     project: "Quintessence 2026",
@@ -58,37 +62,169 @@ const HACKATHONS = [
     tags: ["Electronics", "Communication"],
     outcome: "Technical quiz on core electronics and communication fundamentals.",
     cert: "/certificates/quintessence-2026-certificate.pdf",
+    domain: "Electronics & Communication",
   },
 ];
+
+const DOMAINS = Array.from(new Set(HACKATHONS.map((h) => h.domain)));
 
 const STATS = [
   { icon: Trophy, label: "EVENTS ENTERED", value: "05" },
   { icon: Globe, label: "INTERNATIONAL", value: "02" },
   { icon: Zap, label: "CERTIFICATES", value: "05" },
-  { icon: Cpu, label: "DOMAINS", value: "04" },
+  { icon: Cpu, label: "DOMAINS", value: String(DOMAINS.length).padStart(2, "0") },
 ];
 
-function StatStrip() {
+function StatStrip({ onOpenDomains }: { onOpenDomains: () => void }) {
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10">
-      {STATS.map((s, i) => (
-        <motion.div
-          key={s.label}
-          initial={{ opacity: 0, y: 18, filter: "blur(6px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-          className="relative overflow-hidden border border-border bg-card/30 px-4 py-3 flex items-center gap-3 glow-border-hover"
-        >
-          <span className="absolute inset-0 scanline pointer-events-none opacity-60" />
-          <s.icon size={16} className="text-neon shrink-0 anim-pulse-neon" />
-          <div className="relative">
-            <div className="font-display text-xl text-glow-soft leading-none">{s.value}</div>
-            <div className="text-[10px] tracking-[0.25em] text-muted-foreground mt-1">{s.label}</div>
-          </div>
-        </motion.div>
-      ))}
+      {STATS.map((s, i) => {
+        const isDomains = s.label === "DOMAINS";
+        const content = (
+          <>
+            <span className="absolute inset-0 scanline pointer-events-none opacity-60" />
+            <s.icon size={16} className="text-neon shrink-0 anim-pulse-neon" />
+            <div className="relative">
+              <div className="font-display text-xl text-glow-soft leading-none">{s.value}</div>
+              <div className="text-[10px] tracking-[0.25em] text-muted-foreground mt-1">{s.label}</div>
+            </div>
+          </>
+        );
+
+        const commonClasses =
+          "relative overflow-hidden border border-border bg-card/30 px-4 py-3 flex items-center gap-3 glow-border-hover transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-neon";
+
+        return isDomains ? (
+          <motion.button
+            key={s.label}
+            type="button"
+            initial={{ opacity: 0, y: 18, filter: "blur(6px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true, amount: 0.5 }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+            className={`${commonClasses} text-left cursor-pointer hover:bg-card/50`}
+            onClick={onOpenDomains}
+          >
+            {content}
+            <span className="absolute top-0 left-0 h-px w-full bg-neon/60" style={{ boxShadow: "0 0 12px var(--neon)" }} />
+          </motion.button>
+        ) : (
+          <motion.div
+            key={s.label}
+            initial={{ opacity: 0, y: 18, filter: "blur(6px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+            className={commonClasses}
+          >
+            {content}
+          </motion.div>
+        );
+      })}
     </div>
+  );
+}
+
+function DomainModal({ open, onClose }: { open: boolean; onClose: () => void }) {
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open, onClose]);
+
+  return (
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={onClose} />
+          <motion.div
+            className="relative z-10 w-full max-w-2xl"
+            initial={{ opacity: 0, scale: 0.95, y: 20, filter: "blur(8px)" }}
+            animate={{ opacity: 1, scale: 1, y: 0, filter: "blur(0px)" }}
+            exit={{ opacity: 0, scale: 0.97, y: 12, filter: "blur(6px)" }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <Panel className="p-5 md:p-7 overflow-hidden">
+              <motion.span
+                className="absolute top-0 left-0 h-px bg-neon"
+                initial={{ width: "0%" }}
+                animate={{ width: "100%" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                style={{ boxShadow: "0 0 14px var(--neon)" }}
+              />
+
+              <div className="flex items-center justify-between gap-4 mb-6">
+                <div>
+                  <div className="text-xs text-neon tracking-[0.25em] mb-1">// DOMAIN BREAKDOWN</div>
+                  <h3 className="font-display text-2xl md:text-3xl uppercase text-glow-soft">
+                    Hackathon Domains
+                  </h3>
+                </div>
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className="inline-flex items-center justify-center w-10 h-10 border border-border bg-card/50 text-muted-foreground hover:text-neon hover:border-neon/50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-neon"
+                  aria-label="Close domain breakdown"
+                >
+                  <X size={18} />
+                </button>
+              </div>
+
+              <div className="space-y-3">
+                {HACKATHONS.map((h, i) => (
+                  <motion.div
+                    key={h.project}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.35, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                    className="group relative flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-4 border border-border bg-secondary/20 px-4 py-3 hover:bg-secondary/40 transition-colors"
+                  >
+                    <span className="absolute top-0 left-0 h-px w-0 bg-neon/60 group-hover:w-full transition-all duration-300" style={{ boxShadow: "0 0 8px var(--neon)" }} />
+                    <div>
+                      <div className="font-display text-base md:text-lg uppercase text-glow-soft leading-none">
+                        {h.project}
+                      </div>
+                      <div className="text-[11px] text-muted-foreground mt-1 tracking-wide">{h.event}</div>
+                    </div>
+                    <div className="flex items-center gap-2 sm:shrink-0">
+                      <span className="h-1.5 w-1.5 rounded-full bg-neon anim-pulse-neon" />
+                      <span className="text-xs md:text-sm text-neon tracking-[0.15em] uppercase whitespace-nowrap">
+                        {h.domain}
+                      </span>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              <div className="mt-6 flex flex-wrap gap-2">
+                {DOMAINS.map((d, i) => (
+                  <motion.span
+                    key={d}
+                    initial={{ opacity: 0, scale: 0.85 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3, delay: 0.3 + i * 0.07 }}
+                    className="text-[10px] uppercase tracking-[0.18em] border border-neon/40 text-neon bg-neon/5 px-3 py-1"
+                  >
+                    {d}
+                  </motion.span>
+                ))}
+              </div>
+            </Panel>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
 
@@ -173,6 +309,7 @@ function HackCard({ h, i }: { h: (typeof HACKATHONS)[number]; i: number }) {
 
 function Hackathons() {
   const [viewing, setViewing] = useState<{ project: string; cert: string } | null>(null);
+  const [showDomains, setShowDomains] = useState(false);
 
   return (
     <Section title="Hackathons">
@@ -225,7 +362,7 @@ function Hackathons() {
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.35 }}
           >
-            <StatStrip />
+            <StatStrip onOpenDomains={() => setShowDomains(true)} />
             <div className="grid md:grid-cols-2 gap-6">
               {HACKATHONS.map((h, i) => (
                 <div key={h.project} className="relative">
@@ -247,6 +384,8 @@ function Hackathons() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <DomainModal open={showDomains} onClose={() => setShowDomains(false)} />
     </Section>
   );
 }
