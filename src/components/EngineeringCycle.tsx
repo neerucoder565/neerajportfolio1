@@ -54,9 +54,9 @@ const STAGES: Stage[] = [
   },
 ];
 
-const SIZE = 800;
+const SIZE = 540;
 const C = SIZE / 2;
-const R = 250;
+const R = 152;
 const CIRC = 2 * Math.PI * R;
 const N = STAGES.length;
 
@@ -85,25 +85,10 @@ export function EngineeringCycle() {
   }, [index]);
 
   return (
-    <div className="corners relative overflow-hidden border border-border bg-[#0a0e17]/70 p-4 md:p-8">
-      {/* circuit trace pattern, very slow drift */}
-      <motion.div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.12]"
-        style={{
-          backgroundImage:
-            "linear-gradient(var(--neon) 1px, transparent 1px), linear-gradient(90deg, var(--neon) 1px, transparent 1px)",
-          backgroundSize: "44px 44px",
-        }}
-        animate={{ backgroundPosition: ["0px 0px", "44px 44px"] }}
-        transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-      />
-
+    <div className="relative overflow-hidden" role="tablist" aria-label="Engineering cycle stages">
       <div
         className="relative mx-auto"
         style={{ width: SIZE, maxWidth: "100%" }}
-        role="tablist"
-        aria-label="Engineering cycle stages"
         tabIndex={0}
         onKeyDown={(e) => {
           if (e.key === "ArrowRight" || e.key === "ArrowDown") {
@@ -252,25 +237,25 @@ export function EngineeringCycle() {
               onMouseEnter={() => setHover(n.i)}
               onMouseLeave={() => setHover(null)}
               onClick={() => setIndex(n.i)}
-              className="absolute grid place-items-center rounded-full font-mono text-[13px] tracking-[0.1em]"
+              className="absolute grid place-items-center rounded-full font-mono text-[11px] tracking-[0.08em]"
               style={{
                 left: pct(n.x),
                 top: pct(n.y),
-                width: 56,
-                height: 56,
-                marginLeft: -28,
-                marginTop: -28,
+                width: 44,
+                height: 44,
+                marginLeft: -22,
+                marginTop: -22,
                 background: done
                   ? "#7c3aed"
                   : isActive
                     ? "rgba(124,58,237,0.45)"
-                    : "rgba(10,14,23,0.85)",
+                    : "rgba(10,14,23,0.7)",
                 border: `1.5px solid ${isActive ? "#e9d5ff" : done ? "#a78bfa" : "rgba(167,139,250,0.4)"}`,
                 color: done || isActive ? "#f5f3ff" : "rgba(196,181,253,0.65)",
                 boxShadow: isActive
-                  ? "0 0 28px rgba(167,139,250,0.95), 0 0 72px rgba(124,58,237,0.6), inset 0 0 18px rgba(196,181,253,0.15)"
+                  ? "0 0 22px rgba(167,139,250,0.95), 0 0 52px rgba(124,58,237,0.55), inset 0 0 14px rgba(196,181,253,0.15)"
                   : hover === n.i
-                    ? "0 0 22px rgba(167,139,250,0.7), 0 0 44px rgba(124,58,237,0.35)"
+                    ? "0 0 16px rgba(167,139,250,0.65), 0 0 32px rgba(124,58,237,0.3)"
                     : "none",
                 opacity: done || isActive ? 1 : 0.8,
               }}
@@ -286,14 +271,14 @@ export function EngineeringCycle() {
                   : { type: "spring", stiffness: 320, damping: 14, delay: n.i * 0.1 }
               }
             >
-              {done ? <Check size={16} strokeWidth={3} /> : n.id}
+              {done ? <Check size={14} strokeWidth={3} /> : n.id}
               {isActive && (
                 <motion.span
                   className="pointer-events-none absolute rounded-full"
                   style={{
-                    inset: -12,
+                    inset: -10,
                     border: "1.5px dashed rgba(196,181,253,0.75)",
-                    boxShadow: "0 0 18px rgba(167,139,250,0.35)",
+                    boxShadow: "0 0 14px rgba(167,139,250,0.35)",
                   }}
                   animate={{ rotate: 360 }}
                   transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
@@ -305,7 +290,7 @@ export function EngineeringCycle() {
 
         {/* labels */}
         {nodes.map((n) => {
-          const p = pointAt(n.i, R + 52);
+          const p = pointAt(n.i, R + 40);
           const isOn = n.i === index || n.i === hover;
           const cos = Math.cos(p.a);
           const align =
@@ -313,7 +298,7 @@ export function EngineeringCycle() {
           return (
             <motion.div
               key={`t-${n.id}`}
-              className="pointer-events-none absolute font-mono text-[13px] md:text-[14px] uppercase tracking-[0.22em] whitespace-nowrap"
+              className="pointer-events-none absolute font-mono text-[11px] md:text-[12px] uppercase tracking-[0.18em] whitespace-nowrap"
               style={{
                 left: `${(p.x / SIZE) * 100}%`,
                 top: `${(p.y / SIZE) * 100}%`,
@@ -341,23 +326,25 @@ export function EngineeringCycle() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.96 }}
               transition={{ type: "spring", stiffness: 220, damping: 22, duration: 0.3 }}
-              className="w-[260px] rounded-xl border border-[rgba(167,139,250,0.35)] bg-[#0a0e17]/90 p-6 text-center backdrop-blur"
-              style={{ boxShadow: "0 0 60px rgba(124,58,237,0.35), inset 0 0 30px rgba(124,58,237,0.08)" }}
+              className="w-[200px] p-3 text-center"
             >
-              <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+              <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#a78bfa]"
+                   style={{ textShadow: "0 0 6px rgba(124,58,237,0.8)" }}>
                 Stage {stage.id} of 07
               </div>
-              <div className="mt-2 font-mono text-lg uppercase tracking-[0.12em] text-foreground">
+              <div className="mt-1.5 font-mono text-base uppercase tracking-[0.12em] text-foreground"
+                   style={{ textShadow: "0 0 10px rgba(124,58,237,0.75), 0 0 22px rgba(0,0,0,0.55)" }}>
                 {stage.label}
               </div>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              <p className="mt-1.5 text-xs leading-relaxed text-[#c4b5fd]"
+                 style={{ textShadow: "0 0 8px rgba(0,0,0,0.7)" }}>
                 {stage.note}
               </p>
-              <div className="mt-4 flex flex-wrap justify-center gap-2">
+              <div className="mt-2.5 flex flex-wrap justify-center gap-1.5">
                 {stage.items.map((it) => (
                   <span
                     key={it}
-                    className="rounded-full border border-[rgba(167,139,250,0.4)] px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.1em] text-[#c4b5fd]"
+                    className="rounded-full bg-[#0a0e17]/50 border border-[rgba(167,139,250,0.35)] px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.08em] text-[#c4b5fd]"
                   >
                     {it}
                   </span>
