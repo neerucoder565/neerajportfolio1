@@ -48,7 +48,7 @@ const ABOUT_SEGMENTS: { label: string; text: string }[] = [
   },
   {
     label: "// INTERESTS",
-    text: "RISC-V, VLSI, edge AI and next-generation embedded platforms—where hardware, software and intelligence converge to solve real-world problems.",
+    text: "Artificial Intelligence and Machine Learning, VLSI, edge AI and next-generation embedded platforms—where hardware, software and intelligence converge to solve real-world problems.",
   },
 ];
 
