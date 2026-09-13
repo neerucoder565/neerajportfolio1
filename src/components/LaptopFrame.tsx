@@ -258,8 +258,8 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
 
         {/* ---------------- BASE (static deck) ---------------- */}
         <motion.svg
-          viewBox={`0 0 ${W} ${NECK_H + BASE_H}`}
-          className="w-full block -mt-px"
+          viewBox={`-22 0 ${W + 44} ${NECK_H + BASE_H + 4}`}
+          className="w-full block -mt-px overflow-visible"
           initial={{ opacity: 0 }}
           animate={{ opacity: [0, 0, 1] }}
           transition={{ duration: 1.7, times: [0, 0.7, 0.95], ease: "easeOut" }}
@@ -445,38 +445,19 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
             strokeWidth="0.5"
           />
 
-          {/* ---- Deck stickers (left of trackpad) ---- */}
+          {/* ---- Processor badges in the palm-rest spaces ---- */}
           <g style={{ fontFamily: "ui-monospace, monospace" }}>
-            {[
-              { t: "STM32", y: 0 },
-              { t: "ARM", y: 11 },
-              { t: "FreeRTOS", y: 22 },
-            ].map((s, i) => (
-              <g key={i} transform={`translate(${W / 2 - 118}, ${NECK_H + 79 + s.y})`}>
-                <rect
-                  width={44}
-                  height={9}
-                  rx={1.6}
-                  fill="oklch(0.16 0.02 305)"
-                  stroke="var(--neon)"
-                  strokeOpacity="0.5"
-                  strokeWidth="0.4"
-                />
-                <text x={22} y={6.2} textAnchor="middle" fontSize={4} fill="var(--neon)" fillOpacity="0.9">
-                  {s.t}
-                </text>
-              </g>
-            ))}
-            {/* QR-style sticker right of trackpad */}
-            <g transform={`translate(${W / 2 + 74}, ${NECK_H + 80})`}>
-              <rect width={26} height={26} rx={1.6} fill="oklch(0.14 0.01 305)" stroke="var(--neon)" strokeOpacity="0.4" strokeWidth="0.4" />
-              {Array.from({ length: 25 }).map((_, i) => {
-                const cx = 3 + (i % 5) * 4.6;
-                const cy = 3 + Math.floor(i / 5) * 4.6;
-                return (i * 7) % 3 === 0 ? (
-                  <rect key={i} x={cx} y={cy} width={3.6} height={3.6} fill="var(--neon)" fillOpacity="0.55" />
-                ) : null;
-              })}
+            <g transform={`translate(${W / 2 - 143}, ${NECK_H + 82})`}>
+              <rect width={61} height={26} rx={3} fill="oklch(0.13 0.025 285)" stroke="url(#rainbow-glow)" strokeWidth="0.9" />
+              <path d="M8 17 V9 H13.5 Q17 9 17 12 Q17 15 13.5 15 H10.5 M14.5 15 L18 18" fill="none" stroke="oklch(0.84 0.16 245)" strokeWidth="1.2" strokeLinecap="round" />
+              <text x={39} y={12} textAnchor="middle" fontSize={5.6} fontWeight="700" fill="oklch(0.9 0.12 245)">ARM</text>
+              <text x={39} y={18.5} textAnchor="middle" fontSize={3.4} fill="oklch(0.78 0.08 245)">CORTEX-M4</text>
+            </g>
+            <g transform={`translate(${W / 2 + 82}, ${NECK_H + 82})`}>
+              <rect width={61} height={26} rx={3} fill="oklch(0.13 0.025 305)" stroke="url(#rainbow-glow)" strokeWidth="0.9" />
+              <path d="M8 9 H18 V18 H8 Z M11 6 V9 M15 6 V9 M11 18 V21 M15 18 V21 M5 12 H8 M5 16 H8 M18 12 H21 M18 16 H21" fill="none" stroke="oklch(0.84 0.17 320)" strokeWidth="1" />
+              <text x={40} y={12} textAnchor="middle" fontSize={5.2} fontWeight="700" fill="oklch(0.91 0.13 320)">STM32</text>
+              <text x={40} y={18.5} textAnchor="middle" fontSize={3.4} fill="oklch(0.78 0.09 320)">F407VGT6</text>
             </g>
           </g>
 
