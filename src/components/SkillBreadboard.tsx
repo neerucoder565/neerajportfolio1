@@ -87,7 +87,7 @@ function Led({ level, lit }: { level: Level; lit: boolean }) {
   return (
     <span
       aria-hidden
-      className="shrink-0 size-2.5 rounded-full transition-all duration-500"
+      className="shrink-0 size-2.5 rounded-full transition-all duration-100"
       style={{
         background: lit
           ? `color-mix(in oklab, var(--neon-bright) ${a * 100}%, #2a2030)`
@@ -336,7 +336,7 @@ function SkillPart({
         onFocus={() => onHover(true)}
         onBlur={() => onHover(false)}
         aria-label={`${skill.name} — ${skill.level}`}
-        className="group w-full min-h-[52px] flex items-center gap-2 border px-2 py-2.5 text-left transition-all duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--neon-bright)]"
+        className="group w-full min-h-[52px] flex items-center gap-2 border px-2 py-2.5 text-left transition-all duration-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--neon-bright)]"
         style={{
           borderColor: lit
             ? `color-mix(in oklab, var(--neon-bright) ${a * 60}%, transparent)`
@@ -372,7 +372,7 @@ function SkillPart({
 
         <span className="flex-1 flex flex-col items-start min-w-0">
           <span
-            className="font-mono text-[13px] leading-tight transition-all duration-500"
+            className="font-mono text-[13px] leading-tight transition-all duration-100"
             style={{
               color: lit
                 ? `color-mix(in oklab, #ffffff ${45 + a * 55}%, var(--foreground))`
@@ -385,7 +385,7 @@ function SkillPart({
             {skill.name}
           </span>
           <span
-            className="font-mono text-[10px] font-normal uppercase tracking-wider transition-all duration-500"
+            className="font-mono text-[10px] font-normal uppercase tracking-wider transition-all duration-100"
             style={{
               color: lit ? "var(--cyan)" : "rgba(160,150,180,0.45)",
               textShadow: lit
