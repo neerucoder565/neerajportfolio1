@@ -114,19 +114,52 @@ function Legend() {
 }
 
 export function SkillBreadboard() {
-  const powered = true;
-  const railPulse = false;
+  const reducedMotion = usePrefersReducedMotion();
+  const [powered, setPowered] = useState(false);
+  const [railPulse, setRailPulse] = useState(false);
+  const [litCount, setLitCount] = useState(0);
+  const [logs, setLogs] = useState<string[]>([]);
   const [active, setActive] = useState<string | null>(null);
 
   const order = useMemo(
     () => ZONES.flatMap((z) => z.items.map((s) => `${z.id}:${s.name}`)),
     []
   );
-  const litCount = order.length;
-  const logs = useMemo(
-    () => [...ZONES.map((z) => `INIT: ${z.key}... OK`), "SYSTEM READY."],
-    []
-  );
+  useEffect(() => {
+    const readyLogs = [...ZONES.map((z) => `INIT: ${z.key}... OK`), "SYSTEM READY."];
+
+    if (reducedMotion) {
+      setPowered(true);
+      setRailPulse(false);
+      setLitCount(order.length);
+      setLogs(readyLogs);
+      return;
+    }
+
+    setPowered(false);
+    setRailPulse(false);
+    setLitCount(0);
+    setLogs([]);
+
+    const timers: ReturnType<typeof setTimeout>[] = [];
+    timers.push(setTimeout(() => {
+      setPowered(true);
+      setRailPulse(true);
+    }, 90));
+
+    order.forEach((_, index) => {
+      timers.push(setTimeout(() => setLitCount(index + 1), 120 + index * 38));
+    });
+
+    readyLogs.forEach((log, index) => {
+      timers.push(setTimeout(() => {
+        setLogs((current) => [...current, log]);
+      }, 260 + index * 150));
+    });
+
+    timers.push(setTimeout(() => setRailPulse(false), 920));
+    return () => timers.forEach(clearTimeout);
+  }, [order, reducedMotion]);
 
   const isLit = (idx: number) => powered && idx < litCount;
 
