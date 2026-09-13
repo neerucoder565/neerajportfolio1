@@ -27,7 +27,7 @@ export const Route = createFileRoute("/projects/")({
 function CaseStudyIndex() {
   const studies = CASE_STUDY_ORDER.map((s) => CASE_STUDIES[s]);
   return (
-    <Section eyebrow="PROJECT INDEX" title="Projects">
+    <Section eyebrow="PROJECT INDEX" title="Projects" titleAnim="scale" bodyAnim="stagger-pop">
       <p className="text-muted-foreground max-w-2xl mb-10 leading-relaxed">
         Each project below is documented in depth — problem, architecture,
         hardware, software, challenges, results and lessons learned. Click any

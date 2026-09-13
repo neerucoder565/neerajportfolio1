@@ -118,7 +118,7 @@ function About() {
 
   return (
     <>
-      <Section eyebrow="IDENTITY.LOG" title="About Neeraj K">
+      <Section eyebrow="IDENTITY.LOG" title="About Neeraj K" titleAnim="stagger" bodyAnim="reveal-left">
         <div className="grid lg:grid-cols-3 gap-8 items-stretch">
           <Panel className="lg:col-span-2 h-full flex flex-col">
             <div ref={panelRef} className="max-w-[68ch] space-y-4 font-mono">
@@ -175,7 +175,7 @@ function About() {
 
 
 
-      <Section eyebrow="EDUCATION" title="Trajectory">
+      <Section eyebrow="EDUCATION" title="Trajectory" titleAnim="slide" bodyAnim="stagger-up">
         <div className="grid md:grid-cols-1 gap-6">
           <Panel>
             <div className="flex items-start gap-4 mb-4">
@@ -208,7 +208,7 @@ function About() {
         </div>
       </Section>
 
-      <Section eyebrow="TECHNICAL STACK" title="Tools & Platforms">
+      <Section eyebrow="TECHNICAL STACK" title="Tools & Platforms" titleAnim="blur" bodyAnim="stagger-pop">
         <div className="flex flex-wrap gap-6">
           {TOOL_LOGOS.map((t) => (
             <div

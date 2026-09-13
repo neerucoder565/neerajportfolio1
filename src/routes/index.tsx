@@ -92,7 +92,7 @@ function Home() {
       </section>
 
       {/* CAPABILITIES */}
-      <Section eyebrow="PROCESS" title="Engineering Workflow">
+      <Section eyebrow="PROCESS" title="Engineering Workflow" titleAnim="glitch" bodyAnim="fade-up">
         <div className="max-w-[640px] mx-auto">
           <EngineeringCycle />
         </div>

@@ -298,7 +298,7 @@ function Hackathons() {
   const [showDomains, setShowDomains] = useState(false);
 
   return (
-    <Section title="Hackathons">
+    <Section title="Hackathons" titleAnim="flip" bodyAnim="3d-lift">
       <AnimatePresence mode="wait">
         {viewing ? (
           <motion.div
