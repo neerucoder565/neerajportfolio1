@@ -445,19 +445,25 @@ export function LaptopFrame({ children }: { children: ReactNode }) {
             strokeWidth="0.5"
           />
 
-          {/* ---- Processor badges in the palm-rest spaces ---- */}
-          <g style={{ fontFamily: "ui-monospace, monospace" }}>
+          {/* ---- Apple processor badges in the palm-rest spaces ---- */}
+          <g style={{ fontFamily: "ui-sans-serif, system-ui" }}>
             <g transform={`translate(${W / 2 - 143}, ${NECK_H + 82})`}>
-              <rect width={61} height={26} rx={3} fill="oklch(0.13 0.025 285)" stroke="url(#rainbow-glow)" strokeWidth="0.9" />
-              <path d="M8 17 V9 H13.5 Q17 9 17 12 Q17 15 13.5 15 H10.5 M14.5 15 L18 18" fill="none" stroke="oklch(0.84 0.16 245)" strokeWidth="1.2" strokeLinecap="round" />
-              <text x={39} y={12} textAnchor="middle" fontSize={5.6} fontWeight="700" fill="oklch(0.9 0.12 245)">ARM</text>
-              <text x={39} y={18.5} textAnchor="middle" fontSize={3.4} fill="oklch(0.78 0.08 245)">CORTEX-M4</text>
+              <rect width={61} height={26} rx={2.5} fill="oklch(0.075 0.006 305)" stroke="oklch(0.72 0.2 45)" strokeWidth="1.2" />
+              <rect x={1.7} y={1.7} width={57.6} height={22.6} rx={1.6} fill="none" stroke="oklch(0.54 0.2 35)" strokeWidth="0.45" />
+              <g transform="translate(7.5 5.2) scale(0.62)" fill="oklch(0.96 0.01 305)">
+                <path d="M11.5 7.6c0-2 1.6-2.9 1.7-3-0.9-1.4-2.4-1.6-2.9-1.6-1.2-0.1-2.4 0.7-3 0.7-0.6 0-1.6-0.7-2.7-0.7-1.4 0-2.7 0.8-3.4 2.1-1.5 2.5-0.4 6.3 1 8.4 0.7 1 1.6 2.2 2.7 2.2 1.1 0 1.5-0.7 2.8-0.7 1.3 0 1.7 0.7 2.8 0.7 1.2 0 1.9-1 2.6-2 0.8-1.2 1.2-2.3 1.2-2.4-0.1 0-2.3-0.9-2.3-3.5zM9.3 1.6C9.9 0.9 10.3-0.1 10.2-1c-0.9 0-2 0.6-2.6 1.3-0.5 0.6-1 1.6-0.9 2.5 1 0.1 2-0.5 2.6-1.2z" />
+              </g>
+              <text x={40} y={10.7} textAnchor="middle" fontSize={4.1} fontWeight="700" fill="oklch(0.96 0.01 305)">APPLE</text>
+              <text x={40} y={19.2} textAnchor="middle" fontSize={8.8} fontWeight="800" fill="oklch(0.92 0.08 45)">M3</text>
             </g>
             <g transform={`translate(${W / 2 + 82}, ${NECK_H + 82})`}>
-              <rect width={61} height={26} rx={3} fill="oklch(0.13 0.025 305)" stroke="url(#rainbow-glow)" strokeWidth="0.9" />
-              <path d="M8 9 H18 V18 H8 Z M11 6 V9 M15 6 V9 M11 18 V21 M15 18 V21 M5 12 H8 M5 16 H8 M18 12 H21 M18 16 H21" fill="none" stroke="oklch(0.84 0.17 320)" strokeWidth="1" />
-              <text x={40} y={12} textAnchor="middle" fontSize={5.2} fontWeight="700" fill="oklch(0.91 0.13 320)">STM32</text>
-              <text x={40} y={18.5} textAnchor="middle" fontSize={3.4} fill="oklch(0.78 0.09 320)">F407VGT6</text>
+              <rect width={61} height={26} rx={2.5} fill="oklch(0.075 0.006 305)" stroke="oklch(0.62 0.23 25)" strokeWidth="1.2" />
+              <rect x={1.7} y={1.7} width={57.6} height={22.6} rx={1.6} fill="none" stroke="oklch(0.48 0.2 20)" strokeWidth="0.45" />
+              <g transform="translate(7.5 5.2) scale(0.62)" fill="oklch(0.96 0.01 305)">
+                <path d="M11.5 7.6c0-2 1.6-2.9 1.7-3-0.9-1.4-2.4-1.6-2.9-1.6-1.2-0.1-2.4 0.7-3 0.7-0.6 0-1.6-0.7-2.7-0.7-1.4 0-2.7 0.8-3.4 2.1-1.5 2.5-0.4 6.3 1 8.4 0.7 1 1.6 2.2 2.7 2.2 1.1 0 1.5-0.7 2.8-0.7 1.3 0 1.7 0.7 2.8 0.7 1.2 0 1.9-1 2.6-2 0.8-1.2 1.2-2.3 1.2-2.4-0.1 0-2.3-0.9-2.3-3.5zM9.3 1.6C9.9 0.9 10.3-0.1 10.2-1c-0.9 0-2 0.6-2.6 1.3-0.5 0.6-1 1.6-0.9 2.5 1 0.1 2-0.5 2.6-1.2z" />
+              </g>
+              <text x={40} y={10.7} textAnchor="middle" fontSize={4.1} fontWeight="700" fill="oklch(0.96 0.01 305)">APPLE</text>
+              <text x={40} y={18.3} textAnchor="middle" fontSize={6.3} fontWeight="800" fill="oklch(0.92 0.08 25)">M3 PRO</text>
             </g>
           </g>
 
