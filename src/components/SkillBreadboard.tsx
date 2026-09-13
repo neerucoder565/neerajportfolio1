@@ -176,32 +176,18 @@ export function SkillBreadboard() {
     timers.current.push(window.setTimeout(() => setLogs((p) => [...p, "SYSTEM READY."]), t));
   }, [clearTimers, order.length, reduced]);
 
-  const boardRef = useRef<HTMLDivElement | null>(null);
   const bootedOnce = useRef(false);
 
   useEffect(() => {
-    const el = boardRef.current;
-    if (!el || bootedOnce.current) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const e of entries) {
-          if (e.isIntersecting && !bootedOnce.current) {
-            bootedOnce.current = true;
-            io.disconnect();
-            timers.current.push(window.setTimeout(() => boot(), reduced ? 0 : 50));
-          }
-        }
-      },
-      { threshold: 0.35 }
-    );
-    io.observe(el);
-    return () => io.disconnect();
+    if (bootedOnce.current) return;
+    bootedOnce.current = true;
+    timers.current.push(window.setTimeout(() => boot(), reduced ? 0 : 25));
   }, [boot, reduced]);
 
   const isLit = (idx: number) => powered && idx < litCount;
 
   return (
-    <div className="space-y-6" ref={boardRef}>
+    <div className="space-y-6">
       <Legend />
 
       <div
