@@ -101,7 +101,7 @@ function Contact() {
   };
 
   return (
-    <Section eyebrow="TRANSMISSION" title="Open A Channel">
+    <Section eyebrow="TRANSMISSION" title="Open A Channel" titleAnim="glitch" bodyAnim="slide-in-right">
       <div className="grid lg:grid-cols-2 gap-8">
         <div className="space-y-4">
           {CHANNELS.map((c) => (

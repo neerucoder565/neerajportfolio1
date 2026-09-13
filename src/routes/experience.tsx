@@ -49,7 +49,7 @@ function Experience() {
   const p = progress();
   return (
     <>
-      <Section eyebrow="WORK_LOG" title="Experience">
+      <Section eyebrow="WORK_LOG" title="Experience" titleAnim="slide" bodyAnim="stagger-up">
         <div className="grid lg:grid-cols-3 gap-8">
           {/* MAIN CARD */}
           <div className="lg:col-span-2">
@@ -192,7 +192,7 @@ function Experience() {
         </div>
       </Section>
 
-      <Section eyebrow="VALUE_ADD" title="What I bring">
+      <Section eyebrow="VALUE_ADD" title="What I bring" titleAnim="scale" bodyAnim="stagger-pop">
         <div className="grid md:grid-cols-3 gap-6">
           {HIGHLIGHTS.map((h) => (
             <Panel key={h.title}>

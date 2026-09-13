@@ -19,7 +19,7 @@ function Skills() {
   return (
     <>
       <HardwareToolOrbit />
-      <Section eyebrow="CAPABILITY_LEVELS" title="Skill Telemetry">
+      <Section eyebrow="CAPABILITY_LEVELS" title="Skill Telemetry" titleAnim="blur" bodyAnim="fade-in">
         <SkillBreadboard />
       </Section>
     </>

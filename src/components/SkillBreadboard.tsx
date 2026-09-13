@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Code2, CircuitBoard, Cpu } from "lucide-react";
 
 type Level = "Beginner" | "Intermediate" | "Advanced";
@@ -87,7 +87,7 @@ function Led({ level, lit }: { level: Level; lit: boolean }) {
   return (
     <span
       aria-hidden
-      className="shrink-0 size-2.5 rounded-full transition-all duration-500"
+      className="shrink-0 size-2.5 rounded-full transition-all duration-100"
       style={{
         background: lit
           ? `color-mix(in oklab, var(--neon-bright) ${a * 100}%, #2a2030)`
@@ -114,93 +114,24 @@ function Legend() {
 }
 
 export function SkillBreadboard() {
-  const reduced = usePrefersReducedMotion();
-  const [powered, setPowered] = useState(false);
-  const [railPulse, setRailPulse] = useState(false);
-  const [litCount, setLitCount] = useState(0);
-  const [logs, setLogs] = useState<string[]>([]);
+  const powered = true;
+  const railPulse = false;
   const [active, setActive] = useState<string | null>(null);
-  const timers = useRef<number[]>([]);
 
   const order = useMemo(
     () => ZONES.flatMap((z) => z.items.map((s) => `${z.id}:${s.name}`)),
     []
   );
-
-  const clearTimers = useCallback(() => {
-    timers.current.forEach((t) => window.clearTimeout(t));
-    timers.current = [];
-  }, []);
-
-  useEffect(() => clearTimers, [clearTimers]);
-
-  const boot = useCallback(() => {
-    clearTimers();
-    setPowered(true);
-    setActive(null);
-
-    if (reduced) {
-      setLitCount(order.length);
-      setLogs([
-        ...ZONES.map((z) => `INIT: ${z.key}... OK`),
-        "SYSTEM READY.",
-      ]);
-      return;
-    }
-
-    setLitCount(0);
-    setLogs([]);
-    setRailPulse(true);
-
-    const railMs = 500;
-    const step = 90;
-    let i = 0;
-    let t = railMs;
-
-    ZONES.forEach((z) => {
-      z.items.forEach(() => {
-        i += 1;
-        const n = i;
-        timers.current.push(window.setTimeout(() => setLitCount(n), t));
-        t += step;
-      });
-      const zoneT = t;
-      timers.current.push(
-        window.setTimeout(() => setLogs((p) => [...p, `INIT: ${z.key}... OK`]), zoneT)
-      );
-      t += 160;
-    });
-
-    timers.current.push(window.setTimeout(() => setRailPulse(false), railMs + 200));
-    timers.current.push(window.setTimeout(() => setLogs((p) => [...p, "SYSTEM READY."]), t));
-  }, [clearTimers, order.length, reduced]);
-
-  const boardRef = useRef<HTMLDivElement | null>(null);
-  const bootedOnce = useRef(false);
-
-  useEffect(() => {
-    const el = boardRef.current;
-    if (!el || bootedOnce.current) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const e of entries) {
-          if (e.isIntersecting && !bootedOnce.current) {
-            bootedOnce.current = true;
-            io.disconnect();
-            timers.current.push(window.setTimeout(() => boot(), reduced ? 0 : 500));
-          }
-        }
-      },
-      { threshold: 0.35 }
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, [boot, reduced]);
+  const litCount = order.length;
+  const logs = useMemo(
+    () => [...ZONES.map((z) => `INIT: ${z.key}... OK`), "SYSTEM READY."],
+    []
+  );
 
   const isLit = (idx: number) => powered && idx < litCount;
 
   return (
-    <div className="space-y-6" ref={boardRef}>
+    <div className="space-y-6">
       <Legend />
 
       <div
@@ -352,7 +283,7 @@ function SkillPart({
         onFocus={() => onHover(true)}
         onBlur={() => onHover(false)}
         aria-label={`${skill.name} — ${skill.level}`}
-        className="group w-full min-h-[52px] flex items-center gap-2 border px-2 py-2.5 text-left transition-all duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--neon-bright)]"
+        className="group w-full min-h-[52px] flex items-center gap-2 border px-2 py-2.5 text-left transition-all duration-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--neon-bright)]"
         style={{
           borderColor: lit
             ? `color-mix(in oklab, var(--neon-bright) ${a * 60}%, transparent)`
@@ -388,7 +319,7 @@ function SkillPart({
 
         <span className="flex-1 flex flex-col items-start min-w-0">
           <span
-            className="font-mono text-[13px] leading-tight transition-all duration-500"
+            className="font-mono text-[13px] leading-tight transition-all duration-100"
             style={{
               color: lit
                 ? `color-mix(in oklab, #ffffff ${45 + a * 55}%, var(--foreground))`
@@ -401,7 +332,7 @@ function SkillPart({
             {skill.name}
           </span>
           <span
-            className="font-mono text-[10px] font-normal uppercase tracking-wider transition-all duration-500"
+            className="font-mono text-[10px] font-normal uppercase tracking-wider transition-all duration-100"
             style={{
               color: lit ? "var(--cyan)" : "rgba(160,150,180,0.45)",
               textShadow: lit

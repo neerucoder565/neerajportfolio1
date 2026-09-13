@@ -1,6 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useState } from "react";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { Menu, X, Github, Linkedin, Mail } from "lucide-react";
 import { VideoBackdrop } from "./VideoBackdrop";
 import { CustomCursor } from "./CustomCursor";
@@ -123,7 +123,8 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
   );
 }
 
-type TitleAnim = "blur" | "slide" | "scale" | "glitch" | "stagger" | "flip";
+export type TitleAnim = "blur" | "slide" | "scale" | "glitch" | "stagger" | "flip";
+export type BodyAnim = "fade-up" | "reveal-left" | "stagger-up" | "stagger-pop" | "3d-lift" | "slide-in-right" | "fade-in";
 
 const TITLE_ANIMS: TitleAnim[] = ["blur", "slide", "scale", "glitch", "stagger", "flip"];
 
@@ -138,8 +139,11 @@ function pickAnim(seed: string): TitleAnim {
 }
 
 function AnimatedTitle({ text, anim }: { text: string; anim: TitleAnim }) {
+  const reduced = useReducedMotion();
   const cls = "font-display text-3xl md:text-5xl uppercase text-glow-soft";
   const vp = { once: true, amount: 0.6 } as const;
+
+  if (reduced) return <h2 className={cls}>{text}</h2>;
 
   if (anim === "stagger") {
     return (
@@ -206,27 +210,70 @@ function AnimatedTitle({ text, anim }: { text: string; anim: TitleAnim }) {
   );
 }
 
+const BODY_VARIANTS = {
+  "fade-up": {
+    initial: { opacity: 0, y: 16, filter: "blur(6px)" },
+    whileInView: { opacity: 1, y: 0, filter: "blur(0px)" },
+    transition: { duration: 0.6, delay: 0.12, ease: [0.22, 1, 0.36, 1] }
+  },
+  "reveal-left": {
+    initial: { opacity: 0, x: -25, filter: "blur(8px)" },
+    whileInView: { opacity: 1, x: 0, filter: "blur(0px)" },
+    transition: { duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }
+  },
+  "stagger-up": {
+    initial: { opacity: 0, y: 25 },
+    whileInView: { opacity: 1, y: 0 },
+    transition: { duration: 0.6, delay: 0.1, staggerChildren: 0.08 }
+  },
+  "stagger-pop": {
+    initial: { opacity: 0, scale: 0.94 },
+    whileInView: { opacity: 1, scale: 1 },
+    transition: { duration: 0.5, delay: 0.1, staggerChildren: 0.07 }
+  },
+  "3d-lift": {
+    initial: { opacity: 0, y: 35, rotateX: -8 },
+    whileInView: { opacity: 1, y: 0, rotateX: 0 },
+    transition: { duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }
+  },
+  "slide-in-right": {
+    initial: { opacity: 0, x: 35 },
+    whileInView: { opacity: 1, x: 0 },
+    transition: { duration: 0.6, delay: 0.12, ease: [0.22, 1, 0.36, 1] }
+  },
+  "fade-in": {
+    initial: { opacity: 0 },
+    whileInView: { opacity: 1 },
+    transition: { duration: 0.8, delay: 0.2 }
+  }
+};
+
 export function Section({
   eyebrow,
   title,
   titleAnim,
+  bodyAnim = "fade-up",
   children,
   className = "",
 }: {
   eyebrow?: string;
   title?: string;
   titleAnim?: TitleAnim;
+  bodyAnim?: BodyAnim;
   children: React.ReactNode;
   className?: string;
 }) {
   const anim = titleAnim ?? pickAnim(title ?? eyebrow ?? "section");
+  const reduced = useReducedMotion();
+  const b = BODY_VARIANTS[bodyAnim];
+
   return (
     <section className={`mx-auto max-w-7xl px-6 py-16 md:py-24 ${className}`}>
       {(eyebrow || title) && (
         <div className="mb-12">
           {eyebrow && (
             <motion.div
-              initial={{ opacity: 0, x: -14 }}
+              initial={reduced ? { opacity: 0 } : { opacity: 0, x: -14 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.6 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
@@ -252,10 +299,11 @@ export function Section({
       )}
       <motion.div
         className="section-body-glow"
-        initial={{ opacity: 0, y: 16, filter: "blur(6px)" }}
-        whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        initial={reduced ? { opacity: 0 } : b.initial}
+        whileInView={reduced ? { opacity: 1 } : b.whileInView}
         viewport={{ once: true, amount: 0.15 }}
-        transition={{ duration: 0.6, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+        transition={reduced ? { duration: 0.5 } : b.transition}
+        style={reduced ? {} : { transformPerspective: 1200 }}
       >
         {children}
       </motion.div>
