@@ -115,6 +115,8 @@ function Legend() {
 
 export function SkillBreadboard() {
   const reducedMotion = usePrefersReducedMotion();
+  const boardRef = useRef<HTMLDivElement | null>(null);
+  const [sequenceStarted, setSequenceStarted] = useState(false);
   const [powered, setPowered] = useState(false);
   const [railPulse, setRailPulse] = useState(false);
   const [litCount, setLitCount] = useState(0);
@@ -125,6 +127,30 @@ export function SkillBreadboard() {
     () => ZONES.flatMap((z) => z.items.map((s) => `${z.id}:${s.name}`)),
     []
   );
+
+  useEffect(() => {
+    if (reducedMotion) {
+      setSequenceStarted(true);
+      return;
+    }
+
+    const board = boardRef.current;
+    if (!board) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          setSequenceStarted(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.12 }
+    );
+
+    observer.observe(board);
+    return () => observer.disconnect();
+  }, [reducedMotion]);
+
   useEffect(() => {
     const readyLogs = [...ZONES.map((z) => `INIT: ${z.key}... OK`), "SYSTEM READY."];
 
@@ -135,6 +161,8 @@ export function SkillBreadboard() {
       setLogs(readyLogs);
       return;
     }
+
+    if (!sequenceStarted) return;
 
     setPowered(false);
     setRailPulse(false);
@@ -159,12 +187,12 @@ export function SkillBreadboard() {
 
     timers.push(setTimeout(() => setRailPulse(false), 920));
     return () => timers.forEach(clearTimeout);
-  }, [order, reducedMotion]);
+  }, [order, reducedMotion, sequenceStarted]);
 
   const isLit = (idx: number) => powered && idx < litCount;
 
   return (
-    <div className="space-y-6">
+    <div ref={boardRef} className="space-y-6">
       <Legend />
 
       <div
