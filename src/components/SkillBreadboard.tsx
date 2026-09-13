@@ -176,12 +176,9 @@ export function SkillBreadboard() {
     timers.current.push(window.setTimeout(() => setLogs((p) => [...p, "SYSTEM READY."]), t));
   }, [clearTimers, order.length, reduced]);
 
-  const bootedOnce = useRef(false);
-
   useEffect(() => {
-    if (bootedOnce.current) return;
-    bootedOnce.current = true;
-    timers.current.push(window.setTimeout(() => boot(), reduced ? 0 : 25));
+    const startTimer = window.setTimeout(() => boot(), reduced ? 0 : 25);
+    return () => window.clearTimeout(startTimer);
   }, [boot, reduced]);
 
   const isLit = (idx: number) => powered && idx < litCount;
