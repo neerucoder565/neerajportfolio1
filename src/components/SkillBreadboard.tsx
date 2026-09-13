@@ -152,8 +152,9 @@ export function SkillBreadboard() {
     setLogs([]);
     setRailPulse(true);
 
-    const railMs = 500;
-    const step = 90;
+    // Complete the full telemetry power-up in under 0.7 seconds after navigation.
+    const railMs = 70;
+    const step = 25;
     let i = 0;
     let t = railMs;
 
@@ -168,7 +169,7 @@ export function SkillBreadboard() {
       timers.current.push(
         window.setTimeout(() => setLogs((p) => [...p, `INIT: ${z.key}... OK`]), zoneT)
       );
-      t += 160;
+       t += 25;
     });
 
     timers.current.push(window.setTimeout(() => setRailPulse(false), railMs + 200));
@@ -187,7 +188,7 @@ export function SkillBreadboard() {
           if (e.isIntersecting && !bootedOnce.current) {
             bootedOnce.current = true;
             io.disconnect();
-            timers.current.push(window.setTimeout(() => boot(), reduced ? 0 : 500));
+            timers.current.push(window.setTimeout(() => boot(), reduced ? 0 : 50));
           }
         }
       },
