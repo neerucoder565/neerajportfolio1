@@ -114,24 +114,85 @@ function Legend() {
 }
 
 export function SkillBreadboard() {
-  const powered = true;
-  const railPulse = false;
+  const reducedMotion = usePrefersReducedMotion();
+  const boardRef = useRef<HTMLDivElement | null>(null);
+  const [sequenceStarted, setSequenceStarted] = useState(false);
+  const [powered, setPowered] = useState(false);
+  const [railPulse, setRailPulse] = useState(false);
+  const [litCount, setLitCount] = useState(0);
+  const [logs, setLogs] = useState<string[]>([]);
   const [active, setActive] = useState<string | null>(null);
 
   const order = useMemo(
     () => ZONES.flatMap((z) => z.items.map((s) => `${z.id}:${s.name}`)),
     []
   );
-  const litCount = order.length;
-  const logs = useMemo(
-    () => [...ZONES.map((z) => `INIT: ${z.key}... OK`), "SYSTEM READY."],
-    []
-  );
+
+  useEffect(() => {
+    if (reducedMotion) {
+      setSequenceStarted(true);
+      return;
+    }
+
+    const board = boardRef.current;
+    if (!board) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          setSequenceStarted(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.12 }
+    );
+
+    observer.observe(board);
+    return () => observer.disconnect();
+  }, [reducedMotion]);
+
+  useEffect(() => {
+    const readyLogs = [...ZONES.map((z) => `INIT: ${z.key}... OK`), "SYSTEM READY."];
+
+    if (reducedMotion) {
+      setPowered(true);
+      setRailPulse(false);
+      setLitCount(order.length);
+      setLogs(readyLogs);
+      return;
+    }
+
+    if (!sequenceStarted) return;
+
+    setPowered(false);
+    setRailPulse(false);
+    setLitCount(0);
+    setLogs([]);
+
+    const timers: ReturnType<typeof setTimeout>[] = [];
+    timers.push(setTimeout(() => {
+      setPowered(true);
+      setRailPulse(true);
+    }, 90));
+
+    order.forEach((_, index) => {
+      timers.push(setTimeout(() => setLitCount(index + 1), 120 + index * 38));
+    });
+
+    readyLogs.forEach((log, index) => {
+      timers.push(setTimeout(() => {
+        setLogs((current) => [...current, log]);
+      }, 260 + index * 150));
+    });
+
+    timers.push(setTimeout(() => setRailPulse(false), 920));
+    return () => timers.forEach(clearTimeout);
+  }, [order, reducedMotion, sequenceStarted]);
 
   const isLit = (idx: number) => powered && idx < litCount;
 
   return (
-    <div className="space-y-6">
+    <div ref={boardRef} className="space-y-6">
       <Legend />
 
       <div
