@@ -114,72 +114,19 @@ function Legend() {
 }
 
 export function SkillBreadboard() {
-  const reduced = usePrefersReducedMotion();
-  const [powered, setPowered] = useState(false);
-  const [railPulse, setRailPulse] = useState(false);
-  const [litCount, setLitCount] = useState(0);
-  const [logs, setLogs] = useState<string[]>([]);
+  const powered = true;
+  const railPulse = false;
   const [active, setActive] = useState<string | null>(null);
-  const timers = useRef<number[]>([]);
 
   const order = useMemo(
     () => ZONES.flatMap((z) => z.items.map((s) => `${z.id}:${s.name}`)),
     []
   );
-
-  const clearTimers = useCallback(() => {
-    timers.current.forEach((t) => window.clearTimeout(t));
-    timers.current = [];
-  }, []);
-
-  useEffect(() => clearTimers, [clearTimers]);
-
-  const boot = useCallback(() => {
-    clearTimers();
-    setPowered(true);
-    setActive(null);
-
-    if (reduced) {
-      setLitCount(order.length);
-      setLogs([
-        ...ZONES.map((z) => `INIT: ${z.key}... OK`),
-        "SYSTEM READY.",
-      ]);
-      return;
-    }
-
-    setLitCount(0);
-    setLogs([]);
-    setRailPulse(true);
-
-    // Complete the full telemetry power-up in under 0.7 seconds after navigation.
-    const railMs = 70;
-    const step = 25;
-    let i = 0;
-    let t = railMs;
-
-    ZONES.forEach((z) => {
-      z.items.forEach(() => {
-        i += 1;
-        const n = i;
-        timers.current.push(window.setTimeout(() => setLitCount(n), t));
-        t += step;
-      });
-      const zoneT = t;
-      timers.current.push(
-        window.setTimeout(() => setLogs((p) => [...p, `INIT: ${z.key}... OK`]), zoneT)
-      );
-       t += 25;
-    });
-
-    timers.current.push(window.setTimeout(() => setRailPulse(false), railMs + 200));
-    timers.current.push(window.setTimeout(() => setLogs((p) => [...p, "SYSTEM READY."]), t));
-  }, [clearTimers, order.length, reduced]);
-
-  useEffect(() => {
-    const startTimer = window.setTimeout(() => boot(), reduced ? 0 : 25);
-    return () => window.clearTimeout(startTimer);
-  }, [boot, reduced]);
+  const litCount = order.length;
+  const logs = useMemo(
+    () => [...ZONES.map((z) => `INIT: ${z.key}... OK`), "SYSTEM READY."],
+    []
+  );
 
   const isLit = (idx: number) => powered && idx < litCount;
 
