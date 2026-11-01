@@ -1,14 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import bgVideoAsset from "@/assets/exploded-view.mp4.asset.json";
-import bgPosterAsset from "@/assets/exploded-view-poster.jpg.asset.json";
-
-// Non-Lovable deployments (e.g. *.workers.dev) don't proxy "/__l5e/..." paths,
-// so point at the absolute Lovable CDN origin.
-const ASSET_CDN_ORIGIN =
-  "https://project--f5fd28dd-7b71-489d-910e-961a65dfa09f.lovable.app";
-const abs = (u: string) => (u.startsWith("/") ? `${ASSET_CDN_ORIGIN}${u}` : u);
-const bgVideoUrl = abs(bgVideoAsset.url);
-const bgPosterUrl = abs(bgPosterAsset.url);
+// Served from the site's own /public folder so it works on every deployment
+// (the Lovable CDN origin 404s once the project isn't published there).
+const bgVideoUrl = "/exploded-view.mp4";
+const bgPosterUrl = "/exploded-view-poster.jpg";
 
 /**
  * Site-wide cinematic backdrop: a slow-motion exploded-view product render,

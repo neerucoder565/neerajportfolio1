@@ -1,42 +1,18 @@
-// Case study catalog — populate placeholders with real assets later.
-import pidBreadboardAsset from "@/assets/pid-breadboard.jpeg.asset.json";
-import pidStepResponseAsset from "@/assets/pid-step-response.png.asset.json";
-import pidBlockDiagramAsset from "@/assets/pid-block-diagram.png.asset.json";
-import pidDemoAsset from "@/assets/pid-demo.mp4.asset.json";
-
-import r2rBreadboardAsset from "@/assets/r2r-breadboard.png.asset.json";
-import r2rScopeAsset from "@/assets/r2r-scope.png.asset.json";
-import r2rSchematicAsset from "@/assets/r2r-schematic.png.asset.json";
-import r2rLiveSweepAsset from "@/assets/r2r-live-sweep.mp4.asset.json";
-
-import btMemoryLogAsset from "@/assets/bootloader-memory-log.png.asset.json";
-import btFlashMapAsset from "@/assets/bootloader-flash-map.png.asset.json";
-import btVectorTableAsset from "@/assets/bootloader-vector-table.png.asset.json";
-import btBootSequenceAsset from "@/assets/bootloader-boot-sequence.png.asset.json";
-import btDemoAsset from "@/assets/bootloader-demo.mp4.asset.json";
-
-// Lovable-hosted CDN assets are served from the project's lovable.app origin.
-// When the app is deployed to a custom worker (e.g. *.workers.dev), relative
-// "/__l5e/..." paths 404 because that worker doesn't proxy them. Prefix with
-// the absolute Lovable CDN origin so images work on any deployment.
-const ASSET_CDN_ORIGIN =
-  "https://project--f5fd28dd-7b71-489d-910e-961a65dfa09f.lovable.app";
-const assetUrl = (u: string) =>
-  u.startsWith("/") ? `${ASSET_CDN_ORIGIN}${u}` : u;
-
-const pidBreadboard = assetUrl(pidBreadboardAsset.url);
-const pidStepResponse = assetUrl(pidStepResponseAsset.url);
-const pidBlockDiagram = assetUrl(pidBlockDiagramAsset.url);
-const pidDemo = assetUrl(pidDemoAsset.url);
-const r2rBreadboard = assetUrl(r2rBreadboardAsset.url);
-const r2rScope = assetUrl(r2rScopeAsset.url);
-const r2rSchematic = assetUrl(r2rSchematicAsset.url);
-const r2rLiveSweep = assetUrl(r2rLiveSweepAsset.url);
-const btMemoryLog = assetUrl(btMemoryLogAsset.url);
-const btFlashMap = assetUrl(btFlashMapAsset.url);
-const btVectorTable = assetUrl(btVectorTableAsset.url);
-const btBootSequence = assetUrl(btBootSequenceAsset.url);
-const btDemo = assetUrl(btDemoAsset.url);
+// Case study catalog — media is bundled with the site under /public/assets
+// so it loads on every deployment (Lovable CDN URLs 404 once unpublished).
+const pidBreadboard = "/assets/pid-breadboard.jpeg";
+const pidStepResponse = "/assets/pid-step-response.png";
+const pidBlockDiagram = "/assets/pid-block-diagram.png";
+const pidDemo = "/assets/pid-demo.mp4";
+const r2rBreadboard = "/assets/r2r-breadboard.png";
+const r2rScope = "/assets/r2r-scope.png";
+const r2rSchematic = "/assets/r2r-schematic.png";
+const r2rLiveSweep = "/assets/r2r-live-sweep.mp4";
+const btMemoryLog = "/assets/bootloader-memory-log.png";
+const btFlashMap = "/assets/bootloader-flash-map.png";
+const btVectorTable = "/assets/bootloader-vector-table.png";
+const btBootSequence = "/assets/bootloader-boot-sequence.png";
+const btDemo = "/assets/bootloader-demo.mp4";
 
 export type CaseStudySlug =
   | "bootloader"

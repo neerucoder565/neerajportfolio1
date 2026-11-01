@@ -6,6 +6,7 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
+import type { ErrorComponentProps } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
 import { SiteShell } from "@/components/SiteShell";
@@ -29,14 +30,14 @@ function NotFoundComponent() {
   );
 }
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorComponent({ error, reset }: ErrorComponentProps) {
   console.error(error);
   const router = useRouter();
   return (
     <div className="flex min-h-screen items-center justify-center px-4">
       <div className="max-w-md text-center">
         <h1 className="font-display text-3xl text-neon uppercase">System Fault</h1>
-        <p className="mt-3 text-sm text-muted-foreground">{error.message}</p>
+        <p className="mt-3 text-sm text-muted-foreground">{error instanceof Error ? error.message : String(error)}</p>
         <button
           onClick={() => { router.invalidate(); reset(); }}
           className="mt-6 inline-flex items-center justify-center border border-neon px-5 py-2 text-xs uppercase tracking-[0.25em] text-neon hover:bg-neon hover:text-primary-foreground transition-colors"
@@ -65,11 +66,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "preconnect", href: "https://project--f5fd28dd-7b71-489d-910e-961a65dfa09f.lovable.app" },
       {
         rel: "preload",
         as: "image",
-        href: "https://project--f5fd28dd-7b71-489d-910e-961a65dfa09f.lovable.app/__l5e/assets-v1/8d02c9a7-e188-4140-bf4a-36dd0fda21a7/exploded-view-poster.jpg",
+        href: "/exploded-view-poster.jpg",
         fetchPriority: "high",
       },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
