@@ -65,11 +65,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "preconnect", href: "https://project--f5fd28dd-7b71-489d-910e-961a65dfa09f.lovable.app" },
       {
         rel: "preload",
         as: "image",
-        href: "https://project--f5fd28dd-7b71-489d-910e-961a65dfa09f.lovable.app/__l5e/assets-v1/8d02c9a7-e188-4140-bf4a-36dd0fda21a7/exploded-view-poster.jpg",
+        href: "/exploded-view-poster.jpg",
         fetchPriority: "high",
       },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
