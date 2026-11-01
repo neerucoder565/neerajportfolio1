@@ -19,17 +19,13 @@ export const Route = createFileRoute("/about")({
   component: About,
 });
 
-// Non-Lovable deployments (e.g. *.workers.dev) don't proxy "/__l5e/..." paths,
-// so CDN assets must be referenced from the Lovable project origin.
-const ASSET_BASE = "https://project--f5fd28dd-7b71-489d-910e-961a65dfa09f.lovable.app";
-
 const TOOL_LOGOS = [
   { name: "C", icon: "https://cdn.simpleicons.org/c" },
   { name: "C++", icon: "https://cdn.simpleicons.org/cplusplus" },
   { name: "Python", icon: "https://cdn.simpleicons.org/python" },
   { name: "Arduino", icon: "https://cdn.simpleicons.org/arduino" },
   { name: "STM32", icon: "https://cdn.simpleicons.org/stmicroelectronics" },
-  { name: "Altium", icon: `${ASSET_BASE}${altiumLogo.url}` },
+  { name: "Altium", icon: altiumLogoUrl },
   { name: "ESP32", icon: "https://cdn.simpleicons.org/espressif" },
   { name: "Raspberry Pi", icon: "https://cdn.simpleicons.org/raspberrypi" },
   { name: "VS Code", icon: "https://cdn.simpleicons.org/vscodium" },
