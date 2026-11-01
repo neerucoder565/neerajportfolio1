@@ -1,5 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 
+const RING_IDLE =
+  "conic-gradient(from 0deg, #a78bfa, #22d3ee 30%, #f472b6 55%, #8b5cf6 80%, #a78bfa)";
+const RING_HOVER =
+  "conic-gradient(from 0deg, #22d3ee, #a5f3fc 35%, #a78bfa 60%, #22d3ee)";
+
 export function CustomCursor() {
   const [enabled, setEnabled] = useState(false);
   const [hovering, setHovering] = useState(false);
@@ -64,16 +69,49 @@ export function CustomCursor() {
   return (
     <div
       id="custom-cursor"
-      className={`pointer-events-none fixed top-0 left-0 z-[9999] rounded-full border-2 border-neon mix-blend-screen transition-[width,height,box-shadow,border-color] duration-200 ease-out ${
-        hovering ? "size-12 border-cyan" : "size-8"
+      className={`pointer-events-none fixed top-0 left-0 z-[9999] mix-blend-screen transition-[width,height,opacity] duration-200 ease-out ${
+        hovering ? "size-12" : "size-8"
       } ${visible ? "opacity-100" : "opacity-0"}`}
-      style={{
-        boxShadow: hovering
-          ? "0 0 18px 4px oklch(0.82 0.13 200 / 0.55), inset 0 0 12px oklch(0.82 0.13 200 / 0.25)"
-          : "0 0 14px 2px oklch(0.62 0.26 300 / 0.45), inset 0 0 10px oklch(0.62 0.26 300 / 0.2)",
-        willChange: "transform",
-      }}
+      style={{ willChange: "transform" }}
       aria-hidden="true"
-    />
+    >
+      {/* wide multi-colour aura breathing around the ring */}
+      <div
+        className="absolute -inset-4 rounded-full animate-pulse"
+        style={{
+          background: hovering
+            ? "radial-gradient(circle, rgba(34,211,238,0.55) 0%, rgba(167,139,250,0.4) 40%, rgba(244,114,182,0.28) 68%, transparent 80%)"
+            : "radial-gradient(circle, rgba(167,139,250,0.55) 0%, rgba(34,211,238,0.35) 42%, rgba(236,72,153,0.25) 68%, transparent 80%)",
+          filter: "blur(9px)",
+          animationDuration: "2.6s",
+        }}
+      />
+
+      {/* rotating violet → cyan → pink gradient ring */}
+      <div
+        className="absolute inset-0 rounded-full"
+        style={{
+          background: hovering ? RING_HOVER : RING_IDLE,
+          WebkitMask:
+            "radial-gradient(farthest-side, transparent calc(100% - 4.5px), #000 calc(100% - 3px))",
+          mask: "radial-gradient(farthest-side, transparent calc(100% - 4.5px), #000 calc(100% - 3px))",
+          animation: "spin 4s linear infinite",
+          filter: hovering
+            ? "drop-shadow(0 0 10px rgba(34,211,238,0.9))"
+            : "drop-shadow(0 0 8px rgba(167,139,250,0.8))",
+          transition: "filter 200ms ease-out",
+        }}
+      />
+
+      {/* bright core */}
+      <div
+        className="absolute left-1/2 top-1/2 size-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full"
+        style={{
+          background: "#ffffff",
+          boxShadow:
+            "0 0 8px 2px rgba(255,255,255,0.95), 0 0 18px 6px rgba(34,211,238,0.55), 0 0 30px 12px rgba(167,139,250,0.4)",
+        }}
+      />
+    </div>
   );
 }
