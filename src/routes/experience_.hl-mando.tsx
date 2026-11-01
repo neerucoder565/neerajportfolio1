@@ -14,20 +14,14 @@ import {
   Cog,
   CheckCircle2,
 } from "lucide-react";
-import buildingAsset from "@/assets/hl-mando-building.jpeg.asset.json";
-import certificateAsset from "@/assets/hl-mando-certificate.png.asset.json";
 import landscapeImg from "@/assets/mando-landscape.jpg";
-import cepsAsset from "@/assets/CEPS_Assembly_Parts_Image.jpeg.asset.json";
-import groupAsset from "@/assets/Group_Pic.jpeg.asset.json";
-import sideviewAsset from "@/assets/Sideview_HL_MANDO.jpeg.asset.json";
 
-// Cloudflare deployments do not proxy Lovable's relative asset route.
-const ASSET_CDN_ORIGIN =
-  "https://project--f5fd28dd-7b71-489d-910e-961a65dfa09f.lovable.app";
-const assetUrl = (url: string) =>
-  url.startsWith("/") ? `${ASSET_CDN_ORIGIN}${url}` : url;
-const buildingSrc = assetUrl(buildingAsset.url);
-const certificateSrc = assetUrl(certificateAsset.url);
+// Bundled with the site under /public/assets so they load on every deployment.
+const buildingSrc = "/assets/hl-mando-building.jpeg";
+const certificateSrc = "/assets/hl-mando-certificate.png";
+const sideviewSrc = "/assets/Sideview_HL_MANDO.jpeg";
+const groupSrc = "/assets/Group_Pic.jpeg";
+const cepsSrc = "/assets/CEPS_Assembly_Parts_Image.jpeg";
 
 export const Route = createFileRoute("/experience_/hl-mando")({
   head: () => ({

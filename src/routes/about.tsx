@@ -2,7 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { Panel, Section } from "@/components/SiteShell";
 import { GraduationCap } from "lucide-react";
-import altiumLogo from "@/assets/altium-logo.png.asset.json";
+// Altium logo is bundled with the site under /public/assets.
+const altiumLogoUrl = "/assets/altium-logo.png";
 
 
 
