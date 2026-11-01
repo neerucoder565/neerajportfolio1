@@ -346,13 +346,9 @@ function SkillPart({
         aria-label={`${skill.name} — ${skill.level}`}
         className="group w-full min-h-[52px] flex items-center gap-2 border px-2 py-2.5 text-left transition-all duration-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--neon-bright)]"
         style={{
-          borderColor: lit
-            ? `color-mix(in oklab, var(--neon-bright) ${a * 60}%, transparent)`
-            : "rgba(255,255,255,0.08)",
-          background: lit ? "rgba(255,255,255,0.03)" : "rgba(255,255,255,0.015)",
-          boxShadow: lit
-            ? `0 0 ${18 + a * 22}px color-mix(in oklab, var(--neon-bright) ${50 + a * 50}%, transparent), inset 0 0 ${6 + a * 8}px color-mix(in oklab, var(--neon-bright) ${25 + a * 35}%, transparent)${active ? `, 0 0 ${32 + a * 28}px color-mix(in oklab, var(--neon-bright) ${70 + a * 30}%, transparent)` : ""}`
-            : "none",
+          borderColor: "rgba(255,255,255,0.08)",
+          background: "rgba(255,255,255,0.015)",
+          boxShadow: "none",
         }}
       >
         {/* part body */}
@@ -383,7 +379,7 @@ function SkillPart({
             className="font-mono text-[13px] leading-tight transition-all duration-100"
             style={{
               color: lit
-                ? `color-mix(in oklab, #ffffff ${45 + a * 55}%, var(--foreground))`
+                ? `color-mix(in oklab, #ffffff ${70 + a * 30}%, var(--foreground))`
                 : "rgba(200,190,210,0.28)",
               textShadow: lit
                 ? `0 0 ${8 + a * 14}px var(--neon-bright), 0 0 ${18 + a * 28}px var(--neon-bright), 0 0 ${32 + a * 48}px color-mix(in oklab, var(--neon-bright) 75%, transparent)`
